@@ -15,7 +15,6 @@ import {
   ShoppingBag,
   Pipette,
   Coffee,
-  Image as ImageIcon,
 } from "lucide-react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -140,6 +139,7 @@ export function LeftSidebar() {
         {currentTexture?.imageUrl && (
           <div className="mt-4 relative">
             <div className="rounded-lg border overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={currentTexture.imageUrl}
                 alt="Uploaded artwork"

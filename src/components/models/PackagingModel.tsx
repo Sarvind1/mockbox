@@ -1,30 +1,9 @@
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useEditorStore } from "@/lib/store";
 import { SurfaceTexture } from "@/lib/types";
-
-function useSurfaceTexture(surfaceName: string) {
-  const tex = useEditorStore((s) => s.surfaceTextures[surfaceName]);
-  const textureRef = useRef<THREE.Texture | null>(null);
-
-  useEffect(() => {
-    if (tex?.imageUrl) {
-      const loader = new THREE.TextureLoader();
-      loader.load(tex.imageUrl, (loaded) => {
-        loaded.colorSpace = THREE.SRGBColorSpace;
-        loaded.wrapS = THREE.RepeatWrapping;
-        loaded.wrapT = THREE.RepeatWrapping;
-        textureRef.current = loaded;
-      });
-    } else {
-      textureRef.current = null;
-    }
-  }, [tex?.imageUrl]);
-
-  return { texture: textureRef.current, transform: tex };
-}
 
 function getMaterialProps(finish: string, color: string) {
   const base = { color };
@@ -403,16 +382,26 @@ export function CupModel() {
 function useLoadedTextures(
   surfaceTextures: Record<string, SurfaceTexture>
 ): Record<string, THREE.Texture | null> {
-  const texturesRef = useRef<Record<string, THREE.Texture | null>>({});
+  const [textures, setTextures] = useState<Record<string, THREE.Texture | null>>({});
   const prevUrls = useRef<Record<string, string | null>>({});
+
+  // Derive which URLs need loading/clearing
+  const urlMap = useMemo(() => {
+    const map: Record<string, string | null> = {};
+    for (const [name, surf] of Object.entries(surfaceTextures)) {
+      map[name] = surf.imageUrl;
+    }
+    return map;
+  }, [surfaceTextures]);
 
   useEffect(() => {
     const loader = new THREE.TextureLoader();
-    for (const [name, surf] of Object.entries(surfaceTextures)) {
-      if (surf.imageUrl !== prevUrls.current[name]) {
-        prevUrls.current[name] = surf.imageUrl;
-        if (surf.imageUrl) {
-          loader.load(surf.imageUrl, (tex) => {
+    for (const [name, url] of Object.entries(urlMap)) {
+      if (url !== prevUrls.current[name]) {
+        prevUrls.current[name] = url;
+        if (url) {
+          const surf = surfaceTextures[name];
+          loader.load(url, (tex) => {
             tex.colorSpace = THREE.SRGBColorSpace;
             tex.flipY = true;
             if (surf.scale !== 1) {
@@ -423,22 +412,17 @@ function useLoadedTextures(
             tex.wrapS = THREE.ClampToEdgeWrapping;
             tex.wrapT = THREE.ClampToEdgeWrapping;
             tex.needsUpdate = true;
-            texturesRef.current = {
-              ...texturesRef.current,
-              [name]: tex,
-            };
+            setTextures((prev) => ({ ...prev, [name]: tex }));
           });
         } else {
-          texturesRef.current = {
-            ...texturesRef.current,
-            [name]: null,
-          };
+          // Use setTimeout to avoid synchronous setState in effect body
+          setTimeout(() => setTextures((prev) => ({ ...prev, [name]: null })), 0);
         }
       }
     }
-  }, [surfaceTextures]);
+  }, [urlMap, surfaceTextures]);
 
-  return texturesRef.current;
+  return textures;
 }
 
 export function PackagingModelSwitch({

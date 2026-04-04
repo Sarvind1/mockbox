@@ -7,10 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Undo2,
   Redo2,
-  RotateCcw,
-  Grid3X3,
   Maximize,
-  Share2,
   Download,
   Package,
   Home,
