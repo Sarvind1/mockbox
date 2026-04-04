@@ -1,0 +1,5 @@
+#!/bin/bash
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export NODE="/opt/homebrew/bin/node"
+cd "$(dirname "$0")"
+exec /opt/homebrew/bin/node node_modules/.bin/next dev --port 3000
