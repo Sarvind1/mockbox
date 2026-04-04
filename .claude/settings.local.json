@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source /Users/teq-admin/pacdora/.venv/bin/activate)",
+      "Bash(python3 -c \":*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-pnpm --no-turbopack)",
+      "Bash(npm --version)",
+      "Bash(brew list:*)",
+      "Read(//usr/local/bin/**)",
+      "Read(//opt/homebrew/Cellar/node/25.8.2/bin/**)",
+      "Read(//Users/teq-admin/.nvm/versions/**)",
+      "Bash(echo $PATH)",
+      "Bash(export PATH=\"/opt/homebrew/bin:$PATH\")",
+      "Read(//private/tmp/**)",
+      "Bash(npx create-next-app@latest mockbox --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-pnpm --no-turbopack)",
+      "Bash(rm -rf /tmp/mockbox)",
+      "Bash(npx create-next-app@latest /tmp/mockbox --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest init -d)"
+    ]
+  }
+}
