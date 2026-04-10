@@ -26,6 +26,10 @@ MockBox is a browser-based 3D packaging mockup and design platform (inspired by 
 ## Project Structure
 
 ```
+public/
+├── models/                         # GLB 3D model files (loaded at runtime)
+│   ├── package_box_mockup.glb      # Sketchfab — _simone.rizzi (CC-BY)
+│   └── coffee_shop_cup.glb         # Sketchfab — David Zerba (CC-BY)
 src/
 ├── app/
 │   ├── page.tsx                    # Landing page
@@ -39,7 +43,7 @@ src/
 │   ├── shared/                     # Navbar, Footer
 │   ├── mockups/                    # TemplateGrid
 │   ├── editor/                     # EditorLayout, Toolbar, Viewport, LeftSidebar, RightSidebar, ExportDialog
-│   ├── models/                     # PackagingModel.tsx (all 3D models)
+│   ├── models/                     # PackagingModel.tsx (all 3D models — GLB + procedural)
 │   └── ui/                         # shadcn/ui primitives (button, slider, dialog, etc.)
 ├── lib/
 │   ├── store.ts                    # Zustand store (editor state, undo/redo)
@@ -50,7 +54,8 @@ src/
 
 ## Key Architecture Decisions
 
-- **Procedural 3D models**: All packaging models (box, bottle, can, pouch, tube, cup) are built with Three.js primitives and proper geometry — no external GLB files needed for Phase 1.
+- **Hybrid 3D models**: Models use either GLB files (downloaded from Sketchfab) or procedural Three.js primitives. Box and Cup use GLB; Bottle, Can, Pouch, Tube use procedural geometry.
+- **GLB loading**: Uses `useGLTF` from `@react-three/drei` with `.preload()` for eager fetching. Models are stored in `public/models/`.
 - **Client-side only**: No backend, no auth, no database. Everything runs in the browser.
 - **Zustand store** (`src/lib/store.ts`): Single store for all editor state including active template, surface textures, material settings, undo/redo stacks.
 - **Template switching**: Changes both Zustand state and URL via `router.replace()`.
@@ -58,19 +63,37 @@ src/
 
 ## 3D Models
 
-All models are in `src/components/models/PackagingModel.tsx`. Each model:
-- Is a React component using R3F JSX
-- Reads state from the Zustand store (baseColor, finish, surfaceTextures)
-- Supports click-to-select surfaces
-- Uses `meshPhysicalMaterial` for PBR rendering
+All models are in `src/components/models/PackagingModel.tsx`. Two types:
+
+### GLB-based models (Box, Cup)
+- Load `.glb` files from `public/models/` using `useGLTF` from drei
+- Clone the scene with `scene.clone(true)` so each instance is independent
+- Override materials in a `useEffect` — apply `MeshPhysicalMaterial` with editor color/finish
+- Map mesh names to surfaces (e.g. mesh named "back" → surface "back")
+- Call `useGLTF.preload("/models/file.glb")` after the component for eager loading
+- Models sourced from Sketchfab (CC Attribution license)
+
+### Procedural models (Bottle, Can, Pouch, Tube)
+- Built with Three.js primitives (cylinderGeometry, boxGeometry, shapeGeometry, etc.)
+- Each surface is a separate `<mesh>` with click handler
+
+### Common patterns (both types)
+- Read state from Zustand store (baseColor, finish, surfaceTextures)
+- Support click-to-select surfaces
+- Use `meshPhysicalMaterial` for PBR rendering
 - `PackagingModelSwitch` maps templateId → component
 
 ## Adding a New Template
 
 1. Add entry to `src/lib/templates.ts` with id, name, category, surfaces, defaultColor
 2. Create model component in `src/components/models/PackagingModel.tsx`
+   - For GLB: follow the BoxModel/CupModel pattern (useGLTF, clone, override materials)
+   - For procedural: follow the BottleModel/CanModel pattern (primitive geometry)
 3. Add case to `PackagingModelSwitch`
 4. Add icon mapping in `LeftSidebar.tsx`, `TemplateShowcase.tsx`, `TemplateGrid.tsx`
+5. If using GLB: place the `.glb` file in `public/models/` and add `useGLTF.preload()` call
+
+See `model_guide.md` for step-by-step instructions on sourcing and integrating GLB models.
 
 ## Known Constraints
 

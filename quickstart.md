@@ -100,12 +100,14 @@ npm start    # Serves on port 3000
 ## Project Structure (at a Glance)
 
 ```
+public/
+  models/               → GLB 3D model files (Box, Cup from Sketchfab)
 src/
   app/                  → Pages (Next.js App Router)
   components/
     landing/            → Landing page sections
     editor/             → 3D editor UI panels
-    models/             → Three.js 3D packaging models
+    models/             → 3D packaging models (GLB + procedural)
     shared/             → Navbar, Footer
     ui/                 → shadcn/ui components
   lib/
@@ -143,3 +145,4 @@ npm install
 
 - `CLAUDE.md` — Architecture, conventions, and how to add templates
 - `setup_guide.md` — Detailed setup learnings and workarounds
+- `model_guide.md` — How to download, add, and update 3D models from Sketchfab

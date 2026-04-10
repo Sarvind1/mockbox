@@ -1,13 +1,29 @@
 "use client";
 
-import { Suspense, useRef, useCallback, useEffect } from "react";
+import { Suspense, useRef, useCallback, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, ContactShadows } from "@react-three/drei";
 import { useEditorStore } from "@/lib/store";
 import { PackagingModelSwitch } from "@/components/models/PackagingModel";
+import { Loader2, Box } from "lucide-react";
 
-function Scene() {
+function SceneContent({ onReady }: { onReady: () => void }) {
   const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
+
+  useEffect(() => {
+    // Model component has mounted — signal ready after a frame
+    const raf = requestAnimationFrame(() => onReady());
+    return () => cancelAnimationFrame(raf);
+  }, [activeTemplateId, onReady]);
+
+  return (
+    <Suspense fallback={null}>
+      <PackagingModelSwitch templateId={activeTemplateId} />
+    </Suspense>
+  );
+}
+
+function Scene({ onReady }: { onReady: () => void }) {
   const backgroundColor = useEditorStore((s) => s.backgroundColor);
 
   return (
@@ -18,9 +34,7 @@ function Scene() {
       <directionalLight position={[-3, 4, -3]} intensity={0.3} />
       <directionalLight position={[0, -2, 5]} intensity={0.2} />
 
-      <Suspense fallback={null}>
-        <PackagingModelSwitch templateId={activeTemplateId} />
-      </Suspense>
+      <SceneContent onReady={onReady} />
 
       <ContactShadows
         position={[0, -0.75, 0]}
@@ -44,8 +58,60 @@ function Scene() {
   );
 }
 
-export function EditorViewport() {
+function ViewportLoader() {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 z-10 pointer-events-none">
+      <div className="flex flex-col items-center gap-4 animate-in fade-in duration-200">
+        <div className="relative">
+          <Box className="h-10 w-10 text-muted-foreground/30" />
+          <Loader2 className="h-6 w-6 text-primary absolute -bottom-1 -right-1 animate-spin" />
+        </div>
+        <div className="text-center">
+          <p className="text-sm font-medium text-muted-foreground">
+            Loading 3D scene...
+          </p>
+          <p className="text-xs text-muted-foreground/60 mt-1">
+            Setting up lighting and materials
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ViewportInner() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [ready, setReady] = useState(false);
+
+  const handleReady = useCallback(() => {
+    setReady(true);
+  }, []);
+
+  return (
+    <>
+      {!ready && <ViewportLoader />}
+
+      <Canvas
+        ref={canvasRef}
+        camera={{ position: [2, 1.5, 2.5], fov: 45 }}
+        gl={{ preserveDrawingBuffer: true, antialias: true }}
+        dpr={[1, 2]}
+        shadows
+      >
+        <Scene onReady={handleReady} />
+      </Canvas>
+
+      {ready && (
+        <div className="absolute bottom-4 left-4 text-xs text-muted-foreground bg-white/80 backdrop-blur-sm rounded-md px-3 py-2 pointer-events-none animate-in fade-in duration-500">
+          Drag to rotate &middot; Scroll to zoom &middot; Right-click to pan
+        </div>
+      )}
+    </>
+  );
+}
+
+export function EditorViewport() {
+  const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
 
   // Keyboard shortcuts
   const undo = useEditorStore((s) => s.undo);
@@ -72,20 +138,8 @@ export function EditorViewport() {
 
   return (
     <div className="flex-1 relative bg-gray-50">
-      <Canvas
-        ref={canvasRef}
-        camera={{ position: [2, 1.5, 2.5], fov: 45 }}
-        gl={{ preserveDrawingBuffer: true, antialias: true }}
-        dpr={[1, 2]}
-        shadows
-      >
-        <Scene />
-      </Canvas>
-
-      {/* Viewport overlay hints */}
-      <div className="absolute bottom-4 left-4 text-xs text-muted-foreground bg-white/80 backdrop-blur-sm rounded-md px-3 py-2 pointer-events-none">
-        Drag to rotate &middot; Scroll to zoom &middot; Right-click to pan
-      </div>
+      {/* Key on templateId so ViewportInner remounts, resetting ready=false */}
+      <ViewportInner key={activeTemplateId} />
     </div>
   );
 }

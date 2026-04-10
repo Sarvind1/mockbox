@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import * as THREE from "three";
+import { useGLTF } from "@react-three/drei";
 import { useEditorStore } from "@/lib/store";
 import { SurfaceTexture } from "@/lib/types";
 
@@ -19,97 +20,67 @@ function getMaterialProps(finish: string, color: string) {
   }
 }
 
-// ---- Box Model ----
+// ---- Box Model (GLB) ----
 export function BoxModel() {
-  const baseColor = useEditorStore((s) => s.baseColor);
-  const finish = useEditorStore((s) => s.finish);
+  const { scene } = useGLTF("/models/package_box_mockup.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
-
-  const matProps = getMaterialProps(finish, baseColor);
 
   const textures = useLoadedTextures(surfaceTextures);
 
+  // Clone the scene so each instance is independent
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
+
+  // Apply color/finish overrides and textures to all meshes in the model
+  useEffect(() => {
+    const matProps = getMaterialProps(finish, baseColor);
+    clonedScene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        // Determine which surface this mesh represents based on its name
+        const name = mesh.name.toLowerCase();
+        let surface = "front";
+        if (name.includes("back")) surface = "back";
+        else if (name.includes("left") || name.includes("side_l")) surface = "left";
+        else if (name.includes("right") || name.includes("side_r")) surface = "right";
+        else if (name.includes("top") || name.includes("lid")) surface = "top";
+
+        // Create a new material preserving the original's maps
+        const origMat = mesh.material as THREE.MeshStandardMaterial;
+        const newMat = new THREE.MeshPhysicalMaterial({
+          ...matProps,
+          map: textures[surface] || origMat.map || null,
+          normalMap: origMat.normalMap || null,
+          emissive: new THREE.Color(activeSurface === surface ? "#1a1a2e" : "#000000"),
+          emissiveIntensity: activeSurface === surface ? 0.05 : 0,
+        });
+        mesh.material = newMat;
+
+        // Make mesh clickable — pick the first plausible surface
+        mesh.userData.surface = surface;
+      }
+    });
+  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    const mesh = e.object as THREE.Mesh;
+    if (mesh.userData.surface) {
+      setActiveSurface(mesh.userData.surface);
+    }
+  };
+
   return (
-    <group>
-      {/* Front face */}
-      <mesh
-        position={[0, 0, 0.5]}
-        onClick={() => setActiveSurface("front")}
-      >
-        <planeGeometry args={[1, 1.4]} />
-        <meshPhysicalMaterial
-          {...matProps}
-          map={textures["front"] || null}
-          emissive={activeSurface === "front" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "front" ? 0.05 : 0}
-        />
-      </mesh>
-      {/* Back face */}
-      <mesh
-        position={[0, 0, -0.5]}
-        rotation={[0, Math.PI, 0]}
-        onClick={() => setActiveSurface("back")}
-      >
-        <planeGeometry args={[1, 1.4]} />
-        <meshPhysicalMaterial
-          {...matProps}
-          map={textures["back"] || null}
-          emissive={activeSurface === "back" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "back" ? 0.05 : 0}
-        />
-      </mesh>
-      {/* Left face */}
-      <mesh
-        position={[-0.5, 0, 0]}
-        rotation={[0, -Math.PI / 2, 0]}
-        onClick={() => setActiveSurface("left")}
-      >
-        <planeGeometry args={[1, 1.4]} />
-        <meshPhysicalMaterial
-          {...matProps}
-          map={textures["left"] || null}
-          emissive={activeSurface === "left" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "left" ? 0.05 : 0}
-        />
-      </mesh>
-      {/* Right face */}
-      <mesh
-        position={[0.5, 0, 0]}
-        rotation={[0, Math.PI / 2, 0]}
-        onClick={() => setActiveSurface("right")}
-      >
-        <planeGeometry args={[1, 1.4]} />
-        <meshPhysicalMaterial
-          {...matProps}
-          map={textures["right"] || null}
-          emissive={activeSurface === "right" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "right" ? 0.05 : 0}
-        />
-      </mesh>
-      {/* Top face */}
-      <mesh
-        position={[0, 0.7, 0]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        onClick={() => setActiveSurface("top")}
-      >
-        <planeGeometry args={[1, 1]} />
-        <meshPhysicalMaterial
-          {...matProps}
-          map={textures["top"] || null}
-          emissive={activeSurface === "top" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "top" ? 0.05 : 0}
-        />
-      </mesh>
-      {/* Box body (solid) */}
-      <mesh>
-        <boxGeometry args={[0.99, 1.39, 0.99]} />
-        <meshPhysicalMaterial {...matProps} transparent opacity={0.3} />
-      </mesh>
+    <group scale={[4, 4, 4]} position={[0, -0.5, 0]}>
+      <primitive object={clonedScene} onClick={handleClick} />
     </group>
   );
 }
+useGLTF.preload("/models/package_box_mockup.glb");
 
 // ---- Bottle Model ----
 export function BottleModel() {
@@ -321,62 +292,78 @@ export function TubeModel() {
   );
 }
 
-// ---- Cup Model ----
+// ---- Cup Model (GLB) ----
 export function CupModel() {
-  const baseColor = useEditorStore((s) => s.baseColor);
-  const finish = useEditorStore((s) => s.finish);
+  const { scene } = useGLTF("/models/coffee_shop_cup.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
 
-  const matProps = getMaterialProps(finish, baseColor);
   const textures = useLoadedTextures(surfaceTextures);
 
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
+
+  // Apply color/finish overrides and textures
+  useEffect(() => {
+    const matProps = getMaterialProps(finish, baseColor);
+    clonedScene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        const name = mesh.name.toLowerCase();
+
+        // Map mesh names to surfaces: sleeve-like vs body
+        let surface: "body" | "sleeve" = "body";
+        if (name.includes("sleeve") || name.includes("band") || name.includes("wrap") || name.includes("cardboard")) {
+          surface = "sleeve";
+        }
+
+        const origMat = mesh.material as THREE.MeshStandardMaterial;
+
+        if (surface === "sleeve") {
+          const sleeveMat = new THREE.MeshPhysicalMaterial({
+            color: "#8B6914",
+            roughness: 0.9,
+            metalness: 0,
+            map: textures["sleeve"] || origMat.map || null,
+            normalMap: origMat.normalMap || null,
+            emissive: new THREE.Color(activeSurface === "sleeve" ? "#1a1a2e" : "#000000"),
+            emissiveIntensity: activeSurface === "sleeve" ? 0.05 : 0,
+          });
+          mesh.material = sleeveMat;
+        } else {
+          const bodyMat = new THREE.MeshPhysicalMaterial({
+            ...matProps,
+            map: textures["body"] || origMat.map || null,
+            normalMap: origMat.normalMap || null,
+            emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
+            emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
+          });
+          mesh.material = bodyMat;
+        }
+
+        mesh.userData.surface = surface;
+      }
+    });
+  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    const mesh = e.object as THREE.Mesh;
+    if (mesh.userData.surface) {
+      setActiveSurface(mesh.userData.surface);
+    }
+  };
+
   return (
-    <group>
-      {/* Cup body */}
-      <mesh
-        position={[0, -0.05, 0]}
-        onClick={() => setActiveSurface("body")}
-      >
-        <cylinderGeometry args={[0.4, 0.3, 1.1, 32, 1, true]} />
-        <meshPhysicalMaterial
-          {...matProps}
-          side={THREE.DoubleSide}
-          map={textures["body"] || null}
-          emissive={activeSurface === "body" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "body" ? 0.05 : 0}
-        />
-      </mesh>
-      {/* Bottom */}
-      <mesh position={[0, -0.6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[0.3, 32]} />
-        <meshPhysicalMaterial {...matProps} />
-      </mesh>
-      {/* Rim */}
-      <mesh position={[0, 0.5, 0]}>
-        <torusGeometry args={[0.4, 0.03, 8, 32]} />
-        <meshPhysicalMaterial {...matProps} />
-      </mesh>
-      {/* Sleeve */}
-      <mesh
-        position={[0, -0.15, 0]}
-        onClick={() => setActiveSurface("sleeve")}
-      >
-        <cylinderGeometry args={[0.37, 0.32, 0.5, 32, 1, true]} />
-        <meshPhysicalMaterial
-          color="#8B6914"
-          roughness={0.9}
-          metalness={0}
-          side={THREE.DoubleSide}
-          map={textures["sleeve"] || null}
-          emissive={activeSurface === "sleeve" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "sleeve" ? 0.05 : 0}
-        />
-      </mesh>
+    <group scale={[0.6, 0.6, 0.6]} position={[0, -0.7, 0]}>
+      <primitive object={clonedScene} onClick={handleClick} />
     </group>
   );
 }
+useGLTF.preload("/models/coffee_shop_cup.glb");
 
 // Texture loader hook
 function useLoadedTextures(

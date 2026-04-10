@@ -127,6 +127,38 @@ pip install defusedxml
 
 This is separate from the Node.js project and used only for auxiliary scripts. It's in `.gitignore` by default.
 
+## GLB Model Integration (Sketchfab)
+
+In Phase 1, we upgraded the Box and Cup templates from procedural Three.js primitives to real GLB models downloaded from Sketchfab.
+
+### Why GLB?
+- GLB (binary glTF) is the standard format for web 3D — single file, compressed, includes geometry + textures
+- `useGLTF` from `@react-three/drei` handles loading, caching, and preloading automatically
+- Real models look significantly more polished than procedural primitives
+
+### Models sourced
+
+| Template | File | Source | Triangles | File Size | License |
+|----------|------|--------|-----------|-----------|---------|
+| Tuck End Box | `package_box_mockup.glb` | Sketchfab — _simone.rizzi | 2.3k | 2.8 MB | CC-BY |
+| Coffee Cup | `coffee_shop_cup.glb` | Sketchfab — David Zerba | 5.8k | 140 KB | CC-BY |
+
+### Key learnings
+
+1. **Triangle count matters**: Keep models under ~50k triangles for smooth web performance. Many Sketchfab models are 500k+ — always check before downloading.
+2. **Scale varies wildly**: Sketchfab models have no standard unit system. The box needed `scale={[4, 4, 4]}` while the cup needed `scale={[0.6, 0.6, 0.6]}`. Always tune per model.
+3. **Material override pattern**: Clone the scene (`scene.clone(true)`), then traverse all meshes in a `useEffect` to replace materials with `MeshPhysicalMaterial` using the editor's color/finish settings.
+4. **Mesh name → surface mapping**: GLB meshes have names from the original DCC tool (Blender, etc.). Map them to our surface names (front, back, body, sleeve) via string matching.
+5. **Preload for performance**: Call `useGLTF.preload("/models/file.glb")` after each component to start fetching the model immediately, not on first render.
+6. **Download format**: On Sketchfab, choose "GLB Converted format" with the smallest texture size option (1k) to minimize download size.
+
+### Sketchfab download tips
+- Filter by "Downloadable" in search
+- Look for the download icon (arrow) — models with a `$` icon are paid
+- Check triangle count before downloading (visible on the model page)
+- Always pick CC Attribution or CC0 licensed models
+- Download the GLB format (not glTF, USDZ, or blend) — GLB is a single binary file
+
 ## Summary of What Works
 
 | Tool | Version | Status |
