@@ -79,7 +79,7 @@ function ViewportLoader() {
   );
 }
 
-function ViewportInner() {
+function ViewportInner({ cameraPosition }: { cameraPosition: [number, number, number] }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -93,7 +93,7 @@ function ViewportInner() {
 
       <Canvas
         ref={canvasRef}
-        camera={{ position: [2, 1.5, 2.5], fov: 45 }}
+        camera={{ position: cameraPosition, fov: 45 }}
         gl={{ preserveDrawingBuffer: true, antialias: true }}
         dpr={[1, 2]}
         shadows
@@ -112,6 +112,8 @@ function ViewportInner() {
 
 export function EditorViewport() {
   const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
+  const isVehicle = activeTemplateId.startsWith("car-");
+  const cameraPosition: [number, number, number] = isVehicle ? [3, 0.8, 3] : [2, 1.5, 2.5];
 
   // Keyboard shortcuts
   const undo = useEditorStore((s) => s.undo);
@@ -139,7 +141,7 @@ export function EditorViewport() {
   return (
     <div className="flex-1 relative bg-gray-50">
       {/* Key on templateId so ViewportInner remounts, resetting ready=false */}
-      <ViewportInner key={activeTemplateId} />
+      <ViewportInner key={activeTemplateId} cameraPosition={cameraPosition} />
     </div>
   );
 }
