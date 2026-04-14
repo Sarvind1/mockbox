@@ -55,6 +55,24 @@ export const templates: PackagingTemplate[] = [
     defaultColor: "#ffffff",
     thumbnail: "/thumbnails/cup.png",
   },
+  {
+    id: "car-sedan",
+    name: "Car Sedan",
+    category: "vehicles",
+    description: "Standard sedan — apply brand wraps to body, roof, and hood",
+    surfaces: ["body", "roof", "hood"],
+    defaultColor: "#cc2222",
+    thumbnail: "/thumbnails/car-sedan.png",
+  },
+  {
+    id: "car-van",
+    name: "Cargo Van",
+    category: "vehicles",
+    description: "Cargo van — ideal for fleet branding and full body wraps",
+    surfaces: ["body", "roof", "hood"],
+    defaultColor: "#ffffff",
+    thumbnail: "/thumbnails/car-van.png",
+  },
 ];
 
 export function getTemplate(id: string): PackagingTemplate | undefined {

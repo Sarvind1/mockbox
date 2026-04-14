@@ -15,6 +15,7 @@ import {
   ShoppingBag,
   Pipette,
   Coffee,
+  Car,
 } from "lucide-react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,6 +26,7 @@ const categoryIcons: Record<string, any> = {
   pouches: ShoppingBag,
   tubes: Pipette,
   cups: Coffee,
+  vehicles: Car,
 };
 
 export function LeftSidebar() {

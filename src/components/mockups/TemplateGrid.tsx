@@ -6,7 +6,7 @@ import { templates } from "@/lib/templates";
 import { PackagingCategory } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Box, Wine, Cylinder, ShoppingBag, Pipette, Coffee } from "lucide-react";
+import { Box, Wine, Cylinder, ShoppingBag, Pipette, Coffee, Car } from "lucide-react";
 
 const categories: { value: PackagingCategory | "all"; label: string }[] = [
   { value: "all", label: "All" },
@@ -16,6 +16,7 @@ const categories: { value: PackagingCategory | "all"; label: string }[] = [
   { value: "pouches", label: "Pouches" },
   { value: "tubes", label: "Tubes" },
   { value: "cups", label: "Cups" },
+  { value: "vehicles", label: "Vehicles" },
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,6 +27,7 @@ const categoryIcons: Record<string, any> = {
   pouches: ShoppingBag,
   tubes: Pipette,
   cups: Coffee,
+  vehicles: Car,
 };
 
 export function TemplateGrid() {

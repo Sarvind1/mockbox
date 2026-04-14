@@ -4,7 +4,7 @@ import Link from "next/link";
 import { templates } from "@/lib/templates";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Box, Wine, Cylinder, ShoppingBag, Pipette, Coffee } from "lucide-react";
+import { ArrowRight, Box, Wine, Cylinder, ShoppingBag, Pipette, Coffee, Car } from "lucide-react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const categoryIcons: Record<string, any> = {
@@ -14,6 +14,7 @@ const categoryIcons: Record<string, any> = {
   pouches: ShoppingBag,
   tubes: Pipette,
   cups: Coffee,
+  vehicles: Car,
 };
 
 const categoryColors: Record<string, string> = {
@@ -23,6 +24,7 @@ const categoryColors: Record<string, string> = {
   pouches: "bg-purple-50 text-purple-700",
   tubes: "bg-pink-50 text-pink-700",
   cups: "bg-amber-50 text-amber-700",
+  vehicles: "bg-red-50 text-red-700",
 };
 
 export function TemplateShowcase() {

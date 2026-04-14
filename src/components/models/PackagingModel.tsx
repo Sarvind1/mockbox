@@ -365,6 +365,197 @@ export function CupModel() {
 }
 useGLTF.preload("/models/coffee_shop_cup.glb");
 
+// ---- Car Sedan Model ----
+export function CarSedanModel() {
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
+  const activeSurface = useEditorStore((s) => s.activeSurface);
+  const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+
+  const matProps = getMaterialProps(finish, baseColor);
+  const paintProps = { ...matProps, clearcoat: 1.0, clearcoatRoughness: 0.05 };
+  const textures = useLoadedTextures(surfaceTextures);
+
+  const wheelProps = { color: "#1a1a1a", roughness: 0.9, metalness: 0 };
+  const rimProps = { color: "#aaaaaa", roughness: 0.3, metalness: 0.7 };
+  const glassProps = { color: "#88aacc", roughness: 0.05, metalness: 0, transparent: true, opacity: 0.4 };
+
+  return (
+    <group scale={[0.65, 0.65, 0.65]} position={[0, -0.3, 0]}>
+      {/* Main body */}
+      <mesh onClick={() => setActiveSurface("body")}>
+        <boxGeometry args={[2.0, 0.5, 0.9]} />
+        <meshPhysicalMaterial
+          {...paintProps}
+          map={textures["body"] || null}
+          emissive={activeSurface === "body" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={activeSurface === "body" ? 0.05 : 0}
+        />
+      </mesh>
+      {/* Cabin */}
+      <mesh position={[0.05, 0.45, 0]} onClick={() => setActiveSurface("roof")}>
+        <boxGeometry args={[1.1, 0.42, 0.82]} />
+        <meshPhysicalMaterial
+          {...paintProps}
+          map={textures["roof"] || null}
+          emissive={activeSurface === "roof" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={activeSurface === "roof" ? 0.05 : 0}
+        />
+      </mesh>
+      {/* Hood */}
+      <mesh position={[0.72, 0.14, 0]} onClick={() => setActiveSurface("hood")}>
+        <boxGeometry args={[0.54, 0.1, 0.86]} />
+        <meshPhysicalMaterial
+          {...paintProps}
+          map={textures["hood"] || null}
+          emissive={activeSurface === "hood" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={activeSurface === "hood" ? 0.05 : 0}
+        />
+      </mesh>
+      {/* Windshield */}
+      <mesh position={[0.56, 0.4, 0]} rotation={[0, 0, -0.4]}>
+        <boxGeometry args={[0.36, 0.02, 0.76]} />
+        <meshPhysicalMaterial {...glassProps} />
+      </mesh>
+      {/* Rear window */}
+      <mesh position={[-0.46, 0.4, 0]} rotation={[0, 0, 0.35]}>
+        <boxGeometry args={[0.3, 0.02, 0.76]} />
+        <meshPhysicalMaterial {...glassProps} />
+      </mesh>
+      {/* Wheel FL */}
+      <mesh position={[0.68, -0.28, 0.52]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[0.68, -0.28, 0.57]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+      {/* Wheel FR */}
+      <mesh position={[0.68, -0.28, -0.52]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[0.68, -0.28, -0.57]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+      {/* Wheel RL */}
+      <mesh position={[-0.65, -0.28, 0.52]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[-0.65, -0.28, 0.57]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+      {/* Wheel RR */}
+      <mesh position={[-0.65, -0.28, -0.52]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[-0.65, -0.28, -0.57]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+    </group>
+  );
+}
+
+// ---- Cargo Van Model ----
+export function CarVanModel() {
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
+  const activeSurface = useEditorStore((s) => s.activeSurface);
+  const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+
+  const matProps = getMaterialProps(finish, baseColor);
+  const paintProps = { ...matProps, clearcoat: 0.6, clearcoatRoughness: 0.1 };
+  const textures = useLoadedTextures(surfaceTextures);
+
+  const wheelProps = { color: "#1a1a1a", roughness: 0.9, metalness: 0 };
+  const rimProps = { color: "#aaaaaa", roughness: 0.3, metalness: 0.7 };
+  const glassProps = { color: "#88aacc", roughness: 0.05, metalness: 0, transparent: true, opacity: 0.35 };
+
+  return (
+    <group scale={[0.6, 0.6, 0.6]} position={[0, -0.4, 0]}>
+      {/* Main van body */}
+      <mesh position={[0, 0.25, 0]} onClick={() => setActiveSurface("body")}>
+        <boxGeometry args={[2.2, 1.0, 0.98]} />
+        <meshPhysicalMaterial
+          {...paintProps}
+          map={textures["body"] || null}
+          emissive={activeSurface === "body" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={activeSurface === "body" ? 0.05 : 0}
+        />
+      </mesh>
+      {/* Roof */}
+      <mesh position={[0, 0.79, 0]} onClick={() => setActiveSurface("roof")}>
+        <boxGeometry args={[2.2, 0.08, 0.98]} />
+        <meshPhysicalMaterial
+          {...paintProps}
+          map={textures["roof"] || null}
+          emissive={activeSurface === "roof" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={activeSurface === "roof" ? 0.05 : 0}
+        />
+      </mesh>
+      {/* Cab / hood */}
+      <mesh position={[0.88, 0.0, 0]} onClick={() => setActiveSurface("hood")}>
+        <boxGeometry args={[0.44, 0.6, 0.94]} />
+        <meshPhysicalMaterial
+          {...paintProps}
+          map={textures["hood"] || null}
+          emissive={activeSurface === "hood" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={activeSurface === "hood" ? 0.05 : 0}
+        />
+      </mesh>
+      {/* Windshield */}
+      <mesh position={[0.74, 0.42, 0]}>
+        <boxGeometry args={[0.02, 0.44, 0.86]} />
+        <meshPhysicalMaterial {...glassProps} />
+      </mesh>
+      {/* Wheel FL */}
+      <mesh position={[0.74, -0.32, 0.56]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[0.74, -0.32, 0.62]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+      {/* Wheel FR */}
+      <mesh position={[0.74, -0.32, -0.56]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[0.74, -0.32, -0.62]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+      {/* Wheel RL */}
+      <mesh position={[-0.74, -0.32, 0.56]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[-0.74, -0.32, 0.62]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+      {/* Wheel RR */}
+      <mesh position={[-0.74, -0.32, -0.56]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
+        <meshPhysicalMaterial {...wheelProps} />
+      </mesh>
+      <mesh position={[-0.74, -0.32, -0.62]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
+        <meshPhysicalMaterial {...rimProps} />
+      </mesh>
+    </group>
+  );
+}
+
 // Texture loader hook
 function useLoadedTextures(
   surfaceTextures: Record<string, SurfaceTexture>
@@ -430,6 +621,10 @@ export function PackagingModelSwitch({
       return <TubeModel />;
     case "coffee-cup":
       return <CupModel />;
+    case "car-sedan":
+      return <CarSedanModel />;
+    case "car-van":
+      return <CarVanModel />;
     default:
       return <BoxModel />;
   }

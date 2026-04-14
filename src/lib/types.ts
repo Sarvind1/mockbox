@@ -4,7 +4,8 @@ export type PackagingCategory =
   | "cans"
   | "pouches"
   | "tubes"
-  | "cups";
+  | "cups"
+  | "vehicles";
 
 export type FinishType = "matte" | "glossy" | "metallic" | "kraft";
 
