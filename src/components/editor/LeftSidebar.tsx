@@ -131,6 +131,7 @@ export function LeftSidebar() {
           type="file"
           accept="image/*"
           className="hidden"
+          onClick={(e) => e.stopPropagation()}
           onChange={(e) => {
             const file = e.target.files?.[0];
             if (file) handleFile(file);
