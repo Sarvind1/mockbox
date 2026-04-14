@@ -374,7 +374,8 @@ export function CarSedanModel() {
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
 
   const matProps = getMaterialProps(finish, baseColor);
-  const paintProps = { ...matProps, clearcoat: 1.0, clearcoatRoughness: 0.05 };
+  const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.4 : 0.1;
+  const paintProps = { ...matProps, clearcoat, clearcoatRoughness: finish === "glossy" ? 0.05 : 0.4 };
   const textures = useLoadedTextures(surfaceTextures);
 
   const wheelProps = { color: "#1a1a1a", roughness: 0.9, metalness: 0 };
@@ -472,7 +473,8 @@ export function CarVanModel() {
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
 
   const matProps = getMaterialProps(finish, baseColor);
-  const paintProps = { ...matProps, clearcoat: 0.6, clearcoatRoughness: 0.1 };
+  const clearcoatVan = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.4 : 0.1;
+  const paintProps = { ...matProps, clearcoat: clearcoatVan, clearcoatRoughness: finish === "glossy" ? 0.05 : 0.4 };
   const textures = useLoadedTextures(surfaceTextures);
 
   const wheelProps = { color: "#1a1a1a", roughness: 0.9, metalness: 0 };

@@ -61,7 +61,7 @@ export const templates: PackagingTemplate[] = [
     category: "vehicles",
     description: "Standard sedan — apply brand wraps to body, roof, and hood",
     surfaces: ["body", "roof", "hood"],
-    defaultColor: "#cc2222",
+    defaultColor: "#ffffff",
     thumbnail: "/thumbnails/car-sedan.png",
   },
   {
