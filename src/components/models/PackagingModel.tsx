@@ -384,9 +384,10 @@ export function CarSedanModel() {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
       const name = mesh.name;
-      // Paint surfaces — override with editor color/texture
+      const origMat = mesh.material as THREE.MeshStandardMaterial;
+
       if (name.includes("M_Paint") || name.includes("M_PaintNormalMap")) {
-        const origMat = mesh.material as THREE.MeshStandardMaterial;
+        // Body paint — apply editor color/texture
         mesh.material = new THREE.MeshPhysicalMaterial({
           ...matProps, clearcoat, clearcoatRoughness,
           map: textures["body"] || null,
@@ -395,8 +396,21 @@ export function CarSedanModel() {
           emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
         });
         mesh.userData.surface = "body";
+      } else if (name.includes("M_Glass") || name.includes("M_Light") || name.includes("M_GlassColor")) {
+        // Glass / lights — replace transmission material with simple transparent
+        mesh.material = new THREE.MeshPhysicalMaterial({
+          color: name.includes("M_GlassColor") ? "#ff6600" : "#aaccff",
+          roughness: 0.05, metalness: 0,
+          transparent: true, opacity: name.includes("M_Light") ? 0.6 : 0.25,
+        });
+      } else if (name.startsWith("wheels:")) {
+        // Wheels — keep dark but no transmission
+        mesh.material = new THREE.MeshPhysicalMaterial({
+          color: "#1a1a1a", roughness: 0.7, metalness: 0.3,
+          map: origMat.map || null,
+        });
       }
-      // Everything else (glass, wheels, trim, badges) keeps original GLB material
+      // Badges, chassis, trim, grille — keep original material untouched
     });
   }, [clonedScene, baseColor, finish, activeSurface, textures]);
 
