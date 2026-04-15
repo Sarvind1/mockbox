@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { useEditorStore } from "@/lib/store";
@@ -365,204 +365,102 @@ export function CupModel() {
 }
 useGLTF.preload("/models/coffee_shop_cup.glb");
 
-// ---- Car Sedan Model ----
+// ---- Car Sedan Model (GLB) ----
 export function CarSedanModel() {
-  const baseColor = useEditorStore((s) => s.baseColor);
-  const finish = useEditorStore((s) => s.finish);
+  const { scene } = useGLTF("/models/car_sedan.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
   const textures = useLoadedTextures(surfaceTextures);
-
-  const bodyRef = useRef<THREE.Mesh>(null);
-  const roofRef = useRef<THREE.Mesh>(null);
-  const hoodRef = useRef<THREE.Mesh>(null);
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
 
   useEffect(() => {
     const matProps = getMaterialProps(finish, baseColor);
     const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.4 : 0.1;
     const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.4;
-    const surfaces: Array<{ ref: React.RefObject<THREE.Mesh | null>; name: string }> = [
-      { ref: bodyRef, name: "body" },
-      { ref: roofRef, name: "roof" },
-      { ref: hoodRef, name: "hood" },
-    ];
-    for (const { ref, name } of surfaces) {
-      if (!ref.current) continue;
-      ref.current.material = new THREE.MeshPhysicalMaterial({
-        ...matProps,
-        clearcoat,
-        clearcoatRoughness,
-        map: textures[name] || null,
-        emissive: new THREE.Color(activeSurface === name ? "#1a1a2e" : "#000000"),
-        emissiveIntensity: activeSurface === name ? 0.05 : 0,
+    clonedScene.traverse((child) => {
+      if (!(child as THREE.Mesh).isMesh) return;
+      const mesh = child as THREE.Mesh;
+      const name = mesh.name.toLowerCase();
+      if (name.startsWith("wheel")) {
+        mesh.material = new THREE.MeshPhysicalMaterial({ color: "#222", roughness: 0.8, metalness: 0.1 });
+        return;
+      }
+      // body mesh — full car shell
+      mesh.material = new THREE.MeshPhysicalMaterial({
+        ...matProps, clearcoat, clearcoatRoughness,
+        map: textures["body"] || null,
+        emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
+        emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
       });
-    }
-  }, [baseColor, finish, activeSurface, textures]);
+      mesh.userData.surface = "body";
+    });
+  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    const mesh = e.object as THREE.Mesh;
+    if (mesh.userData.surface) setActiveSurface(mesh.userData.surface);
+  };
 
   return (
-    <group scale={[0.65, 0.65, 0.65]} position={[0, -0.3, 0]}>
-      {/* Main body */}
-      <mesh ref={bodyRef} onClick={() => setActiveSurface("body")}>
-        <boxGeometry args={[2.0, 0.5, 0.9]} />
-        <meshPhysicalMaterial />
-      </mesh>
-      {/* Cabin */}
-      <mesh ref={roofRef} position={[0.05, 0.45, 0]} onClick={() => setActiveSurface("roof")}>
-        <boxGeometry args={[1.1, 0.42, 0.82]} />
-        <meshPhysicalMaterial />
-      </mesh>
-      {/* Hood */}
-      <mesh ref={hoodRef} position={[0.72, 0.14, 0]} onClick={() => setActiveSurface("hood")}>
-        <boxGeometry args={[0.54, 0.1, 0.86]} />
-        <meshPhysicalMaterial />
-      </mesh>
-      {/* Windshield */}
-      <mesh position={[0.56, 0.4, 0]} rotation={[0, 0, -0.4]}>
-        <boxGeometry args={[0.36, 0.02, 0.76]} />
-        <meshPhysicalMaterial color="#88aacc" roughness={0.05} metalness={0} transparent opacity={0.4} />
-      </mesh>
-      {/* Rear window */}
-      <mesh position={[-0.46, 0.4, 0]} rotation={[0, 0, 0.35]}>
-        <boxGeometry args={[0.3, 0.02, 0.76]} />
-        <meshPhysicalMaterial color="#88aacc" roughness={0.05} metalness={0} transparent opacity={0.4} />
-      </mesh>
-      {/* Wheel FL */}
-      <mesh position={[0.68, -0.28, 0.52]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[0.68, -0.28, 0.57]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
-      {/* Wheel FR */}
-      <mesh position={[0.68, -0.28, -0.52]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[0.68, -0.28, -0.57]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
-      {/* Wheel RL */}
-      <mesh position={[-0.65, -0.28, 0.52]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[-0.65, -0.28, 0.57]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
-      {/* Wheel RR */}
-      <mesh position={[-0.65, -0.28, -0.52]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[-0.65, -0.28, -0.57]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.12, 0.12, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
+    <group scale={[0.9, 0.9, 0.9]} position={[0, -0.35, 0]}>
+      <primitive object={clonedScene} onClick={handleClick} />
     </group>
   );
 }
+useGLTF.preload("/models/car_sedan.glb");
 
-// ---- Cargo Van Model ----
+// ---- Cargo Van Model (GLB) ----
 export function CarVanModel() {
-  const baseColor = useEditorStore((s) => s.baseColor);
-  const finish = useEditorStore((s) => s.finish);
+  const { scene } = useGLTF("/models/car_van.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
   const textures = useLoadedTextures(surfaceTextures);
-
-  const bodyRef = useRef<THREE.Mesh>(null);
-  const roofRef = useRef<THREE.Mesh>(null);
-  const hoodRef = useRef<THREE.Mesh>(null);
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
 
   useEffect(() => {
     const matProps = getMaterialProps(finish, baseColor);
     const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.4 : 0.1;
     const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.4;
-    const surfaces: Array<{ ref: React.RefObject<THREE.Mesh | null>; name: string }> = [
-      { ref: bodyRef, name: "body" },
-      { ref: roofRef, name: "roof" },
-      { ref: hoodRef, name: "hood" },
-    ];
-    for (const { ref, name } of surfaces) {
-      if (!ref.current) continue;
-      ref.current.material = new THREE.MeshPhysicalMaterial({
-        ...matProps,
-        clearcoat,
-        clearcoatRoughness,
-        map: textures[name] || null,
-        emissive: new THREE.Color(activeSurface === name ? "#1a1a2e" : "#000000"),
-        emissiveIntensity: activeSurface === name ? 0.05 : 0,
+    clonedScene.traverse((child) => {
+      if (!(child as THREE.Mesh).isMesh) return;
+      const mesh = child as THREE.Mesh;
+      const name = mesh.name.toLowerCase();
+      if (name.startsWith("wheel")) {
+        mesh.material = new THREE.MeshPhysicalMaterial({ color: "#222", roughness: 0.8, metalness: 0.1 });
+        return;
+      }
+      mesh.material = new THREE.MeshPhysicalMaterial({
+        ...matProps, clearcoat, clearcoatRoughness,
+        map: textures["body"] || null,
+        emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
+        emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
       });
-    }
-  }, [baseColor, finish, activeSurface, textures]);
+      mesh.userData.surface = "body";
+    });
+  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    const mesh = e.object as THREE.Mesh;
+    if (mesh.userData.surface) setActiveSurface(mesh.userData.surface);
+  };
 
   return (
-    <group scale={[0.6, 0.6, 0.6]} position={[0, -0.4, 0]}>
-      {/* Main van body */}
-      <mesh ref={bodyRef} position={[0, 0.25, 0]} onClick={() => setActiveSurface("body")}>
-        <boxGeometry args={[2.2, 1.0, 0.98]} />
-        <meshPhysicalMaterial />
-      </mesh>
-      {/* Roof */}
-      <mesh ref={roofRef} position={[0, 0.79, 0]} onClick={() => setActiveSurface("roof")}>
-        <boxGeometry args={[2.2, 0.08, 0.98]} />
-        <meshPhysicalMaterial />
-      </mesh>
-      {/* Cab / hood */}
-      <mesh ref={hoodRef} position={[0.88, 0.0, 0]} onClick={() => setActiveSurface("hood")}>
-        <boxGeometry args={[0.44, 0.6, 0.94]} />
-        <meshPhysicalMaterial />
-      </mesh>
-      {/* Windshield */}
-      <mesh position={[0.74, 0.42, 0]}>
-        <boxGeometry args={[0.02, 0.44, 0.86]} />
-        <meshPhysicalMaterial color="#88aacc" roughness={0.05} metalness={0} transparent opacity={0.35} />
-      </mesh>
-      {/* Wheel FL */}
-      <mesh position={[0.74, -0.32, 0.56]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[0.74, -0.32, 0.62]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
-      {/* Wheel FR */}
-      <mesh position={[0.74, -0.32, -0.56]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[0.74, -0.32, -0.62]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
-      {/* Wheel RL */}
-      <mesh position={[-0.74, -0.32, 0.56]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[-0.74, -0.32, 0.62]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
-      {/* Wheel RR */}
-      <mesh position={[-0.74, -0.32, -0.56]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.26, 0.26, 0.14, 24]} />
-        <meshPhysicalMaterial color="#1a1a1a" roughness={0.9} metalness={0} />
-      </mesh>
-      <mesh position={[-0.74, -0.32, -0.62]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.14, 0.14, 0.02, 12]} />
-        <meshPhysicalMaterial color="#aaaaaa" roughness={0.3} metalness={0.7} />
-      </mesh>
+    <group scale={[0.9, 0.9, 0.9]} position={[0, -0.35, 0]}>
+      <primitive object={clonedScene} onClick={handleClick} />
     </group>
   );
 }
+useGLTF.preload("/models/car_van.glb");
 
 // Texture loader hook
 function useLoadedTextures(
