@@ -73,6 +73,24 @@ export const templates: PackagingTemplate[] = [
     defaultColor: "#ffffff",
     thumbnail: "/thumbnails/car-van.png",
   },
+  {
+    id: "porsche-911",
+    name: "Porsche 911",
+    category: "vehicles",
+    description: "Porsche 911 Targa 4S — full body wrap",
+    surfaces: ["body"],
+    defaultColor: "#ffffff",
+    thumbnail: "/thumbnails/car-sedan.png",
+  },
+  {
+    id: "bmw-x5m",
+    name: "BMW X5M",
+    category: "vehicles",
+    description: "2016 BMW X5M — full body wrap",
+    surfaces: ["body"],
+    defaultColor: "#ffffff",
+    thumbnail: "/thumbnails/car-sedan.png",
+  },
 ];
 
 export function getTemplate(id: string): PackagingTemplate | undefined {

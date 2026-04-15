@@ -479,6 +479,102 @@ export function CarVanModel() {
 }
 useGLTF.preload("/models/dodge_challenger_srt_hellcat_redeye__free.glb");
 
+// ---- Porsche 911 Targa 4S (GLB) ----
+export function Porsche911Model() {
+  const { scene } = useGLTF("/models/porsche_911.glb");
+  const activeSurface = useEditorStore((s) => s.activeSurface);
+  const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
+  const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const textures = useLoadedTextures(surfaceTextures);
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
+
+  useEffect(() => {
+    const matProps = getMaterialProps(finish, baseColor);
+    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
+    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
+    clonedScene.traverse((child) => {
+      if (!(child as THREE.Mesh).isMesh) return;
+      const mesh = child as THREE.Mesh;
+      const matName = (mesh.material as THREE.Material).name;
+      if (matName === "PAINT_COLOR_4") {
+        const origMat = mesh.material as THREE.MeshStandardMaterial;
+        mesh.material = new THREE.MeshPhysicalMaterial({
+          ...matProps, clearcoat, clearcoatRoughness,
+          map: textures["body"] || null,
+          normalMap: origMat.normalMap || null,
+          emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
+          emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
+        });
+        mesh.userData.surface = "body";
+      }
+    });
+  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    const mesh = e.object as THREE.Mesh;
+    if (mesh.userData.surface) setActiveSurface(mesh.userData.surface);
+  };
+
+  return (
+    <group scale={[0.35, 0.35, 0.35]} position={[0, -0.45, 0]}>
+      <primitive object={clonedScene} onClick={handleClick} />
+    </group>
+  );
+}
+useGLTF.preload("/models/porsche_911.glb");
+
+// ---- BMW X5M 2016 (GLB) ----
+export function BmwX5mModel() {
+  const { scene } = useGLTF("/models/2016_bmw_x5m.glb");
+  const activeSurface = useEditorStore((s) => s.activeSurface);
+  const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const baseColor = useEditorStore((s) => s.baseColor);
+  const finish = useEditorStore((s) => s.finish);
+  const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const textures = useLoadedTextures(surfaceTextures);
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
+
+  useEffect(() => {
+    const matProps = getMaterialProps(finish, baseColor);
+    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
+    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
+    clonedScene.traverse((child) => {
+      if (!(child as THREE.Mesh).isMesh) return;
+      const mesh = child as THREE.Mesh;
+      const matName = (mesh.material as THREE.Material).name;
+      if (matName === "carpaint") {
+        const origMat = mesh.material as THREE.MeshStandardMaterial;
+        mesh.material = new THREE.MeshPhysicalMaterial({
+          ...matProps, clearcoat, clearcoatRoughness,
+          map: textures["body"] || null,
+          normalMap: origMat.normalMap || null,
+          emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
+          emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
+        });
+        mesh.userData.surface = "body";
+      }
+    });
+  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    const mesh = e.object as THREE.Mesh;
+    if (mesh.userData.surface) setActiveSurface(mesh.userData.surface);
+  };
+
+  return (
+    <group scale={[0.35, 0.35, 0.35]} position={[0, -0.45, 0]}>
+      <primitive object={clonedScene} onClick={handleClick} />
+    </group>
+  );
+}
+useGLTF.preload("/models/2016_bmw_x5m.glb");
+
 // Texture loader hook
 function useLoadedTextures(
   surfaceTextures: Record<string, SurfaceTexture>
@@ -548,6 +644,10 @@ export function PackagingModelSwitch({
       return <CarSedanModel />;
     case "car-van":
       return <CarVanModel />;
+    case "porsche-911":
+      return <Porsche911Model />;
+    case "bmw-x5m":
+      return <BmwX5mModel />;
     default:
       return <BoxModel />;
   }
