@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState, useRef } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEditorStore } from "@/lib/store";
 import { templates } from "@/lib/templates";
@@ -37,7 +37,6 @@ export function LeftSidebar() {
   const uploadTexture = useEditorStore((s) => s.uploadTexture);
   const removeTexture = useEditorStore((s) => s.removeTexture);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const [dragOver, setDragOver] = useState(false);
 
   const handleFile = useCallback(
@@ -103,14 +102,14 @@ export function LeftSidebar() {
           Applying to: <span className="font-medium text-foreground capitalize">{activeSurface}</span>
         </p>
 
-        <div
+        <label
+          htmlFor="artwork-upload"
           onDragOver={(e) => {
             e.preventDefault();
             setDragOver(true);
           }}
           onDragLeave={() => setDragOver(false)}
           onDrop={handleDrop}
-          onClick={() => fileInputRef.current?.click()}
           className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-colors ${
             dragOver
               ? "border-primary bg-primary/5"
@@ -124,14 +123,13 @@ export function LeftSidebar() {
           <p className="text-xs text-muted-foreground/60 mt-1">
             PNG, JPG, SVG
           </p>
-        </div>
+        </label>
 
         <input
-          ref={fileInputRef}
+          id="artwork-upload"
           type="file"
           accept="image/*"
           className="hidden"
-          onClick={(e) => e.stopPropagation()}
           onChange={(e) => {
             const file = e.target.files?.[0];
             if (file) handleFile(file);
