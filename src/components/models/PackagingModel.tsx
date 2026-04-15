@@ -365,9 +365,9 @@ export function CupModel() {
 }
 useGLTF.preload("/models/coffee_shop_cup.glb");
 
-// ---- Car Sedan Model (GLB) ----
+// ---- Dodge Charger SRT8 (GLB) ----
 export function CarSedanModel() {
-  const { scene } = useGLTF("/models/car_sedan.glb");
+  const { scene } = useGLTF("/models/2013_dodge_charger_srt8.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
   const baseColor = useEditorStore((s) => s.baseColor);
@@ -378,24 +378,25 @@ export function CarSedanModel() {
 
   useEffect(() => {
     const matProps = getMaterialProps(finish, baseColor);
-    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.4 : 0.1;
-    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.4;
+    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
+    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
     clonedScene.traverse((child) => {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
-      const name = mesh.name.toLowerCase();
-      if (name.startsWith("wheel")) {
-        mesh.material = new THREE.MeshPhysicalMaterial({ color: "#222", roughness: 0.8, metalness: 0.1 });
-        return;
+      const name = mesh.name;
+      // Paint surfaces — override with editor color/texture
+      if (name.includes("M_Paint") || name.includes("M_PaintNormalMap")) {
+        const origMat = mesh.material as THREE.MeshStandardMaterial;
+        mesh.material = new THREE.MeshPhysicalMaterial({
+          ...matProps, clearcoat, clearcoatRoughness,
+          map: textures["body"] || null,
+          normalMap: origMat.normalMap || null,
+          emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
+          emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
+        });
+        mesh.userData.surface = "body";
       }
-      // body mesh — full car shell
-      mesh.material = new THREE.MeshPhysicalMaterial({
-        ...matProps, clearcoat, clearcoatRoughness,
-        map: textures["body"] || null,
-        emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
-        emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
-      });
-      mesh.userData.surface = "body";
+      // Everything else (glass, wheels, trim, badges) keeps original GLB material
     });
   }, [clonedScene, baseColor, finish, activeSurface, textures]);
 
@@ -407,16 +408,16 @@ export function CarSedanModel() {
   };
 
   return (
-    <group scale={[0.9, 0.9, 0.9]} position={[0, -0.35, 0]}>
+    <group scale={[0.35, 0.35, 0.35]} position={[0, -0.45, 0]}>
       <primitive object={clonedScene} onClick={handleClick} />
     </group>
   );
 }
-useGLTF.preload("/models/car_sedan.glb");
+useGLTF.preload("/models/2013_dodge_charger_srt8.glb");
 
-// ---- Cargo Van Model (GLB) ----
+// ---- Dodge Challenger SRT Hellcat (GLB) ----
 export function CarVanModel() {
-  const { scene } = useGLTF("/models/car_van.glb");
+  const { scene } = useGLTF("/models/dodge_challenger_srt_hellcat_redeye__free.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
   const baseColor = useEditorStore((s) => s.baseColor);
@@ -427,23 +428,25 @@ export function CarVanModel() {
 
   useEffect(() => {
     const matProps = getMaterialProps(finish, baseColor);
-    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.4 : 0.1;
-    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.4;
+    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
+    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
     clonedScene.traverse((child) => {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
-      const name = mesh.name.toLowerCase();
-      if (name.startsWith("wheel")) {
-        mesh.material = new THREE.MeshPhysicalMaterial({ color: "#222", roughness: 0.8, metalness: 0.1 });
-        return;
+      const matName = (mesh.material as THREE.Material).name;
+      // DCSHR_Dark_Green is the car body paint material (name is from original 3D file)
+      if (matName === "DCSHR_Dark_Green") {
+        const origMat = mesh.material as THREE.MeshStandardMaterial;
+        mesh.material = new THREE.MeshPhysicalMaterial({
+          ...matProps, clearcoat, clearcoatRoughness,
+          map: textures["body"] || null,
+          normalMap: origMat.normalMap || null,
+          emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
+          emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
+        });
+        mesh.userData.surface = "body";
       }
-      mesh.material = new THREE.MeshPhysicalMaterial({
-        ...matProps, clearcoat, clearcoatRoughness,
-        map: textures["body"] || null,
-        emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
-        emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
-      });
-      mesh.userData.surface = "body";
+      // Everything else keeps original GLB material
     });
   }, [clonedScene, baseColor, finish, activeSurface, textures]);
 
@@ -455,12 +458,12 @@ export function CarVanModel() {
   };
 
   return (
-    <group scale={[0.9, 0.9, 0.9]} position={[0, -0.35, 0]}>
+    <group scale={[0.35, 0.35, 0.35]} position={[0, -0.45, 0]}>
       <primitive object={clonedScene} onClick={handleClick} />
     </group>
   );
 }
-useGLTF.preload("/models/car_van.glb");
+useGLTF.preload("/models/dodge_challenger_srt_hellcat_redeye__free.glb");
 
 // Texture loader hook
 function useLoadedTextures(
