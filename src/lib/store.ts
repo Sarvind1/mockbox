@@ -4,6 +4,7 @@ import {
   EditorSnapshot,
   FinishType,
   SurfaceTexture,
+  ZoneGroup,
 } from "./types";
 import { templates } from "./templates";
 
@@ -24,13 +25,22 @@ function initSurfaceTextures(
     result[s] = {
       surfaceName: s,
       imageUrl: null,
+      color: null,
       offsetX: 0,
       offsetY: 0,
       scale: 1,
       rotation: 0,
+      mirrorX: true,
     };
   }
   return result;
+}
+
+function allSurfaces(template: (typeof templates)[0]): string[] {
+  return [
+    ...template.surfaces,
+    ...(template.canvasZones?.map((z) => z.id) ?? []),
+  ];
 }
 
 const defaultTemplate = templates[0];
@@ -38,17 +48,26 @@ const defaultTemplate = templates[0];
 interface EditorActions {
   setTemplate: (templateId: string) => void;
   setActiveSurface: (surface: string) => void;
+  setSelectedZones: (ids: string[]) => void;
+  toggleZoneInSelection: (id: string) => void;
+  setMultiSelectMode: (on: boolean) => void;
+  setSinglePaste: (on: boolean) => void;
+  saveSinglePasteGroup: () => void;
+  removeSinglePasteGroup: (idx: number) => void;
+  addCustomGroup: (label: string) => void;
+  removeCustomGroup: (groupId: string) => void;
   setBaseColor: (color: string) => void;
   setFinish: (finish: FinishType) => void;
   setOpacity: (opacity: number) => void;
   setBackgroundColor: (color: string) => void;
   setExportResolution: (res: "1080p" | "2k" | "4k") => void;
   setExportFormat: (fmt: "png" | "jpg") => void;
+  setZoneColor: (surface: string, color: string | null) => void;
   uploadTexture: (surface: string, imageUrl: string) => void;
   removeTexture: (surface: string) => void;
   updateTextureTransform: (
     surface: string,
-    updates: Partial<Pick<SurfaceTexture, "offsetX" | "offsetY" | "scale" | "rotation">>
+    updates: Partial<Pick<SurfaceTexture, "offsetX" | "offsetY" | "scale" | "rotation" | "mirrorX">>
   ) => void;
   undo: () => void;
   redo: () => void;
@@ -61,7 +80,12 @@ export const useEditorStore = create<EditorState & EditorActions>(
     activeTemplateId: defaultTemplate.id,
     templates,
     activeSurface: defaultTemplate.surfaces[0],
-    surfaceTextures: initSurfaceTextures(defaultTemplate.surfaces),
+    selectedZoneIds: [defaultTemplate.surfaces[0]],
+    customGroups: [],
+    multiSelectMode: true,
+    singlePaste: true,
+    singlePasteGroups: [],
+    surfaceTextures: initSurfaceTextures(allSurfaces(defaultTemplate)),
     baseColor: defaultTemplate.defaultColor,
     finish: "matte" as FinishType,
     opacity: 1,
@@ -89,12 +113,86 @@ export const useEditorStore = create<EditorState & EditorActions>(
         redoStack: [],
         activeTemplateId: templateId,
         activeSurface: template.surfaces[0],
-        surfaceTextures: initSurfaceTextures(template.surfaces),
+        selectedZoneIds: [template.surfaces[0]],
+        customGroups: [],
+        multiSelectMode: true,
+        singlePaste: true,
+        singlePasteGroups: [],
+        surfaceTextures: initSurfaceTextures(allSurfaces(template)),
         baseColor: template.defaultColor,
       });
     },
 
-    setActiveSurface: (surface) => set({ activeSurface: surface }),
+    setActiveSurface: (surface) => set({ activeSurface: surface, selectedZoneIds: [surface] }),
+
+    setSelectedZones: (ids) => {
+      if (ids.length === 0) return;
+      set({ selectedZoneIds: ids, activeSurface: ids[ids.length - 1] });
+    },
+
+    toggleZoneInSelection: (id) => {
+      const state = get();
+      const already = state.selectedZoneIds.includes(id);
+      const next = already
+        ? state.selectedZoneIds.filter((z) => z !== id)
+        : [...state.selectedZoneIds, id];
+      // If deselecting the last zone, fall back to the primary surface
+      const fallback = templates.find((t) => t.id === state.activeTemplateId)?.surfaces[0] ?? "body";
+      const ids = next.length === 0 ? [fallback] : next;
+      set({ selectedZoneIds: ids, activeSurface: ids[ids.length - 1] });
+    },
+
+    setMultiSelectMode: (on) => set({ multiSelectMode: on }),
+    setSinglePaste: (on) => set({ singlePaste: on }),
+
+    saveSinglePasteGroup: () => {
+      const state = get();
+      if (state.selectedZoneIds.length < 2) return;
+      const already = state.singlePasteGroups.some(
+        (g) => g.length === state.selectedZoneIds.length && g.every((id) => state.selectedZoneIds.includes(id))
+      );
+      if (!already) {
+        set({ singlePasteGroups: [...state.singlePasteGroups, [...state.selectedZoneIds]] });
+      }
+    },
+
+    removeSinglePasteGroup: (idx) => {
+      const state = get();
+      set({ singlePasteGroups: state.singlePasteGroups.filter((_, i) => i !== idx) });
+    },
+
+    addCustomGroup: (label) => {
+      const state = get();
+      const id = `custom_${Date.now()}`;
+      set({
+        customGroups: [
+          ...state.customGroups,
+          { id, label, zoneIds: [...state.selectedZoneIds], isPredefined: false },
+        ],
+      });
+    },
+
+    removeCustomGroup: (groupId) => {
+      const state = get();
+      set({ customGroups: state.customGroups.filter((g) => g.id !== groupId) });
+    },
+
+    setZoneColor: (surface, color) => {
+      const state = get();
+      const targets =
+        state.selectedZoneIds.includes(surface) && state.selectedZoneIds.length > 1
+          ? state.selectedZoneIds
+          : [surface];
+      const newTextures = { ...state.surfaceTextures };
+      for (const t of targets) {
+        newTextures[t] = { ...newTextures[t], color };
+      }
+      set({
+        undoStack: [...state.undoStack.slice(-19), createSnapshot(state)],
+        redoStack: [],
+        surfaceTextures: newTextures,
+      });
+    },
 
     setBaseColor: (color) => {
       const state = get();
@@ -130,45 +228,49 @@ export const useEditorStore = create<EditorState & EditorActions>(
 
     uploadTexture: (surface, imageUrl) => {
       const state = get();
+      const targets =
+        state.selectedZoneIds.includes(surface) && state.selectedZoneIds.length > 1
+          ? state.selectedZoneIds
+          : [surface];
+      const newTextures = { ...state.surfaceTextures };
+      for (const t of targets) {
+        newTextures[t] = { ...newTextures[t], imageUrl };
+      }
       set({
         undoStack: [...state.undoStack.slice(-19), createSnapshot(state)],
         redoStack: [],
-        surfaceTextures: {
-          ...state.surfaceTextures,
-          [surface]: {
-            ...state.surfaceTextures[surface],
-            imageUrl,
-          },
-        },
+        surfaceTextures: newTextures,
       });
     },
 
     removeTexture: (surface) => {
       const state = get();
+      const targets =
+        state.selectedZoneIds.includes(surface) && state.selectedZoneIds.length > 1
+          ? state.selectedZoneIds
+          : [surface];
+      const newTextures = { ...state.surfaceTextures };
+      for (const t of targets) {
+        newTextures[t] = { ...newTextures[t], imageUrl: null };
+      }
       set({
         undoStack: [...state.undoStack.slice(-19), createSnapshot(state)],
         redoStack: [],
-        surfaceTextures: {
-          ...state.surfaceTextures,
-          [surface]: {
-            ...state.surfaceTextures[surface],
-            imageUrl: null,
-          },
-        },
+        surfaceTextures: newTextures,
       });
     },
 
     updateTextureTransform: (surface, updates) => {
       const state = get();
-      set({
-        surfaceTextures: {
-          ...state.surfaceTextures,
-          [surface]: {
-            ...state.surfaceTextures[surface],
-            ...updates,
-          },
-        },
-      });
+      const targets =
+        state.selectedZoneIds.includes(surface) && state.selectedZoneIds.length > 1
+          ? state.selectedZoneIds
+          : [surface];
+      const newTextures = { ...state.surfaceTextures };
+      for (const t of targets) {
+        newTextures[t] = { ...newTextures[t], ...updates };
+      }
+      set({ surfaceTextures: newTextures });
     },
 
     undo: () => {

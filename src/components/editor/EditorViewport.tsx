@@ -112,7 +112,7 @@ function ViewportInner({ cameraPosition }: { cameraPosition: [number, number, nu
 
 export function EditorViewport() {
   const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
-  const isVehicle = activeTemplateId.startsWith("car-");
+  const isVehicle = activeTemplateId.startsWith("car-") || activeTemplateId === "porsche-911" || activeTemplateId === "bmw-x5m";
   const cameraPosition: [number, number, number] = isVehicle ? [3, 0.8, 3] : [2, 1.5, 2.5];
 
   // Keyboard shortcuts

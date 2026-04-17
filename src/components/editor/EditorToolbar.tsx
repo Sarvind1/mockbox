@@ -14,8 +14,13 @@ import {
 } from "lucide-react";
 import { ExportDialog } from "./ExportDialog";
 import { useState } from "react";
+import type { EditorMode } from "./EditorLayout";
 
-export function EditorToolbar() {
+interface EditorToolbarProps {
+  mode?: EditorMode;
+}
+
+export function EditorToolbar({ mode = "packaging" }: EditorToolbarProps) {
   const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
   const undo = useEditorStore((s) => s.undo);
   const redo = useEditorStore((s) => s.redo);
@@ -35,8 +40,11 @@ export function EditorToolbar() {
         <div className="h-5 w-px bg-border" />
 
         <span className="text-sm font-medium text-muted-foreground">
-          {template?.name || "Editor"}
+          {template?.name || (mode === "wrap" ? "Vehicle Wrap Editor" : "Packaging Editor")}
         </span>
+        {mode === "wrap" && (
+          <span className="text-xs text-muted-foreground/60 ml-1">— Vehicle Wrap</span>
+        )}
       </div>
 
       <div className="flex items-center gap-1">

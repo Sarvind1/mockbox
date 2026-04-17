@@ -1,6 +1,8 @@
 {
   "permissions": {
     "allow": [
+      "Agent",
+      "Bash",
       "Bash(source /Users/teq-admin/pacdora/.venv/bin/activate)",
       "Bash(python3 -c \":*)",
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-pnpm --no-turbopack)",

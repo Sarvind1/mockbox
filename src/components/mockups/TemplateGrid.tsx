@@ -56,10 +56,14 @@ export function TemplateGrid() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filtered.map((template) => {
           const Icon = categoryIcons[template.category] || Box;
+          const editorHref =
+            template.category === "vehicles"
+              ? `/wrap/${template.id}`
+              : `/editor/${template.id}`;
           return (
             <Link
               key={template.id}
-              href={`/editor/${template.id}`}
+              href={editorHref}
               className="group"
             >
               <div className="bg-card rounded-xl border overflow-hidden hover:shadow-lg transition-all duration-200 hover:-translate-y-1">

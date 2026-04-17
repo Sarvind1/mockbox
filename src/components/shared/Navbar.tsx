@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Package } from "lucide-react";
+import { Package, Car } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
@@ -20,6 +20,13 @@ export function Navbar() {
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Templates
+            </Link>
+            <Link
+              href="/vehicles"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+            >
+              <Car className="h-4 w-4" />
+              Vehicle Wraps
             </Link>
             <Link
               href="/pricing"

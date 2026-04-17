@@ -9,12 +9,26 @@ export type PackagingCategory =
 
 export type FinishType = "matte" | "glossy" | "metallic" | "kraft";
 
+export interface CanvasZone {
+  id: string;    // matches mesh name in the GLB (e.g., "hood")
+  label: string; // human-readable label (e.g., "Hood")
+}
+
+export interface ZoneGroup {
+  id: string;
+  label: string;
+  zoneIds: string[];
+  isPredefined: boolean;
+}
+
 export interface PackagingTemplate {
   id: string;
   name: string;
   category: PackagingCategory;
   description: string;
   surfaces: string[]; // named surfaces that accept artwork
+  canvasZones?: CanvasZone[]; // independently addressable mesh zones (vehicles, etc.)
+  zoneGroups?: ZoneGroup[]; // predefined multi-zone groupings (e.g. Racing Stripe)
   defaultColor: string;
   thumbnail: string; // we'll render these dynamically
 }
@@ -22,10 +36,12 @@ export interface PackagingTemplate {
 export interface SurfaceTexture {
   surfaceName: string;
   imageUrl: string | null;
+  color: string | null; // per-zone color override; null = inherit body color
   offsetX: number;
   offsetY: number;
   scale: number;
   rotation: number;
+  mirrorX: boolean;
 }
 
 export interface EditorState {
@@ -35,6 +51,10 @@ export interface EditorState {
 
   // Surfaces & textures
   activeSurface: string;
+  selectedZoneIds: string[]; // multi-selection (always includes activeSurface)
+  multiSelectMode: boolean;
+  singlePaste: boolean;      // span one image across all selected zones instead of tiling per-zone
+  customGroups: ZoneGroup[];  // user-created zone groups (session-only)
   surfaceTextures: Record<string, SurfaceTexture>;
 
   // Material
@@ -48,6 +68,9 @@ export interface EditorState {
   // Export
   exportResolution: "1080p" | "2k" | "4k";
   exportFormat: "png" | "jpg";
+
+  // Single paste groups — saved zone groupings that keep world-space UV permanently
+  singlePasteGroups: string[][];
 
   // History
   undoStack: EditorSnapshot[];
