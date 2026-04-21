@@ -5,6 +5,8 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { useEditorStore } from "@/lib/store";
 import { SurfaceTexture } from "@/lib/types";
+import { StickerLayer } from "./StickerLayer";
+
 
 
 function getMaterialProps(finish: string, color: string) {
@@ -29,6 +31,7 @@ export function BoxModel() {
   const baseColor = useEditorStore((s) => s.baseColor);
   const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
 
   const textures = useLoadedTextures(surfaceTextures);
 
@@ -55,8 +58,11 @@ export function BoxModel() {
           ...matProps,
           map: textures[surface] || origMat.map || null,
           normalMap: origMat.normalMap || null,
-          emissive: new THREE.Color(activeSurface === surface ? "#1a1a2e" : "#000000"),
-          emissiveIntensity: activeSurface === surface ? 0.05 : 0,
+          emissive: new THREE.Color(
+            dropHoverZone === surface ? "#0044ff" :
+            activeSurface === surface ? "#1a1a2e" : "#000000"
+          ),
+          emissiveIntensity: dropHoverZone === surface ? 0.5 : activeSurface === surface ? 0.05 : 0,
         });
         mesh.material = newMat;
 
@@ -64,7 +70,7 @@ export function BoxModel() {
         mesh.userData.surface = surface;
       }
     });
-  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+  }, [clonedScene, baseColor, finish, activeSurface, dropHoverZone, textures]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
@@ -90,6 +96,7 @@ export function BottleModel() {
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
 
   const matProps = getMaterialProps(finish, baseColor);
   const textures = useLoadedTextures(surfaceTextures);
@@ -100,13 +107,14 @@ export function BottleModel() {
       <mesh
         position={[0, -0.2, 0]}
         onClick={() => setActiveSurface("body")}
+        userData={{ surface: "body" }}
       >
         <cylinderGeometry args={[0.4, 0.4, 1.2, 32]} />
         <meshPhysicalMaterial
           {...matProps}
           map={textures["body"] || null}
-          emissive={activeSurface === "body" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "body" ? 0.05 : 0}
+          emissive={dropHoverZone === "body" ? "#0044ff" : activeSurface === "body" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={dropHoverZone === "body" ? 0.5 : activeSurface === "body" ? 0.05 : 0}
         />
       </mesh>
       {/* Neck */}
@@ -118,13 +126,16 @@ export function BottleModel() {
       <mesh
         position={[0, 0.8, 0]}
         onClick={() => setActiveSurface("cap")}
+        userData={{ surface: "cap" }}
       >
         <cylinderGeometry args={[0.17, 0.17, 0.2, 32]} />
         <meshPhysicalMaterial
-          color={activeSurface === "cap" ? "#555" : "#333"}
+          color={dropHoverZone === "cap" ? "#aaaaff" : activeSurface === "cap" ? "#555" : "#333"}
           roughness={0.5}
           metalness={0.3}
           map={textures["cap"] || null}
+          emissive={dropHoverZone === "cap" ? "#0044ff" : "#000000"}
+          emissiveIntensity={dropHoverZone === "cap" ? 0.5 : 0}
         />
       </mesh>
     </group>
@@ -138,6 +149,7 @@ export function CanModel() {
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
 
   const matProps = getMaterialProps(finish, baseColor);
   const textures = useLoadedTextures(surfaceTextures);
@@ -145,15 +157,15 @@ export function CanModel() {
   return (
     <group>
       {/* Can body */}
-      <mesh onClick={() => setActiveSurface("body")}>
+      <mesh onClick={() => setActiveSurface("body")} userData={{ surface: "body" }}>
         <cylinderGeometry args={[0.33, 0.33, 1.2, 32]} />
         <meshPhysicalMaterial
           {...matProps}
           metalness={0.7}
           roughness={0.2}
           map={textures["body"] || null}
-          emissive={activeSurface === "body" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "body" ? 0.05 : 0}
+          emissive={dropHoverZone === "body" ? "#0044ff" : activeSurface === "body" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={dropHoverZone === "body" ? 0.5 : activeSurface === "body" ? 0.05 : 0}
         />
       </mesh>
       {/* Top rim */}
@@ -177,6 +189,7 @@ export function PouchModel() {
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
 
   const matProps = getMaterialProps(finish, baseColor);
   const textures = useLoadedTextures(surfaceTextures);
@@ -199,13 +212,14 @@ export function PouchModel() {
       <mesh
         position={[0, 0, 0.08]}
         onClick={() => setActiveSurface("front")}
+        userData={{ surface: "front" }}
       >
         <shapeGeometry args={[pouchShape]} />
         <meshPhysicalMaterial
           {...matProps}
           map={textures["front"] || null}
-          emissive={activeSurface === "front" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "front" ? 0.05 : 0}
+          emissive={dropHoverZone === "front" ? "#0044ff" : activeSurface === "front" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={dropHoverZone === "front" ? 0.5 : activeSurface === "front" ? 0.05 : 0}
         />
       </mesh>
       {/* Back */}
@@ -213,13 +227,14 @@ export function PouchModel() {
         position={[0, 0, -0.08]}
         rotation={[0, Math.PI, 0]}
         onClick={() => setActiveSurface("back")}
+        userData={{ surface: "back" }}
       >
         <shapeGeometry args={[pouchShape]} />
         <meshPhysicalMaterial
           {...matProps}
           map={textures["back"] || null}
-          emissive={activeSurface === "back" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "back" ? 0.05 : 0}
+          emissive={dropHoverZone === "back" ? "#0044ff" : activeSurface === "back" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={dropHoverZone === "back" ? 0.5 : activeSurface === "back" ? 0.05 : 0}
         />
       </mesh>
       {/* Side gussets */}
@@ -247,6 +262,7 @@ export function TubeModel() {
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
 
   const matProps = getMaterialProps(finish, baseColor);
   const textures = useLoadedTextures(surfaceTextures);
@@ -257,13 +273,14 @@ export function TubeModel() {
       <mesh
         position={[0, -0.1, 0]}
         onClick={() => setActiveSurface("body")}
+        userData={{ surface: "body" }}
       >
         <cylinderGeometry args={[0.2, 0.25, 1.0, 32]} />
         <meshPhysicalMaterial
           {...matProps}
           map={textures["body"] || null}
-          emissive={activeSurface === "body" ? "#1a1a2e" : "#000000"}
-          emissiveIntensity={activeSurface === "body" ? 0.05 : 0}
+          emissive={dropHoverZone === "body" ? "#0044ff" : activeSurface === "body" ? "#1a1a2e" : "#000000"}
+          emissiveIntensity={dropHoverZone === "body" ? 0.5 : activeSurface === "body" ? 0.05 : 0}
         />
       </mesh>
       {/* Bottom seal */}
@@ -275,13 +292,16 @@ export function TubeModel() {
       <mesh
         position={[0, 0.5, 0]}
         onClick={() => setActiveSurface("cap")}
+        userData={{ surface: "cap" }}
       >
         <cylinderGeometry args={[0.12, 0.15, 0.15, 32]} />
         <meshPhysicalMaterial
-          color={activeSurface === "cap" ? "#555" : "#333"}
+          color={dropHoverZone === "cap" ? "#aaaaff" : activeSurface === "cap" ? "#555" : "#333"}
           roughness={0.4}
           metalness={0.2}
           map={textures["cap"] || null}
+          emissive={dropHoverZone === "cap" ? "#0044ff" : "#000000"}
+          emissiveIntensity={dropHoverZone === "cap" ? 0.5 : 0}
         />
       </mesh>
       {/* Nozzle */}
@@ -301,6 +321,7 @@ export function CupModel() {
   const baseColor = useEditorStore((s) => s.baseColor);
   const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
 
   const textures = useLoadedTextures(surfaceTextures);
 
@@ -329,8 +350,11 @@ export function CupModel() {
             metalness: 0,
             map: textures["sleeve"] || origMat.map || null,
             normalMap: origMat.normalMap || null,
-            emissive: new THREE.Color(activeSurface === "sleeve" ? "#1a1a2e" : "#000000"),
-            emissiveIntensity: activeSurface === "sleeve" ? 0.05 : 0,
+            emissive: new THREE.Color(
+              dropHoverZone === "sleeve" ? "#0044ff" :
+              activeSurface === "sleeve" ? "#1a1a2e" : "#000000"
+            ),
+            emissiveIntensity: dropHoverZone === "sleeve" ? 0.5 : activeSurface === "sleeve" ? 0.05 : 0,
           });
           mesh.material = sleeveMat;
         } else {
@@ -338,8 +362,11 @@ export function CupModel() {
             ...matProps,
             map: textures["body"] || origMat.map || null,
             normalMap: origMat.normalMap || null,
-            emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
-            emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
+            emissive: new THREE.Color(
+              dropHoverZone === "body" ? "#0044ff" :
+              activeSurface === "body" ? "#1a1a2e" : "#000000"
+            ),
+            emissiveIntensity: dropHoverZone === "body" ? 0.5 : activeSurface === "body" ? 0.05 : 0,
           });
           mesh.material = bodyMat;
         }
@@ -347,7 +374,7 @@ export function CupModel() {
         mesh.userData.surface = surface;
       }
     });
-  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+  }, [clonedScene, baseColor, finish, activeSurface, dropHoverZone, textures]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
@@ -366,123 +393,265 @@ export function CupModel() {
 }
 useGLTF.preload("/models/coffee_shop_cup.glb");
 
-// ---- Dodge Charger SRT8 (GLB) ----
+// ---- Dodge Charger SRT8 (GLB) — per-zone mesh objects ----
 export function CarSedanModel() {
-  const { scene } = useGLTF("/models/2013_dodge_charger_srt8.glb");
+  const { scene } = useGLTF("/models/dodge_charger_panels.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const selectedZoneIds = useEditorStore((s) => s.selectedZoneIds);
+  const toggleZoneInSelection = useEditorStore((s) => s.toggleZoneInSelection);
+  const multiSelectMode = useEditorStore((s) => s.multiSelectMode);
   const baseColor = useEditorStore((s) => s.baseColor);
   const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
   const textures = useLoadedTextures(surfaceTextures);
+  const compositeCacheRef = useRef<Map<string, THREE.CanvasTexture>>(new Map());
+
   const clonedScene = useMemo(() => {
     const cloned = scene.clone(true);
-    // Neutralize transmission materials before first render — prevents WebGL state corruption
     cloned.traverse((child) => {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
+      const matName = (mesh.material as THREE.Material).name;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((mesh.material as any).transmission > 0) {
         mesh.material = new THREE.MeshPhysicalMaterial({ color: "#aaccff", roughness: 0.05, metalness: 0, transparent: true, opacity: 0.25 });
+      } else if (matName === "carpaint") {
+        mesh.userData.surface = mesh.name;
       }
     });
     return cloned;
   }, [scene]);
 
   useEffect(() => {
-    const matProps = getMaterialProps(finish, baseColor);
     const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
     const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
+    const compositeCache = compositeCacheRef.current;
+
     clonedScene.traverse((child) => {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
-      const name = mesh.name;
-      const origMat = mesh.material as THREE.MeshStandardMaterial;
+      const zoneName: string | undefined = mesh.userData.surface;
+      if (!zoneName) return;
 
-      if (name.includes("M_Paint") || name.includes("M_PaintNormalMap")) {
-        mesh.material = new THREE.MeshPhysicalMaterial({
-          ...matProps, clearcoat, clearcoatRoughness,
-          map: textures["body"] || null,
-          normalMap: origMat.normalMap || null,
-          emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
-          emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
-        });
-        mesh.userData.surface = "body";
-      } else if (name.includes("M_Glass") || name.includes("M_Light") || name.includes("M_GlassColor")) {
-        mesh.material = new THREE.MeshPhysicalMaterial({
-          color: name.includes("M_GlassColor") ? "#ff6600" : "#aaccff",
-          roughness: 0.05, metalness: 0,
-          transparent: true, opacity: name.includes("M_Light") ? 0.6 : 0.25,
-        });
+      const surf = surfaceTextures[zoneName];
+      const zoneColor = surf?.color ?? baseColor;
+      const rawTex = textures[zoneName] ?? null;
+      const isSelected = selectedZoneIds.includes(zoneName);
+      const isActive = activeSurface === zoneName;
+
+      let mapTex: THREE.Texture | null = rawTex;
+      if (rawTex) {
+        const effectiveBg = surf?.color ?? baseColor;
+        const key = `${surf?.imageUrl}:${effectiveBg}`;
+        if (!compositeCache.has(key)) {
+          const img = rawTex.image as HTMLImageElement | HTMLCanvasElement;
+          const w = (img as HTMLImageElement).naturalWidth || img.width || 512;
+          const h = (img as HTMLImageElement).naturalHeight || img.height || 512;
+          const canvas = document.createElement("canvas");
+          canvas.width = w; canvas.height = h;
+          const ctx = canvas.getContext("2d")!;
+          ctx.fillStyle = effectiveBg;
+          ctx.fillRect(0, 0, w, h);
+          ctx.drawImage(img, 0, 0, w, h);
+          const ct = new THREE.CanvasTexture(canvas);
+          ct.colorSpace = THREE.SRGBColorSpace;
+          ct.flipY = rawTex.flipY;
+          ct.wrapS = rawTex.wrapS; ct.wrapT = rawTex.wrapT;
+          compositeCache.set(key, ct);
+        }
+        mapTex = compositeCache.get(key)!;
       }
-      // Other meshes keep original material
+
+      if (mapTex && surf) {
+        const s = surf.scale || 1;
+        mapTex.repeat.set(surf.mirrorX ? -1 / s : 1 / s, 1 / s);
+        mapTex.offset.set(surf.offsetX, surf.offsetY);
+        mapTex.rotation = surf.rotation;
+        mapTex.center.set(0.5, 0.5);
+        mapTex.needsUpdate = true;
+      }
+
+      const displayColor = new THREE.Color(zoneColor);
+      if (isSelected && !rawTex) {
+        displayColor.lerp(new THREE.Color("#ff2200"), isActive ? 0.72 : 0.55);
+      }
+      const matColorHex = rawTex ? "#ffffff" : "#" + displayColor.getHexString();
+      const matProps = getMaterialProps(finish, matColorHex);
+      const hasTexture = rawTex !== null;
+
+      mesh.material = new THREE.MeshPhysicalMaterial({
+        ...matProps, clearcoat, clearcoatRoughness,
+        map: mapTex,
+        emissive: new THREE.Color(
+          dropHoverZone === zoneName ? "#0044ff" :
+          !hasTexture && isActive ? "#ff3300" :
+          !hasTexture && isSelected ? "#cc2200" : "#000000"
+        ),
+        emissiveIntensity:
+          dropHoverZone === zoneName ? 0.5 :
+          !hasTexture && isActive ? 0.45 :
+          !hasTexture && isSelected ? 0.32 : 0,
+      });
     });
-  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+  }, [clonedScene, baseColor, finish, activeSurface, selectedZoneIds, textures, surfaceTextures, dropHoverZone]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
     e.stopPropagation();
     const mesh = e.object as THREE.Mesh;
-    if (mesh.userData.surface) setActiveSurface(mesh.userData.surface);
+    const zone = mesh.userData.surface as string | undefined;
+    if (!zone) return;
+    if (multiSelectMode || e.nativeEvent?.shiftKey) {
+      toggleZoneInSelection(zone);
+    } else if (activeSurface === zone && selectedZoneIds.length === 1) {
+      setActiveSurface("body");
+    } else {
+      setActiveSurface(zone);
+    }
   };
 
   return (
-    <group scale={[35, 35, 35]} position={[0, -0.45, 0]}>
-      <primitive object={clonedScene} onClick={handleClick} />
-    </group>
+    <>
+      <group scale={[35, 35, 35]} position={[0, -0.45, 0]}>
+        <primitive object={clonedScene} onClick={handleClick} />
+      </group>
+      <StickerLayer parentScene={clonedScene} />
+    </>
   );
 }
-useGLTF.preload("/models/2013_dodge_charger_srt8.glb");
+useGLTF.preload("/models/dodge_charger_panels.glb");
 
-// ---- Dodge Challenger SRT Hellcat (GLB) ----
+// ---- Dodge Challenger SRT Hellcat (GLB) — per-zone mesh objects ----
 export function CarVanModel() {
-  const { scene } = useGLTF("/models/dodge_challenger_srt_hellcat_redeye__free.glb");
+  const { scene } = useGLTF("/models/dodge_challenger_panels.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
+  const selectedZoneIds = useEditorStore((s) => s.selectedZoneIds);
+  const toggleZoneInSelection = useEditorStore((s) => s.toggleZoneInSelection);
+  const multiSelectMode = useEditorStore((s) => s.multiSelectMode);
   const baseColor = useEditorStore((s) => s.baseColor);
   const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
   const textures = useLoadedTextures(surfaceTextures);
-  const clonedScene = useMemo(() => scene.clone(true), [scene]);
+  const compositeCacheRef = useRef<Map<string, THREE.CanvasTexture>>(new Map());
 
-  useEffect(() => {
-    const matProps = getMaterialProps(finish, baseColor);
-    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
-    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
-    clonedScene.traverse((child) => {
+  const clonedScene = useMemo(() => {
+    const cloned = scene.clone(true);
+    cloned.traverse((child) => {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
       const matName = (mesh.material as THREE.Material).name;
-      // DCSHR_Dark_Green is the car body paint material (name is from original 3D file)
-      if (matName === "DCSHR_Dark_Green") {
-        const origMat = mesh.material as THREE.MeshStandardMaterial;
-        mesh.material = new THREE.MeshPhysicalMaterial({
-          ...matProps, clearcoat, clearcoatRoughness,
-          map: textures["body"] || null,
-          normalMap: origMat.normalMap || null,
-          emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
-          emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
-        });
-        mesh.userData.surface = "body";
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if ((mesh.material as any).transmission > 0) {
+        mesh.material = new THREE.MeshPhysicalMaterial({ color: "#aaccff", roughness: 0.05, metalness: 0, transparent: true, opacity: 0.25 });
+      } else if (matName === "carpaint") {
+        mesh.userData.surface = mesh.name;
       }
-      // Everything else keeps original GLB material
     });
-  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+    return cloned;
+  }, [scene]);
+
+  useEffect(() => {
+    const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
+    const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
+    const compositeCache = compositeCacheRef.current;
+
+    clonedScene.traverse((child) => {
+      if (!(child as THREE.Mesh).isMesh) return;
+      const mesh = child as THREE.Mesh;
+      const zoneName: string | undefined = mesh.userData.surface;
+      if (!zoneName) return;
+
+      const surf = surfaceTextures[zoneName];
+      const zoneColor = surf?.color ?? baseColor;
+      const rawTex = textures[zoneName] ?? null;
+      const isSelected = selectedZoneIds.includes(zoneName);
+      const isActive = activeSurface === zoneName;
+
+      let mapTex: THREE.Texture | null = rawTex;
+      if (rawTex) {
+        const effectiveBg = surf?.color ?? baseColor;
+        const key = `${surf?.imageUrl}:${effectiveBg}`;
+        if (!compositeCache.has(key)) {
+          const img = rawTex.image as HTMLImageElement | HTMLCanvasElement;
+          const w = (img as HTMLImageElement).naturalWidth || img.width || 512;
+          const h = (img as HTMLImageElement).naturalHeight || img.height || 512;
+          const canvas = document.createElement("canvas");
+          canvas.width = w; canvas.height = h;
+          const ctx = canvas.getContext("2d")!;
+          ctx.fillStyle = effectiveBg;
+          ctx.fillRect(0, 0, w, h);
+          ctx.drawImage(img, 0, 0, w, h);
+          const ct = new THREE.CanvasTexture(canvas);
+          ct.colorSpace = THREE.SRGBColorSpace;
+          ct.flipY = rawTex.flipY;
+          ct.wrapS = rawTex.wrapS; ct.wrapT = rawTex.wrapT;
+          compositeCache.set(key, ct);
+        }
+        mapTex = compositeCache.get(key)!;
+      }
+
+      if (mapTex && surf) {
+        const s = surf.scale || 1;
+        mapTex.repeat.set(surf.mirrorX ? -1 / s : 1 / s, 1 / s);
+        mapTex.offset.set(surf.offsetX, surf.offsetY);
+        mapTex.rotation = surf.rotation;
+        mapTex.center.set(0.5, 0.5);
+        mapTex.needsUpdate = true;
+      }
+
+      const displayColor = new THREE.Color(zoneColor);
+      if (isSelected && !rawTex) {
+        displayColor.lerp(new THREE.Color("#ff2200"), isActive ? 0.72 : 0.55);
+      }
+      const matColorHex = rawTex ? "#ffffff" : "#" + displayColor.getHexString();
+      const matProps = getMaterialProps(finish, matColorHex);
+      const hasTexture = rawTex !== null;
+
+      mesh.material = new THREE.MeshPhysicalMaterial({
+        ...matProps, clearcoat, clearcoatRoughness,
+        map: mapTex,
+        emissive: new THREE.Color(
+          dropHoverZone === zoneName ? "#0044ff" :
+          !hasTexture && isActive ? "#ff3300" :
+          !hasTexture && isSelected ? "#cc2200" : "#000000"
+        ),
+        emissiveIntensity:
+          dropHoverZone === zoneName ? 0.5 :
+          !hasTexture && isActive ? 0.45 :
+          !hasTexture && isSelected ? 0.32 : 0,
+      });
+    });
+  }, [clonedScene, baseColor, finish, activeSurface, selectedZoneIds, textures, surfaceTextures, dropHoverZone]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
     e.stopPropagation();
     const mesh = e.object as THREE.Mesh;
-    if (mesh.userData.surface) setActiveSurface(mesh.userData.surface);
+    const zone = mesh.userData.surface as string | undefined;
+    if (!zone) return;
+    if (multiSelectMode || e.nativeEvent?.shiftKey) {
+      toggleZoneInSelection(zone);
+    } else if (activeSurface === zone && selectedZoneIds.length === 1) {
+      setActiveSurface("body");
+    } else {
+      setActiveSurface(zone);
+    }
   };
 
   return (
-    <group scale={[0.35, 0.35, 0.35]} position={[0, -0.45, 0]}>
-      <primitive object={clonedScene} onClick={handleClick} />
-    </group>
+    <>
+      <group scale={[0.35, 0.35, 0.35]} position={[0, -0.45, 0]}>
+        <primitive object={clonedScene} onClick={handleClick} />
+      </group>
+      <StickerLayer parentScene={clonedScene} />
+    </>
   );
 }
-useGLTF.preload("/models/dodge_challenger_srt_hellcat_redeye__free.glb");
+useGLTF.preload("/models/dodge_challenger_panels.glb");
 
 // ---- Porsche 911 Targa 4S (GLB) ----
 export function Porsche911Model() {
@@ -492,6 +661,7 @@ export function Porsche911Model() {
   const baseColor = useEditorStore((s) => s.baseColor);
   const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
   const textures = useLoadedTextures(surfaceTextures);
   const clonedScene = useMemo(() => {
     const cloned = scene.clone(true);
@@ -524,13 +694,16 @@ export function Porsche911Model() {
           ...matProps, clearcoat, clearcoatRoughness,
           map: textures["body"] || null,
           normalMap: origMat.normalMap || null,
-          emissive: new THREE.Color(activeSurface === "body" ? "#1a1a2e" : "#000000"),
-          emissiveIntensity: activeSurface === "body" ? 0.05 : 0,
+          emissive: new THREE.Color(
+            dropHoverZone === "body" ? "#0044ff" :
+            activeSurface === "body" ? "#1a1a2e" : "#000000"
+          ),
+          emissiveIntensity: dropHoverZone === "body" ? 0.5 : activeSurface === "body" ? 0.05 : 0,
         });
         mesh.userData.surface = "body";
       }
     });
-  }, [clonedScene, baseColor, finish, activeSurface, textures]);
+  }, [clonedScene, baseColor, finish, activeSurface, dropHoverZone, textures]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
@@ -540,9 +713,12 @@ export function Porsche911Model() {
   };
 
   return (
-    <group scale={[0.015, 0.015, 0.015]} position={[0, -0.45, 0]}>
-      <primitive object={clonedScene} onClick={handleClick} />
-    </group>
+    <>
+      <group scale={[0.015, 0.015, 0.015]} position={[0, -0.45, 0]}>
+        <primitive object={clonedScene} onClick={handleClick} />
+      </group>
+      <StickerLayer parentScene={clonedScene} />
+    </>
   );
 }
 useGLTF.preload("/models/porsche_911.glb");
@@ -560,6 +736,7 @@ export function Porsche911PanelsModel() {
   const baseColor = useEditorStore((s) => s.baseColor);
   const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
   const textures = useLoadedTextures(surfaceTextures);
   const compositeCacheRef = useRef<Map<string, THREE.CanvasTexture>>(new Map());
 
@@ -571,7 +748,7 @@ export function Porsche911PanelsModel() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((mesh.material as any).transmission > 0) {
         mesh.material = new THREE.MeshPhysicalMaterial({ color: "#aaccff", roughness: 0.05, metalness: 0, transparent: true, opacity: 0.25 });
-      } else if ((mesh.material as THREE.Material).name === "PAINT_COLOR_4") {
+      } else if ((mesh.material as THREE.Material).name === "PAINT_COLOR_4" || (mesh.material as THREE.Material).name === "carpaint") {
         // Panel meshes from the split script — mesh.name is the zone id (e.g. "hood", "door_l")
         mesh.userData.surface = mesh.name;
       } else if ((mesh.material as THREE.Material).name === "PLASTI_NEGRO_3") {
@@ -649,8 +826,15 @@ export function Porsche911PanelsModel() {
       mesh.material = new THREE.MeshPhysicalMaterial({
         ...matProps, clearcoat, clearcoatRoughness,
         map: mapTex,
-        emissive: new THREE.Color(!hasTexture && isActive ? "#ff3300" : !hasTexture && isSelected ? "#cc2200" : "#000000"),
-        emissiveIntensity: !hasTexture && isActive ? 0.45 : !hasTexture && isSelected ? 0.32 : 0,
+        emissive: new THREE.Color(
+          dropHoverZone === zoneName ? "#0044ff" :
+          !hasTexture && isActive ? "#ff3300" :
+          !hasTexture && isSelected ? "#cc2200" : "#000000"
+        ),
+        emissiveIntensity:
+          dropHoverZone === zoneName ? 0.5 :
+          !hasTexture && isActive ? 0.45 :
+          !hasTexture && isSelected ? 0.32 : 0,
       });
     });
 
@@ -749,7 +933,7 @@ export function Porsche911PanelsModel() {
         m.geometry.attributes.uv.needsUpdate = true;
       }
     });
-  }, [clonedScene, baseColor, finish, activeSurface, selectedZoneIds, singlePaste, singlePasteGroups, textures, surfaceTextures]);
+  }, [clonedScene, baseColor, finish, activeSurface, selectedZoneIds, singlePaste, singlePasteGroups, textures, surfaceTextures, dropHoverZone]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
@@ -767,28 +951,29 @@ export function Porsche911PanelsModel() {
   };
 
   return (
-    <group scale={[0.015, 0.015, 0.015]} position={[0, -0.45, 0]}>
-      <primitive object={clonedScene} onClick={handleClick} />
-    </group>
+    <>
+      <group scale={[0.015, 0.015, 0.015]} position={[0, -0.45, 0]}>
+        <primitive object={clonedScene} onClick={handleClick} />
+      </group>
+      <StickerLayer parentScene={clonedScene} />
+    </>
   );
 }
 useGLTF.preload("/models/porsche_911_panels.glb");
 
-// ---- BMW X5M 2016 (GLB) with canvas panel zones ----
+// ---- BMW X5M 2016 (GLB) — per-zone mesh objects (same pattern as Porsche 911) ----
 export function BmwX5mModel() {
-  const { scene } = useGLTF("/models/2016_bmw_x5m_panels.glb");
+  const { scene } = useGLTF("/models/bmw_x5m_panels.glb");
   const activeSurface = useEditorStore((s) => s.activeSurface);
   const setActiveSurface = useEditorStore((s) => s.setActiveSurface);
   const selectedZoneIds = useEditorStore((s) => s.selectedZoneIds);
   const toggleZoneInSelection = useEditorStore((s) => s.toggleZoneInSelection);
   const multiSelectMode = useEditorStore((s) => s.multiSelectMode);
-  const singlePaste = useEditorStore((s) => s.singlePaste);
-  const singlePasteGroups = useEditorStore((s) => s.singlePasteGroups);
   const baseColor = useEditorStore((s) => s.baseColor);
   const finish = useEditorStore((s) => s.finish);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const dropHoverZone = useEditorStore((s) => s.dropHoverZone);
   const textures = useLoadedTextures(surfaceTextures);
-  // Cache for composite textures (color background + logo on top)
   const compositeCacheRef = useRef<Map<string, THREE.CanvasTexture>>(new Map());
 
   const clonedScene = useMemo(() => {
@@ -796,23 +981,22 @@ export function BmwX5mModel() {
     cloned.traverse((child) => {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
+      const matName = (mesh.material as THREE.Material).name;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((mesh.material as any).transmission > 0) {
-        // Neutralize transmission materials before first render to avoid WebGL corruption
-        mesh.material = new THREE.MeshPhysicalMaterial({ color: "#aaccff", roughness: 0.05, metalness: 0, transparent: true, opacity: 0.25 });
-      } else if ((mesh.material as THREE.Material).name === "carpaint") {
-        // Tag canvas zone panel meshes by their node name (e.g. "hood", "roof", …)
+        mesh.material = new THREE.MeshPhysicalMaterial({
+          color: "#aaccff", roughness: 0.05, metalness: 0,
+          transparent: true, opacity: 0.25,
+        });
+      } else if (matName === "carpaint") {
+        // Zone mesh objects are named by zone (hood, roof, door_l, etc.)
         mesh.userData.surface = mesh.name;
-      } else if ((mesh.material as THREE.Material).name === "phong9") {
-        // 99 black trim meshes (B-pillar, window surrounds, door frames, A-pillar trim).
-        // Group them all under a single "trim" zone so they default to body color
-        // and can be overridden as one unit from the editor.
-        mesh.userData.surface = "trim";
       }
     });
     return cloned;
   }, [scene]);
 
+  // Apply per-zone materials (same approach as Porsche911PanelsModel)
   useEffect(() => {
     const clearcoat = finish === "glossy" ? 1.0 : finish === "metallic" ? 0.5 : 0.1;
     const clearcoatRoughness = finish === "glossy" ? 0.05 : 0.3;
@@ -822,7 +1006,6 @@ export function BmwX5mModel() {
       if (!(child as THREE.Mesh).isMesh) return;
       const mesh = child as THREE.Mesh;
       const zoneName: string | undefined = mesh.userData.surface;
-
       if (!zoneName) return;
 
       const surf = surfaceTextures[zoneName];
@@ -831,10 +1014,6 @@ export function BmwX5mModel() {
       const isSelected = selectedZoneIds.includes(zoneName);
       const isActive = activeSurface === zoneName;
 
-      // Always composite when there's a texture: fill canvas with effective background color
-      // (zone override or body base color) then draw the logo on top.
-      // This ensures transparent/removed-background pixels show the material color,
-      // not black or the image's own edge color.
       let mapTex: THREE.Texture | null = rawTex;
       if (rawTex) {
         const effectiveBg = surf?.color ?? baseColor;
@@ -860,7 +1039,6 @@ export function BmwX5mModel() {
         mapTex = compositeCache.get(key)!;
       }
 
-      // Apply user transforms to the active texture
       if (mapTex && surf) {
         const s = surf.scale || 1;
         mapTex.repeat.set(surf.mirrorX ? -1 / s : 1 / s, 1 / s);
@@ -870,133 +1048,29 @@ export function BmwX5mModel() {
         mapTex.needsUpdate = true;
       }
 
-      // Selection highlight:
-      // Textured zones → emissive-only (don't tint the logo with material.color lerp)
-      // Untextured zones → lerp color toward signal red
       const displayColor = new THREE.Color(zoneColor);
       if (isSelected && !rawTex) {
         displayColor.lerp(new THREE.Color("#ff2200"), isActive ? 0.72 : 0.55);
       }
-      // White material color when textured so material.color doesn't multiply/tint the map
       const matColorHex = rawTex ? "#ffffff" : "#" + displayColor.getHexString();
       const matProps = getMaterialProps(finish, matColorHex);
-
-      // No emissive glow when zone has a texture — emissive bleeds through dark
-      // parts of the logo creating an ugly red halo. Untextured zones keep the
-      // signal-red emissive so selection is still visually distinct.
       const hasTexture = rawTex !== null;
+
       mesh.material = new THREE.MeshPhysicalMaterial({
         ...matProps, clearcoat, clearcoatRoughness,
         map: mapTex,
-        emissive: new THREE.Color(!hasTexture && isActive ? "#ff3300" : !hasTexture && isSelected ? "#cc2200" : "#000000"),
-        emissiveIntensity: !hasTexture && isActive ? 0.45 : !hasTexture && isSelected ? 0.32 : 0,
+        emissive: new THREE.Color(
+          dropHoverZone === zoneName ? "#0044ff" :
+          !hasTexture && isActive ? "#ff3300" :
+          !hasTexture && isSelected ? "#cc2200" : "#000000"
+        ),
+        emissiveIntensity:
+          dropHoverZone === zoneName ? 0.5 :
+          !hasTexture && isActive ? 0.45 :
+          !hasTexture && isSelected ? 0.32 : 0,
       });
     });
-
-    // ── Single paste: world-space UV projection ──
-    // Apply for all active paste groups: saved groups + current selection if singlePaste is on
-    const activePasteGroups: string[][] = [...singlePasteGroups];
-    if (singlePaste && selectedZoneIds.length > 1) {
-      const isAlreadySaved = singlePasteGroups.some(
-        (g) => g.length === selectedZoneIds.length && g.every((id) => selectedZoneIds.includes(id))
-      );
-      if (!isAlreadySaved) activePasteGroups.push([...selectedZoneIds]);
-    }
-
-    const zonesWithPasteUV = new Set<string>();
-
-    if (activePasteGroups.length > 0) {
-      clonedScene.updateMatrixWorld(true);
-
-      // Build a zone-name → mesh lookup once
-      const allZoneMeshes: Record<string, THREE.Mesh> = {};
-      clonedScene.traverse((child) => {
-        const m = child as THREE.Mesh;
-        if (m.isMesh && m.userData.surface) allZoneMeshes[m.userData.surface as string] = m;
-      });
-
-      type CoordIdx = 0 | 1 | 2;
-      const c = (v: THREE.Vector3, i: CoordIdx) => [v.x, v.y, v.z][i];
-
-      for (const groupZoneIds of activePasteGroups) {
-        const zoneMeshes: Record<string, THREE.Mesh> = {};
-        for (const id of groupZoneIds) {
-          if (allZoneMeshes[id]) zoneMeshes[id] = allZoneMeshes[id];
-        }
-        if (Object.keys(zoneMeshes).length < 2) continue;
-
-        const combinedWorld = new THREE.Box3();
-        for (const m of Object.values(zoneMeshes)) combinedWorld.union(new THREE.Box3().setFromObject(m));
-        const worldSize = combinedWorld.getSize(new THREE.Vector3());
-
-        const minDimIdx = [worldSize.x, worldSize.y, worldSize.z]
-          .indexOf(Math.min(worldSize.x, worldSize.y, worldSize.z)) as CoordIdx;
-        const [uCoord, vCoord]: [CoordIdx, CoordIdx] =
-          minDimIdx === 0 ? [2, 1] :  // thin in X → side panels  → U=Z, V=Y
-          minDimIdx === 1 ? [0, 2] :  // thin in Y → top panels   → U=X, V=Z
-                            [0, 1];   // thin in Z → front/rear   → U=X, V=Y
-
-        const groupMinU = c(combinedWorld.min, uCoord);
-        const groupMinV = c(combinedWorld.min, vCoord);
-        const groupExtU = c(worldSize, uCoord) || 1;
-        const groupExtV = c(worldSize, vCoord) || 1;
-
-        // For left-side panels (thin in X, bbox center X < 0), invert U so the
-        // image reads correctly when viewed from outside the car.
-        // When U=Z and you look at the left side, front is to your right → U
-        // goes right-to-left → text appears mirrored. Flipping U corrects this.
-        const bboxCenterX = (combinedWorld.min.x + combinedWorld.max.x) / 2;
-        const autoFlipU = minDimIdx === 0 && bboxCenterX < 0;
-        // mirrorX from the first zone in the group drives the user-requested flip
-        const userMirror = surfaceTextures[groupZoneIds[0]]?.mirrorX ?? false;
-        const flipU = autoFlipU !== userMirror; // XOR: either auto-flip or user-flip, not both
-
-        const vertex = new THREE.Vector3();
-
-        for (const [name, m] of Object.entries(zoneMeshes)) {
-          const mat = m.material as THREE.MeshPhysicalMaterial;
-          if (!mat.map) continue;
-
-          const posAttr = m.geometry.getAttribute("position") as THREE.BufferAttribute;
-          const count = posAttr.count;
-          const newUVData = new Float32Array(count * 2);
-          for (let i = 0; i < count; i++) {
-            vertex.set(posAttr.getX(i), posAttr.getY(i), posAttr.getZ(i));
-            m.localToWorld(vertex);
-            const rawU = (c(vertex, uCoord) - groupMinU) / groupExtU;
-            newUVData[i * 2 + 0] = flipU ? 1 - rawU : rawU;
-            newUVData[i * 2 + 1] = (c(vertex, vCoord) - groupMinV) / groupExtV;
-          }
-
-          if (!m.geometry.userData.originalUV) {
-            m.geometry.userData.originalUV = m.geometry.getAttribute("uv");
-          }
-          m.geometry.setAttribute("uv", new THREE.BufferAttribute(newUVData, 2));
-          m.geometry.attributes.uv.needsUpdate = true;
-
-          const surf = surfaceTextures[name];
-          const s = surf?.scale ?? 1;
-          mat.map.repeat.set(1 / s, 1 / s);
-          mat.map.offset.set(surf?.offsetX ?? 0, surf?.offsetY ?? 0);
-          mat.map.rotation = surf?.rotation ?? 0;
-          mat.map.center.set(0.5, 0.5);
-          mat.map.needsUpdate = true;
-          mat.needsUpdate = true;
-          zonesWithPasteUV.add(name);
-        }
-      }
-    }
-
-    // Restore original UVs only for zones not covered by any paste group
-    clonedScene.traverse((child) => {
-      const m = child as THREE.Mesh;
-      if (m.isMesh && m.geometry?.userData?.originalUV && !zonesWithPasteUV.has(m.userData.surface as string)) {
-        m.geometry.setAttribute("uv", m.geometry.userData.originalUV);
-        delete m.geometry.userData.originalUV;
-        m.geometry.attributes.uv.needsUpdate = true;
-      }
-    });
-  }, [clonedScene, baseColor, finish, activeSurface, selectedZoneIds, singlePaste, singlePasteGroups, textures, surfaceTextures]);
+  }, [clonedScene, baseColor, finish, activeSurface, selectedZoneIds, textures, surfaceTextures, dropHoverZone]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClick = (e: any) => {
@@ -1007,7 +1081,6 @@ export function BmwX5mModel() {
     if (multiSelectMode || e.nativeEvent?.shiftKey) {
       toggleZoneInSelection(zone);
     } else if (activeSurface === zone && selectedZoneIds.length === 1) {
-      // Click active zone again → deselect back to primary surface
       setActiveSurface("body");
     } else {
       setActiveSurface(zone);
@@ -1015,12 +1088,15 @@ export function BmwX5mModel() {
   };
 
   return (
-    <group scale={[35, 35, 35]} position={[0, -0.45, 0]}>
-      <primitive object={clonedScene} onClick={handleClick} />
-    </group>
+    <>
+      <group scale={[35, 35, 35]} position={[0, -0.45, 0]}>
+        <primitive object={clonedScene} onClick={handleClick} />
+      </group>
+      <StickerLayer parentScene={clonedScene} />
+    </>
   );
 }
-useGLTF.preload("/models/2016_bmw_x5m_panels.glb");
+useGLTF.preload("/models/bmw_x5m_panels.glb");
 
 // Flood-fill background removal: BFS from image edges, remove pixels similar to the corner bg color.
 // Also feathers alpha on anti-aliased fringe pixels so they blend smoothly with the zone color

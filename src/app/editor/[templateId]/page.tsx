@@ -1,10 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useParams, redirect } from "next/navigation";
 import { useEffect } from "react";
 import { useEditorStore } from "@/lib/store";
 import { getTemplate } from "@/lib/templates";
-import { EditorLayout } from "@/components/editor/EditorLayout";
+
+const EditorLayout = dynamic(
+  () => import("@/components/editor/EditorLayout").then((m) => m.EditorLayout),
+  { ssr: false }
+);
 
 export default function EditorPage() {
   const params = useParams();

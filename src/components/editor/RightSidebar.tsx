@@ -2,7 +2,7 @@
 
 import { useEditorStore } from "@/lib/store";
 import { getTemplate } from "@/lib/templates";
-import { RotateCcw } from "lucide-react";
+import { RotateCcw, Trash2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
@@ -56,6 +56,15 @@ export function RightSidebar() {
   const updateTextureTransform = useEditorStore((s) => s.updateTextureTransform);
 
   const setZoneColor = useEditorStore((s) => s.setZoneColor);
+  const stickers = useEditorStore((s) => s.stickers);
+  const selectedStickerGroupId = useEditorStore((s) => s.selectedStickerGroupId);
+  const updateStickerGroup = useEditorStore((s) => s.updateStickerGroup);
+  const removeStickerGroup = useEditorStore((s) => s.removeStickerGroup);
+  const selectSticker = useEditorStore((s) => s.selectSticker);
+  const pushUndo = useEditorStore((s) => s.pushUndo);
+
+  // Representative sticker from the selected group (for displaying size/rotation values)
+  const selectedSticker = stickers.find((s) => s.groupId === selectedStickerGroupId) ?? null;
 
   const template = getTemplate(activeTemplateId);
   const currentTexture = surfaceTextures[activeSurface];
@@ -131,6 +140,72 @@ export function RightSidebar() {
       </div>
 
       <Separator />
+
+      {/* Sticker controls (when a sticker is selected) */}
+      {selectedSticker && (
+        <>
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Sticker
+              </h3>
+              <button
+                onClick={() => selectSticker(null)}
+                className="text-xs text-muted-foreground hover:text-foreground"
+              >
+                Deselect
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="text-xs text-muted-foreground mb-1 block">
+                  Size: {selectedSticker.size.toFixed(3)}
+                </label>
+                <Slider
+                  value={[selectedSticker.size]}
+                  min={0.005}
+                  max={2.0}
+                  step={0.005}
+                  onValueChange={(v) =>
+                    updateStickerGroup(selectedStickerGroupId!, {
+                      size: Array.isArray(v) ? v[0] : v,
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground mb-1 block">
+                  Rotation: {Math.round((selectedSticker.rotation * 180) / Math.PI)}deg
+                </label>
+                <Slider
+                  value={[selectedSticker.rotation]}
+                  min={0}
+                  max={Math.PI * 2}
+                  step={0.05}
+                  onValueChange={(v) =>
+                    updateStickerGroup(selectedStickerGroupId!, {
+                      rotation: Array.isArray(v) ? v[0] : v,
+                    })
+                  }
+                />
+              </div>
+              <Button
+                variant="destructive"
+                size="sm"
+                className="w-full"
+                onClick={() => {
+                  pushUndo();
+                  removeStickerGroup(selectedStickerGroupId!);
+                }}
+              >
+                <Trash2 className="h-3.5 w-3.5 mr-1" />
+                Delete Sticker
+              </Button>
+            </div>
+          </div>
+          <Separator />
+        </>
+      )}
 
       {/* Texture transform controls */}
       {currentTexture?.imageUrl && (

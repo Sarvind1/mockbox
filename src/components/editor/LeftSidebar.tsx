@@ -19,6 +19,7 @@ import {
   Layers,
   Plus,
   MousePointer2,
+  ImagePlus,
 } from "lucide-react";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const categoryIcons: Record<string, any> = {
@@ -53,6 +54,8 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
   const uploadTexture = useEditorStore((s) => s.uploadTexture);
   const removeTexture = useEditorStore((s) => s.removeTexture);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const stickerMode = useEditorStore((s) => s.stickerMode);
+  const setStickerMode = useEditorStore((s) => s.setStickerMode);
   const [dragOver, setDragOver] = useState(false);
   const [newGroupName, setNewGroupName] = useState("");
 
@@ -275,6 +278,27 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
         </>
       )}
 
+      {/* Sticker mode toggle */}
+      <Separator />
+      <div className="px-4 py-3">
+        <button
+          onClick={() => setStickerMode(!stickerMode)}
+          className={`w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-all ${
+            stickerMode
+              ? "border-blue-500 bg-blue-500/10 text-blue-600"
+              : "border-border text-muted-foreground hover:border-gray-300 hover:text-foreground"
+          }`}
+        >
+          <ImagePlus className="h-4 w-4" />
+          {stickerMode ? "Sticker Mode ON" : "Sticker Mode"}
+        </button>
+        {stickerMode && (
+          <p className="text-xs text-blue-500/80 mt-1.5 text-center">
+            Drag an image onto the car to place a sticker
+          </p>
+        )}
+      </div>
+
       {/* Upload panel */}
       <Separator />
       <div className="p-4">
@@ -313,6 +337,11 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
             ].map((preset) => (
               <button
                 key={preset.src}
+                draggable
+                onDragStart={(e) => {
+                  e.dataTransfer.setData("text/plain", preset.src);
+                  e.dataTransfer.effectAllowed = "copy";
+                }}
                 onClick={() => uploadTexture(activeSurface, preset.src)}
                 title={`Apply ${preset.label} logo`}
                 className="flex-1 rounded border border-border hover:border-primary overflow-hidden transition-all"

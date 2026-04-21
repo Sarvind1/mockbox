@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useMemo, useCallback } from "react";
+import { useEffect, useRef, useMemo, useCallback, useState } from "react";
 import * as THREE from "three";
 
 interface PanelMaskConfig {
@@ -29,6 +29,8 @@ export function usePanelMasks(config: PanelMaskConfig) {
   const artworkCacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
   const loadedCountRef = useRef(0);
   const readyRef = useRef(false);
+  // State trigger so React re-renders when masks finish loading
+  const [masksReady, setMasksReady] = useState(false);
 
   // Create canvas + texture once (guarded for SSR)
   const { canvas, texture } = useMemo(() => {
@@ -78,6 +80,7 @@ export function usePanelMasks(config: PanelMaskConfig) {
         loadedCountRef.current += 1;
         if (loadedCountRef.current >= totalMasks) {
           readyRef.current = true;
+          setMasksReady(true);
           console.log(`[usePanelMasks] All ${totalMasks} masks loaded for ${modelName}`);
         }
       };
@@ -102,6 +105,7 @@ export function usePanelMasks(config: PanelMaskConfig) {
       dataMap.clear();
       loadedCountRef.current = 0;
       readyRef.current = false;
+      setMasksReady(false);
     };
   }, [modelName, zones, canvasSize]);
 
@@ -267,5 +271,5 @@ export function usePanelMasks(config: PanelMaskConfig) {
     [canvas, texture, zones, preloadArtwork]
   );
 
-  return { texture, redraw, ready: readyRef, getZoneAtUV };
+  return { texture, redraw, masksReady, getZoneAtUV };
 }

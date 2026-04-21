@@ -3,6 +3,7 @@ import {
   EditorState,
   EditorSnapshot,
   FinishType,
+  Sticker,
   SurfaceTexture,
   ZoneGroup,
 } from "./types";
@@ -14,6 +15,7 @@ function createSnapshot(state: EditorState): EditorSnapshot {
     baseColor: state.baseColor,
     finish: state.finish,
     backgroundColor: state.backgroundColor,
+    stickers: JSON.parse(JSON.stringify(state.stickers)),
   };
 }
 
@@ -48,6 +50,7 @@ const defaultTemplate = templates[0];
 interface EditorActions {
   setTemplate: (templateId: string) => void;
   setActiveSurface: (surface: string) => void;
+  setDropHoverZone: (zone: string | null) => void;
   setSelectedZones: (ids: string[]) => void;
   toggleZoneInSelection: (id: string) => void;
   setMultiSelectMode: (on: boolean) => void;
@@ -72,6 +75,14 @@ interface EditorActions {
   undo: () => void;
   redo: () => void;
   pushUndo: () => void;
+  setStickerMode: (on: boolean) => void;
+  addSticker: (sticker: Sticker) => void;
+  removeSticker: (id: string) => void;
+  removeStickerGroup: (groupId: string) => void;
+  updateSticker: (id: string, updates: Partial<Pick<Sticker, "size" | "rotation" | "position">>) => void;
+  updateStickerGroup: (groupId: string, updates: Partial<Pick<Sticker, "size" | "rotation">>) => void;
+  moveStickerGroup: (groupId: string, newStickers: Array<Omit<Sticker, "id">>) => void;
+  selectSticker: (groupId: string | null) => void;
 }
 
 export const useEditorStore = create<EditorState & EditorActions>(
@@ -94,6 +105,10 @@ export const useEditorStore = create<EditorState & EditorActions>(
     exportFormat: "png",
     undoStack: [],
     redoStack: [],
+    stickers: [],
+    selectedStickerGroupId: null,
+    stickerMode: false,
+    dropHoverZone: null,
 
     // Actions
     pushUndo: () => {
@@ -103,6 +118,8 @@ export const useEditorStore = create<EditorState & EditorActions>(
         redoStack: [],
       });
     },
+
+    setDropHoverZone: (zone) => set({ dropHoverZone: zone }),
 
     setTemplate: (templateId: string) => {
       const template = templates.find((t) => t.id === templateId);
@@ -120,6 +137,10 @@ export const useEditorStore = create<EditorState & EditorActions>(
         singlePasteGroups: [],
         surfaceTextures: initSurfaceTextures(allSurfaces(template)),
         baseColor: template.defaultColor,
+        dropHoverZone: null,
+        stickers: [],
+        selectedStickerGroupId: null,
+        stickerMode: false,
       });
     },
 
@@ -284,6 +305,8 @@ export const useEditorStore = create<EditorState & EditorActions>(
         baseColor: prev.baseColor,
         finish: prev.finish,
         backgroundColor: prev.backgroundColor,
+        stickers: prev.stickers,
+        selectedStickerGroupId: null,
       });
     },
 
@@ -298,7 +321,61 @@ export const useEditorStore = create<EditorState & EditorActions>(
         baseColor: next.baseColor,
         finish: next.finish,
         backgroundColor: next.backgroundColor,
+        stickers: next.stickers,
+        selectedStickerGroupId: null,
       });
     },
+    // Sticker actions
+    setStickerMode: (on) => set({ stickerMode: on }),
+
+    addSticker: (sticker) => {
+      const state = get();
+      set({ stickers: [...state.stickers, sticker] });
+    },
+
+    removeSticker: (id) => {
+      const state = get();
+      const sticker = state.stickers.find((s) => s.id === id);
+      const groupId = sticker?.groupId;
+      set({
+        stickers: state.stickers.filter((s) => s.id !== id),
+        selectedStickerGroupId: state.selectedStickerGroupId === groupId ? null : state.selectedStickerGroupId,
+      });
+    },
+
+    removeStickerGroup: (groupId) => {
+      const state = get();
+      set({
+        stickers: state.stickers.filter((s) => s.groupId !== groupId),
+        selectedStickerGroupId: state.selectedStickerGroupId === groupId ? null : state.selectedStickerGroupId,
+      });
+    },
+
+    updateSticker: (id, updates) => {
+      const state = get();
+      set({
+        stickers: state.stickers.map((s) =>
+          s.id === id ? { ...s, ...updates } : s
+        ),
+      });
+    },
+
+    updateStickerGroup: (groupId, updates) => {
+      const state = get();
+      set({
+        stickers: state.stickers.map((s) =>
+          s.groupId === groupId ? { ...s, ...updates } : s
+        ),
+      });
+    },
+
+    moveStickerGroup: (groupId, newStickers) => {
+      const state = get();
+      const preserved = state.stickers.filter((s) => s.groupId !== groupId);
+      const added = newStickers.map((s) => ({ ...s, id: crypto.randomUUID() }));
+      set({ stickers: [...preserved, ...added] });
+    },
+
+    selectSticker: (groupId) => set({ selectedStickerGroupId: groupId }),
   })
 );

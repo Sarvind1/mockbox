@@ -44,6 +44,23 @@ export interface SurfaceTexture {
   mirrorX: boolean;
 }
 
+export interface Sticker {
+  id: string;
+  // Stickers sharing the same groupId are one logical sticker spanning multiple meshes
+  groupId: string;
+  imageUrl: string;
+  // Position in WORLD space (DecalGeometry expects world-space)
+  position: { x: number; y: number; z: number };
+  // Surface normal in WORLD space
+  normal: { x: number; y: number; z: number };
+  // Size in world units
+  size: number;
+  // Z-rotation of sticker (radians)
+  rotation: number;
+  // Which mesh this is projected onto (mesh.name or mesh.uuid)
+  meshName: string;
+}
+
 export interface EditorState {
   // Template
   activeTemplateId: string;
@@ -72,6 +89,14 @@ export interface EditorState {
   // Single paste groups — saved zone groupings that keep world-space UV permanently
   singlePasteGroups: string[][];
 
+  // Stickers
+  stickers: Sticker[];
+  selectedStickerGroupId: string | null;
+  stickerMode: boolean; // when true, drops create stickers; when false, drops fill zones
+
+  // Drag-and-drop
+  dropHoverZone: string | null; // zone currently glowing during drag
+
   // History
   undoStack: EditorSnapshot[];
   redoStack: EditorSnapshot[];
@@ -82,4 +107,5 @@ export interface EditorSnapshot {
   baseColor: string;
   finish: FinishType;
   backgroundColor: string;
+  stickers: Sticker[];
 }
