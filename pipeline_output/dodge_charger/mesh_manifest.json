@@ -1,0 +1,732 @@
+{
+  "model_name": "dodge_charger",
+  "glb_path": "/Users/sarvind/mockbox/public/models/2013_dodge_charger_srt8.glb",
+  "meshes": [
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Badges_High_badges_0",
+      "vertex_count": 78,
+      "face_count": 42,
+      "material_names": [
+        "badges"
+      ],
+      "bbox_min": [
+        -0.009414060041308403,
+        -0.02376953326165676,
+        0.004472660832107067
+      ],
+      "bbox_max": [
+        0.009414060041308403,
+        0.025156253948807716,
+        0.007895511575043201
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Badges_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Chassis_High_body_charger:phong7SG1_0",
+      "vertex_count": 3857,
+      "face_count": 3258,
+      "material_names": [
+        "body_chargerphong7SG1"
+      ],
+      "bbox_min": [
+        -0.009365229867398739,
+        -0.023593753576278687,
+        -0.000639040139503777
+      ],
+      "bbox_max": [
+        0.009365229867398739,
+        0.02498047612607479,
+        0.00848145131021738
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Chassis_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High_body_charger:phong11SG1_0",
+      "vertex_count": 909,
+      "face_count": 1467,
+      "material_names": [
+        "body_chargerphong11SG1"
+      ],
+      "bbox_min": [
+        -0.00913085974752903,
+        -0.0225976649671793,
+        0.001595460344105959
+      ],
+      "bbox_max": [
+        0.00913085974752903,
+        0.026074225082993507,
+        0.009223631583154202
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High_body_charger:phong2SG1_0",
+      "vertex_count": 936,
+      "face_count": 830,
+      "material_names": [
+        "body_chargerphong2SG1"
+      ],
+      "bbox_min": [
+        -0.00817382987588644,
+        -0.010498052462935448,
+        0.00812012143433094
+      ],
+      "bbox_max": [
+        0.008281249552965164,
+        0.019111333414912224,
+        0.012587891891598701
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Mirrors_High_body_charger:phong3SG1_0",
+      "vertex_count": 643,
+      "face_count": 345,
+      "material_names": [
+        "body_chargerphong3SG1"
+      ],
+      "bbox_min": [
+        -0.010351560078561306,
+        -0.011386721394956112,
+        0.008027341216802597
+      ],
+      "bbox_max": [
+        0.010351560078561306,
+        0.01948242262005806,
+        0.012714842334389687
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Mirrors_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High_body_charger:phong10SG1_0",
+      "vertex_count": 69,
+      "face_count": 78,
+      "material_names": [
+        "body_chargerphong10SG1"
+      ],
+      "bbox_min": [
+        -0.008798829279839993,
+        -0.02070312388241291,
+        0.0050048804841935635
+      ],
+      "bbox_max": [
+        0.008798829279839993,
+        -0.019902342930436134,
+        0.00637695100158453
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High_body_charger:phong9SG1_0",
+      "vertex_count": 392,
+      "face_count": 412,
+      "material_names": [
+        "body_chargerphong9SG1"
+      ],
+      "bbox_min": [
+        -0.009125979617238045,
+        0.020332032814621925,
+        0.004890140611678362
+      ],
+      "bbox_max": [
+        0.009125979617238045,
+        0.025156253948807716,
+        0.009223631583154202
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Grille_High_body_charger:phong13SG1_0",
+      "vertex_count": 212,
+      "face_count": 198,
+      "material_names": [
+        "body_chargerphong13SG1"
+      ],
+      "bbox_min": [
+        -0.004323729779571295,
+        -0.024335943162441254,
+        0.0012268101563677192
+      ],
+      "bbox_max": [
+        0.004323729779571295,
+        -0.01985352300107479,
+        0.007856450974941254
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Grille_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Internal_Engine_High_body_charger:phong4SG1_0",
+      "vertex_count": 12680,
+      "face_count": 9463,
+      "material_names": [
+        "body_chargerphong4SG1"
+      ],
+      "bbox_min": [
+        -0.009467769414186478,
+        -0.02308594435453415,
+        0.0005935700610280037
+      ],
+      "bbox_max": [
+        0.009467769414186478,
+        0.019101563841104507,
+        0.012919921427965164
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Internal_Engine_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LicensePlate_High_body_charger:phong15SG1_0",
+      "vertex_count": 314,
+      "face_count": 288,
+      "material_names": [
+        "body_chargerphong15SG1"
+      ],
+      "bbox_min": [
+        -0.0015234400052577257,
+        -0.024531254544854164,
+        0.0017590303905308247
+      ],
+      "bbox_max": [
+        0.0015246599214151502,
+        0.025800783187150955,
+        0.005019530653953552
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LicensePlate_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Lightcluster_High_body_charger:phong5SG1_0",
+      "vertex_count": 4959,
+      "face_count": 5641,
+      "material_names": [
+        "body_chargerphong5SG1"
+      ],
+      "bbox_min": [
+        -0.009101560339331627,
+        -0.022578123956918716,
+        0.0015344201819971204
+      ],
+      "bbox_max": [
+        0.009101560339331627,
+        0.026074225082993507,
+        0.009223631583154202
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Lightcluster_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LightRefracted_High_body_charger:phong8SG1_0",
+      "vertex_count": 212,
+      "face_count": 178,
+      "material_names": [
+        "body_chargerphong8SG1"
+      ],
+      "bbox_min": [
+        -0.008764649741351604,
+        -0.02250000461935997,
+        0.00469482084736228
+      ],
+      "bbox_max": [
+        0.008764649741351604,
+        0.0247656237334013,
+        0.007949220947921276
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LightRefracted_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High_body_charger:phong12SG1_0",
+      "vertex_count": 676,
+      "face_count": 1116,
+      "material_names": [
+        "body_chargerphong12SG1"
+      ],
+      "bbox_min": [
+        -0.007460939697921276,
+        -0.022128915414214134,
+        0.0009271201561205089
+      ],
+      "bbox_max": [
+        0.007460939697921276,
+        0.025605475530028343,
+        0.009184570983052254
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High_body_charger:phong6SG1_0",
+      "vertex_count": 10704,
+      "face_count": 11433,
+      "material_names": [
+        "body_chargerphong6SG1"
+      ],
+      "bbox_min": [
+        -0.009462890215218067,
+        -0.024628914892673492,
+        4.2000007738351997e-07
+      ],
+      "bbox_max": [
+        0.009462890215218067,
+        0.026308592408895493,
+        0.013193362392485142
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Paint_Metal_High_body_charger:phong1SG1_0",
+      "vertex_count": 11253,
+      "face_count": 13945,
+      "material_names": [
+        "body_chargerphong1SG1"
+      ],
+      "bbox_min": [
+        -0.010566409677267075,
+        -0.02292969450354576,
+        4.2000007738351997e-07
+      ],
+      "bbox_max": [
+        0.010566409677267075,
+        0.025214843451976776,
+        0.013359381817281246
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Paint_Metal_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_PaintNormalMap_High_body_charger:initialShadingGroup1_0",
+      "vertex_count": 151,
+      "face_count": 130,
+      "material_names": [
+        "body_chargerinitialShadingGroup1"
+      ],
+      "bbox_min": [
+        -0.007641599513590336,
+        -0.020468752831220627,
+        0.005239260848611593
+      ],
+      "bbox_max": [
+        0.007641599513590336,
+        -0.012929691933095455,
+        0.0077197314240038395
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_PaintNormalMap_High"
+    },
+    {
+      "name": "body_charger:M_Paint_Plastic_Highcar_dodge_chargersrt8_2013_undercover_Mesh_lod0_body_charger:phong1SG1_0",
+      "vertex_count": 3541,
+      "face_count": 4835,
+      "material_names": [
+        "body_chargerphong1SG1"
+      ],
+      "bbox_min": [
+        -0.009384769946336746,
+        -0.024746093899011612,
+        0.00014671002281829715
+      ],
+      "bbox_max": [
+        0.009384769946336746,
+        0.026386724784970284,
+        0.007036130875349045
+      ],
+      "parent": "body_charger:M_Paint_Plastic_Highcar_dodge_chargersrt8_2013_undercover_Mesh_lod0"
+    },
+    {
+      "name": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_BrakeDisc_High_disk_0",
+      "vertex_count": 1379,
+      "face_count": 1152,
+      "material_names": [
+        "disk"
+      ],
+      "bbox_min": [
+        -0.00814277958124876,
+        -0.017110344022512436,
+        0.00020196003606542945
+      ],
+      "bbox_max": [
+        0.008161639794707298,
+        0.017104722559452057,
+        0.003878830699250102
+      ],
+      "parent": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_BrakeDisc_High"
+    },
+    {
+      "name": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Caliper_High_calipers_0",
+      "vertex_count": 1227,
+      "face_count": 1032,
+      "material_names": [
+        "calipers"
+      ],
+      "bbox_min": [
+        -0.008515549823641777,
+        -0.01459447294473648,
+        0.0001238300174009055
+      ],
+      "bbox_max": [
+        0.008534420281648636,
+        0.0150028420612216,
+        0.0034454804845154285
+      ],
+      "parent": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Caliper_High"
+    },
+    {
+      "name": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Rim_High_rim_0",
+      "vertex_count": 19737,
+      "face_count": 12548,
+      "material_names": [
+        "material"
+      ],
+      "bbox_min": [
+        -0.009180529043078423,
+        -0.018003903329372406,
+        -0.0006916000857017934
+      ],
+      "bbox_max": [
+        0.009208249859511852,
+        0.01799890398979187,
+        0.004772390704602003
+      ],
+      "parent": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Rim_High"
+    },
+    {
+      "name": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Tire_High_tire_0",
+      "vertex_count": 4053,
+      "face_count": 5759,
+      "material_names": [
+        "tire"
+      ],
+      "bbox_min": [
+        -0.009198229759931564,
+        -0.018914543092250824,
+        -0.0016022403724491596
+      ],
+      "bbox_max": [
+        0.009201530367136002,
+        0.018909553065896034,
+        0.005683030933141708
+      ],
+      "parent": "wheels:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Tire_High"
+    },
+    {
+      "name": "wheels:M_Badges_Highcar_dodge_chargersrt8_2013_undercover_Mesh_lod0_badges_0",
+      "vertex_count": 80,
+      "face_count": 40,
+      "material_names": [
+        "badges"
+      ],
+      "bbox_min": [
+        -0.009192129597067833,
+        -0.01746923290193081,
+        0.0010094501776620746
+      ],
+      "bbox_max": [
+        0.009224110282957554,
+        0.017464833334088326,
+        0.0032953405752778053
+      ],
+      "parent": "wheels:M_Badges_Highcar_dodge_chargersrt8_2013_undercover_Mesh_lod0"
+    }
+  ],
+  "total_meshes": 22,
+  "carpaint_material_name": "body_chargerphong1SG1",
+  "carpaint_meshes": [
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Chassis_High_body_charger:phong7SG1_0",
+      "vertex_count": 3857,
+      "face_count": 3258,
+      "material_names": [
+        "body_chargerphong7SG1"
+      ],
+      "bbox_min": [
+        -0.009365229867398739,
+        -0.023593753576278687,
+        -0.000639040139503777
+      ],
+      "bbox_max": [
+        0.009365229867398739,
+        0.02498047612607479,
+        0.00848145131021738
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Chassis_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High_body_charger:phong11SG1_0",
+      "vertex_count": 909,
+      "face_count": 1467,
+      "material_names": [
+        "body_chargerphong11SG1"
+      ],
+      "bbox_min": [
+        -0.00913085974752903,
+        -0.0225976649671793,
+        0.001595460344105959
+      ],
+      "bbox_max": [
+        0.00913085974752903,
+        0.026074225082993507,
+        0.009223631583154202
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High_body_charger:phong2SG1_0",
+      "vertex_count": 936,
+      "face_count": 830,
+      "material_names": [
+        "body_chargerphong2SG1"
+      ],
+      "bbox_min": [
+        -0.00817382987588644,
+        -0.010498052462935448,
+        0.00812012143433094
+      ],
+      "bbox_max": [
+        0.008281249552965164,
+        0.019111333414912224,
+        0.012587891891598701
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Lights_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Mirrors_High_body_charger:phong3SG1_0",
+      "vertex_count": 643,
+      "face_count": 345,
+      "material_names": [
+        "body_chargerphong3SG1"
+      ],
+      "bbox_min": [
+        -0.010351560078561306,
+        -0.011386721394956112,
+        0.008027341216802597
+      ],
+      "bbox_max": [
+        0.010351560078561306,
+        0.01948242262005806,
+        0.012714842334389687
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Glass_Mirrors_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High_body_charger:phong10SG1_0",
+      "vertex_count": 69,
+      "face_count": 78,
+      "material_names": [
+        "body_chargerphong10SG1"
+      ],
+      "bbox_min": [
+        -0.008798829279839993,
+        -0.02070312388241291,
+        0.0050048804841935635
+      ],
+      "bbox_max": [
+        0.008798829279839993,
+        -0.019902342930436134,
+        0.00637695100158453
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High_body_charger:phong9SG1_0",
+      "vertex_count": 392,
+      "face_count": 412,
+      "material_names": [
+        "body_chargerphong9SG1"
+      ],
+      "bbox_min": [
+        -0.009125979617238045,
+        0.020332032814621925,
+        0.004890140611678362
+      ],
+      "bbox_max": [
+        0.009125979617238045,
+        0.025156253948807716,
+        0.009223631583154202
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_GlassColor_Orange_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Grille_High_body_charger:phong13SG1_0",
+      "vertex_count": 212,
+      "face_count": 198,
+      "material_names": [
+        "body_chargerphong13SG1"
+      ],
+      "bbox_min": [
+        -0.004323729779571295,
+        -0.024335943162441254,
+        0.0012268101563677192
+      ],
+      "bbox_max": [
+        0.004323729779571295,
+        -0.01985352300107479,
+        0.007856450974941254
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Grille_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Internal_Engine_High_body_charger:phong4SG1_0",
+      "vertex_count": 12680,
+      "face_count": 9463,
+      "material_names": [
+        "body_chargerphong4SG1"
+      ],
+      "bbox_min": [
+        -0.009467769414186478,
+        -0.02308594435453415,
+        0.0005935700610280037
+      ],
+      "bbox_max": [
+        0.009467769414186478,
+        0.019101563841104507,
+        0.012919921427965164
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Internal_Engine_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LicensePlate_High_body_charger:phong15SG1_0",
+      "vertex_count": 314,
+      "face_count": 288,
+      "material_names": [
+        "body_chargerphong15SG1"
+      ],
+      "bbox_min": [
+        -0.0015234400052577257,
+        -0.024531254544854164,
+        0.0017590303905308247
+      ],
+      "bbox_max": [
+        0.0015246599214151502,
+        0.025800783187150955,
+        0.005019530653953552
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LicensePlate_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Lightcluster_High_body_charger:phong5SG1_0",
+      "vertex_count": 4959,
+      "face_count": 5641,
+      "material_names": [
+        "body_chargerphong5SG1"
+      ],
+      "bbox_min": [
+        -0.009101560339331627,
+        -0.022578123956918716,
+        0.0015344201819971204
+      ],
+      "bbox_max": [
+        0.009101560339331627,
+        0.026074225082993507,
+        0.009223631583154202
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Lightcluster_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LightRefracted_High_body_charger:phong8SG1_0",
+      "vertex_count": 212,
+      "face_count": 178,
+      "material_names": [
+        "body_chargerphong8SG1"
+      ],
+      "bbox_min": [
+        -0.008764649741351604,
+        -0.02250000461935997,
+        0.00469482084736228
+      ],
+      "bbox_max": [
+        0.008764649741351604,
+        0.0247656237334013,
+        0.007949220947921276
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_LightRefracted_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High_body_charger:phong12SG1_0",
+      "vertex_count": 676,
+      "face_count": 1116,
+      "material_names": [
+        "body_chargerphong12SG1"
+      ],
+      "bbox_min": [
+        -0.007460939697921276,
+        -0.022128915414214134,
+        0.0009271201561205089
+      ],
+      "bbox_max": [
+        0.007460939697921276,
+        0.025605475530028343,
+        0.009184570983052254
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High_body_charger:phong6SG1_0",
+      "vertex_count": 10704,
+      "face_count": 11433,
+      "material_names": [
+        "body_chargerphong6SG1"
+      ],
+      "bbox_min": [
+        -0.009462890215218067,
+        -0.024628914892673492,
+        4.2000007738351997e-07
+      ],
+      "bbox_max": [
+        0.009462890215218067,
+        0.026308592408895493,
+        0.013193362392485142
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Opaque_PlasticSmoothBlack_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Paint_Metal_High_body_charger:phong1SG1_0",
+      "vertex_count": 11253,
+      "face_count": 13945,
+      "material_names": [
+        "body_chargerphong1SG1"
+      ],
+      "bbox_min": [
+        -0.010566409677267075,
+        -0.02292969450354576,
+        4.2000007738351997e-07
+      ],
+      "bbox_max": [
+        0.010566409677267075,
+        0.025214843451976776,
+        0.013359381817281246
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Paint_Metal_High"
+    },
+    {
+      "name": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_PaintNormalMap_High_body_charger:initialShadingGroup1_0",
+      "vertex_count": 151,
+      "face_count": 130,
+      "material_names": [
+        "body_chargerinitialShadingGroup1"
+      ],
+      "bbox_min": [
+        -0.007641599513590336,
+        -0.020468752831220627,
+        0.005239260848611593
+      ],
+      "bbox_max": [
+        0.007641599513590336,
+        -0.012929691933095455,
+        0.0077197314240038395
+      ],
+      "parent": "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_PaintNormalMap_High"
+    },
+    {
+      "name": "body_charger:M_Paint_Plastic_Highcar_dodge_chargersrt8_2013_undercover_Mesh_lod0_body_charger:phong1SG1_0",
+      "vertex_count": 3541,
+      "face_count": 4835,
+      "material_names": [
+        "body_chargerphong1SG1"
+      ],
+      "bbox_min": [
+        -0.009384769946336746,
+        -0.024746093899011612,
+        0.00014671002281829715
+      ],
+      "bbox_max": [
+        0.009384769946336746,
+        0.026386724784970284,
+        0.007036130875349045
+      ],
+      "parent": "body_charger:M_Paint_Plastic_Highcar_dodge_chargersrt8_2013_undercover_Mesh_lod0"
+    }
+  ]
+}

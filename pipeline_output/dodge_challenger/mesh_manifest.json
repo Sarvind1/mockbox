@@ -1,0 +1,1073 @@
+{
+  "model_name": "dodge_challenger",
+  "glb_path": "/Users/sarvind/mockbox/public/models/dodge_challenger_srt_hellcat_redeye__free.glb",
+  "meshes": [
+    {
+      "name": "Object_10",
+      "vertex_count": 338,
+      "face_count": 416,
+      "material_names": [
+        "DCSHR_Light"
+      ],
+      "bbox_min": [
+        -0.7747769355773926,
+        2.334859609603882,
+        0.7806962132453918
+      ],
+      "bbox_max": [
+        0.7747769355773926,
+        2.4044058322906494,
+        0.882726788520813
+      ],
+      "parent": "DCSHR_tail_light_3"
+    },
+    {
+      "name": "Object_100",
+      "vertex_count": 224,
+      "face_count": 184,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Disk_173"
+      ],
+      "bbox_min": [
+        0.8045072555541992,
+        1.1985938549041748,
+        0.19629988074302673
+      ],
+      "bbox_max": [
+        0.8585777878761292,
+        1.6059942245483398,
+        0.6037002801895142
+      ],
+      "parent": "DCSHR_disk_bl_49"
+    },
+    {
+      "name": "Object_102",
+      "vertex_count": 210,
+      "face_count": 210,
+      "material_names": [
+        "DCSHR_Aluminum"
+      ],
+      "bbox_min": [
+        0.9128382802009583,
+        1.1344513893127441,
+        0.12825676798820496
+      ],
+      "bbox_max": [
+        0.9876859784126282,
+        1.6701366901397705,
+        0.6413850784301758
+      ],
+      "parent": "DCSHR_rim2_bl_50"
+    },
+    {
+      "name": "Object_104",
+      "vertex_count": 2278,
+      "face_count": 2471,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Hub_190"
+      ],
+      "bbox_min": [
+        0.6561743021011353,
+        1.1218287944793701,
+        0.11953479051589966
+      ],
+      "bbox_max": [
+        0.9876859784126282,
+        1.6827592849731445,
+        0.6804654002189636
+      ],
+      "parent": "DCSHR_rim_bl_51"
+    },
+    {
+      "name": "Object_106",
+      "vertex_count": 780,
+      "face_count": 1180,
+      "material_names": [
+        "DCSHR_wDodge_ChallengerRTShakerF7_2015_Wheel1A_3D_3DWheel1A_Material1"
+      ],
+      "bbox_min": [
+        0.6560189723968506,
+        1.0029469728469849,
+        0.000652998685836792
+      ],
+      "bbox_max": [
+        0.993245005607605,
+        1.8016411066055298,
+        0.7993471622467041
+      ],
+      "parent": "DCSHR_tire_bl_52"
+    },
+    {
+      "name": "Object_108",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "Brembo"
+      ],
+      "bbox_min": [
+        0.8899288773536682,
+        1.538771629333496,
+        0.34006279706954956
+      ],
+      "bbox_max": [
+        0.8908675909042358,
+        1.566230297088623,
+        0.44873592257499695
+      ],
+      "parent": "DCSHR_brake_01_bl_53"
+    },
+    {
+      "name": "Object_110",
+      "vertex_count": 95,
+      "face_count": 93,
+      "material_names": [
+        "PlasticSmoothBlack"
+      ],
+      "bbox_min": [
+        0.788417637348175,
+        1.5084164142608643,
+        0.2836076617240906
+      ],
+      "bbox_max": [
+        0.8804075121879578,
+        1.6086511611938477,
+        0.5631917715072632
+      ],
+      "parent": "DCSHR_brake_02_bl_54"
+    },
+    {
+      "name": "Object_112",
+      "vertex_count": 142,
+      "face_count": 152,
+      "material_names": [
+        "Brake"
+      ],
+      "bbox_min": [
+        0.7454102039337158,
+        1.512520670890808,
+        0.23095715045928955
+      ],
+      "bbox_max": [
+        0.8891546726226807,
+        1.6111204624176025,
+        0.5658129453659058
+      ],
+      "parent": "DCSHR_brake_03_bl_55"
+    },
+    {
+      "name": "Object_12",
+      "vertex_count": 332,
+      "face_count": 372,
+      "material_names": [
+        "DCSHR_Light"
+      ],
+      "bbox_min": [
+        -0.812492847442627,
+        -2.2494113445281982,
+        0.6379736065864563
+      ],
+      "bbox_max": [
+        0.812492847442627,
+        -2.179253101348877,
+        0.7447434663772583
+      ],
+      "parent": "DCSHR_mash_light_4"
+    },
+    {
+      "name": "Object_14",
+      "vertex_count": 236,
+      "face_count": 300,
+      "material_names": [
+        "DCSHR_Light"
+      ],
+      "bbox_min": [
+        -0.824712336063385,
+        -2.2532174587249756,
+        0.6255537867546082
+      ],
+      "bbox_max": [
+        0.824712336063385,
+        -2.2400965690612793,
+        0.7458452582359314
+      ],
+      "parent": "DCSHR_front_light_5"
+    },
+    {
+      "name": "Object_16",
+      "vertex_count": 8317,
+      "face_count": 10250,
+      "material_names": [
+        "DCSHR_Dark_Green"
+      ],
+      "bbox_min": [
+        -1.0904350280761719,
+        -2.509826183319092,
+        0.203582301735878
+      ],
+      "bbox_max": [
+        1.0904350280761719,
+        2.513568639755249,
+        1.4502650499343872
+      ],
+      "parent": "DCSHR_body_01_6"
+    },
+    {
+      "name": "Object_18",
+      "vertex_count": 1306,
+      "face_count": 1670,
+      "material_names": [
+        "DCSHR_PlasticSmooth"
+      ],
+      "bbox_min": [
+        -0.9624797105789185,
+        -2.502502679824829,
+        0.12796133756637573
+      ],
+      "bbox_max": [
+        0.9624797105789185,
+        2.473003387451172,
+        0.5265535712242126
+      ],
+      "parent": "DCSHR_body_element_02_8"
+    },
+    {
+      "name": "Object_20",
+      "vertex_count": 56,
+      "face_count": 24,
+      "material_names": [
+        "DCSHR_Badge"
+      ],
+      "bbox_min": [
+        -0.9618197083473206,
+        -2.352457284927368,
+        0.6551718711853027
+      ],
+      "bbox_max": [
+        0.9618197083473206,
+        2.4337639808654785,
+        1.013647198677063
+      ],
+      "parent": "DCSHR_badge_9"
+    },
+    {
+      "name": "Object_22",
+      "vertex_count": 398,
+      "face_count": 424,
+      "material_names": [
+        "DCSHR_PlasticBlack"
+      ],
+      "bbox_min": [
+        -1.017958402633667,
+        -2.3934006690979004,
+        0.12532183527946472
+      ],
+      "bbox_max": [
+        1.017958402633667,
+        2.3050365447998047,
+        0.9350767135620117
+      ],
+      "parent": "DCSHR_body_element_03_10"
+    },
+    {
+      "name": "Object_24",
+      "vertex_count": 194,
+      "face_count": 214,
+      "material_names": [
+        "DCSHR_Grid"
+      ],
+      "bbox_min": [
+        -0.765518069267273,
+        -2.384025812149048,
+        0.24584954977035522
+      ],
+      "bbox_max": [
+        0.765518069267273,
+        -2.2144558429718018,
+        0.7443429231643677
+      ],
+      "parent": "DCSHR_body_element_04_11"
+    },
+    {
+      "name": "Object_26",
+      "vertex_count": 226,
+      "face_count": 210,
+      "material_names": [
+        "DCSHR_WindowsRough"
+      ],
+      "bbox_min": [
+        -0.8226209878921509,
+        -1.1323336362838745,
+        0.9322415590286255
+      ],
+      "bbox_max": [
+        0.8226209878921509,
+        1.6803425550460815,
+        1.3446968793869019
+      ],
+      "parent": "DCSHR_body_element_05_12"
+    },
+    {
+      "name": "Object_28",
+      "vertex_count": 245,
+      "face_count": 262,
+      "material_names": [
+        "DCSHR_WindowsSmooth"
+      ],
+      "bbox_min": [
+        -0.8247121572494507,
+        -1.0854589939117432,
+        0.9725056886672974
+      ],
+      "bbox_max": [
+        0.8247121572494507,
+        1.639978289604187,
+        1.3291717767715454
+      ],
+      "parent": "DCSHR_body_element_06_13"
+    },
+    {
+      "name": "Object_30",
+      "vertex_count": 80,
+      "face_count": 88,
+      "material_names": [
+        "DCSHR_Dark_Green"
+      ],
+      "bbox_min": [
+        -0.9406967163085938,
+        1.2959306240081787,
+        0.9007902145385742
+      ],
+      "bbox_max": [
+        0.9406967163085938,
+        1.59801185131073,
+        1.0653520822525024
+      ],
+      "parent": "DCSHR_body_element_07_14"
+    },
+    {
+      "name": "Object_32",
+      "vertex_count": 2635,
+      "face_count": 2637,
+      "material_names": [
+        "DCSHR_PlasticRough"
+      ],
+      "bbox_min": [
+        -0.808286190032959,
+        -1.2544816732406616,
+        0.8854354619979858
+      ],
+      "bbox_max": [
+        0.9210656881332397,
+        1.5669618844985962,
+        1.0440183877944946
+      ],
+      "parent": "DCSHR_body_element_08_15"
+    },
+    {
+      "name": "Object_34",
+      "vertex_count": 3945,
+      "face_count": 5050,
+      "material_names": [
+        "DCSHR_PlasticRough"
+      ],
+      "bbox_min": [
+        -0.9109494090080261,
+        -2.4429192543029785,
+        0.09509893506765366
+      ],
+      "bbox_max": [
+        0.9109494090080261,
+        2.4614710807800293,
+        1.4024893045425415
+      ],
+      "parent": "DCSHR_body_element_09_16"
+    },
+    {
+      "name": "Object_36",
+      "vertex_count": 48,
+      "face_count": 44,
+      "material_names": [
+        "DCSHR_Aluminum"
+      ],
+      "bbox_min": [
+        -1.076613187789917,
+        -0.42090126872062683,
+        0.96940016746521
+      ],
+      "bbox_max": [
+        1.076613187789917,
+        -0.3586024045944214,
+        1.0738664865493774
+      ],
+      "parent": "DCSHR_body_element_10_17"
+    },
+    {
+      "name": "Object_38",
+      "vertex_count": 214,
+      "face_count": 380,
+      "material_names": [
+        "DCSHR_Aluminum"
+      ],
+      "bbox_min": [
+        -0.6355113387107849,
+        2.2394320964813232,
+        0.22351187467575073
+      ],
+      "bbox_max": [
+        0.6355113387107849,
+        2.4029927253723145,
+        0.3035392165184021
+      ],
+      "parent": "DCSHR_muffler_01_18"
+    },
+    {
+      "name": "Object_4",
+      "vertex_count": 228,
+      "face_count": 274,
+      "material_names": [
+        "DCSHR_Light"
+      ],
+      "bbox_min": [
+        -0.940324068069458,
+        -2.190117120742798,
+        0.42543527483940125
+      ],
+      "bbox_max": [
+        0.940324068069458,
+        2.482238531112671,
+        0.5810350775718689
+      ],
+      "parent": "DCSHR_mash_light_02_0"
+    },
+    {
+      "name": "Object_40",
+      "vertex_count": 80,
+      "face_count": 80,
+      "material_names": [
+        "DCSHR_PlasticRough"
+      ],
+      "bbox_min": [
+        -0.624894380569458,
+        2.3044354915618896,
+        0.22651663422584534
+      ],
+      "bbox_max": [
+        0.624894380569458,
+        2.3942782878875732,
+        0.29672834277153015
+      ],
+      "parent": "DCSHR_muffler_02_19"
+    },
+    {
+      "name": "Object_42",
+      "vertex_count": 237,
+      "face_count": 283,
+      "material_names": [
+        "DCSHR_dMAT_Dodge_Challenger_Carbon_017"
+      ],
+      "bbox_min": [
+        -0.20838700234889984,
+        -0.5617085695266724,
+        0.6044949293136597
+      ],
+      "bbox_max": [
+        0.6672329902648926,
+        0.05489831045269966,
+        1.0135176181793213
+      ],
+      "parent": "DCSHR_interior_01_20"
+    },
+    {
+      "name": "Object_44",
+      "vertex_count": 12001,
+      "face_count": 15602,
+      "material_names": [
+        "DCSHR_dMAT_Details_MAT_686"
+      ],
+      "bbox_min": [
+        -0.8427469730377197,
+        -1.0854591131210327,
+        0.17616982758045197
+      ],
+      "bbox_max": [
+        0.8427469730377197,
+        1.639978289604187,
+        1.4063488245010376
+      ],
+      "parent": "DCSHR_interior_02_21"
+    },
+    {
+      "name": "Object_46",
+      "vertex_count": 2139,
+      "face_count": 1589,
+      "material_names": [
+        "DCSHR_dMAT_Details_INT_053"
+      ],
+      "bbox_min": [
+        -0.7920230031013489,
+        -0.9803463816642761,
+        0.17616982758045197
+      ],
+      "bbox_max": [
+        0.792110025882721,
+        0.5748974084854126,
+        1.0156632661819458
+      ],
+      "parent": "DCSHR_interior_03_22"
+    },
+    {
+      "name": "Object_48",
+      "vertex_count": 1253,
+      "face_count": 1659,
+      "material_names": [
+        "DCSHR_dMAT_Details_MAT_686"
+      ],
+      "bbox_min": [
+        0.18666699528694153,
+        -0.4570775032043457,
+        0.7210475206375122
+      ],
+      "bbox_max": [
+        0.5721489787101746,
+        -0.23017464578151703,
+        1.0759577751159668
+      ],
+      "parent": "DCSHR_wheel_01_23"
+    },
+    {
+      "name": "Object_50",
+      "vertex_count": 194,
+      "face_count": 152,
+      "material_names": [
+        "DCSHR_dMAT_Details_INT_053"
+      ],
+      "bbox_min": [
+        0.2154950052499771,
+        -0.37772390246391296,
+        0.743411660194397
+      ],
+      "bbox_max": [
+        0.5433210134506226,
+        -0.257673442363739,
+        1.0562858581542969
+      ],
+      "parent": "DCSHR_wheel_02_24"
+    },
+    {
+      "name": "Object_52",
+      "vertex_count": 64,
+      "face_count": 48,
+      "material_names": [
+        "DCSHR_light_glass"
+      ],
+      "bbox_min": [
+        -0.7487213611602783,
+        2.3354461193084717,
+        0.8145052790641785
+      ],
+      "bbox_max": [
+        0.7487213611602783,
+        2.3754072189331055,
+        0.8508163094520569
+      ],
+      "parent": "DCSHR_glass_light_03_25"
+    },
+    {
+      "name": "Object_54",
+      "vertex_count": 502,
+      "face_count": 570,
+      "material_names": [
+        "DCSHR_red_light_glass"
+      ],
+      "bbox_min": [
+        -0.8998998403549194,
+        1.9454646110534668,
+        0.425533264875412
+      ],
+      "bbox_max": [
+        0.8998998403549194,
+        2.441838264465332,
+        0.882726788520813
+      ],
+      "parent": "DCSHR_glass_light_02_26"
+    },
+    {
+      "name": "Object_56",
+      "vertex_count": 80,
+      "face_count": 112,
+      "material_names": [
+        "DCSHR_yellow_light_glass"
+      ],
+      "bbox_min": [
+        -0.9411477446556091,
+        -2.190117120742798,
+        0.42543527483940125
+      ],
+      "bbox_max": [
+        0.9411477446556091,
+        -2.002995491027832,
+        0.45498234033584595
+      ],
+      "parent": "DCSHR_glass_light_27"
+    },
+    {
+      "name": "Object_58",
+      "vertex_count": 2278,
+      "face_count": 2471,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Hub_190"
+      ],
+      "bbox_min": [
+        0.6784960627555847,
+        -1.8331719636917114,
+        0.09853482246398926
+      ],
+      "bbox_max": [
+        0.9710797071456909,
+        -1.272241473197937,
+        0.6594653725624084
+      ],
+      "parent": "DCSHR_rim_fl_28"
+    },
+    {
+      "name": "Object_6",
+      "vertex_count": 42,
+      "face_count": 32,
+      "material_names": [
+        "DCSHR_Light"
+      ],
+      "bbox_min": [
+        -0.7487213611602783,
+        1.2265400886535645,
+        0.8145052790641785
+      ],
+      "bbox_max": [
+        0.7487213611602783,
+        2.362473249435425,
+        1.3291724920272827
+      ],
+      "parent": "DCSHR_brake_light_1"
+    },
+    {
+      "name": "Object_60",
+      "vertex_count": 224,
+      "face_count": 184,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Disk_173"
+      ],
+      "bbox_min": [
+        0.8094109296798706,
+        -1.7665705680847168,
+        0.16513623297214508
+      ],
+      "bbox_max": [
+        0.8571321368217468,
+        -1.3388428688049316,
+        0.5928639769554138
+      ],
+      "parent": "DCSHR_disk_fl_29"
+    },
+    {
+      "name": "Object_62",
+      "vertex_count": 780,
+      "face_count": 1180,
+      "material_names": [
+        "DCSHR_wDodge_ChallengerRTShakerF7_2015_Wheel1A_3D_3DWheel1A_Material1"
+      ],
+      "bbox_min": [
+        0.6839859485626221,
+        -1.930615782737732,
+        0.00109100341796875
+      ],
+      "bbox_max": [
+        0.9712119698524475,
+        -1.1747976541519165,
+        0.756909191608429
+      ],
+      "parent": "DCSHR_tire_fl_30"
+    },
+    {
+      "name": "Object_64",
+      "vertex_count": 210,
+      "face_count": 210,
+      "material_names": [
+        "DCSHR_Aluminum"
+      ],
+      "bbox_min": [
+        0.905021071434021,
+        -1.8205492496490479,
+        0.10725679993629456
+      ],
+      "bbox_max": [
+        0.9710797071456909,
+        -1.2848641872406006,
+        0.6203850507736206
+      ],
+      "parent": "DCSHR_rim2_fl_31"
+    },
+    {
+      "name": "Object_66",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "Brembo"
+      ],
+      "bbox_min": [
+        0.9060953855514526,
+        -1.4265257120132446,
+        0.2807283103466034
+      ],
+      "bbox_max": [
+        0.9069912433624268,
+        -1.3741304874420166,
+        0.387525349855423
+      ],
+      "parent": "DCSHR_brake_01_fl_32"
+    },
+    {
+      "name": "Object_68",
+      "vertex_count": 92,
+      "face_count": 93,
+      "material_names": [
+        "PlasticSmoothBlack"
+      ],
+      "bbox_min": [
+        0.8092180490493774,
+        -1.4579479694366455,
+        0.23110216856002808
+      ],
+      "bbox_max": [
+        0.8970086574554443,
+        -1.3338286876678467,
+        0.49342283606529236
+      ],
+      "parent": "DCSHR_brake_02_fl_33"
+    },
+    {
+      "name": "Object_70",
+      "vertex_count": 142,
+      "face_count": 152,
+      "material_names": [
+        "Brake"
+      ],
+      "bbox_min": [
+        0.7681739330291748,
+        -1.4558491706848145,
+        0.18577826023101807
+      ],
+      "bbox_max": [
+        0.9053565263748169,
+        -1.3301899433135986,
+        0.4934447705745697
+      ],
+      "parent": "DCSHR_brake_03_fl_34"
+    },
+    {
+      "name": "Object_72",
+      "vertex_count": 2269,
+      "face_count": 2471,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Hub_190"
+      ],
+      "bbox_min": [
+        -0.971162736415863,
+        -1.8330973386764526,
+        0.09860941767692566
+      ],
+      "bbox_max": [
+        -0.6784796714782715,
+        -1.2723160982131958,
+        0.6593908071517944
+      ],
+      "parent": "DCSHR_rim_fr_35"
+    },
+    {
+      "name": "Object_74",
+      "vertex_count": 224,
+      "face_count": 184,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Disk_173"
+      ],
+      "bbox_min": [
+        -0.8571764230728149,
+        -1.7666164636611938,
+        0.16509029269218445
+      ],
+      "bbox_max": [
+        -0.8094390034675598,
+        -1.3387969732284546,
+        0.5929099321365356
+      ],
+      "parent": "DCSHR_disk_fr_36"
+    },
+    {
+      "name": "Object_76",
+      "vertex_count": 780,
+      "face_count": 1180,
+      "material_names": [
+        "DCSHR_wDodge_ChallengerRTShakerF7_2015_Wheel1A_3D_3DWheel1A_Material1"
+      ],
+      "bbox_min": [
+        -0.9712450504302979,
+        -1.930615782737732,
+        0.00109100341796875
+      ],
+      "bbox_max": [
+        -0.6840189695358276,
+        -1.1747976541519165,
+        0.756909191608429
+      ],
+      "parent": "DCSHR_tire_fr_37"
+    },
+    {
+      "name": "Object_78",
+      "vertex_count": 210,
+      "face_count": 210,
+      "material_names": [
+        "DCSHR_Aluminum"
+      ],
+      "bbox_min": [
+        -0.971162736415863,
+        -1.8204779624938965,
+        0.10732907056808472
+      ],
+      "bbox_max": [
+        -0.9050816297531128,
+        -1.284935474395752,
+        0.6203208565711975
+      ],
+      "parent": "DCSHR_rim2_fr_38"
+    },
+    {
+      "name": "Object_8",
+      "vertex_count": 32,
+      "face_count": 24,
+      "material_names": [
+        "DCSHR_Light"
+      ],
+      "bbox_min": [
+        -0.4981940686702728,
+        2.3506927490234375,
+        0.8145188093185425
+      ],
+      "bbox_max": [
+        0.4981940686702728,
+        2.3748207092285156,
+        0.8508163094520569
+      ],
+      "parent": "DCSHR_reverse_light_2"
+    },
+    {
+      "name": "Object_80",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "Brembo"
+      ],
+      "bbox_min": [
+        -0.9069912433624268,
+        -1.4265257120132446,
+        0.2807283103466034
+      ],
+      "bbox_max": [
+        -0.9060953855514526,
+        -1.3741304874420166,
+        0.387525349855423
+      ],
+      "parent": "DCSHR_brake_01_fr_39"
+    },
+    {
+      "name": "Object_82",
+      "vertex_count": 94,
+      "face_count": 93,
+      "material_names": [
+        "PlasticSmoothBlack"
+      ],
+      "bbox_min": [
+        -0.8970086574554443,
+        -1.4579479694366455,
+        0.23110216856002808
+      ],
+      "bbox_max": [
+        -0.8092180490493774,
+        -1.3338286876678467,
+        0.49342283606529236
+      ],
+      "parent": "DCSHR_brake_02_fr_40"
+    },
+    {
+      "name": "Object_84",
+      "vertex_count": 142,
+      "face_count": 152,
+      "material_names": [
+        "Brake"
+      ],
+      "bbox_min": [
+        -0.9053565263748169,
+        -1.4558491706848145,
+        0.18577826023101807
+      ],
+      "bbox_max": [
+        -0.7681739330291748,
+        -1.3301899433135986,
+        0.4934447705745697
+      ],
+      "parent": "DCSHR_brake_03_fr_41"
+    },
+    {
+      "name": "Object_86",
+      "vertex_count": 2269,
+      "face_count": 2471,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Hub_190"
+      ],
+      "bbox_min": [
+        -0.987479031085968,
+        1.121903419494629,
+        0.11960941553115845
+      ],
+      "bbox_max": [
+        -0.6561188101768494,
+        1.6826846599578857,
+        0.6803907752037048
+      ],
+      "parent": "DCSHR_rim_br_42"
+    },
+    {
+      "name": "Object_88",
+      "vertex_count": 224,
+      "face_count": 184,
+      "material_names": [
+        "DCSHR_dMAT_Tire_Disk_173"
+      ],
+      "bbox_min": [
+        -0.8584298491477966,
+        1.2119699716567993,
+        0.20967605710029602
+      ],
+      "bbox_max": [
+        -0.8043839931488037,
+        1.5926181077957153,
+        0.5903241634368896
+      ],
+      "parent": "DCSHR_disk_br_43"
+    },
+    {
+      "name": "Object_90",
+      "vertex_count": 780,
+      "face_count": 1180,
+      "material_names": [
+        "DCSHR_wDodge_ChallengerRTShakerF7_2015_Wheel1A_3D_3DWheel1A_Material1"
+      ],
+      "bbox_min": [
+        -0.9931142330169678,
+        1.0029468536376953,
+        0.000652998685836792
+      ],
+      "bbox_max": [
+        -0.6558881998062134,
+        1.8016412258148193,
+        0.7993471622467041
+      ],
+      "parent": "DCSHR_tire_br_44"
+    },
+    {
+      "name": "Object_92",
+      "vertex_count": 210,
+      "face_count": 210,
+      "material_names": [
+        "DCSHR_Aluminum"
+      ],
+      "bbox_min": [
+        -0.987479031085968,
+        1.1345226764678955,
+        0.1283290684223175
+      ],
+      "bbox_max": [
+        -0.9126654863357544,
+        1.6700654029846191,
+        0.6413208246231079
+      ],
+      "parent": "DCSHR_rim2_br_45"
+    },
+    {
+      "name": "Object_94",
+      "vertex_count": 94,
+      "face_count": 93,
+      "material_names": [
+        "PlasticSmoothBlack"
+      ],
+      "bbox_min": [
+        -0.8804075121879578,
+        1.5084164142608643,
+        0.2836076617240906
+      ],
+      "bbox_max": [
+        -0.788417637348175,
+        1.6086511611938477,
+        0.5631917715072632
+      ],
+      "parent": "DCSHR_brake_01_br_46"
+    },
+    {
+      "name": "Object_96",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "Brembo"
+      ],
+      "bbox_min": [
+        -0.8908676505088806,
+        1.538771629333496,
+        0.34006279706954956
+      ],
+      "bbox_max": [
+        -0.8899288773536682,
+        1.566230297088623,
+        0.44873592257499695
+      ],
+      "parent": "DCSHR_brake_02_br_47"
+    },
+    {
+      "name": "Object_98",
+      "vertex_count": 142,
+      "face_count": 152,
+      "material_names": [
+        "Brake"
+      ],
+      "bbox_min": [
+        -0.8891546130180359,
+        1.512520670890808,
+        0.23095715045928955
+      ],
+      "bbox_max": [
+        -0.745410144329071,
+        1.6111204624176025,
+        0.5658129453659058
+      ],
+      "parent": "DCSHR_brake_03_br_48"
+    }
+  ],
+  "total_meshes": 55,
+  "carpaint_material_name": "DCSHR_Dark_Green",
+  "carpaint_meshes": [
+    {
+      "name": "Object_16",
+      "vertex_count": 8317,
+      "face_count": 10250,
+      "material_names": ["DCSHR_Dark_Green"],
+      "bbox_min": [-1.0904350280761719, -2.509826183319092, 0.203582301735878],
+      "bbox_max": [1.0904350280761719, 2.513568639755249, 1.4502650499343872],
+      "parent": "DCSHR_body_01_6"
+    },
+    {
+      "name": "Object_30",
+      "vertex_count": 80,
+      "face_count": 88,
+      "material_names": ["DCSHR_Dark_Green"],
+      "bbox_min": [-0.9406967163085938, 1.2959306240081787, 0.9007902145385742],
+      "bbox_max": [0.9406967163085938, 1.59801185131073, 1.0653520822525024],
+      "parent": "DCSHR_body_element_07_14"
+    }
+  ]
+}

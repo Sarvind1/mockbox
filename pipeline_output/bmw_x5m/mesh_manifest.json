@@ -1,0 +1,3069 @@
+{
+  "model_name": "bmw_x5m",
+  "glb_path": "/Users/sarvind/mockbox/public/models/2016_bmw_x5m.glb",
+  "meshes": [
+    {
+      "name": "Object_100",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.005180659703910351,
+        -0.004633792210370302,
+        0.009335944429039955
+      ],
+      "bbox_max": [
+        0.006303709466010332,
+        -0.004331051837652922,
+        0.009736333973705769
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface15_phong9_0_64"
+    },
+    {
+      "name": "Object_103",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.005180659703910351,
+        -0.004755862057209015,
+        0.009384773671627045
+      ],
+      "bbox_max": [
+        0.006289059761911631,
+        -0.004421391990035772,
+        0.009736333973705769
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface16_phong9_0_66"
+    },
+    {
+      "name": "Object_106",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.00519530987367034,
+        -0.004755862057209015,
+        0.009287114255130291
+      ],
+      "bbox_max": [
+        0.006318359635770321,
+        -0.004448242019861937,
+        0.009677734225988388
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface17_phong9_0_68"
+    },
+    {
+      "name": "Object_109",
+      "vertex_count": 3,
+      "face_count": 1,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.00522460974752903,
+        -0.0047216820530593395,
+        0.00926270429044962
+      ],
+      "bbox_max": [
+        0.006318359635770321,
+        -0.004448242019861937,
+        0.009565434418618679
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface18_phong9_0_70"
+    },
+    {
+      "name": "Object_11",
+      "vertex_count": 1442,
+      "face_count": 1440,
+      "material_names": [
+        "tire"
+      ],
+      "bbox_min": [
+        -0.010635939426720142,
+        -0.020237687975168228,
+        -0.002920611295849085
+      ],
+      "bbox_max": [
+        0.010635939426720142,
+        0.020237697288393974,
+        0.00562452245503664
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Tire_High_tire_0_6"
+    },
+    {
+      "name": "Object_112",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.005209959577769041,
+        -0.004619142040610313,
+        0.00926270429044962
+      ],
+      "bbox_max": [
+        0.006318359635770321,
+        -0.004331051837652922,
+        0.009628914296627045
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface19_phong9_0_72"
+    },
+    {
+      "name": "Object_115",
+      "vertex_count": 5,
+      "face_count": 3,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.005180659703910351,
+        -0.004755862057209015,
+        0.00926270429044962
+      ],
+      "bbox_max": [
+        0.005229489877820015,
+        -0.00454834196716547,
+        0.009443364106118679
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface20_phong9_0_74"
+    },
+    {
+      "name": "Object_118",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.006274409592151642,
+        -0.00454102223739028,
+        0.009565434418618679
+      ],
+      "bbox_max": [
+        0.006318359635770321,
+        -0.004331051837652922,
+        0.009736333973705769
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface21_phong9_0_76"
+    },
+    {
+      "name": "Object_121",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0027294899336993694,
+        -0.004506842233240604,
+        0.00958008412271738
+      ],
+      "bbox_max": [
+        0.0027661100029945374,
+        -0.0043627917766571045,
+        0.009726564399898052
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface22_phong9_0_78"
+    },
+    {
+      "name": "Object_124",
+      "vertex_count": 12,
+      "face_count": 10,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0058984397910535336,
+        0.002325440989807248,
+        0.008745123632252216
+      ],
+      "bbox_max": [
+        0.009316409938037395,
+        0.005117191933095455,
+        0.015878917649388313
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface23_phong9_0_80"
+    },
+    {
+      "name": "Object_127",
+      "vertex_count": 12,
+      "face_count": 10,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.006298829801380634,
+        0.011171884834766388,
+        0.009980474598705769
+      ],
+      "bbox_max": [
+        0.009067379869520664,
+        0.012089845724403858,
+        0.015595706179738045
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface24_phong9_0_82"
+    },
+    {
+      "name": "Object_130",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.006157230120152235,
+        0.012626955285668373,
+        0.009746094234287739
+      ],
+      "bbox_max": [
+        0.008842770010232925,
+        0.015830088406801224,
+        0.01570313610136509
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface25_phong9_0_84"
+    },
+    {
+      "name": "Object_133",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.007197269704192877,
+        0.002517091343179345,
+        0.01023438386619091
+      ],
+      "bbox_max": [
+        0.009316409938037395,
+        0.005083012394607067,
+        0.015439456328749657
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface26_phong9_0_86"
+    },
+    {
+      "name": "Object_136",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.007104489486664534,
+        0.011171884834766388,
+        0.010693365707993507
+      ],
+      "bbox_max": [
+        0.009067379869520664,
+        0.012089845724403858,
+        0.015390636399388313
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface27_phong9_0_88"
+    },
+    {
+      "name": "Object_139",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.007041019853204489,
+        0.012753915041685104,
+        0.010878914967179298
+      ],
+      "bbox_max": [
+        0.008842770010232925,
+        0.015830088406801224,
+        0.015322277322411537
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface28_phong9_0_90"
+    },
+    {
+      "name": "Object_14",
+      "vertex_count": 3915,
+      "face_count": 3238,
+      "material_names": [
+        "plastic_S"
+      ],
+      "bbox_min": [
+        -0.011982419528067112,
+        -0.02552735060453415,
+        0.000990600441582501
+      ],
+      "bbox_max": [
+        0.011982419528067112,
+        0.02708985097706318,
+        0.016162117943167686
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Opaque_PlasticSmooth_High_plastic_S_0_8"
+    },
+    {
+      "name": "Object_142",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.00018432999786455184,
+        -0.005283202510327101,
+        0.013613286428153515
+      ],
+      "bbox_max": [
+        0.00025176999042741954,
+        -0.004606931935995817,
+        0.014189455658197403
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface29_phong9_0_92"
+    },
+    {
+      "name": "Object_145",
+      "vertex_count": 12,
+      "face_count": 10,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009316409938037395,
+        0.002325440989807248,
+        0.008745123632252216
+      ],
+      "bbox_max": [
+        -0.0058984397910535336,
+        0.005117191933095455,
+        0.015878917649388313
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface30_phong9_0_94"
+    },
+    {
+      "name": "Object_148",
+      "vertex_count": 12,
+      "face_count": 10,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009067379869520664,
+        0.011171884834766388,
+        0.009980474598705769
+      ],
+      "bbox_max": [
+        -0.006298829801380634,
+        0.012089845724403858,
+        0.015595706179738045
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface31_phong9_0_96"
+    },
+    {
+      "name": "Object_151",
+      "vertex_count": 53,
+      "face_count": 52,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0,
+        -0.025156261399388313,
+        0.007001953199505806
+      ],
+      "bbox_max": [
+        0.009135739877820015,
+        -0.009433594532310963,
+        0.01048828475177288
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface32_phong9_0_98"
+    },
+    {
+      "name": "Object_154",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.007592769805341959,
+        -0.0237109512090683,
+        0.007001953199505806
+      ],
+      "bbox_max": [
+        0.007592769805341959,
+        -0.011396484449505806,
+        0.008823243901133537
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface33_phong9_0_100"
+    },
+    {
+      "name": "Object_157",
+      "vertex_count": 53,
+      "face_count": 52,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009135739877820015,
+        -0.025156261399388313,
+        0.007001953199505806
+      ],
+      "bbox_max": [
+        0.0,
+        -0.009433594532310963,
+        0.01048828475177288
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface34_phong9_0_102"
+    },
+    {
+      "name": "Object_160",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.006733400281518698,
+        -0.019003918394446373,
+        0.007397463079541922
+      ],
+      "bbox_max": [
+        -0.0038940398953855038,
+        -0.018886728212237358,
+        0.008144533261656761
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface35_phong9_0_104"
+    },
+    {
+      "name": "Object_163",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.006733400281518698,
+        -0.019003918394446373,
+        0.008144533261656761
+      ],
+      "bbox_max": [
+        -0.0038940398953855038,
+        -0.01632813736796379,
+        0.008549803867936134
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface36_phong9_0_106"
+    },
+    {
+      "name": "Object_166",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.006733400281518698,
+        -0.01632813736796379,
+        0.007797853089869022
+      ],
+      "bbox_max": [
+        -0.0038940398953855038,
+        -0.016210947185754776,
+        0.008549803867936134
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface37_phong9_0_108"
+    },
+    {
+      "name": "Object_169",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0038940398953855038,
+        -0.019003918394446373,
+        0.007397463079541922
+      ],
+      "bbox_max": [
+        -0.0038940398953855038,
+        -0.016210947185754776,
+        0.008549803867936134
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface38_phong9_0_110"
+    },
+    {
+      "name": "Object_17",
+      "vertex_count": 1879,
+      "face_count": 2398,
+      "material_names": [
+        "pchrome"
+      ],
+      "bbox_min": [
+        -0.010439448989927769,
+        -0.02552735060453415,
+        0.0011328104883432388
+      ],
+      "bbox_max": [
+        0.010439448989927769,
+        0.02673829160630703,
+        0.0076660229824483395
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Opaque_Chrome_High_pchrome_0_10"
+    },
+    {
+      "name": "Object_172",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.006733400281518698,
+        -0.019003918394446373,
+        0.007397463079541922
+      ],
+      "bbox_max": [
+        -0.006733400281518698,
+        -0.016210947185754776,
+        0.008549803867936134
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface39_phong9_0_112"
+    },
+    {
+      "name": "Object_175",
+      "vertex_count": 7,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0035278298892080784,
+        -0.019052738323807716,
+        0.006718752905726433
+      ],
+      "bbox_max": [
+        0.003056640038266778,
+        -0.014833985827863216,
+        0.008608403615653515
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface40_phong9_0_114"
+    },
+    {
+      "name": "Object_178",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0035278298892080784,
+        -0.019052738323807716,
+        0.00800293404608965
+      ],
+      "bbox_max": [
+        0.003056640038266778,
+        -0.015009776689112186,
+        0.008608403615653515
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface41_phong9_0_116"
+    },
+    {
+      "name": "Object_181",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0035278298892080784,
+        -0.015009776689112186,
+        0.007475593592971563
+      ],
+      "bbox_max": [
+        0.003056640038266778,
+        -0.014833985827863216,
+        0.008608403615653515
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface42_phong9_0_118"
+    },
+    {
+      "name": "Object_184",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0035278298892080784,
+        -0.019052738323807716,
+        0.006718752905726433
+      ],
+      "bbox_max": [
+        -0.0035034199245274067,
+        -0.014833985827863216,
+        0.008608403615653515
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface43_phong9_0_120"
+    },
+    {
+      "name": "Object_187",
+      "vertex_count": 28,
+      "face_count": 26,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.004409180022776127,
+        -0.023085949942469597,
+        0.006992192938923836
+      ],
+      "bbox_max": [
+        0.0038867199327796698,
+        -0.018994146957993507,
+        0.008081053383648396
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface44_phong9_0_122"
+    },
+    {
+      "name": "Object_19",
+      "vertex_count": 1064,
+      "face_count": 1554,
+      "material_names": [
+        "plastic_S"
+      ],
+      "bbox_min": [
+        -0.010351560078561306,
+        -0.024609390646219254,
+        0.0013977106427773833
+      ],
+      "bbox_max": [
+        0.010351560078561306,
+        -0.008574224077165127,
+        0.010976565070450306
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Opaque_Chrome_High_plastic_S_0_11"
+    },
+    {
+      "name": "Object_190",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.004973140079528093,
+        -0.01804688759148121,
+        0.008344734087586403
+      ],
+      "bbox_max": [
+        0.006904299836605787,
+        -0.016376957297325134,
+        0.008344734087586403
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface45_phong9_0_124"
+    },
+    {
+      "name": "Object_193",
+      "vertex_count": 27,
+      "face_count": 23,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0016052199061959982,
+        -0.0026709011290222406,
+        0.0019580109510570765
+      ],
+      "bbox_max": [
+        0.007104489486664534,
+        0.00599121255800128,
+        0.011474615894258022
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface46_phong9_0_126"
+    },
+    {
+      "name": "Object_196",
+      "vertex_count": 27,
+      "face_count": 23,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.007104489486664534,
+        -0.0026709011290222406,
+        0.0019580109510570765
+      ],
+      "bbox_max": [
+        -0.0016052199061959982,
+        0.00599121255800128,
+        0.011474615894258022
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface47_phong9_0_128"
+    },
+    {
+      "name": "Object_199",
+      "vertex_count": 12,
+      "face_count": 12,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0017041000537574291,
+        0.002237550914287567,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        0.007006839849054813,
+        0.00599121255800128,
+        0.011474615894258022
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface48_phong9_0_130"
+    },
+    {
+      "name": "Object_202",
+      "vertex_count": 7,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.006220700219273567,
+        -0.0026709011290222406,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        0.0070703099481761456,
+        0.002237550914287567,
+        0.006440433207899332
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface49_phong9_0_132"
+    },
+    {
+      "name": "Object_205",
+      "vertex_count": 9,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0016393999103456736,
+        -0.0026709011290222406,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        0.006411129608750343,
+        0.002237550914287567,
+        0.006440433207899332
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface50_phong9_0_134"
+    },
+    {
+      "name": "Object_208",
+      "vertex_count": 12,
+      "face_count": 12,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.007006839849054813,
+        0.002237550914287567,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        -0.0017041000537574291,
+        0.00599121255800128,
+        0.011474615894258022
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface51_phong9_0_136"
+    },
+    {
+      "name": "Object_21",
+      "vertex_count": 1650,
+      "face_count": 1297,
+      "material_names": [
+        "chassis"
+      ],
+      "bbox_min": [
+        -0.011855470016598701,
+        -0.025429701432585716,
+        2.3382395738735795e-05
+      ],
+      "bbox_max": [
+        0.011855470016598701,
+        0.027050791308283806,
+        0.01584962010383606
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Opaque_Chrome_High_chassis_0_12"
+    },
+    {
+      "name": "Object_211",
+      "vertex_count": 7,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0070703099481761456,
+        -0.0026709011290222406,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        -0.006220700219273567,
+        0.002237550914287567,
+        0.006440433207899332
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface52_phong9_0_138"
+    },
+    {
+      "name": "Object_214",
+      "vertex_count": 9,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.006411129608750343,
+        -0.0026709011290222406,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        -0.0016393999103456736,
+        0.002237550914287567,
+        0.006440433207899332
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface53_phong9_0_140"
+    },
+    {
+      "name": "Object_217",
+      "vertex_count": 9,
+      "face_count": 7,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0010595700005069375,
+        0.013271485455334187,
+        0.011445315554738045
+      ],
+      "bbox_max": [
+        0.0010766600025817752,
+        0.014433596283197403,
+        0.01223633624613285
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface54_phong9_0_142"
+    },
+    {
+      "name": "Object_220",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008842770010232925,
+        0.012626955285668373,
+        0.009746094234287739
+      ],
+      "bbox_max": [
+        -0.006157230120152235,
+        0.015830088406801224,
+        0.01570313610136509
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface55_phong9_0_144"
+    },
+    {
+      "name": "Object_223",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009316409938037395,
+        0.002517091343179345,
+        0.01023438386619091
+      ],
+      "bbox_max": [
+        -0.007197269704192877,
+        0.005083012394607067,
+        0.015439456328749657
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface56_phong9_0_146"
+    },
+    {
+      "name": "Object_226",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009067379869520664,
+        0.011171884834766388,
+        0.010693365707993507
+      ],
+      "bbox_max": [
+        -0.007104489486664534,
+        0.012089845724403858,
+        0.015390636399388313
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface57_phong9_0_148"
+    },
+    {
+      "name": "Object_229",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008842770010232925,
+        0.012753915041685104,
+        0.010878914967179298
+      ],
+      "bbox_max": [
+        -0.007041019853204489,
+        0.015830088406801224,
+        0.015322277322411537
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface58_phong9_0_150"
+    },
+    {
+      "name": "Object_232",
+      "vertex_count": 21,
+      "face_count": 19,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008583979681134224,
+        0.01036133524030447,
+        0.002280270913615823
+      ],
+      "bbox_max": [
+        0.0,
+        0.025683600455522537,
+        0.012021484784781933
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface59_phong9_0_152"
+    },
+    {
+      "name": "Object_235",
+      "vertex_count": 5,
+      "face_count": 3,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008598629385232925,
+        -0.007856453768908978,
+        0.0020459007937461138
+      ],
+      "bbox_max": [
+        0.0,
+        0.01036133524030447,
+        0.002280270913615823
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface60_phong9_0_154"
+    },
+    {
+      "name": "Object_238",
+      "vertex_count": 21,
+      "face_count": 19,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0,
+        0.01036133524030447,
+        0.002280270913615823
+      ],
+      "bbox_max": [
+        0.008583979681134224,
+        0.025683600455522537,
+        0.012021484784781933
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface61_phong9_0_156"
+    },
+    {
+      "name": "Object_24",
+      "vertex_count": 1515,
+      "face_count": 1768,
+      "material_names": [
+        "glass"
+      ],
+      "bbox_min": [
+        -0.011982419528067112,
+        -0.02462892234325409,
+        0.004162601660937071
+      ],
+      "bbox_max": [
+        0.011982419528067112,
+        0.026464851573109627,
+        0.01558594685047865
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_GlassLights_High_glass_0_14"
+    },
+    {
+      "name": "Object_241",
+      "vertex_count": 5,
+      "face_count": 3,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0,
+        -0.007856453768908978,
+        0.0020459007937461138
+      ],
+      "bbox_max": [
+        0.008598629385232925,
+        0.01036133524030447,
+        0.002280270913615823
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface62_phong9_0_158"
+    },
+    {
+      "name": "Object_244",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.001743159955367446,
+        -0.005288092419505119,
+        0.005029302090406418
+      ],
+      "bbox_max": [
+        0.0018066399497911334,
+        0.002324220957234502,
+        0.006484382785856724
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface63_phong9_0_160"
+    },
+    {
+      "name": "Object_247",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0013952598674222827,
+        -0.00512207206338644,
+        0.006010742392390966
+      ],
+      "bbox_max": [
+        0.0014050300233066082,
+        -0.0018847708124667406,
+        0.006684572901576757
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface64_phong9_0_162"
+    },
+    {
+      "name": "Object_250",
+      "vertex_count": 12,
+      "face_count": 10,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.001772459945641458,
+        -0.000742190342862159,
+        0.004360352177172899
+      ],
+      "bbox_max": [
+        0.001772459945641458,
+        0.0031689514871686697,
+        0.006494143046438694
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface65_phong9_0_164"
+    },
+    {
+      "name": "Object_253",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0071679698303341866,
+        0.01107422448694706,
+        0.004326172173023224
+      ],
+      "bbox_max": [
+        0.008066409267485142,
+        0.014501956291496754,
+        0.011435555294156075
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface66_phong9_0_166"
+    },
+    {
+      "name": "Object_256",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008066409267485142,
+        0.00643555261194706,
+        0.001586910686455667
+      ],
+      "bbox_max": [
+        0.008066409267485142,
+        0.01162109524011612,
+        0.005117191933095455
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface67_phong9_0_168"
+    },
+    {
+      "name": "Object_259",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008066409267485142,
+        0.01107422448694706,
+        0.004326172173023224
+      ],
+      "bbox_max": [
+        -0.0071679698303341866,
+        0.014501956291496754,
+        0.011435555294156075
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface68_phong9_0_170"
+    },
+    {
+      "name": "Object_26",
+      "vertex_count": 63,
+      "face_count": 64,
+      "material_names": [
+        "car_bmw_x5m_2014_Meshblack_glass"
+      ],
+      "bbox_min": [
+        -0.004785160068422556,
+        -0.0006063802866265178,
+        0.01577148586511612
+      ],
+      "bbox_max": [
+        0.004785160068422556,
+        0.010771484114229679,
+        0.016406256705522537
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_GlassLights_High_car_bmw_x5m_2014_Mesh:black_glass_0_15"
+    },
+    {
+      "name": "Object_262",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.007822269573807716,
+        0.01107422448694706,
+        0.0046606422401964664
+      ],
+      "bbox_max": [
+        0.007822269573807716,
+        0.014501956291496754,
+        0.011435555294156075
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface69_phong9_0_172"
+    },
+    {
+      "name": "Object_265",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0071679698303341866,
+        0.00643555261194706,
+        0.0046606422401964664
+      ],
+      "bbox_max": [
+        0.0071679698303341866,
+        0.01107422448694706,
+        0.005117191933095455
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface70_phong9_0_174"
+    },
+    {
+      "name": "Object_268",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008598629385232925,
+        -0.007856453768908978,
+        0.0019177208887413144
+      ],
+      "bbox_max": [
+        -0.001728519913740456,
+        0.0023278810549527407,
+        0.006699223071336746
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface71_phong9_0_176"
+    },
+    {
+      "name": "Object_271",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.001743159955367446,
+        -0.00819824356585741,
+        0.0019177208887413144
+      ],
+      "bbox_max": [
+        0.008598629385232925,
+        0.0023278810549527407,
+        0.006679692771285772
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface72_phong9_0_178"
+    },
+    {
+      "name": "Object_274",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.001750490046106279,
+        0.002324220957234502,
+        0.001923830946907401
+      ],
+      "bbox_max": [
+        0.001750490046106279,
+        0.0023278810549527407,
+        0.005029302090406418
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface73_phong9_0_180"
+    },
+    {
+      "name": "Object_277",
+      "vertex_count": 20,
+      "face_count": 18,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008256839588284492,
+        0.0028271512128412724,
+        0.0018371607875451446
+      ],
+      "bbox_max": [
+        0.01044921949505806,
+        0.003349611535668373,
+        0.010292974300682545
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface74_phong9_0_182"
+    },
+    {
+      "name": "Object_28",
+      "vertex_count": 88,
+      "face_count": 82,
+      "material_names": [
+        "red_glas"
+      ],
+      "bbox_min": [
+        -0.009013669565320015,
+        0.02458984963595867,
+        0.0030810513999313116
+      ],
+      "bbox_max": [
+        0.009013669565320015,
+        0.02482423186302185,
+        0.00499268202111125
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_GlassLights_High_red_glas_0_16"
+    },
+    {
+      "name": "Object_280",
+      "vertex_count": 19,
+      "face_count": 17,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008256839588284492,
+        -0.009311524219810963,
+        0.0015417506219819188
+      ],
+      "bbox_max": [
+        0.01028319913893938,
+        -0.008159183897078037,
+        0.010087894275784492
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface75_phong9_0_184"
+    },
+    {
+      "name": "Object_283",
+      "vertex_count": 16,
+      "face_count": 15,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008256839588284492,
+        -0.009199224412441254,
+        0.0015417506219819188
+      ],
+      "bbox_max": [
+        0.009897459298372269,
+        0.003349611535668373,
+        0.010292974300682545
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface76_phong9_0_186"
+    },
+    {
+      "name": "Object_286",
+      "vertex_count": 20,
+      "face_count": 18,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.01044921949505806,
+        0.0028271512128412724,
+        0.0018371607875451446
+      ],
+      "bbox_max": [
+        -0.008256839588284492,
+        0.003349611535668373,
+        0.010292974300682545
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface77_phong9_0_188"
+    },
+    {
+      "name": "Object_289",
+      "vertex_count": 19,
+      "face_count": 17,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.01028319913893938,
+        -0.009311524219810963,
+        0.0015417506219819188
+      ],
+      "bbox_max": [
+        -0.008256839588284492,
+        -0.008159183897078037,
+        0.010087894275784492
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface78_phong9_0_190"
+    },
+    {
+      "name": "Object_292",
+      "vertex_count": 16,
+      "face_count": 15,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009897459298372269,
+        -0.009199224412441254,
+        0.0015417506219819188
+      ],
+      "bbox_max": [
+        -0.008256839588284492,
+        0.003349611535668373,
+        0.010292974300682545
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface79_phong9_0_192"
+    },
+    {
+      "name": "Object_295",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008217769674956799,
+        0.014736336655914783,
+        0.006748052779585123
+      ],
+      "bbox_max": [
+        0.010468749329447746,
+        0.0157910268753767,
+        0.010898444801568985
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface80_phong9_0_194"
+    },
+    {
+      "name": "Object_298",
+      "vertex_count": 18,
+      "face_count": 16,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008237299509346485,
+        0.010683595202863216,
+        0.0019543508533388376
+      ],
+      "bbox_max": [
+        0.010488280095160007,
+        0.014736336655914783,
+        0.006748052779585123
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface81_phong9_0_196"
+    },
+    {
+      "name": "Object_301",
+      "vertex_count": 15,
+      "face_count": 13,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.00822754018008709,
+        0.0028515614103525877,
+        0.0018432607175782323
+      ],
+      "bbox_max": [
+        0.010439448989927769,
+        0.0034033216070383787,
+        0.010292974300682545
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface82_phong9_0_198"
+    },
+    {
+      "name": "Object_304",
+      "vertex_count": 15,
+      "face_count": 13,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008217769674956799,
+        0.0029785213991999626,
+        0.0018432607175782323
+      ],
+      "bbox_max": [
+        0.010205080732703209,
+        0.015732426196336746,
+        0.010898444801568985
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface83_phong9_0_200"
+    },
+    {
+      "name": "Object_307",
+      "vertex_count": 22,
+      "face_count": 29,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0010772700188681483,
+        0.013271485455334187,
+        0.011347664520144463
+      ],
+      "bbox_max": [
+        0.0010986299021169543,
+        0.014707036316394806,
+        0.01223633624613285
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface84_phong9_0_202"
+    },
+    {
+      "name": "Object_31",
+      "vertex_count": 194,
+      "face_count": 170,
+      "material_names": [
+        "car_bmw_x5m_2014_MeshBadges"
+      ],
+      "bbox_min": [
+        -0.010419919155538082,
+        -0.02554689161479473,
+        0.0009397703688591719
+      ],
+      "bbox_max": [
+        0.010419919155538082,
+        0.027246100828051567,
+        0.01065430510789156
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Badges_High_car_bmw_x5m_2014_Mesh:Badges_0_18"
+    },
+    {
+      "name": "Object_310",
+      "vertex_count": 22,
+      "face_count": 29,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.00543456943705678,
+        0.013310556299984455,
+        0.01137695461511612
+      ],
+      "bbox_max": [
+        -0.00286864978261292,
+        0.01468750648200512,
+        0.01264648512005806
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface85_phong9_0_204"
+    },
+    {
+      "name": "Object_313",
+      "vertex_count": 9,
+      "face_count": 7,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.005415040068328381,
+        0.013310556299984455,
+        0.011406254954636097
+      ],
+      "bbox_max": [
+        -0.0028930699918419123,
+        0.014316416345536709,
+        0.01264648512005806
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface86_phong9_0_206"
+    },
+    {
+      "name": "Object_316",
+      "vertex_count": 22,
+      "face_count": 29,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.00286864978261292,
+        0.013310556299984455,
+        0.01137695461511612
+      ],
+      "bbox_max": [
+        0.00543456943705678,
+        0.01468750648200512,
+        0.01264648512005806
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface87_phong9_0_208"
+    },
+    {
+      "name": "Object_319",
+      "vertex_count": 9,
+      "face_count": 7,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0028930699918419123,
+        0.013310556299984455,
+        0.011406254954636097
+      ],
+      "bbox_max": [
+        0.005415040068328381,
+        0.014316416345536709,
+        0.01264648512005806
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface88_phong9_0_210"
+    },
+    {
+      "name": "Object_322",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008603519760072231,
+        -0.009179693646728992,
+        0.009746094234287739
+      ],
+      "bbox_max": [
+        0.009355469606816769,
+        -0.005317382048815489,
+        0.012187505140900612
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface89_phong9_0_212"
+    },
+    {
+      "name": "Object_325",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009355469606816769,
+        -0.009179693646728992,
+        0.009746094234287739
+      ],
+      "bbox_max": [
+        -0.008603519760072231,
+        -0.005317382048815489,
+        0.012187505140900612
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface90_phong9_0_214"
+    },
+    {
+      "name": "Object_328",
+      "vertex_count": 15,
+      "face_count": 16,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.006806639954447746,
+        -0.006450202781707048,
+        0.009418954141438007
+      ],
+      "bbox_max": [
+        0.0029443399980664253,
+        -0.004821782000362873,
+        0.010136724449694157
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface91_phong9_0_216"
+    },
+    {
+      "name": "Object_331",
+      "vertex_count": 22,
+      "face_count": 24,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008325199596583843,
+        -0.00617188261821866,
+        0.008657233789563179
+      ],
+      "bbox_max": [
+        0.0030664100777357817,
+        -0.004653322044759989,
+        0.01006836537271738
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface92_phong9_0_218"
+    },
+    {
+      "name": "Object_334",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008325199596583843,
+        -0.007368163205683231,
+        0.010000004433095455
+      ],
+      "bbox_max": [
+        -0.008032229728996754,
+        -0.006064452696591616,
+        0.010253914631903172
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface93_phong9_0_220"
+    },
+    {
+      "name": "Object_337",
+      "vertex_count": 27,
+      "face_count": 26,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.002257079817354679,
+        -0.006396483164280653,
+        0.009653324261307716
+      ],
+      "bbox_max": [
+        0.006225590128451586,
+        -0.004990232177078724,
+        0.011552734300494194
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface94_phong9_0_222"
+    },
+    {
+      "name": "Object_34",
+      "vertex_count": 1251,
+      "face_count": 1024,
+      "material_names": [
+        "car_bmw_x5m_2014_Meshdisk"
+      ],
+      "bbox_min": [
+        -0.009167429991066456,
+        -0.01836024783551693,
+        -0.0010161004029214382
+      ],
+      "bbox_max": [
+        0.009167429991066456,
+        0.01833461783826351,
+        0.0037251117173582315
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_BrakeDisc_High_car_bmw_x5m_2014_Mesh:disk_0_20"
+    },
+    {
+      "name": "Object_340",
+      "vertex_count": 28,
+      "face_count": 34,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0017590300412848592,
+        -0.0067871129140257835,
+        0.009521484375
+      ],
+      "bbox_max": [
+        0.006684569641947746,
+        -0.00520508224144578,
+        0.011191414669156075
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface95_phong9_0_224"
+    },
+    {
+      "name": "Object_343",
+      "vertex_count": 47,
+      "face_count": 57,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008032229728996754,
+        -0.0067871129140257835,
+        0.009819344617426395
+      ],
+      "bbox_max": [
+        0.008032229728996754,
+        -0.004921882413327694,
+        0.011796885170042515
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface96_phong9_0_226"
+    },
+    {
+      "name": "Object_346",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.010468749329447746,
+        0.014736336655914783,
+        0.006748052779585123
+      ],
+      "bbox_max": [
+        -0.008217769674956799,
+        0.0157910268753767,
+        0.010898444801568985
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface97_phong9_0_228"
+    },
+    {
+      "name": "Object_349",
+      "vertex_count": 18,
+      "face_count": 16,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.010488280095160007,
+        0.010683595202863216,
+        0.0019543508533388376
+      ],
+      "bbox_max": [
+        -0.008237299509346485,
+        0.014736336655914783,
+        0.006748052779585123
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface98_phong9_0_230"
+    },
+    {
+      "name": "Object_352",
+      "vertex_count": 15,
+      "face_count": 13,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.010439448989927769,
+        0.0028515614103525877,
+        0.0018432607175782323
+      ],
+      "bbox_max": [
+        -0.00822754018008709,
+        0.0034033216070383787,
+        0.010292974300682545
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface99_phong9_0_232"
+    },
+    {
+      "name": "Object_355",
+      "vertex_count": 15,
+      "face_count": 13,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.010205080732703209,
+        0.0029785213991999626,
+        0.0018432607175782323
+      ],
+      "bbox_max": [
+        -0.008217769674956799,
+        0.015732426196336746,
+        0.010898444801568985
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface100_phong9_0_234"
+    },
+    {
+      "name": "Object_358",
+      "vertex_count": 12,
+      "face_count": 10,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0038085898850113153,
+        -0.0036645515356212854,
+        0.009121093899011612
+      ],
+      "bbox_max": [
+        0.00519530987367034,
+        -0.0032373012509196997,
+        0.010439454577863216
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface101_phong9_0_236"
+    },
+    {
+      "name": "Object_361",
+      "vertex_count": 8,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.006347659509629011,
+        0.0019104008097201586,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        0.0070703099481761456,
+        0.00398193160071969,
+        0.009799804538488388
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface102_phong9_0_238"
+    },
+    {
+      "name": "Object_364",
+      "vertex_count": 8,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0016393999103456736,
+        0.0019104008097201586,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        0.0023644999600946903,
+        0.00398193160071969,
+        0.009799804538488388
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface103_phong9_0_240"
+    },
+    {
+      "name": "Object_367",
+      "vertex_count": 8,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0070703099481761456,
+        0.0019104008097201586,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        -0.006347659509629011,
+        0.00398193160071969,
+        0.009799804538488388
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface104_phong9_0_242"
+    },
+    {
+      "name": "Object_37",
+      "vertex_count": 711,
+      "face_count": 592,
+      "material_names": [
+        "car_bmw_x5m_2014_Meshcaliper"
+      ],
+      "bbox_min": [
+        -0.009483600035309792,
+        -0.014565086923539639,
+        -0.0005317002069205046
+      ],
+      "bbox_max": [
+        0.009483600035309792,
+        0.01864345744252205,
+        0.003191451309248805
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Caliper_High_car_bmw_x5m_2014_Mesh:caliper_0_22"
+    },
+    {
+      "name": "Object_370",
+      "vertex_count": 8,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0023644999600946903,
+        0.0019104008097201586,
+        0.005136722233146429
+      ],
+      "bbox_max": [
+        -0.0016393999103456736,
+        0.00398193160071969,
+        0.009799804538488388
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface105_phong9_0_244"
+    },
+    {
+      "name": "Object_373",
+      "vertex_count": 18,
+      "face_count": 18,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0011718799360096455,
+        -0.004648441914469004,
+        0.013330086134374142
+      ],
+      "bbox_max": [
+        0.0011718799360096455,
+        -0.0045385719276964664,
+        0.013925786130130291
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface106_phong9_0_246"
+    },
+    {
+      "name": "Object_376",
+      "vertex_count": 21,
+      "face_count": 28,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0011718799360096455,
+        -0.004731452092528343,
+        0.013330086134374142
+      ],
+      "bbox_max": [
+        0.0011718799360096455,
+        -0.0045385719276964664,
+        0.013935556635260582
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface107_phong9_0_248"
+    },
+    {
+      "name": "Object_379",
+      "vertex_count": 62,
+      "face_count": 103,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.002709959866479039,
+        -0.004299321677535772,
+        0.00813965406268835
+      ],
+      "bbox_max": [
+        0.006269529927521944,
+        -0.00329834152944386,
+        0.010136724449694157
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface108_phong9_0_250"
+    },
+    {
+      "name": "Object_382",
+      "vertex_count": 24,
+      "face_count": 24,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0038085898850113153,
+        -0.00403564190492034,
+        0.008999023586511612
+      ],
+      "bbox_max": [
+        0.00519530987367034,
+        -0.0032373012509196997,
+        0.010439454577863216
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface109_phong9_0_252"
+    },
+    {
+      "name": "Object_385",
+      "vertex_count": 62,
+      "face_count": 85,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008046879433095455,
+        -0.009350594133138657,
+        0.01006836537271738
+      ],
+      "bbox_max": [
+        0.008046879433095455,
+        -0.004982911981642246,
+        0.011796885170042515
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface110_phong9_0_254"
+    },
+    {
+      "name": "Object_388",
+      "vertex_count": 24,
+      "face_count": 22,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.007578129414469004,
+        -0.010400393977761269,
+        0.010478525422513485
+      ],
+      "bbox_max": [
+        0.007578129414469004,
+        -0.007309572771191597,
+        0.011279305443167686
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface111_phong9_0_256"
+    },
+    {
+      "name": "Object_391",
+      "vertex_count": 7,
+      "face_count": 5,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008325199596583843,
+        -0.007602543570101261,
+        0.00626465305685997
+      ],
+      "bbox_max": [
+        -0.007875979878008366,
+        -0.005288092419505119,
+        0.01018555462360382
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface112_phong9_0_258"
+    },
+    {
+      "name": "Object_394",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.007983400486409664,
+        -0.007602543570101261,
+        0.00626465305685997
+      ],
+      "bbox_max": [
+        0.008325199596583843,
+        -0.005346682853996754,
+        0.01018555462360382
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface113_phong9_0_260"
+    },
+    {
+      "name": "Object_397",
+      "vertex_count": 9,
+      "face_count": 7,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0024230999406427145,
+        -0.006396483164280653,
+        0.009653324261307716
+      ],
+      "bbox_max": [
+        0.006059569772332907,
+        -0.006064452696591616,
+        0.01115234475582838
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface114_phong9_0_262"
+    },
+    {
+      "name": "Object_40",
+      "vertex_count": 487,
+      "face_count": 421,
+      "material_names": [
+        "chassis"
+      ],
+      "bbox_min": [
+        -0.010429689660668373,
+        -0.025429701432585716,
+        -0.00026627012994140387
+      ],
+      "bbox_max": [
+        0.010429689660668373,
+        0.02673829160630703,
+        0.007304693106561899
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Chassis_High_chassis_0_24"
+    },
+    {
+      "name": "Object_400",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0016052199061959982,
+        -0.006259772460907698,
+        0.009843754582107067
+      ],
+      "bbox_max": [
+        0.0015185499796643853,
+        -0.00556641211733222,
+        0.01090820413082838
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface115_phong9_0_264"
+    },
+    {
+      "name": "Object_403",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0016052199061959982,
+        -0.00615234300494194,
+        0.009843754582107067
+      ],
+      "bbox_max": [
+        -0.0015136698493734002,
+        -0.00556641211733222,
+        0.010898444801568985
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface116_phong9_0_266"
+    },
+    {
+      "name": "Object_406",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0015136698493734002,
+        -0.006484382785856724,
+        0.010820315219461918
+      ],
+      "bbox_max": [
+        0.0013647499727085233,
+        -0.005922852549701929,
+        0.01090820413082838
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface117_phong9_0_268"
+    },
+    {
+      "name": "Object_409",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.001363529940135777,
+        -0.006484382785856724,
+        0.009843754582107067
+      ],
+      "bbox_max": [
+        0.0015185499796643853,
+        -0.005922852549701929,
+        0.010820315219461918
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface118_phong9_0_270"
+    },
+    {
+      "name": "Object_412",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.0016052199061959982,
+        -0.006484382785856724,
+        0.009843754582107067
+      ],
+      "bbox_max": [
+        0.0015185499796643853,
+        -0.006005862727761269,
+        0.01090820413082838
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface119_phong9_0_272"
+    },
+    {
+      "name": "Object_415",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0007745400071144104,
+        -0.006674802862107754,
+        0.007094733417034149
+      ],
+      "bbox_max": [
+        0.007949220016598701,
+        -0.005346682853996754,
+        0.009667973965406418
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface120_phong9_0_274"
+    },
+    {
+      "name": "Object_418",
+      "vertex_count": 13,
+      "face_count": 12,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0063085900619626045,
+        -0.006254882551729679,
+        0.00880371406674385
+      ],
+      "bbox_max": [
+        0.008325199596583843,
+        -0.00497314240783453,
+        0.010107424110174179
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface121_phong9_0_276"
+    },
+    {
+      "name": "Object_421",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008032229728996754,
+        -0.007368163205683231,
+        0.010000004433095455
+      ],
+      "bbox_max": [
+        0.008325199596583843,
+        -0.006064452696591616,
+        0.010253914631903172
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface122_phong9_0_278"
+    },
+    {
+      "name": "Object_424",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.00543456943705678,
+        -0.006254882551729679,
+        0.009423834271728992
+      ],
+      "bbox_max": [
+        0.006708980072289705,
+        -0.00520508224144578,
+        0.010107424110174179
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface123_phong9_0_280"
+    },
+    {
+      "name": "Object_427",
+      "vertex_count": 6,
+      "face_count": 4,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.005454099737107754,
+        -0.0052294922061264515,
+        0.00884766411036253
+      ],
+      "bbox_max": [
+        0.006484379526227713,
+        -0.00497314240783453,
+        0.009448244236409664
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface124_phong9_0_282"
+    },
+    {
+      "name": "Object_43",
+      "vertex_count": 116,
+      "face_count": 104,
+      "material_names": [
+        "grille"
+      ],
+      "bbox_min": [
+        -0.00949218962341547,
+        -0.02525392174720764,
+        0.001041870447807014
+      ],
+      "bbox_max": [
+        0.00949218962341547,
+        0.027050791308283806,
+        0.004731452092528343
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Grille_A_High_grille_0_26"
+    },
+    {
+      "name": "Object_430",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.005483400076627731,
+        -0.005581052508205175,
+        0.008759773336350918
+      ],
+      "bbox_max": [
+        0.0063085900619626045,
+        -0.00497314240783453,
+        0.008891603909432888
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface125_phong9_0_284"
+    },
+    {
+      "name": "Object_433",
+      "vertex_count": 10,
+      "face_count": 10,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.006176759954541922,
+        -0.0067871129140257835,
+        0.009682624600827694
+      ],
+      "bbox_max": [
+        0.0022888199891895056,
+        -0.00523438211530447,
+        0.010263673961162567
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface126_phong9_0_286"
+    },
+    {
+      "name": "Object_436",
+      "vertex_count": 18,
+      "face_count": 20,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.008041989989578724,
+        -0.0069628930650651455,
+        0.006318362895399332
+      ],
+      "bbox_max": [
+        0.008149409666657448,
+        -0.004438482224941254,
+        0.008950203657150269
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface127_phong9_0_288"
+    },
+    {
+      "name": "Object_439",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.001724849920719862,
+        -0.005771482829004526,
+        0.007216803263872862
+      ],
+      "bbox_max": [
+        0.0018579099560156465,
+        -0.004438482224941254,
+        0.008740234188735485
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface128_phong9_0_290"
+    },
+    {
+      "name": "Object_442",
+      "vertex_count": 29,
+      "face_count": 27,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.010488280095160007,
+        0.01036133524030447,
+        0.001978761050850153
+      ],
+      "bbox_max": [
+        -0.007822269573807716,
+        0.015820316970348358,
+        0.011406254954636097
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface129_phong9_0_292"
+    },
+    {
+      "name": "Object_445",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.010205080732703209,
+        -0.008813483640551567,
+        0.0015295406337827444
+      ],
+      "bbox_max": [
+        -0.008574219420552254,
+        0.010722664184868336,
+        0.002280270913615823
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface130_phong9_0_294"
+    },
+    {
+      "name": "Object_448",
+      "vertex_count": 25,
+      "face_count": 23,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.010302728973329067,
+        -0.009326173923909664,
+        0.0015295406337827444
+      ],
+      "bbox_max": [
+        -0.008276370353996754,
+        -0.007338873576372862,
+        0.010732424445450306
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface131_phong9_0_296"
+    },
+    {
+      "name": "Object_451",
+      "vertex_count": 12,
+      "face_count": 12,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.004973140079528093,
+        -0.01804688759148121,
+        0.00705078337341547
+      ],
+      "bbox_max": [
+        0.006904299836605787,
+        -0.016376957297325134,
+        0.008344734087586403
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface132_phong9_0_298"
+    },
+    {
+      "name": "Object_454",
+      "vertex_count": 43,
+      "face_count": 82,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.002880859887227416,
+        0.004438482224941254,
+        0.011298835277557373
+      ],
+      "bbox_max": [
+        0.005839840043336153,
+        0.0061767627485096455,
+        0.013652346096932888
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface133_phong9_0_300"
+    },
+    {
+      "name": "Object_457",
+      "vertex_count": 43,
+      "face_count": 82,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.005839840043336153,
+        0.004438482224941254,
+        0.011298835277557373
+      ],
+      "bbox_max": [
+        -0.002880859887227416,
+        0.0061767627485096455,
+        0.013652346096932888
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface134_phong9_0_302"
+    },
+    {
+      "name": "Object_46",
+      "vertex_count": 3641,
+      "face_count": 3548,
+      "material_names": [
+        "lights"
+      ],
+      "bbox_min": [
+        -0.011972659267485142,
+        -0.02462892234325409,
+        0.002998051233589649
+      ],
+      "bbox_max": [
+        0.011972659267485142,
+        0.026406262069940567,
+        0.015000006183981895
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_LightCluster_High_lights_0_28"
+    },
+    {
+      "name": "Object_460",
+      "vertex_count": 88,
+      "face_count": 176,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.002534179948270321,
+        -0.004592292010784149,
+        0.007910163141787052
+      ],
+      "bbox_max": [
+        0.006450199987739325,
+        -0.0032177711836993694,
+        0.011650394648313522
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface135_phong9_0_304"
+    },
+    {
+      "name": "Object_463",
+      "vertex_count": 29,
+      "face_count": 27,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.007822269573807716,
+        0.01036133524030447,
+        0.001978761050850153
+      ],
+      "bbox_max": [
+        0.010488280095160007,
+        0.015820316970348358,
+        0.011406254954636097
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface136_phong9_0_306"
+    },
+    {
+      "name": "Object_466",
+      "vertex_count": 10,
+      "face_count": 8,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008574219420552254,
+        -0.008813483640551567,
+        0.0015295406337827444
+      ],
+      "bbox_max": [
+        0.010205080732703209,
+        0.010722664184868336,
+        0.002280270913615823
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface137_phong9_0_308"
+    },
+    {
+      "name": "Object_469",
+      "vertex_count": 25,
+      "face_count": 23,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.008276370353996754,
+        -0.009326173923909664,
+        0.0015295406337827444
+      ],
+      "bbox_max": [
+        0.010302728973329067,
+        -0.007338873576372862,
+        0.010732424445450306
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface138_phong9_0_310"
+    },
+    {
+      "name": "Object_472",
+      "vertex_count": 29,
+      "face_count": 27,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0,
+        0.01036133524030447,
+        0.002280270913615823
+      ],
+      "bbox_max": [
+        0.007822269573807716,
+        0.026464851573109627,
+        0.011406254954636097
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface139_phong9_0_312"
+    },
+    {
+      "name": "Object_475",
+      "vertex_count": 19,
+      "face_count": 17,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.004587399773299694,
+        0.013486336916685104,
+        0.01071289461106062
+      ],
+      "bbox_max": [
+        0.00895019993185997,
+        0.023339848965406418,
+        0.015400396659970284
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface140_phong9_0_314"
+    },
+    {
+      "name": "Object_478",
+      "vertex_count": 368,
+      "face_count": 368,
+      "material_names": [
+        "glass_surr"
+      ],
+      "bbox_min": [
+        -0.01177733950316906,
+        -0.011689454317092896,
+        0.009916993789374828
+      ],
+      "bbox_max": [
+        0.01177733950316906,
+        0.026132822036743164,
+        0.016406256705522537
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_GlassSurround_High_glass_surr_0_316"
+    },
+    {
+      "name": "Object_481",
+      "vertex_count": 195,
+      "face_count": 240,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.009125979617238045,
+        -0.008872074075043201,
+        0.01018555462360382
+      ],
+      "bbox_max": [
+        0.009125979617238045,
+        0.01940430887043476,
+        0.015962697565555573
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface141_phong9_0_318"
+    },
+    {
+      "name": "Object_49",
+      "vertex_count": 12368,
+      "face_count": 15303,
+      "material_names": [
+        "carpaint"
+      ],
+      "bbox_min": [
+        -0.011972659267485142,
+        -0.025722673162817955,
+        2.3380011043627746e-05
+      ],
+      "bbox_max": [
+        0.011972659267485142,
+        0.027441423386335373,
+        0.016767587512731552
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Paint_Metal_High_carpaint_0_30"
+    },
+    {
+      "name": "Object_51",
+      "vertex_count": 104,
+      "face_count": 52,
+      "material_names": [
+        "plastic_S"
+      ],
+      "bbox_min": [
+        -0.004785160068422556,
+        -0.0006640602368861437,
+        0.015183544717729092
+      ],
+      "bbox_max": [
+        0.004785160068422556,
+        0.010830085724592209,
+        0.016337895765900612
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Paint_Metal_High_plastic_S_0_31"
+    },
+    {
+      "name": "Object_54",
+      "vertex_count": 8615,
+      "face_count": 8780,
+      "material_names": [
+        "car_bmw_x5m_2014_Meshrim"
+      ],
+      "bbox_min": [
+        -0.010530960746109486,
+        -0.019187888130545616,
+        -0.0018659208435565233
+      ],
+      "bbox_max": [
+        0.010530960746109486,
+        0.019187888130545616,
+        0.004569842014461756
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Rim_High_car_bmw_x5m_2014_Mesh:rim_0_33"
+    },
+    {
+      "name": "Object_57",
+      "vertex_count": 207,
+      "face_count": 144,
+      "material_names": [
+        "plastic_S"
+      ],
+      "bbox_min": [
+        -0.0015405300073325634,
+        0.025917982682585716,
+        0.0077587938867509365
+      ],
+      "bbox_max": [
+        0.0015405300073325634,
+        0.02630859985947609,
+        0.009121093899011612
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_LicensePlate_High_plastic_S_0_35"
+    },
+    {
+      "name": "Object_61",
+      "vertex_count": 29,
+      "face_count": 27,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.007822269573807716,
+        0.01036133524030447,
+        0.002280270913615823
+      ],
+      "bbox_max": [
+        0.0,
+        0.026464851573109627,
+        0.011406254954636097
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface2_phong9_0_38"
+    },
+    {
+      "name": "Object_64",
+      "vertex_count": 19,
+      "face_count": 17,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.00895019993185997,
+        0.013486336916685104,
+        0.01071289461106062
+      ],
+      "bbox_max": [
+        -0.004587399773299694,
+        0.023339848965406418,
+        0.015400396659970284
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface3_phong9_0_40"
+    },
+    {
+      "name": "Object_67",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        -0.007822269573807716,
+        0.01036133524030447,
+        0.002280270913615823
+      ],
+      "bbox_max": [
+        0.007822269573807716,
+        0.014501956291496754,
+        0.011406254954636097
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface4_phong9_0_42"
+    },
+    {
+      "name": "Object_70",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.004975589923560619,
+        -0.006044922862201929,
+        0.008505864068865776
+      ],
+      "bbox_max": [
+        0.00525390962138772,
+        -0.0039184619672596455,
+        0.00987793505191803
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface5_phong9_0_44"
+    },
+    {
+      "name": "Object_73",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0036352500319480896,
+        -0.006044922862201929,
+        0.008505864068865776
+      ],
+      "bbox_max": [
+        0.00391356972977519,
+        -0.0039184619672596455,
+        0.00987793505191803
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface6_phong9_0_46"
+    },
+    {
+      "name": "Object_76",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0036498999688774347,
+        -0.0058349622413516045,
+        0.008505864068865776
+      ],
+      "bbox_max": [
+        0.005239259917289019,
+        -0.0039184619672596455,
+        0.009077154099941254
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface7_phong9_0_48"
+    },
+    {
+      "name": "Object_79",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0036352500319480896,
+        -0.006044922862201929,
+        0.009438483975827694
+      ],
+      "bbox_max": [
+        0.00525390962138772,
+        -0.00412354152649641,
+        0.00987793505191803
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface8_phong9_0_50"
+    },
+    {
+      "name": "Object_8",
+      "vertex_count": 283,
+      "face_count": 262,
+      "material_names": [
+        "red_glas"
+      ],
+      "bbox_min": [
+        -0.009272459894418716,
+        0.022167980670928955,
+        0.002998051233589649
+      ],
+      "bbox_max": [
+        0.009272459894418716,
+        0.0261523500084877,
+        0.015000006183981895
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_GlassColor_High_red_glas_0_4"
+    },
+    {
+      "name": "Object_82",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.003901369869709015,
+        -0.00412354152649641,
+        0.009077154099941254
+      ],
+      "bbox_max": [
+        0.00498535018414259,
+        -0.0039184619672596455,
+        0.00987793505191803
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface9_phong9_0_52"
+    },
+    {
+      "name": "Object_85",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.002731929998844862,
+        -0.004584962036460638,
+        0.009296883828938007
+      ],
+      "bbox_max": [
+        0.0038622997235506773,
+        -0.0043627917766571045,
+        0.009726564399898052
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface10_phong9_0_54"
+    },
+    {
+      "name": "Object_88",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.002763669937849045,
+        -0.0047216820530593395,
+        0.009418954141438007
+      ],
+      "bbox_max": [
+        0.0038622997235506773,
+        -0.004367681685835123,
+        0.009726564399898052
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface11_phong9_0_56"
+    },
+    {
+      "name": "Object_91",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0027294899336993694,
+        -0.0047216820530593395,
+        0.009287114255130291
+      ],
+      "bbox_max": [
+        0.0038574200589209795,
+        -0.004501952324062586,
+        0.009711913764476776
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface12_phong9_0_58"
+    },
+    {
+      "name": "Object_94",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.0027294899336993694,
+        -0.0047216820530593395,
+        0.009287114255130291
+      ],
+      "bbox_max": [
+        0.003825679887086153,
+        -0.0043627917766571045,
+        0.00958984438329935
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface13_phong9_0_60"
+    },
+    {
+      "name": "Object_97",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "phong9"
+      ],
+      "bbox_min": [
+        0.003823240054771304,
+        -0.0047216820530593395,
+        0.009287114255130291
+      ],
+      "bbox_max": [
+        0.0038622997235506773,
+        -0.0045825219713151455,
+        0.009433594532310963
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:polySurface14_phong9_0_62"
+    }
+  ],
+  "total_meshes": 160,
+  "carpaint_material_name": "carpaint",
+  "carpaint_meshes": [
+    {
+      "name": "Object_49",
+      "vertex_count": 12368,
+      "face_count": 15303,
+      "material_names": [
+        "carpaint"
+      ],
+      "bbox_min": [
+        -0.011972659267485142,
+        -0.025722673162817955,
+        2.3380011043627746e-05
+      ],
+      "bbox_max": [
+        0.011972659267485142,
+        0.027441423386335373,
+        0.016767587512731552
+      ],
+      "parent": "car_bmw_x5m_2014_Mesh:M_Paint_Metal_High_carpaint_0_30"
+    }
+  ]
+}

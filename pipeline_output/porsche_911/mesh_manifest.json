@@ -1,0 +1,3677 @@
+{
+  "model_name": "porsche_911",
+  "glb_path": "/Users/sarvind/mockbox/public/models/porsche_911.glb",
+  "meshes": [
+    {
+      "name": "Object_100",
+      "vertex_count": 1785,
+      "face_count": 2872,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        38.86098098754883,
+        10.421335220336914,
+        -14.145941734313965
+      ],
+      "bbox_max": [
+        46.046566009521484,
+        23.217267990112305,
+        -1.1999197006225586
+      ],
+      "parent": "Object_70_70"
+    },
+    {
+      "name": "Object_104",
+      "vertex_count": 1789,
+      "face_count": 2872,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        72.16681671142578,
+        10.421920776367188,
+        -14.145344734191895
+      ],
+      "bbox_max": [
+        79.3490219116211,
+        23.216684341430664,
+        -1.200508952140808
+      ],
+      "parent": "Object_73_73"
+    },
+    {
+      "name": "Object_108",
+      "vertex_count": 1789,
+      "face_count": 2872,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        73.27075958251953,
+        -42.40285110473633,
+        -14.206189155578613
+      ],
+      "bbox_max": [
+        79.07530212402344,
+        -30.255046844482422,
+        -1.9159011840820312
+      ],
+      "parent": "Object_76_76"
+    },
+    {
+      "name": "Object_112",
+      "vertex_count": 658,
+      "face_count": 723,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        40.420166015625,
+        -41.15654373168945,
+        -11.571111679077148
+      ],
+      "bbox_max": [
+        43.64504623413086,
+        -38.771881103515625,
+        -4.507875919342041
+      ],
+      "parent": "Object_79_79"
+    },
+    {
+      "name": "Object_116",
+      "vertex_count": 658,
+      "face_count": 723,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        74.56326293945312,
+        -33.88589859008789,
+        -11.56753158569336
+      ],
+      "bbox_max": [
+        77.78828430175781,
+        -31.50112533569336,
+        -4.503973007202148
+      ],
+      "parent": "Object_82_82"
+    },
+    {
+      "name": "Object_120",
+      "vertex_count": 1785,
+      "face_count": 2872,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        39.13327407836914,
+        -42.40257263183594,
+        -14.205913543701172
+      ],
+      "bbox_max": [
+        44.93370056152344,
+        -30.255325317382812,
+        -1.916184663772583
+      ],
+      "parent": "Object_85_85"
+    },
+    {
+      "name": "Object_124",
+      "vertex_count": 655,
+      "face_count": 727,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        40.287715911865234,
+        19.445894241333008,
+        -10.96961498260498
+      ],
+      "bbox_max": [
+        43.33809280395508,
+        21.688907623291016,
+        -4.07033109664917
+      ],
+      "parent": "Object_88_88"
+    },
+    {
+      "name": "Object_128",
+      "vertex_count": 655,
+      "face_count": 727,
+      "material_names": [
+        "CALIPE_COL_15"
+      ],
+      "bbox_min": [
+        74.87673950195312,
+        11.950146675109863,
+        -11.222216606140137
+      ],
+      "bbox_max": [
+        77.92683410644531,
+        14.19295597076416,
+        -4.323564052581787
+      ],
+      "parent": "Object_91_91"
+    },
+    {
+      "name": "Object_133",
+      "vertex_count": 16,
+      "face_count": 15,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.89165496826172,
+        -40.616668701171875,
+        -12.268277168273926
+      ],
+      "bbox_max": [
+        76.04048919677734,
+        -32.0435676574707,
+        -3.741111993789673
+      ],
+      "parent": "Object_95_95"
+    },
+    {
+      "name": "Object_137",
+      "vertex_count": 31,
+      "face_count": 30,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        76.64236450195312,
+        -40.502323150634766,
+        -12.232166290283203
+      ],
+      "bbox_max": [
+        76.78878784179688,
+        -32.15576934814453,
+        -3.843214988708496
+      ],
+      "parent": "Object_98_98"
+    },
+    {
+      "name": "Object_14",
+      "vertex_count": 20,
+      "face_count": 12,
+      "material_names": [
+        "modelSM_Root_911_Targa4s.001SG1_2"
+      ],
+      "bbox_min": [
+        59.03706741333008,
+        -6.553450584411621,
+        -12.228217124938965
+      ],
+      "bbox_max": [
+        59.16464614868164,
+        -6.419850826263428,
+        -12.11797046661377
+      ],
+      "parent": "Object_10_10"
+    },
+    {
+      "name": "Object_141",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.89522552490234,
+        -39.43931579589844,
+        -5.236053466796875
+      ],
+      "bbox_max": [
+        76.66645050048828,
+        -37.190467834472656,
+        -3.9326019287109375
+      ],
+      "parent": "Object_101_101"
+    },
+    {
+      "name": "Object_145",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.89366149902344,
+        -37.19057083129883,
+        -4.2234206199646
+      ],
+      "bbox_max": [
+        76.64877319335938,
+        -34.61265182495117,
+        -3.8432159423828125
+      ],
+      "parent": "Object_104_104"
+    },
+    {
+      "name": "Object_149",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.90007019042969,
+        -34.612754821777344,
+        -5.963041305541992
+      ],
+      "bbox_max": [
+        76.67913818359375,
+        -32.69040298461914,
+        -4.210285186767578
+      ],
+      "parent": "Object_107_107"
+    },
+    {
+      "name": "Object_153",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.93043518066406,
+        -32.69050598144531,
+        -8.500125885009766
+      ],
+      "bbox_max": [
+        76.72341918945312,
+        -32.15565872192383,
+        -5.949909210205078
+      ],
+      "parent": "Object_110_110"
+    },
+    {
+      "name": "Object_157",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.97471618652344,
+        -33.218772888183594,
+        -10.865589141845703
+      ],
+      "bbox_max": [
+        76.76470947265625,
+        -32.1579475402832,
+        -8.486992835998535
+      ],
+      "parent": "Object_113_113"
+    },
+    {
+      "name": "Object_161",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        76.01600646972656,
+        -35.4675178527832,
+        -12.155911445617676
+      ],
+      "bbox_max": [
+        76.7872314453125,
+        -33.21866989135742,
+        -10.852459907531738
+      ],
+      "parent": "Object_116_116"
+    },
+    {
+      "name": "Object_165",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        76.03367614746094,
+        -38.04533386230469,
+        -12.24530029296875
+      ],
+      "bbox_max": [
+        76.7887954711914,
+        -35.467411041259766,
+        -11.865093231201172
+      ],
+      "parent": "Object_119_119"
+    },
+    {
+      "name": "Object_169",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        76.0033187866211,
+        -39.96758270263672,
+        -11.87822151184082
+      ],
+      "bbox_max": [
+        76.78238677978516,
+        -38.04522705078125,
+        -10.125470161437988
+      ],
+      "parent": "Object_122_122"
+    },
+    {
+      "name": "Object_173",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.95903015136719,
+        -40.502323150634766,
+        -10.138601303100586
+      ],
+      "bbox_max": [
+        76.75202178955078,
+        -39.96747970581055,
+        -7.588386058807373
+      ],
+      "parent": "Object_125_125"
+    },
+    {
+      "name": "Object_177",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.9177474975586,
+        -40.500038146972656,
+        -7.601517200469971
+      ],
+      "bbox_max": [
+        76.7077407836914,
+        -39.439208984375,
+        -5.2229180335998535
+      ],
+      "parent": "Object_128_128"
+    },
+    {
+      "name": "Object_18",
+      "vertex_count": 5812,
+      "face_count": 8214,
+      "material_names": [
+        "PLASTI_NEGRO_3"
+      ],
+      "bbox_min": [
+        39.20648193359375,
+        -58.40322494506836,
+        -13.655442237854004
+      ],
+      "bbox_max": [
+        78.99522399902344,
+        -26.090484619140625,
+        2.42323637008667
+      ],
+      "parent": "Object_13_13"
+    },
+    {
+      "name": "Object_181",
+      "vertex_count": 216,
+      "face_count": 344,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        78.32111358642578,
+        -43.31715774536133,
+        -14.99454402923584
+      ],
+      "bbox_max": [
+        79.03699493408203,
+        -29.340734481811523,
+        -1.012007713317871
+      ],
+      "parent": "Object_131_131"
+    },
+    {
+      "name": "Object_185",
+      "vertex_count": 64,
+      "face_count": 84,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.22398376464844,
+        -43.23478317260742,
+        -15.001171112060547
+      ],
+      "bbox_max": [
+        73.67416381835938,
+        -29.423110961914062,
+        -1.1879507303237915
+      ],
+      "parent": "Object_134_134"
+    },
+    {
+      "name": "Object_189",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.6122055053711,
+        -32.088661193847656,
+        -13.935352325439453
+      ],
+      "bbox_max": [
+        78.86288452148438,
+        -30.485706329345703,
+        -12.24148178100586
+      ],
+      "parent": "Object_137_137"
+    },
+    {
+      "name": "Object_193",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.58472442626953,
+        -30.802902221679688,
+        -12.575996398925781
+      ],
+      "bbox_max": [
+        78.83915710449219,
+        -29.524349212646484,
+        -10.6669921875
+      ],
+      "parent": "Object_140_140"
+    },
+    {
+      "name": "Object_197",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.55406951904297,
+        -29.89373207092285,
+        -10.911130905151367
+      ],
+      "bbox_max": [
+        78.81010437011719,
+        -29.026714324951172,
+        -8.910877227783203
+      ],
+      "parent": "Object_143_143"
+    },
+    {
+      "name": "Object_201",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.52143096923828,
+        -29.423110961914062,
+        -9.054214477539062
+      ],
+      "bbox_max": [
+        78.7776870727539,
+        -28.963708877563477,
+        -7.0406341552734375
+      ],
+      "parent": "Object_146_146"
+    },
+    {
+      "name": "Object_205",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.489013671875,
+        -29.89373207092285,
+        -7.183972358703613
+      ],
+      "bbox_max": [
+        78.74504852294922,
+        -29.026714324951172,
+        -5.183718681335449
+      ],
+      "parent": "Object_149_149"
+    },
+    {
+      "name": "Object_209",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.45995330810547,
+        -30.802902221679688,
+        -5.427857875823975
+      ],
+      "bbox_max": [
+        78.71439361572266,
+        -29.524349212646484,
+        -3.5188534259796143
+      ],
+      "parent": "Object_152_152"
+    },
+    {
+      "name": "Object_21",
+      "vertex_count": 2532,
+      "face_count": 4446,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        39.16389083862305,
+        -58.402915954589844,
+        -12.321052551269531
+      ],
+      "bbox_max": [
+        79.0378189086914,
+        -22.535438537597656,
+        3.551424980163574
+      ],
+      "parent": "Object_15_15"
+    },
+    {
+      "name": "Object_213",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.43623352050781,
+        -32.088661193847656,
+        -3.853368043899536
+      ],
+      "bbox_max": [
+        78.6869125366211,
+        -30.485706329345703,
+        -2.159496545791626
+      ],
+      "parent": "Object_155_155"
+    },
+    {
+      "name": "Object_217",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.4194564819336,
+        -33.66339111328125,
+        -2.5678021907806396
+      ],
+      "bbox_max": [
+        78.66447448730469,
+        -31.84527015686035,
+        -1.1982858180999756
+      ],
+      "parent": "Object_158_158"
+    },
+    {
+      "name": "Object_221",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.4107666015625,
+        -35.419776916503906,
+        -1.6587698459625244
+      ],
+      "bbox_max": [
+        78.64860534667969,
+        -33.51039123535156,
+        -0.7007268071174622
+      ],
+      "parent": "Object_161_161"
+    },
+    {
+      "name": "Object_225",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.40966796875,
+        -37.29030227661133,
+        -1.188220739364624
+      ],
+      "bbox_max": [
+        78.64039611816406,
+        -35.36758804321289,
+        -0.6377308964729309
+      ],
+      "parent": "Object_164_164"
+    },
+    {
+      "name": "Object_229",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.4107666015625,
+        -39.14750289916992,
+        -1.6587698459625244
+      ],
+      "bbox_max": [
+        78.64860534667969,
+        -37.23811721801758,
+        -0.7007272839546204
+      ],
+      "parent": "Object_167_167"
+    },
+    {
+      "name": "Object_233",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.4194564819336,
+        -40.8126220703125,
+        -2.5678021907806396
+      ],
+      "bbox_max": [
+        78.66447448730469,
+        -38.99449920654297,
+        -1.1982858180999756
+      ],
+      "parent": "Object_170_170"
+    },
+    {
+      "name": "Object_237",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.43623352050781,
+        -42.172183990478516,
+        -3.8533685207366943
+      ],
+      "bbox_max": [
+        78.6869125366211,
+        -40.56922912597656,
+        -2.1594974994659424
+      ],
+      "parent": "Object_173_173"
+    },
+    {
+      "name": "Object_24",
+      "vertex_count": 3892,
+      "face_count": 4630,
+      "material_names": [
+        "LIGHTS_5"
+      ],
+      "bbox_min": [
+        39.26002502441406,
+        -56.353416442871094,
+        -6.576436996459961
+      ],
+      "bbox_max": [
+        78.94168090820312,
+        -41.8575325012207,
+        2.091491937637329
+      ],
+      "parent": "Object_17_17"
+    },
+    {
+      "name": "Object_241",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.45995330810547,
+        -43.133541107177734,
+        -5.427857398986816
+      ],
+      "bbox_max": [
+        78.71439361572266,
+        -41.8549919128418,
+        -3.5188534259796143
+      ],
+      "parent": "Object_176_176"
+    },
+    {
+      "name": "Object_245",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.489013671875,
+        -43.63117599487305,
+        -7.18397331237793
+      ],
+      "bbox_max": [
+        78.74504852294922,
+        -42.76416015625,
+        -5.183719158172607
+      ],
+      "parent": "Object_179_179"
+    },
+    {
+      "name": "Object_249",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.52143096923828,
+        -43.694183349609375,
+        -9.054215431213379
+      ],
+      "bbox_max": [
+        78.7776870727539,
+        -43.23478317260742,
+        -7.040635585784912
+      ],
+      "parent": "Object_182_182"
+    },
+    {
+      "name": "Object_253",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.55406951904297,
+        -43.63117599487305,
+        -10.911131858825684
+      ],
+      "bbox_max": [
+        78.81010437011719,
+        -42.76416015625,
+        -8.91087818145752
+      ],
+      "parent": "Object_185_185"
+    },
+    {
+      "name": "Object_257",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.58472442626953,
+        -43.133541107177734,
+        -12.575996398925781
+      ],
+      "bbox_max": [
+        78.83915710449219,
+        -41.85498809814453,
+        -10.666994094848633
+      ],
+      "parent": "Object_188_188"
+    },
+    {
+      "name": "Object_261",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.6122055053711,
+        -42.172183990478516,
+        -13.93535327911377
+      ],
+      "bbox_max": [
+        78.86288452148438,
+        -40.56922912597656,
+        -12.241482734680176
+      ],
+      "parent": "Object_191_191"
+    },
+    {
+      "name": "Object_265",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.6346435546875,
+        -40.8126220703125,
+        -14.896564483642578
+      ],
+      "bbox_max": [
+        78.8796615600586,
+        -38.99449920654297,
+        -13.52704906463623
+      ],
+      "parent": "Object_194_194"
+    },
+    {
+      "name": "Object_269",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.6505126953125,
+        -39.147499084472656,
+        -15.394123077392578
+      ],
+      "bbox_max": [
+        78.88835144042969,
+        -37.23811340332031,
+        -14.436080932617188
+      ],
+      "parent": "Object_197_197"
+    },
+    {
+      "name": "Object_27",
+      "vertex_count": 45,
+      "face_count": 62,
+      "material_names": [
+        "BADGE_6"
+      ],
+      "bbox_min": [
+        45.91278076171875,
+        -58.220157623291016,
+        -8.033970832824707
+      ],
+      "bbox_max": [
+        59.2255859375,
+        -46.40216064453125,
+        -0.3991807699203491
+      ],
+      "parent": "Object_19_19"
+    },
+    {
+      "name": "Object_273",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.65872192382812,
+        -37.29030227661133,
+        -15.45711898803711
+      ],
+      "bbox_max": [
+        78.88945007324219,
+        -35.36758804321289,
+        -14.906630516052246
+      ],
+      "parent": "Object_200_200"
+    },
+    {
+      "name": "Object_277",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.6505126953125,
+        -35.41977310180664,
+        -15.394123077392578
+      ],
+      "bbox_max": [
+        78.88835144042969,
+        -33.5103874206543,
+        -14.436080932617188
+      ],
+      "parent": "Object_203_203"
+    },
+    {
+      "name": "Object_281",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        73.6346435546875,
+        -33.66339111328125,
+        -14.896564483642578
+      ],
+      "bbox_max": [
+        78.8796615600586,
+        -31.84527015686035,
+        -13.52704906463623
+      ],
+      "parent": "Object_206_206"
+    },
+    {
+      "name": "Object_285",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "BL_RIM_1"
+      ],
+      "bbox_min": [
+        78.4578857421875,
+        -36.32831954956055,
+        -13.330711364746094
+      ],
+      "bbox_max": [
+        78.598388671875,
+        -36.20235824584961,
+        -13.213295936584473
+      ],
+      "parent": "Object_209_209"
+    },
+    {
+      "name": "Object_289",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "BL_RIM_1"
+      ],
+      "bbox_min": [
+        78.36546325683594,
+        -36.32831954956055,
+        -13.13308048248291
+      ],
+      "bbox_max": [
+        78.50596618652344,
+        -36.20235824584961,
+        -13.015665054321289
+      ],
+      "parent": "Object_212_212"
+    },
+    {
+      "name": "Object_293",
+      "vertex_count": 4,
+      "face_count": 2,
+      "material_names": [
+        "BL_RIM_1"
+      ],
+      "bbox_min": [
+        78.39627075195312,
+        -36.20235824584961,
+        -13.265352249145508
+      ],
+      "bbox_max": [
+        78.56758117675781,
+        -36.20235824584961,
+        -13.081024169921875
+      ],
+      "parent": "Object_215_215"
+    },
+    {
+      "name": "Object_297",
+      "vertex_count": 16,
+      "face_count": 15,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        42.161224365234375,
+        -40.61431884765625,
+        -12.268277168273926
+      ],
+      "bbox_max": [
+        42.310062408447266,
+        -32.041221618652344,
+        -3.7411117553710938
+      ],
+      "parent": "Object_218_218"
+    },
+    {
+      "name": "Object_30",
+      "vertex_count": 413,
+      "face_count": 602,
+      "material_names": [
+        "GLASS_7"
+      ],
+      "bbox_min": [
+        39.199790954589844,
+        -56.353416442871094,
+        -6.576436996459961
+      ],
+      "bbox_max": [
+        79.00191497802734,
+        -41.85731887817383,
+        2.421921968460083
+      ],
+      "parent": "Object_21_21"
+    },
+    {
+      "name": "Object_301",
+      "vertex_count": 31,
+      "face_count": 30,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.41292190551758,
+        -40.50212097167969,
+        -12.232166290283203
+      ],
+      "bbox_max": [
+        41.559349060058594,
+        -32.15556716918945,
+        -3.843214273452759
+      ],
+      "parent": "Object_221_221"
+    },
+    {
+      "name": "Object_305",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.53526306152344,
+        -35.46742248535156,
+        -5.236053466796875
+      ],
+      "bbox_max": [
+        42.30649185180664,
+        -33.21857452392578,
+        -3.9326012134552
+      ],
+      "parent": "Object_224_224"
+    },
+    {
+      "name": "Object_309",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.552940368652344,
+        -38.04523468017578,
+        -4.223420143127441
+      ],
+      "bbox_max": [
+        42.30805206298828,
+        -35.46731948852539,
+        -3.843215227127075
+      ],
+      "parent": "Object_227_227"
+    },
+    {
+      "name": "Object_313",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.52257537841797,
+        -39.96748733520508,
+        -5.963040828704834
+      ],
+      "bbox_max": [
+        42.3016471862793,
+        -38.045135498046875,
+        -4.21028470993042
+      ],
+      "parent": "Object_230_230"
+    },
+    {
+      "name": "Object_317",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.47829055786133,
+        -40.50223159790039,
+        -8.50012493133545
+      ],
+      "bbox_max": [
+        42.27128219604492,
+        -39.967384338378906,
+        -5.94990873336792
+      ],
+      "parent": "Object_233_233"
+    },
+    {
+      "name": "Object_321",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.4370002746582,
+        -40.499942779541016,
+        -10.865589141845703
+      ],
+      "bbox_max": [
+        42.22699737548828,
+        -39.43911361694336,
+        -8.486991882324219
+      ],
+      "parent": "Object_236_236"
+    },
+    {
+      "name": "Object_325",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.41447830200195,
+        -39.4392204284668,
+        -12.155911445617676
+      ],
+      "bbox_max": [
+        42.185707092285156,
+        -37.190372467041016,
+        -10.852458953857422
+      ],
+      "parent": "Object_239_239"
+    },
+    {
+      "name": "Object_329",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.41291809082031,
+        -37.19047927856445,
+        -12.24530029296875
+      ],
+      "bbox_max": [
+        42.168033599853516,
+        -34.61255645751953,
+        -11.865092277526855
+      ],
+      "parent": "Object_242_242"
+    },
+    {
+      "name": "Object_33",
+      "vertex_count": 40,
+      "face_count": 20,
+      "material_names": [
+        "GIRD_1_8"
+      ],
+      "bbox_min": [
+        40.85719680786133,
+        -51.504486083984375,
+        -11.61866569519043
+      ],
+      "bbox_max": [
+        77.34451293945312,
+        -47.57024002075195,
+        -3.6511693000793457
+      ],
+      "parent": "Object_23_23"
+    },
+    {
+      "name": "Object_333",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.41932678222656,
+        -34.61266326904297,
+        -11.87822151184082
+      ],
+      "bbox_max": [
+        42.19839859008789,
+        -32.6903076171875,
+        -10.125469207763672
+      ],
+      "parent": "Object_245_245"
+    },
+    {
+      "name": "Object_337",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.44969177246094,
+        -32.69041061401367,
+        -10.138601303100586
+      ],
+      "bbox_max": [
+        42.24268341064453,
+        -32.15556716918945,
+        -7.588385581970215
+      ],
+      "parent": "Object_248_248"
+    },
+    {
+      "name": "Object_341",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.49397659301758,
+        -33.21868133544922,
+        -7.6015167236328125
+      ],
+      "bbox_max": [
+        42.28396987915039,
+        -32.15785217285156,
+        -5.222917079925537
+      ],
+      "parent": "Object_251_251"
+    },
+    {
+      "name": "Object_345",
+      "vertex_count": 216,
+      "face_count": 344,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.16471481323242,
+        -43.31715393066406,
+        -14.994542121887207
+      ],
+      "bbox_max": [
+        39.88060760498047,
+        -29.34073257446289,
+        -1.0120059251785278
+      ],
+      "parent": "Object_254_254"
+    },
+    {
+      "name": "Object_349",
+      "vertex_count": 64,
+      "face_count": 84,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        44.52754211425781,
+        -43.234779357910156,
+        -15.001172065734863
+      ],
+      "bbox_max": [
+        44.97773361206055,
+        -29.42310905456543,
+        -1.1879515647888184
+      ],
+      "parent": "Object_257_257"
+    },
+    {
+      "name": "Object_353",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.33882522583008,
+        -42.172183990478516,
+        -13.93535327911377
+      ],
+      "bbox_max": [
+        44.589508056640625,
+        -40.56922912597656,
+        -12.241479873657227
+      ],
+      "parent": "Object_260_260"
+    },
+    {
+      "name": "Object_357",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.362552642822266,
+        -43.133541107177734,
+        -12.575997352600098
+      ],
+      "bbox_max": [
+        44.61698913574219,
+        -41.85498809814453,
+        -10.666990280151367
+      ],
+      "parent": "Object_263_263"
+    },
+    {
+      "name": "Object_36",
+      "vertex_count": 69,
+      "face_count": 68,
+      "material_names": [
+        "CHASSIS_9"
+      ],
+      "bbox_min": [
+        40.66006088256836,
+        -58.36252212524414,
+        -12.471940040588379
+      ],
+      "bbox_max": [
+        77.5416488647461,
+        -26.885211944580078,
+        -11.601506233215332
+      ],
+      "parent": "Object_25_25"
+    },
+    {
+      "name": "Object_361",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.39160919189453,
+        -43.63117599487305,
+        -10.911131858825684
+      ],
+      "bbox_max": [
+        44.647640228271484,
+        -42.764156341552734,
+        -8.91087532043457
+      ],
+      "parent": "Object_266_266"
+    },
+    {
+      "name": "Object_365",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.42402267456055,
+        -43.69417953491211,
+        -9.054215431213379
+      ],
+      "bbox_max": [
+        44.6802864074707,
+        -43.234779357910156,
+        -7.040632724761963
+      ],
+      "parent": "Object_269_269"
+    },
+    {
+      "name": "Object_369",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.456668853759766,
+        -43.63117599487305,
+        -7.18397331237793
+      ],
+      "bbox_max": [
+        44.71269989013672,
+        -42.764156341552734,
+        -5.183717250823975
+      ],
+      "parent": "Object_272_272"
+    },
+    {
+      "name": "Object_373",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.48731994628906,
+        -43.133541107177734,
+        -5.427858352661133
+      ],
+      "bbox_max": [
+        44.741756439208984,
+        -41.85498809814453,
+        -3.5188517570495605
+      ],
+      "parent": "Object_275_275"
+    },
+    {
+      "name": "Object_377",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.514801025390625,
+        -42.172183990478516,
+        -3.8533689975738525
+      ],
+      "bbox_max": [
+        44.76548385620117,
+        -40.5692253112793,
+        -2.1594948768615723
+      ],
+      "parent": "Object_278_278"
+    },
+    {
+      "name": "Object_381",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.5372428894043,
+        -40.812618255615234,
+        -2.567803144454956
+      ],
+      "bbox_max": [
+        44.782264709472656,
+        -38.99449920654297,
+        -1.1982841491699219
+      ],
+      "parent": "Object_281_281"
+    },
+    {
+      "name": "Object_385",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.55310821533203,
+        -39.147499084472656,
+        -1.6587706804275513
+      ],
+      "bbox_max": [
+        44.79094696044922,
+        -37.23811340332031,
+        -0.7007251381874084
+      ],
+      "parent": "Object_284_284"
+    },
+    {
+      "name": "Object_389",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.56132125854492,
+        -37.29030227661133,
+        -1.1882215738296509
+      ],
+      "bbox_max": [
+        44.792049407958984,
+        -35.36758804321289,
+        -0.6377292275428772
+      ],
+      "parent": "Object_287_287"
+    },
+    {
+      "name": "Object_393",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.55310821533203,
+        -35.41977310180664,
+        -1.6587706804275513
+      ],
+      "bbox_max": [
+        44.79094696044922,
+        -33.5103874206543,
+        -0.7007256150245667
+      ],
+      "parent": "Object_290_290"
+    },
+    {
+      "name": "Object_397",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.5372428894043,
+        -33.66339111328125,
+        -2.567803144454956
+      ],
+      "bbox_max": [
+        44.782264709472656,
+        -31.84527015686035,
+        -1.1982841491699219
+      ],
+      "parent": "Object_293_293"
+    },
+    {
+      "name": "Object_40",
+      "vertex_count": 1018,
+      "face_count": 1752,
+      "material_names": [
+        "PLASTI_NEGRO_3"
+      ],
+      "bbox_min": [
+        37.15400314331055,
+        -20.964195251464844,
+        2.0445170402526855
+      ],
+      "bbox_max": [
+        81.04769897460938,
+        1.7886098623275757,
+        6.001529693603516
+      ],
+      "parent": "Object_28_28"
+    },
+    {
+      "name": "Object_401",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.51480484008789,
+        -32.088661193847656,
+        -3.8533694744110107
+      ],
+      "bbox_max": [
+        44.76548767089844,
+        -30.485706329345703,
+        -2.1594958305358887
+      ],
+      "parent": "Object_296_296"
+    },
+    {
+      "name": "Object_405",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.48731994628906,
+        -30.802900314331055,
+        -5.427857875823975
+      ],
+      "bbox_max": [
+        44.74176025390625,
+        -29.524349212646484,
+        -3.5188517570495605
+      ],
+      "parent": "Object_299_299"
+    },
+    {
+      "name": "Object_409",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.456668853759766,
+        -29.89373207092285,
+        -7.183973789215088
+      ],
+      "bbox_max": [
+        44.71269989013672,
+        -29.026714324951172,
+        -5.183717250823975
+      ],
+      "parent": "Object_302_302"
+    },
+    {
+      "name": "Object_413",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.42402267456055,
+        -29.42310905456543,
+        -9.054216384887695
+      ],
+      "bbox_max": [
+        44.6802864074707,
+        -28.963708877563477,
+        -7.0406341552734375
+      ],
+      "parent": "Object_305_305"
+    },
+    {
+      "name": "Object_417",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.3916130065918,
+        -29.89373207092285,
+        -10.911131858825684
+      ],
+      "bbox_max": [
+        44.64764404296875,
+        -29.026716232299805,
+        -8.910877227783203
+      ],
+      "parent": "Object_308_308"
+    },
+    {
+      "name": "Object_421",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.362552642822266,
+        -30.802902221679688,
+        -12.575997352600098
+      ],
+      "bbox_max": [
+        44.61698913574219,
+        -29.524349212646484,
+        -10.6669921875
+      ],
+      "parent": "Object_311_311"
+    },
+    {
+      "name": "Object_425",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.33882522583008,
+        -32.088661193847656,
+        -13.935354232788086
+      ],
+      "bbox_max": [
+        44.589508056640625,
+        -30.485708236694336,
+        -12.24148178100586
+      ],
+      "parent": "Object_314_314"
+    },
+    {
+      "name": "Object_429",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.32204818725586,
+        -33.66339111328125,
+        -14.896565437316895
+      ],
+      "bbox_max": [
+        44.56706619262695,
+        -31.84527015686035,
+        -13.527048110961914
+      ],
+      "parent": "Object_317_317"
+    },
+    {
+      "name": "Object_43",
+      "vertex_count": 1504,
+      "face_count": 2672,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        37.12717819213867,
+        -25.124361038208008,
+        -10.088871955871582
+      ],
+      "bbox_max": [
+        81.07452392578125,
+        2.9416823387145996,
+        6.181114673614502
+      ],
+      "parent": "Object_30_30"
+    },
+    {
+      "name": "Object_433",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.31336212158203,
+        -35.419776916503906,
+        -15.394124031066895
+      ],
+      "bbox_max": [
+        44.55120086669922,
+        -33.5103874206543,
+        -14.436079978942871
+      ],
+      "parent": "Object_320_320"
+    },
+    {
+      "name": "Object_437",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.31226348876953,
+        -37.29030227661133,
+        -15.457119941711426
+      ],
+      "bbox_max": [
+        44.54298782348633,
+        -35.36758804321289,
+        -14.90662956237793
+      ],
+      "parent": "Object_323_323"
+    },
+    {
+      "name": "Object_441",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.31336212158203,
+        -39.14750289916992,
+        -15.394124031066895
+      ],
+      "bbox_max": [
+        44.55120086669922,
+        -37.23811721801758,
+        -14.436079978942871
+      ],
+      "parent": "Object_326_326"
+    },
+    {
+      "name": "Object_445",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.32204818725586,
+        -40.812618255615234,
+        -14.896565437316895
+      ],
+      "bbox_max": [
+        44.56706619262695,
+        -38.99449920654297,
+        -13.527048110961914
+      ],
+      "parent": "Object_329_329"
+    },
+    {
+      "name": "Object_449",
+      "vertex_count": 16,
+      "face_count": 15,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.51296997070312,
+        12.500934600830078,
+        -11.980888366699219
+      ],
+      "bbox_max": [
+        75.66287231445312,
+        21.092714309692383,
+        -3.392756223678589
+      ],
+      "parent": "Object_332_332"
+    },
+    {
+      "name": "Object_453",
+      "vertex_count": 31,
+      "face_count": 30,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        76.23107147216797,
+        12.616209030151367,
+        -11.85327434539795
+      ],
+      "bbox_max": [
+        76.37781524658203,
+        21.022436141967773,
+        -3.4460368156433105
+      ],
+      "parent": "Object_335_335"
+    },
+    {
+      "name": "Object_457",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.5411148071289,
+        12.616209030151367,
+        -7.430949687957764
+      ],
+      "bbox_max": [
+        76.30040740966797,
+        13.554981231689453,
+        -4.992427349090576
+      ],
+      "parent": "Object_338_338"
+    },
+    {
+      "name": "Object_46",
+      "vertex_count": 128,
+      "face_count": 160,
+      "material_names": [
+        "GLASS_7"
+      ],
+      "bbox_min": [
+        43.350379943847656,
+        -18.20996856689453,
+        3.435302495956421
+      ],
+      "bbox_max": [
+        74.85132598876953,
+        3.0820443630218506,
+        10.3727445602417
+      ],
+      "parent": "Object_32_32"
+    },
+    {
+      "name": "Object_461",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.51648712158203,
+        13.554862976074219,
+        -5.00495719909668
+      ],
+      "bbox_max": [
+        76.25806427001953,
+        15.740547180175781,
+        -3.5814003944396973
+      ],
+      "parent": "Object_341_341"
+    },
+    {
+      "name": "Object_465",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.51412200927734,
+        15.740425109863281,
+        -3.7368276119232178
+      ],
+      "bbox_max": [
+        76.23593139648438,
+        18.338211059570312,
+        -3.4460158348083496
+      ],
+      "parent": "Object_344_344"
+    },
+    {
+      "name": "Object_469",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.51898193359375,
+        18.338090896606445,
+        -5.379073143005371
+      ],
+      "bbox_max": [
+        76.26459503173828,
+        20.355758666992188,
+        -3.7242984771728516
+      ],
+      "parent": "Object_347_347"
+    },
+    {
+      "name": "Object_473",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.54764556884766,
+        20.35563850402832,
+        -7.893383502960205
+      ],
+      "bbox_max": [
+        76.30847930908203,
+        21.02255630493164,
+        -5.3665452003479
+      ],
+      "parent": "Object_350_350"
+    },
+    {
+      "name": "Object_477",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.5915298461914,
+        20.083782196044922,
+        -10.319376945495605
+      ],
+      "bbox_max": [
+        76.35082244873047,
+        21.02255630493164,
+        -7.880850791931152
+      ],
+      "parent": "Object_353_353"
+    },
+    {
+      "name": "Object_481",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.63387298583984,
+        17.898221969604492,
+        -11.730406761169434
+      ],
+      "bbox_max": [
+        76.37545013427734,
+        20.083908081054688,
+        -10.306846618652344
+      ],
+      "parent": "Object_356_356"
+    },
+    {
+      "name": "Object_485",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.656005859375,
+        15.300556182861328,
+        -11.865787506103516
+      ],
+      "bbox_max": [
+        76.37781524658203,
+        17.89834213256836,
+        -11.574975967407227
+      ],
+      "parent": "Object_359_359"
+    },
+    {
+      "name": "Object_489",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.6273422241211,
+        13.283008575439453,
+        -11.587506294250488
+      ],
+      "bbox_max": [
+        76.37296295166016,
+        15.300677299499512,
+        -9.93272876739502
+      ],
+      "parent": "Object_362_362"
+    },
+    {
+      "name": "Object_493",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        75.58345794677734,
+        12.616209030151367,
+        -9.945261001586914
+      ],
+      "bbox_max": [
+        76.34429168701172,
+        13.283130645751953,
+        -7.418422222137451
+      ],
+      "parent": "Object_365_365"
+    },
+    {
+      "name": "Object_497",
+      "vertex_count": 216,
+      "face_count": 344,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        78.7140884399414,
+        9.463235855102539,
+        -14.960112571716309
+      ],
+      "bbox_max": [
+        79.28179168701172,
+        24.175373077392578,
+        -0.24478593468666077
+      ],
+      "parent": "Object_368_368"
+    },
+    {
+      "name": "Object_50",
+      "vertex_count": 545,
+      "face_count": 920,
+      "material_names": [
+        "modelSM_SoftTop_000.001SG1_10"
+      ],
+      "bbox_min": [
+        41.191062927246094,
+        9.507913589477539,
+        2.919996976852417
+      ],
+      "bbox_max": [
+        77.01065063476562,
+        31.823444366455078,
+        5.822668075561523
+      ],
+      "parent": "Object_35_35"
+    },
+    {
+      "name": "Object_501",
+      "vertex_count": 64,
+      "face_count": 84,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.12319946289062,
+        9.487224578857422,
+        -15.05117416381836
+      ],
+      "bbox_max": [
+        72.59565734863281,
+        24.151384353637695,
+        -0.38546738028526306
+      ],
+      "parent": "Object_371_371"
+    },
+    {
+      "name": "Object_505",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.44131469726562,
+        23.951244354248047,
+        -9.527060508728027
+      ],
+      "bbox_max": [
+        79.0308837890625,
+        24.572246551513672,
+        -7.399437427520752
+      ],
+      "parent": "Object_374_374"
+    },
+    {
+      "name": "Object_509",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.40641784667969,
+        23.851856231689453,
+        -7.524860382080078
+      ],
+      "bbox_max": [
+        78.99594116210938,
+        24.572246551513672,
+        -5.400051116943359
+      ],
+      "parent": "Object_377_377"
+    },
+    {
+      "name": "Object_513",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.37413787841797,
+        23.07307243347168,
+        -5.63400936126709
+      ],
+      "bbox_max": [
+        78.96293640136719,
+        24.25552749633789,
+        -3.5507516860961914
+      ],
+      "parent": "Object_380_380"
+    },
+    {
+      "name": "Object_517",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.3466796875,
+        21.868106842041016,
+        -3.8850979804992676
+      ],
+      "bbox_max": [
+        78.93241119384766,
+        23.43204116821289,
+        -1.9775691032409668
+      ],
+      "parent": "Object_383_383"
+    },
+    {
+      "name": "Object_521",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.32591247558594,
+        20.31907081604004,
+        -2.3973124027252197
+      ],
+      "bbox_max": [
+        78.90644073486328,
+        22.15790557861328,
+        -0.7877092361450195
+      ],
+      "parent": "Object_386_386"
+    },
+    {
+      "name": "Object_525",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.31324768066406,
+        18.531532287597656,
+        -1.2720450162887573
+      ],
+      "bbox_max": [
+        78.88680267333984,
+        20.51995849609375,
+        -0.06226299703121185
+      ],
+      "parent": "Object_389_389"
+    },
+    {
+      "name": "Object_529",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.30955505371094,
+        16.616287231445312,
+        -0.5859769582748413
+      ],
+      "bbox_max": [
+        78.87482452392578,
+        18.62981414794922,
+        0.14933539927005768
+      ],
+      "parent": "Object_392_392"
+    },
+    {
+      "name": "Object_53",
+      "vertex_count": 5713,
+      "face_count": 7943,
+      "material_names": [
+        "modelSM_SoftTop_000.001SG3_11"
+      ],
+      "bbox_min": [
+        43.065834045410156,
+        -13.006597518920898,
+        1.210265040397644
+      ],
+      "bbox_max": [
+        75.13587951660156,
+        27.43637466430664,
+        12.668505668640137
+      ],
+      "parent": "Object_37_37"
+    },
+    {
+      "name": "Object_533",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.30955505371094,
+        14.616596221923828,
+        -0.6853460073471069
+      ],
+      "bbox_max": [
+        78.87655639648438,
+        16.627307891845703,
+        0.14933539927005768
+      ],
+      "parent": "Object_395_395"
+    },
+    {
+      "name": "Object_537",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.3150863647461,
+        12.76701545715332,
+        -1.4640120267868042
+      ],
+      "bbox_max": [
+        78.89015197753906,
+        14.736167907714844,
+        -0.16733597218990326
+      ],
+      "parent": "Object_398_398"
+    },
+    {
+      "name": "Object_541",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.32946014404297,
+        11.193592071533203,
+        -2.6687963008880615
+      ],
+      "bbox_max": [
+        78.91117858886719,
+        12.986990928649902,
+        -0.9906973838806152
+      ],
+      "parent": "Object_401_401"
+    },
+    {
+      "name": "Object_545",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.35169219970703,
+        10.003551483154297,
+        -4.217596530914307
+      ],
+      "bbox_max": [
+        78.9382095336914,
+        11.498978614807129,
+        -2.264636993408203
+      ],
+      "parent": "Object_404_404"
+    },
+    {
+      "name": "Object_549",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.38027954101562,
+        9.277994155883789,
+        -6.004862308502197
+      ],
+      "bbox_max": [
+        78.96940612792969,
+        10.373538970947266,
+        -3.902336597442627
+      ],
+      "parent": "Object_407_407"
+    },
+    {
+      "name": "Object_553",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.41326141357422,
+        9.066364288330078,
+        -7.919816017150879
+      ],
+      "bbox_max": [
+        79.0028305053711,
+        9.687366485595703,
+        -5.792192459106445
+      ],
+      "parent": "Object_410_410"
+    },
+    {
+      "name": "Object_557",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.44821166992188,
+        9.066364288330078,
+        -9.919201850891113
+      ],
+      "bbox_max": [
+        79.03772735595703,
+        9.786752700805664,
+        -7.794394493103027
+      ],
+      "parent": "Object_413_413"
+    },
+    {
+      "name": "Object_561",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.48121643066406,
+        9.38308334350586,
+        -11.768501281738281
+      ],
+      "bbox_max": [
+        79.07000732421875,
+        10.565535545349121,
+        -9.685245513916016
+      ],
+      "parent": "Object_416_416"
+    },
+    {
+      "name": "Object_565",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.5117416381836,
+        10.206570625305176,
+        -13.341684341430664
+      ],
+      "bbox_max": [
+        79.09746551513672,
+        11.770503997802734,
+        -11.434157371520996
+      ],
+      "parent": "Object_419_419"
+    },
+    {
+      "name": "Object_569",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.53770446777344,
+        11.480704307556152,
+        -14.531543731689453
+      ],
+      "bbox_max": [
+        79.11823272705078,
+        13.319540023803711,
+        -12.921941757202148
+      ],
+      "parent": "Object_422_422"
+    },
+    {
+      "name": "Object_57",
+      "vertex_count": 23225,
+      "face_count": 35658,
+      "material_names": [
+        "PLASTI_NEGRO_3"
+      ],
+      "bbox_min": [
+        40.08329772949219,
+        -31.543033599853516,
+        -11.376496315002441
+      ],
+      "bbox_max": [
+        78.11847686767578,
+        36.32236099243164,
+        12.06444263458252
+      ],
+      "parent": "Object_40_40"
+    },
+    {
+      "name": "Object_573",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.5573501586914,
+        13.118653297424316,
+        -15.256990432739258
+      ],
+      "bbox_max": [
+        79.13089752197266,
+        15.107078552246094,
+        -14.047210693359375
+      ],
+      "parent": "Object_425_425"
+    },
+    {
+      "name": "Object_577",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.56932067871094,
+        15.008797645568848,
+        -15.468588829040527
+      ],
+      "bbox_max": [
+        79.13459014892578,
+        17.022323608398438,
+        -14.733277320861816
+      ],
+      "parent": "Object_428_428"
+    },
+    {
+      "name": "Object_581",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.56758880615234,
+        17.011302947998047,
+        -15.468588829040527
+      ],
+      "bbox_max": [
+        79.13459014892578,
+        19.022014617919922,
+        -14.633907318115234
+      ],
+      "parent": "Object_431_431"
+    },
+    {
+      "name": "Object_585",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.55400085449219,
+        18.902442932128906,
+        -15.151917457580566
+      ],
+      "bbox_max": [
+        79.12906646728516,
+        20.87159538269043,
+        -13.855241775512695
+      ],
+      "parent": "Object_434_434"
+    },
+    {
+      "name": "Object_589",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.53296661376953,
+        20.651620864868164,
+        -14.328556060791016
+      ],
+      "bbox_max": [
+        79.11469268798828,
+        22.445018768310547,
+        -12.650457382202148
+      ],
+      "parent": "Object_437_437"
+    },
+    {
+      "name": "Object_593",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.50593566894531,
+        22.139633178710938,
+        -13.05461597442627
+      ],
+      "bbox_max": [
+        79.09245300292969,
+        23.635059356689453,
+        -11.10165786743164
+      ],
+      "parent": "Object_440_440"
+    },
+    {
+      "name": "Object_597",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        72.47473907470703,
+        23.265073776245117,
+        -11.416916847229004
+      ],
+      "bbox_max": [
+        79.06387329101562,
+        24.36061668395996,
+        -9.31439208984375
+      ],
+      "parent": "Object_443_443"
+    },
+    {
+      "name": "Object_60",
+      "vertex_count": 28,
+      "face_count": 24,
+      "material_names": [
+        "LIGHTS_5"
+      ],
+      "bbox_min": [
+        43.59580993652344,
+        -7.949985980987549,
+        -7.162423133850098
+      ],
+      "bbox_max": [
+        74.60596466064453,
+        -6.061192512512207,
+        -6.6617302894592285
+      ],
+      "parent": "Object_42_42"
+    },
+    {
+      "name": "Object_601",
+      "vertex_count": 16,
+      "face_count": 15,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        42.538841247558594,
+        12.545896530151367,
+        -11.980888366699219
+      ],
+      "bbox_max": [
+        42.68874740600586,
+        21.137676239013672,
+        -3.3927559852600098
+      ],
+      "parent": "Object_446_446"
+    },
+    {
+      "name": "Object_605",
+      "vertex_count": 31,
+      "face_count": 30,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.82389831542969,
+        12.616174697875977,
+        -11.853273391723633
+      ],
+      "bbox_max": [
+        41.970645904541016,
+        21.022401809692383,
+        -3.4460361003875732
+      ],
+      "parent": "Object_449_449"
+    },
+    {
+      "name": "Object_609",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.90130615234375,
+        20.083629608154297,
+        -7.430949687957764
+      ],
+      "bbox_max": [
+        42.660606384277344,
+        21.022401809692383,
+        -4.99242639541626
+      ],
+      "parent": "Object_452_452"
+    },
+    {
+      "name": "Object_613",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.94365310668945,
+        17.89806365966797,
+        -5.0049567222595215
+      ],
+      "bbox_max": [
+        42.68523406982422,
+        20.08374786376953,
+        -3.58139967918396
+      ],
+      "parent": "Object_455_455"
+    },
+    {
+      "name": "Object_617",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.96578598022461,
+        15.300399780273438,
+        -3.7368273735046387
+      ],
+      "bbox_max": [
+        42.687599182128906,
+        17.89818572998047,
+        -3.4460151195526123
+      ],
+      "parent": "Object_458_458"
+    },
+    {
+      "name": "Object_621",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.9371223449707,
+        13.282853126525879,
+        -5.379072666168213
+      ],
+      "bbox_max": [
+        42.6827392578125,
+        15.300520896911621,
+        -3.7242977619171143
+      ],
+      "parent": "Object_461_461"
+    },
+    {
+      "name": "Object_625",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.89323425292969,
+        12.61605453491211,
+        -7.893383502960205
+      ],
+      "bbox_max": [
+        42.654075622558594,
+        13.28297233581543,
+        -5.366544723510742
+      ],
+      "parent": "Object_464_464"
+    },
+    {
+      "name": "Object_629",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.85089111328125,
+        12.61605453491211,
+        -10.319376945495605
+      ],
+      "bbox_max": [
+        42.61018753051758,
+        13.554827690124512,
+        -7.880850315093994
+      ],
+      "parent": "Object_467_467"
+    },
+    {
+      "name": "Object_63",
+      "vertex_count": 155,
+      "face_count": 204,
+      "material_names": [
+        "BADGE_6"
+      ],
+      "bbox_min": [
+        42.342750549316406,
+        -18.084888458251953,
+        -8.619365692138672
+      ],
+      "bbox_max": [
+        75.8758544921875,
+        -7.844809055328369,
+        1.8419992923736572
+      ],
+      "parent": "Object_44_44"
+    },
+    {
+      "name": "Object_633",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.82625961303711,
+        13.554703712463379,
+        -11.730406761169434
+      ],
+      "bbox_max": [
+        42.56784439086914,
+        15.740388870239258,
+        -10.306846618652344
+      ],
+      "parent": "Object_470_470"
+    },
+    {
+      "name": "Object_637",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.82389831542969,
+        15.74026870727539,
+        -11.865787506103516
+      ],
+      "bbox_max": [
+        42.54570770263672,
+        18.338054656982422,
+        -11.57497501373291
+      ],
+      "parent": "Object_473_473"
+    },
+    {
+      "name": "Object_641",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.82875442504883,
+        18.337932586669922,
+        -11.587505340576172
+      ],
+      "bbox_max": [
+        42.57437515258789,
+        20.355602264404297,
+        -9.93272876739502
+      ],
+      "parent": "Object_476_476"
+    },
+    {
+      "name": "Object_645",
+      "vertex_count": 8,
+      "face_count": 6,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        41.857421875,
+        20.355480194091797,
+        -9.945260047912598
+      ],
+      "bbox_max": [
+        42.61825942993164,
+        21.022401809692383,
+        -7.418421268463135
+      ],
+      "parent": "Object_479_479"
+    },
+    {
+      "name": "Object_649",
+      "vertex_count": 216,
+      "face_count": 344,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        38.919925689697266,
+        9.463239669799805,
+        -14.960110664367676
+      ],
+      "bbox_max": [
+        39.487632751464844,
+        24.17537498474121,
+        -0.24478386342525482
+      ],
+      "parent": "Object_482_482"
+    },
+    {
+      "name": "Object_653",
+      "vertex_count": 64,
+      "face_count": 84,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        45.606056213378906,
+        9.487227439880371,
+        -15.051175117492676
+      ],
+      "bbox_max": [
+        46.078521728515625,
+        24.151384353637695,
+        -0.3854685425758362
+      ],
+      "parent": "Object_485_485"
+    },
+    {
+      "name": "Object_657",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.170833587646484,
+        9.066364288330078,
+        -9.527061462402344
+      ],
+      "bbox_max": [
+        45.760398864746094,
+        9.68736743927002,
+        -7.399435520172119
+      ],
+      "parent": "Object_488_488"
+    },
+    {
+      "name": "Object_66",
+      "vertex_count": 2024,
+      "face_count": 2024,
+      "material_names": [
+        "INTERIOR_12"
+      ],
+      "bbox_min": [
+        42.20635986328125,
+        -23.76338005065918,
+        -9.648913383483887
+      ],
+      "bbox_max": [
+        75.99541473388672,
+        11.979053497314453,
+        10.046172142028809
+      ],
+      "parent": "Object_46_46"
+    },
+    {
+      "name": "Object_661",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.205780029296875,
+        9.066364288330078,
+        -7.524861812591553
+      ],
+      "bbox_max": [
+        45.7952995300293,
+        9.786755561828613,
+        -5.400049209594727
+      ],
+      "parent": "Object_491_491"
+    },
+    {
+      "name": "Object_665",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.23878479003906,
+        9.383084297180176,
+        -5.6340107917785645
+      ],
+      "bbox_max": [
+        45.827579498291016,
+        10.565539360046387,
+        -3.5507497787475586
+      ],
+      "parent": "Object_494_494"
+    },
+    {
+      "name": "Object_669",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.269309997558594,
+        10.206570625305176,
+        -3.885099172592163
+      ],
+      "bbox_max": [
+        45.855037689208984,
+        11.77050495147705,
+        -1.9775670766830444
+      ],
+      "parent": "Object_497_497"
+    },
+    {
+      "name": "Object_673",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.29528045654297,
+        11.480704307556152,
+        -2.3973135948181152
+      ],
+      "bbox_max": [
+        45.87580490112305,
+        13.319540977478027,
+        -0.7877072095870972
+      ],
+      "parent": "Object_500_500"
+    },
+    {
+      "name": "Object_677",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.31492233276367,
+        13.118653297424316,
+        -1.2720462083816528
+      ],
+      "bbox_max": [
+        45.88846969604492,
+        15.10707950592041,
+        -0.062261007726192474
+      ],
+      "parent": "Object_503_503"
+    },
+    {
+      "name": "Object_681",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.32689666748047,
+        15.008797645568848,
+        -0.5859781503677368
+      ],
+      "bbox_max": [
+        45.89216232299805,
+        17.022323608398438,
+        0.14933738112449646
+      ],
+      "parent": "Object_506_506"
+    },
+    {
+      "name": "Object_685",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.32516098022461,
+        17.011302947998047,
+        -0.6853471994400024
+      ],
+      "bbox_max": [
+        45.89216232299805,
+        19.022014617919922,
+        0.14933738112449646
+      ],
+      "parent": "Object_509_509"
+    },
+    {
+      "name": "Object_689",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.31156921386719,
+        18.902442932128906,
+        -1.4640132188796997
+      ],
+      "bbox_max": [
+        45.886634826660156,
+        20.87159538269043,
+        -0.16733399033546448
+      ],
+      "parent": "Object_512_512"
+    },
+    {
+      "name": "Object_693",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.29054260253906,
+        20.65161895751953,
+        -2.668797492980957
+      ],
+      "bbox_max": [
+        45.87226486206055,
+        22.445018768310547,
+        -0.9906954169273376
+      ],
+      "parent": "Object_515_515"
+    },
+    {
+      "name": "Object_697",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.26350784301758,
+        22.139631271362305,
+        -4.217597484588623
+      ],
+      "bbox_max": [
+        45.85002899169922,
+        23.635059356689453,
+        -2.2646350860595703
+      ],
+      "parent": "Object_518_518"
+    },
+    {
+      "name": "Object_70",
+      "vertex_count": 10304,
+      "face_count": 16095,
+      "material_names": [
+        "PLASTI_NEGRO_3"
+      ],
+      "bbox_min": [
+        39.077545166015625,
+        -32.86771011352539,
+        -12.589911460876465
+      ],
+      "bbox_max": [
+        79.12432861328125,
+        39.33704376220703,
+        12.220932960510254
+      ],
+      "parent": "Object_49_49"
+    },
+    {
+      "name": "Object_701",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.2323112487793,
+        23.265071868896484,
+        -6.004863739013672
+      ],
+      "bbox_max": [
+        45.821441650390625,
+        24.36061668395996,
+        -3.902334690093994
+      ],
+      "parent": "Object_521_521"
+    },
+    {
+      "name": "Object_705",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.19888687133789,
+        23.951242446899414,
+        -7.919816970825195
+      ],
+      "bbox_max": [
+        45.788455963134766,
+        24.572246551513672,
+        -5.7921905517578125
+      ],
+      "parent": "Object_524_524"
+    },
+    {
+      "name": "Object_709",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.16399002075195,
+        23.851858139038086,
+        -9.919203758239746
+      ],
+      "bbox_max": [
+        45.75350570678711,
+        24.572246551513672,
+        -7.7943925857543945
+      ],
+      "parent": "Object_527_527"
+    },
+    {
+      "name": "Object_713",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.131710052490234,
+        23.073074340820312,
+        -11.768503189086914
+      ],
+      "bbox_max": [
+        45.72050476074219,
+        24.255525588989258,
+        -9.685243606567383
+      ],
+      "parent": "Object_530_530"
+    },
+    {
+      "name": "Object_717",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.104248046875,
+        21.868106842041016,
+        -13.34168529510498
+      ],
+      "bbox_max": [
+        45.68997573852539,
+        23.432039260864258,
+        -11.434155464172363
+      ],
+      "parent": "Object_533_533"
+    },
+    {
+      "name": "Object_721",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.08348083496094,
+        20.31907081604004,
+        -14.531545639038086
+      ],
+      "bbox_max": [
+        45.664005279541016,
+        22.15790557861328,
+        -12.921939849853516
+      ],
+      "parent": "Object_536_536"
+    },
+    {
+      "name": "Object_725",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.07081604003906,
+        18.531532287597656,
+        -15.256991386413574
+      ],
+      "bbox_max": [
+        45.64436721801758,
+        20.51995849609375,
+        -14.047208786010742
+      ],
+      "parent": "Object_539_539"
+    },
+    {
+      "name": "Object_729",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.06712341308594,
+        16.616287231445312,
+        -15.468589782714844
+      ],
+      "bbox_max": [
+        45.632389068603516,
+        18.62981414794922,
+        -14.733275413513184
+      ],
+      "parent": "Object_542_542"
+    },
+    {
+      "name": "Object_73",
+      "vertex_count": 4266,
+      "face_count": 7306,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        39.03651809692383,
+        -32.86714553833008,
+        -11.714454650878906
+      ],
+      "bbox_max": [
+        79.16535186767578,
+        39.50346755981445,
+        11.768221855163574
+      ],
+      "parent": "Object_51_51"
+    },
+    {
+      "name": "Object_733",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.06712341308594,
+        14.616596221923828,
+        -15.468589782714844
+      ],
+      "bbox_max": [
+        45.634124755859375,
+        16.627307891845703,
+        -14.633905410766602
+      ],
+      "parent": "Object_545_545"
+    },
+    {
+      "name": "Object_737",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.07265090942383,
+        12.76701545715332,
+        -15.151918411254883
+      ],
+      "bbox_max": [
+        45.6477165222168,
+        14.736167907714844,
+        -13.855239868164062
+      ],
+      "parent": "Object_548_548"
+    },
+    {
+      "name": "Object_741",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.08702087402344,
+        11.19359302520752,
+        -14.328557014465332
+      ],
+      "bbox_max": [
+        45.66874313354492,
+        12.986989974975586,
+        -12.650455474853516
+      ],
+      "parent": "Object_551_551"
+    },
+    {
+      "name": "Object_745",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.10926055908203,
+        10.003551483154297,
+        -13.054617881774902
+      ],
+      "bbox_max": [
+        45.695777893066406,
+        11.498978614807129,
+        -11.101655960083008
+      ],
+      "parent": "Object_554_554"
+    },
+    {
+      "name": "Object_749",
+      "vertex_count": 20,
+      "face_count": 23,
+      "material_names": [
+        "Porsche_911Targa4SRewardRecycled_2021_Wheel1A_3D_3DWheel1B_Material_0"
+      ],
+      "bbox_min": [
+        39.13784408569336,
+        9.277995109558105,
+        -11.41691780090332
+      ],
+      "bbox_max": [
+        45.72697448730469,
+        10.37353801727295,
+        -9.314390182495117
+      ],
+      "parent": "Object_557_557"
+    },
+    {
+      "name": "Object_76",
+      "vertex_count": 1472,
+      "face_count": 2266,
+      "material_names": [
+        "LIGHTS_5"
+      ],
+      "bbox_min": [
+        41.187660217285156,
+        25.931978225708008,
+        -7.154580116271973
+      ],
+      "bbox_max": [
+        77.01422119140625,
+        39.05059814453125,
+        6.271480560302734
+      ],
+      "parent": "Object_53_53"
+    },
+    {
+      "name": "Object_79",
+      "vertex_count": 401,
+      "face_count": 382,
+      "material_names": [
+        "CHROME_13"
+      ],
+      "bbox_min": [
+        49.32621765136719,
+        27.340787887573242,
+        -5.4644036293029785
+      ],
+      "bbox_max": [
+        68.87565612792969,
+        39.22602844238281,
+        6.091079235076904
+      ],
+      "parent": "Object_55_55"
+    },
+    {
+      "name": "Object_82",
+      "vertex_count": 867,
+      "face_count": 1302,
+      "material_names": [
+        "GLASS_7"
+      ],
+      "bbox_min": [
+        41.60527038574219,
+        -30.638164520263672,
+        0.03489713743329048
+      ],
+      "bbox_max": [
+        76.59660339355469,
+        37.603214263916016,
+        11.601655960083008
+      ],
+      "parent": "Object_57_57"
+    },
+    {
+      "name": "Object_85",
+      "vertex_count": 6,
+      "face_count": 2,
+      "material_names": [
+        "modelSM_RearKit_0000.001SG11_14"
+      ],
+      "bbox_min": [
+        42.83545684814453,
+        25.47649574279785,
+        -11.518099784851074
+      ],
+      "bbox_max": [
+        75.36642456054688,
+        26.19316864013672,
+        -11.336631774902344
+      ],
+      "parent": "Object_59_59"
+    },
+    {
+      "name": "Object_88",
+      "vertex_count": 86,
+      "face_count": 86,
+      "material_names": [
+        "CHASSIS_9"
+      ],
+      "bbox_min": [
+        40.28629684448242,
+        -28.060489654541016,
+        -12.588916778564453
+      ],
+      "bbox_max": [
+        77.91558074951172,
+        37.77460861206055,
+        -10.335212707519531
+      ],
+      "parent": "Object_61_61"
+    },
+    {
+      "name": "Object_92",
+      "vertex_count": 419,
+      "face_count": 706,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        43.877079010009766,
+        -56.33544158935547,
+        -3.3948655128479004
+      ],
+      "bbox_max": [
+        74.32469177246094,
+        -25.246166229248047,
+        4.023684978485107
+      ],
+      "parent": "Object_64_64"
+    },
+    {
+      "name": "Object_95",
+      "vertex_count": 52,
+      "face_count": 76,
+      "material_names": [
+        "BADGE_6"
+      ],
+      "bbox_min": [
+        58.52756118774414,
+        -55.00629425048828,
+        -2.50832200050354
+      ],
+      "bbox_max": [
+        59.67374801635742,
+        -53.654476165771484,
+        -1.7859303951263428
+      ],
+      "parent": "Object_66_66"
+    }
+  ],
+  "total_meshes": 189,
+  "carpaint_material_name": "PAINT_COLOR_4",
+  "carpaint_meshes": [
+    {
+      "name": "Object_21",
+      "vertex_count": 2532,
+      "face_count": 4446,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        39.16389083862305,
+        -58.402915954589844,
+        -12.321052551269531
+      ],
+      "bbox_max": [
+        79.0378189086914,
+        -22.535438537597656,
+        3.551424980163574
+      ],
+      "parent": "Object_15_15"
+    },
+    {
+      "name": "Object_43",
+      "vertex_count": 1504,
+      "face_count": 2672,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        37.12717819213867,
+        -25.124361038208008,
+        -10.088871955871582
+      ],
+      "bbox_max": [
+        81.07452392578125,
+        2.9416823387145996,
+        6.181114673614502
+      ],
+      "parent": "Object_30_30"
+    },
+    {
+      "name": "Object_73",
+      "vertex_count": 4266,
+      "face_count": 7306,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        39.03651809692383,
+        -32.86714553833008,
+        -11.714454650878906
+      ],
+      "bbox_max": [
+        79.16535186767578,
+        39.50346755981445,
+        11.768221855163574
+      ],
+      "parent": "Object_51_51"
+    },
+    {
+      "name": "Object_92",
+      "vertex_count": 419,
+      "face_count": 706,
+      "material_names": [
+        "PAINT_COLOR_4"
+      ],
+      "bbox_min": [
+        43.877079010009766,
+        -56.33544158935547,
+        -3.3948655128479004
+      ],
+      "bbox_max": [
+        74.32469177246094,
+        -25.246166229248047,
+        4.023684978485107
+      ],
+      "parent": "Object_64_64"
+    }
+  ]
+}

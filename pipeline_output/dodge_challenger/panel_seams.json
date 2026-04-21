@@ -1,0 +1,20 @@
+{
+  "panel_zones": [
+    "hood",
+    "roof",
+    "trunk",
+    "bumper_front",
+    "bumper_rear",
+    "fender_fl",
+    "fender_fr",
+    "door_fl",
+    "door_fr",
+    "door_rl",
+    "door_rr",
+    "rocker_l",
+    "rocker_r",
+    "body_misc",
+    "trim"
+  ],
+  "seams": []
+}

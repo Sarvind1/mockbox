@@ -1,0 +1,21 @@
+{
+  "zones": {
+    "body_misc": 1863,
+    "fender_r_l": 938,
+    "trunk": 758,
+    "door_r_l": 487,
+    "roof": 726,
+    "bumper_front": 2664,
+    "rocker_l": 280,
+    "fender_r_r": 816,
+    "fender_f_r": 479,
+    "hood": 806,
+    "door_r_r": 487,
+    "rocker_r": 280,
+    "bumper_rear": 2780,
+    "door_f_l": 730,
+    "door_f_r": 730,
+    "fender_f_l": 479
+  },
+  "total_faces": 15303
+}

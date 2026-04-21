@@ -1,0 +1,85 @@
+{
+  "mask_size": 2048,
+  "zones": {
+    "bumper_front": {
+      "mask_file": "bumper_front.png",
+      "triangle_count": 2502
+    },
+    "bumper_rear": {
+      "mask_file": "bumper_rear.png",
+      "triangle_count": 2499
+    },
+    "bumper_rear_1": {
+      "mask_file": "bumper_rear_1.png",
+      "triangle_count": 929
+    },
+    "bumper_rear_2": {
+      "mask_file": "bumper_rear_2.png",
+      "triangle_count": 573
+    },
+    "bumper_rear_3": {
+      "mask_file": "bumper_rear_3.png",
+      "triangle_count": 548
+    },
+    "bumper_rear_4": {
+      "mask_file": "bumper_rear_4.png",
+      "triangle_count": 463
+    },
+    "cluster_2": {
+      "mask_file": "cluster_2.png",
+      "triangle_count": 1391
+    },
+    "door_f_l": {
+      "mask_file": "door_f_l.png",
+      "triangle_count": 571
+    },
+    "door_f_l_1": {
+      "mask_file": "door_f_l_1.png",
+      "triangle_count": 559
+    },
+    "door_f_l_2": {
+      "mask_file": "door_f_l_2.png",
+      "triangle_count": 555
+    },
+    "door_f_r": {
+      "mask_file": "door_f_r.png",
+      "triangle_count": 1063
+    },
+    "door_f_r_1": {
+      "mask_file": "door_f_r_1.png",
+      "triangle_count": 1043
+    },
+    "door_r_l": {
+      "mask_file": "door_r_l.png",
+      "triangle_count": 854
+    },
+    "door_r_l_1": {
+      "mask_file": "door_r_l_1.png",
+      "triangle_count": 487
+    },
+    "fender_f_l": {
+      "mask_file": "fender_f_l.png",
+      "triangle_count": 854
+    },
+    "fender_f_r": {
+      "mask_file": "fender_f_r.png",
+      "triangle_count": 963
+    },
+    "fender_r_l": {
+      "mask_file": "fender_r_l.png",
+      "triangle_count": 798
+    },
+    "fender_r_r": {
+      "mask_file": "fender_r_r.png",
+      "triangle_count": 843
+    },
+    "fender_r_r_1": {
+      "mask_file": "fender_r_r_1.png",
+      "triangle_count": 757
+    },
+    "roof": {
+      "mask_file": "roof.png",
+      "triangle_count": 528
+    }
+  }
+}

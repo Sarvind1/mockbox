@@ -1,0 +1,10 @@
+{
+  "overall_quality": "acceptable",
+  "recommendation": "proceed",
+  "issues": [
+    "Single carpaint mesh - entire body is one zone (body_misc). Panel-by-panel painting requires manual mask creation for individual zones."
+  ],
+  "zone_notes": {
+    "body_misc": "Covers entire car body. UV islands are well-packed and coherent."
+  }
+}

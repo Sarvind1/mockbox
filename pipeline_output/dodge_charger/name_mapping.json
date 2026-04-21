@@ -1,0 +1,8 @@
+{
+  "name_mapping": {
+    "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_Paint_Metal_High_body_charger:phong1SG1_0": "body_misc",
+    "body_charger:M_Paint_Plastic_Highcar_dodge_chargersrt8_2013_undercover_Mesh_lod0_body_charger:phong1SG1_0": "body_misc",
+    "body_charger:car_dodge_chargersrt8_2013_undercover_Mesh_lod0M_PaintNormalMap_High_body_charger:initialShadingGroup1_0": "body_misc"
+  },
+  "unmapped": []
+}
