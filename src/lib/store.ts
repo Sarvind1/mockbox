@@ -76,11 +76,13 @@ interface EditorActions {
   redo: () => void;
   pushUndo: () => void;
   setStickerMode: (on: boolean) => void;
+  pendingStickerUrl: string | null;
+  setPendingStickerUrl: (url: string | null) => void;
   addSticker: (sticker: Sticker) => void;
   removeSticker: (id: string) => void;
   removeStickerGroup: (groupId: string) => void;
-  updateSticker: (id: string, updates: Partial<Pick<Sticker, "size" | "rotation" | "position">>) => void;
-  updateStickerGroup: (groupId: string, updates: Partial<Pick<Sticker, "size" | "rotation">>) => void;
+  updateSticker: (id: string, updates: Partial<Pick<Sticker, "size" | "rotation" | "position" | "mirror">>) => void;
+  updateStickerGroup: (groupId: string, updates: Partial<Pick<Sticker, "size" | "rotation" | "mirror">>) => void;
   moveStickerGroup: (groupId: string, newStickers: Array<Omit<Sticker, "id">>) => void;
   selectSticker: (groupId: string | null) => void;
 }
@@ -90,8 +92,8 @@ export const useEditorStore = create<EditorState & EditorActions>(
     // State
     activeTemplateId: defaultTemplate.id,
     templates,
-    activeSurface: defaultTemplate.surfaces[0],
-    selectedZoneIds: [defaultTemplate.surfaces[0]],
+    activeSurface: defaultTemplate.canvasZones?.[0]?.id ?? defaultTemplate.surfaces[0],
+    selectedZoneIds: [defaultTemplate.canvasZones?.[0]?.id ?? defaultTemplate.surfaces[0]],
     customGroups: [],
     multiSelectMode: true,
     singlePaste: true,
@@ -108,6 +110,7 @@ export const useEditorStore = create<EditorState & EditorActions>(
     stickers: [],
     selectedStickerGroupId: null,
     stickerMode: false,
+    pendingStickerUrl: null,
     dropHoverZone: null,
 
     // Actions
@@ -125,12 +128,13 @@ export const useEditorStore = create<EditorState & EditorActions>(
       const template = templates.find((t) => t.id === templateId);
       if (!template) return;
       const state = get();
+      const firstZone = template.canvasZones?.[0]?.id ?? template.surfaces[0];
       set({
         undoStack: [...state.undoStack.slice(-19), createSnapshot(state)],
         redoStack: [],
         activeTemplateId: templateId,
-        activeSurface: template.surfaces[0],
-        selectedZoneIds: [template.surfaces[0]],
+        activeSurface: firstZone,
+        selectedZoneIds: [firstZone],
         customGroups: [],
         multiSelectMode: true,
         singlePaste: true,
@@ -141,14 +145,17 @@ export const useEditorStore = create<EditorState & EditorActions>(
         stickers: [],
         selectedStickerGroupId: null,
         stickerMode: false,
+        pendingStickerUrl: null,
       });
     },
 
     setActiveSurface: (surface) => set({ activeSurface: surface, selectedZoneIds: [surface] }),
 
     setSelectedZones: (ids) => {
-      if (ids.length === 0) return;
-      set({ selectedZoneIds: ids, activeSurface: ids[ids.length - 1] });
+      set({
+        selectedZoneIds: ids,
+        activeSurface: ids.length > 0 ? ids[ids.length - 1] : get().activeSurface
+      });
     },
 
     toggleZoneInSelection: (id) => {
@@ -157,8 +164,9 @@ export const useEditorStore = create<EditorState & EditorActions>(
       const next = already
         ? state.selectedZoneIds.filter((z) => z !== id)
         : [...state.selectedZoneIds, id];
-      // If deselecting the last zone, fall back to the primary surface
-      const fallback = templates.find((t) => t.id === state.activeTemplateId)?.surfaces[0] ?? "body";
+      // If deselecting the last zone, fall back to the first canvas zone or primary surface
+      const activeTemplate = templates.find((t) => t.id === state.activeTemplateId);
+      const fallback = activeTemplate?.canvasZones?.[0]?.id ?? activeTemplate?.surfaces[0] ?? "body";
       const ids = next.length === 0 ? [fallback] : next;
       set({ selectedZoneIds: ids, activeSurface: ids[ids.length - 1] });
     },
@@ -327,6 +335,7 @@ export const useEditorStore = create<EditorState & EditorActions>(
     },
     // Sticker actions
     setStickerMode: (on) => set({ stickerMode: on }),
+    setPendingStickerUrl: (url) => set({ pendingStickerUrl: url }),
 
     addSticker: (sticker) => {
       const state = get();

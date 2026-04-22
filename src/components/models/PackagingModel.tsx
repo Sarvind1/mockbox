@@ -14,8 +14,14 @@ function getMaterialProps(finish: string, color: string) {
   switch (finish) {
     case "glossy":
       return { ...base, roughness: 0.1, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.1 };
+    case "satin":
+      return { ...base, roughness: 0.4, metalness: 0.1, clearcoat: 0.3, clearcoatRoughness: 0.4 };
     case "metallic":
       return { ...base, roughness: 0.3, metalness: 0.8 };
+    case "pearl":
+      return { ...base, roughness: 0.2, metalness: 0.3, clearcoat: 1, clearcoatRoughness: 0.05 };
+    case "chrome":
+      return { ...base, roughness: 0.05, metalness: 1.0 };
     case "kraft":
       return { ...base, color: "#c4a265", roughness: 0.9, metalness: 0 };
     default: // matte
@@ -87,7 +93,7 @@ export function BoxModel() {
     </group>
   );
 }
-useGLTF.preload("/models/package_box_mockup.glb");
+// useGLTF.preload("/models/package_box_mockup.glb");
 
 // ---- Bottle Model ----
 export function BottleModel() {
@@ -391,7 +397,7 @@ export function CupModel() {
     </group>
   );
 }
-useGLTF.preload("/models/coffee_shop_cup.glb");
+// useGLTF.preload("/models/coffee_shop_cup.glb");
 
 // ---- Dodge Charger SRT8 (GLB) — per-zone mesh objects ----
 export function CarSedanModel() {
@@ -521,7 +527,8 @@ export function CarSedanModel() {
     </>
   );
 }
-useGLTF.preload("/models/dodge_charger_panels.glb");
+// Vehicle GLBs are large — skip eager preload to avoid WebGL context loss
+// useGLTF.preload("/models/dodge_charger_panels.glb");
 
 // ---- Dodge Challenger SRT Hellcat (GLB) — per-zone mesh objects ----
 export function CarVanModel() {
@@ -651,7 +658,7 @@ export function CarVanModel() {
     </>
   );
 }
-useGLTF.preload("/models/dodge_challenger_panels.glb");
+// useGLTF.preload("/models/dodge_challenger_panels.glb");
 
 // ---- Porsche 911 Targa 4S (GLB) ----
 export function Porsche911Model() {
@@ -721,7 +728,7 @@ export function Porsche911Model() {
     </>
   );
 }
-useGLTF.preload("/models/porsche_911.glb");
+// useGLTF.preload("/models/porsche_911.glb");
 
 // ---- Porsche 911 Targa 4S (GLB) with canvas panel zones ----
 export function Porsche911PanelsModel() {
@@ -959,7 +966,7 @@ export function Porsche911PanelsModel() {
     </>
   );
 }
-useGLTF.preload("/models/porsche_911_panels.glb");
+// useGLTF.preload("/models/porsche_911_panels.glb");
 
 // ---- BMW X5M 2016 (GLB) — per-zone mesh objects (same pattern as Porsche 911) ----
 export function BmwX5mModel() {
@@ -1096,7 +1103,7 @@ export function BmwX5mModel() {
     </>
   );
 }
-useGLTF.preload("/models/bmw_x5m_panels.glb");
+// useGLTF.preload("/models/bmw_x5m_panels.glb");
 
 // Flood-fill background removal: BFS from image edges, remove pixels similar to the corner bg color.
 // Also feathers alpha on anti-aliased fringe pixels so they blend smoothly with the zone color

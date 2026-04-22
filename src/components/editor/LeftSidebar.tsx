@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEditorStore } from "@/lib/store";
 import { templates, getTemplate } from "@/lib/templates";
@@ -20,7 +20,12 @@ import {
   Plus,
   MousePointer2,
   ImagePlus,
+  ChevronRight,
 } from "lucide-react";
+import { CarDiagram } from "./CarDiagram";
+import { PatternPreview } from "./PatternPreview";
+import { FinishType } from "@/lib/types";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const categoryIcons: Record<string, any> = {
   boxes: Box,
@@ -32,7 +37,538 @@ const categoryIcons: Record<string, any> = {
   vehicles: Car,
 };
 
-export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap" }) {
+// ─── WRAP MODE DATA ─────────────────────────────────────────────────────────
+
+const AUTOMOTIVE_COLORS = [
+  { h: "#0d0d10", l: "Phantom Black" }, { h: "#f0ede8", l: "Pearl White" }, { h: "#c6ccd5", l: "Glacier Silver" },
+  { h: "#1b2540", l: "Midnight Navy" }, { h: "#2e3138", l: "Carbon Gray" }, { h: "#bf2a1e", l: "Racing Red" },
+  { h: "#1c3fa8", l: "Cobalt Blue" }, { h: "#efc020", l: "Signal Yellow" }, { h: "#1d4230", l: "Forest Green" },
+  { h: "#c44c12", l: "Burnt Orange" }, { h: "#c49080", l: "Rose Gold" }, { h: "#0fa3b1", l: "Electric Teal" },
+  { h: "#ece8e3", l: "Ceramic White" }, { h: "#4a4d54", l: "Stealth Gray" }, { h: "#7c3eb8", l: "Candy Purple" },
+  { h: "#c9ad7a", l: "Champagne Gold" }, { h: "#4a5240", l: "Matte Army" }, { h: "#5baad0", l: "Sky Blue" },
+];
+
+const WRAP_FINISHES: { id: FinishType; l: string }[] = [
+  { id: "glossy", l: "Gloss" }, { id: "satin", l: "Satin" }, { id: "matte", l: "Matte" },
+  { id: "metallic", l: "Metallic" }, { id: "pearl", l: "Pearl" }, { id: "chrome", l: "Chrome" },
+];
+
+const PATTERNS = [
+  { id: "carbon", l: "Carbon", cat: "texture" },
+  { id: "check", l: "Checker", cat: "racing" },
+  { id: "stripe", l: "Rally", cat: "racing" },
+  { id: "dots", l: "Dots", cat: "geo" },
+];
+
+const STICKERS = [
+  { id: "star", l: "Star" },
+  { id: "bolt", l: "Lightning" },
+  { id: "flame", l: "Flame" },
+  { id: "skull", l: "Skull" },
+];
+
+const FONTS = ["Space Grotesk", "Inter", "Impact", "Georgia", "Courier New", "Arial Black"];
+
+type WrapTool = "paint" | "decal" | "text";
+
+// ─── GROUP ACCORDION ─────────────────────────────────────────────────────────
+
+function GroupAccordion({
+  group,
+  selectedZoneIds,
+  onGroupToggle,
+  onPanelToggle,
+  panelColors,
+}: {
+  group: { id: string; label: string; zoneIds: string[] };
+  selectedZoneIds: string[];
+  onGroupToggle: (ids: string[], removeAll: boolean) => void;
+  onPanelToggle: (id: string) => void;
+  panelColors: Record<string, string | null>;
+}) {
+  const [open, setOpen] = useState(false);
+  const allSel = group.zoneIds.every((id) => selectedZoneIds.includes(id));
+  const someSel = group.zoneIds.some((id) => selectedZoneIds.includes(id));
+
+  return (
+    <div
+      className="rounded-lg border overflow-hidden mb-1 transition-colors"
+      style={{ borderColor: allSel ? "var(--primary)" : someSel ? "var(--wrap-bdr2, var(--border))" : "var(--border)" }}
+    >
+      <div className="flex items-center" style={{ background: allSel ? "var(--wrap-accent-dim, var(--primary)/0.1)" : "var(--wrap-surf2, var(--muted))" }}>
+        <button
+          onClick={() => onGroupToggle(group.zoneIds, allSel)}
+          className="p-2 flex items-center shrink-0"
+        >
+          <div
+            className="w-[15px] h-[15px] rounded border-2 flex items-center justify-center transition-all"
+            style={{
+              borderColor: (allSel || someSel) ? "var(--primary)" : "var(--wrap-bdr2, var(--border))",
+              background: allSel ? "var(--primary)" : "transparent",
+            }}
+          >
+            {allSel && <span className="text-white text-[9px] leading-none">{"\u2713"}</span>}
+            {!allSel && someSel && <span className="text-primary text-[10px] leading-none font-bold">{"\u2013"}</span>}
+          </div>
+        </button>
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="flex-1 flex items-center justify-between py-2 pr-2.5 text-left"
+        >
+          <span className="text-xs font-semibold" style={{ color: allSel ? "var(--primary)" : "var(--foreground)" }}>
+            {group.label}
+          </span>
+          <div className="flex items-center gap-1">
+            {someSel && (
+              <span className="text-[9px] text-primary font-bold">
+                {group.zoneIds.filter((id) => selectedZoneIds.includes(id)).length}/{group.zoneIds.length}
+              </span>
+            )}
+            <ChevronRight className={`h-3 w-3 text-muted-foreground transition-transform ${open ? "rotate-90" : ""}`} />
+          </div>
+        </button>
+      </div>
+      {open && (
+        <div className="p-1.5 border-t border-border flex flex-wrap gap-1" style={{ background: "var(--background)" }}>
+          {group.zoneIds.map((id) => {
+            const sel = selectedZoneIds.includes(id);
+            const col = panelColors[id];
+            return (
+              <button
+                key={id}
+                onClick={() => onPanelToggle(id)}
+                className="px-1.5 py-0.5 rounded text-[10px] font-medium flex items-center gap-1 border transition-all"
+                style={{
+                  background: sel ? "var(--wrap-accent-dim, var(--primary)/0.1)" : "var(--wrap-surf2, var(--muted))",
+                  color: sel ? "var(--primary)" : "var(--muted-foreground)",
+                  borderColor: sel ? "var(--primary)" : "var(--border)",
+                }}
+              >
+                {col && <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: col }} />}
+                {id.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()).replace(/ [FRLM]$| Front| Rear/g, "")}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── WRAP SIDEBAR ────────────────────────────────────────────────────────────
+
+function WrapSidebar() {
+  const selectedZoneIds = useEditorStore((s) => s.selectedZoneIds);
+  const setSelectedZones = useEditorStore((s) => s.setSelectedZones);
+  const toggleZoneInSelection = useEditorStore((s) => s.toggleZoneInSelection);
+  const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
+  const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
+  const setZoneColor = useEditorStore((s) => s.setZoneColor);
+  const setBaseColor = useEditorStore((s) => s.setBaseColor);
+  const finish = useEditorStore((s) => s.finish);
+  const setFinish = useEditorStore((s) => s.setFinish);
+  const setStickerMode = useEditorStore((s) => s.setStickerMode);
+
+  const uploadTexture = useEditorStore((s) => s.uploadTexture);
+  const activeSurface = useEditorStore((s) => s.activeSurface);
+
+  const activeTemplate = getTemplate(activeTemplateId);
+  const predefinedGroups = activeTemplate?.zoneGroups ?? [];
+
+
+
+  const [tool, setTool] = useState<WrapTool>("paint");
+  const toolRef = useRef(tool);
+  useEffect(() => { toolRef.current = tool; }, [tool]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [cat, setCat] = useState("all");
+  const [txtContent, setTxtContent] = useState("YOUR TEXT");
+  const [txtFont, setTxtFont] = useState("Space Grotesk");
+  const [txtColor, setTxtColor] = useState("#ffffff");
+  const [txtSize, setTxtSize] = useState(48);
+  const [txtWeight, setTxtWeight] = useState("700");
+  const [activeHex, setActiveHex] = useState("#1b2540");
+
+  const panelColors: Record<string, string | null> = {};
+  for (const [id, tex] of Object.entries(surfaceTextures)) {
+    if (tex.color) panelColors[id] = tex.color;
+  }
+
+  const numSel = selectedZoneIds.length;
+
+  const applyColor = (hex: string) => {
+    setActiveHex(hex);
+    if (numSel > 0) {
+      selectedZoneIds.forEach((id) => setZoneColor(id, hex));
+    } else {
+      setBaseColor(hex);
+    }
+  };
+
+  const handleGroupToggle = (ids: string[], removeAll: boolean) => {
+    if (removeAll) {
+      setSelectedZones(selectedZoneIds.filter((id) => !ids.includes(id)));
+    } else {
+      setSelectedZones([...new Set([...selectedZoneIds, ...ids])]);
+    }
+  };
+
+  const [customDecals, setCustomDecals] = useState<{ id: string; label: string; url: string }[]>([]);
+
+  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // allow re-upload of same file
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    const currentTool = toolRef.current;
+    if (currentTool === "decal") {
+      const name = file.name.replace(/\.[^.]+$/, "");
+      setCustomDecals((prev) => [...prev, { id: `custom-${Date.now()}`, label: name, url }]);
+    } else {
+      uploadTexture(activeSurface, url);
+    }
+  }, [uploadTexture, activeSurface]);
+
+  const allItems: { id: string; l: string; type: "sticker" | "pattern" | "custom"; url?: string }[] = [
+    ...STICKERS.map((s) => ({ ...s, type: "sticker" as const })),
+    ...PATTERNS.map((p) => ({ ...p, type: "pattern" as const })),
+    ...customDecals.map((d) => ({ id: d.id, l: d.label, type: "custom" as const, url: d.url })),
+  ];
+  const filtered = cat === "all" ? allItems : cat === "sticker" ? allItems.filter((i) => i.type === "sticker") : cat === "pattern" ? allItems.filter((i) => i.type === "pattern") : allItems;
+
+  const TOOL_BTNS: { id: WrapTool; icon: string; label: string }[] = [
+    { id: "paint", icon: "\u2B24", label: "Paint" },
+    { id: "decal", icon: "\u2726", label: "Decal" },
+    { id: "text", icon: "T", label: "Text" },
+  ];
+
+  return (
+    <div className="w-[252px] bg-card border-r border-border flex flex-col shrink-0 overflow-hidden">
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+      {/* Car diagram */}
+      <div className="p-2.5 pb-1.5 shrink-0">
+        <div className="bg-background rounded-xl border border-border p-2">
+          <CarDiagram
+            selectedZoneIds={selectedZoneIds}
+            onToggleZone={toggleZoneInSelection}
+            panelColors={panelColors}
+          />
+        </div>
+        {numSel > 0 ? (
+          <div className="mt-1.5 text-[11px] font-semibold text-primary flex justify-between px-0.5">
+            <span>{numSel} panel{numSel > 1 ? "s" : ""} selected</span>
+            <button onClick={() => setSelectedZones([])} className="text-[10px] text-muted-foreground">
+              Clear {"\u00D7"}
+            </button>
+          </div>
+        ) : (
+          <div className="mt-1 text-[10px] text-muted-foreground px-0.5">
+            Click panels or use groups below
+          </div>
+        )}
+      </div>
+
+      {/* Tool strip */}
+      <div className="flex px-2.5 pb-2 gap-1 shrink-0">
+        {TOOL_BTNS.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => {
+              setTool(t.id);
+              if (t.id === "decal") setStickerMode(true);
+              else setStickerMode(false);
+            }}
+            className="flex-1 py-1.5 px-1 rounded-lg text-[11px] font-bold flex flex-col items-center gap-0.5 border transition-all"
+            style={{
+              background: tool === t.id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+              color: tool === t.id ? "var(--primary)" : "var(--muted-foreground)",
+              borderColor: tool === t.id ? "var(--primary)" : "var(--border)",
+            }}
+          >
+            <span className={tool === t.id ? "text-[13px]" : "text-[11px]"}>{t.icon}</span>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Tool content */}
+      <div className="flex-1 overflow-y-auto px-2.5 pb-2.5">
+        {/* PAINT */}
+        {tool === "paint" && (
+          <>
+            <div className="grid grid-cols-6 gap-1 mb-2.5">
+              {AUTOMOTIVE_COLORS.map((c) => (
+                <button
+                  key={c.h}
+                  onClick={() => applyColor(c.h)}
+                  title={c.l}
+                  className="aspect-square rounded-md border transition-all"
+                  style={{
+                    background: c.h,
+                    borderColor: activeHex === c.h ? "var(--primary)" : "rgba(255,255,255,0.07)",
+                    transform: activeHex === c.h ? "scale(1.15)" : "scale(1)",
+                    boxShadow: activeHex === c.h ? "0 0 0 2px var(--background), 0 0 0 3.5px var(--primary)" : "none",
+                  }}
+                />
+              ))}
+            </div>
+
+            <div className="flex gap-2 items-center mb-3 p-1.5 rounded-lg border border-border" style={{ background: "var(--wrap-surf2, var(--muted))" }}>
+              <div className="relative w-7 h-7 rounded-md overflow-hidden border border-border shrink-0">
+                <div className="absolute inset-0 pointer-events-none" style={{ background: activeHex }} />
+                <input
+                  type="color"
+                  value={activeHex}
+                  onChange={(e) => applyColor(e.target.value)}
+                  className="absolute inset-0 opacity-0 cursor-pointer"
+                />
+              </div>
+              <div>
+                <div className="text-[9px] text-muted-foreground mb-0.5">Custom</div>
+                <div className="text-[11px] font-mono font-semibold">{activeHex}</div>
+              </div>
+              {numSel === 0 && (
+                <div className="ml-auto text-[9.5px] text-muted-foreground leading-tight text-right">
+                  Select<br />panels first
+                </div>
+              )}
+            </div>
+
+            <div className="text-[10px] font-bold tracking-wider uppercase text-muted-foreground mb-1.5">Finish</div>
+            <div className="grid grid-cols-3 gap-1 mb-3">
+              {WRAP_FINISHES.map((f) => (
+                <button
+                  key={f.id}
+                  onClick={() => setFinish(f.id)}
+                  className="py-1.5 px-1 rounded-md text-[11px] font-semibold border transition-all"
+                  style={{
+                    background: finish === f.id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                    color: finish === f.id ? "var(--primary)" : "var(--muted-foreground)",
+                    borderColor: finish === f.id ? "var(--primary)" : "var(--border)",
+                  }}
+                >
+                  {f.l}
+                </button>
+              ))}
+            </div>
+
+            <div className="text-[10px] font-bold tracking-wider uppercase text-muted-foreground mb-1.5">Groups</div>
+            {predefinedGroups.map((g) => (
+              <GroupAccordion
+                key={g.id}
+                group={g}
+                selectedZoneIds={selectedZoneIds}
+                onGroupToggle={handleGroupToggle}
+                onPanelToggle={toggleZoneInSelection}
+                panelColors={panelColors}
+              />
+            ))}
+          </>
+        )}
+
+        {/* DECAL */}
+        {tool === "decal" && (
+          <>
+            <div className="flex gap-1 mb-2">
+              {[["all", "All"], ["sticker", "Stickers"], ["pattern", "Patterns"]].map(([id, lbl]) => (
+                <button
+                  key={id}
+                  onClick={() => setCat(id)}
+                  className="flex-1 py-1 rounded-md text-[10.5px] font-bold border transition-all"
+                  style={{
+                    background: cat === id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                    color: cat === id ? "var(--primary)" : "var(--muted-foreground)",
+                    borderColor: cat === id ? "var(--primary)" : "var(--border)",
+                  }}
+                >
+                  {lbl}
+                </button>
+              ))}
+            </div>
+            <div className="text-[10px] text-muted-foreground mb-2 px-2 py-1 rounded-md border border-border" style={{ background: "var(--wrap-surf2, var(--muted))" }}>
+              {"\u2193"} Drag onto car to place
+            </div>
+            <div className="grid grid-cols-2 gap-1.5">
+              {filtered.map((item) => (
+                <div
+                  key={item.id}
+                  draggable
+                  onDragStart={(e) => {
+                    e.dataTransfer.setData("text/plain", item.type === "custom" ? item.url! : `/presets/${item.id}.png`);
+                    e.dataTransfer.effectAllowed = "copy";
+                    setStickerMode(true);
+                  }}
+                  className="rounded-lg border border-border overflow-hidden cursor-grab select-none hover:border-primary transition-colors"
+                  style={{ background: "var(--wrap-surf2, var(--muted))" }}
+                >
+                  <div className="h-11 flex items-center justify-center overflow-hidden">
+                    {item.type === "custom" ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={item.url} alt={item.l} className="h-full w-full object-contain" />
+                    ) : item.type === "pattern" ? (
+                      <PatternPreview id={item.id} size={80} />
+                    ) : (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={`/presets/${item.id}.png`} alt={item.l} className="h-full w-full object-contain p-1" />
+                    )}
+                  </div>
+                  <div className="px-1.5 py-1 text-[10px] font-semibold text-muted-foreground truncate" style={{ background: "var(--background)" }}>
+                    {item.l}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              className="mt-2 w-full p-2.5 rounded-lg border-2 border-dashed border-border text-center text-muted-foreground text-[10.5px] font-medium hover:border-primary transition-colors cursor-pointer"
+            >
+              {"\u2191"} Upload image
+            </button>
+          </>
+        )}
+
+        {/* TEXT */}
+        {tool === "text" && (
+          <>
+            <div className="mb-2">
+              <div className="text-[10px] text-muted-foreground mb-1">Text</div>
+              <textarea
+                rows={2}
+                value={txtContent}
+                onChange={(e) => setTxtContent(e.target.value)}
+                className="w-full bg-input border border-border rounded-md p-1.5 text-[13px] text-foreground resize-none focus:border-primary outline-none"
+                style={{ fontFamily: txtFont, fontWeight: Number(txtWeight), color: txtColor }}
+              />
+            </div>
+            <div className="mb-2">
+              <div className="text-[10px] text-muted-foreground mb-1">Font</div>
+              <select
+                value={txtFont}
+                onChange={(e) => setTxtFont(e.target.value)}
+                className="w-full bg-input border border-border rounded-md p-1.5 text-foreground text-xs focus:border-primary outline-none"
+              >
+                {FONTS.map((f) => <option key={f}>{f}</option>)}
+              </select>
+            </div>
+            <div className="grid grid-cols-2 gap-1.5 mb-2">
+              <div>
+                <div className="text-[10px] text-muted-foreground mb-1">Weight</div>
+                <select
+                  value={txtWeight}
+                  onChange={(e) => setTxtWeight(e.target.value)}
+                  className="w-full bg-input border border-border rounded-md p-1.5 text-foreground text-xs focus:border-primary outline-none"
+                >
+                  {[["400", "Regular"], ["600", "Semibold"], ["700", "Bold"], ["900", "Black"]].map(([v, l]) => (
+                    <option key={v} value={v}>{l}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <div className="text-[10px] text-muted-foreground mb-1">Size</div>
+                <input
+                  type="text"
+                  value={txtSize}
+                  onChange={(e) => setTxtSize(+e.target.value || 48)}
+                  className="w-full bg-input border border-border rounded-md p-1.5 text-foreground text-xs text-right focus:border-primary outline-none"
+                />
+              </div>
+            </div>
+            <div className="mb-2.5">
+              <div className="text-[10px] text-muted-foreground mb-1">Color</div>
+              <div className="flex gap-1.5 items-center">
+                <div className="relative w-[30px] h-[30px] rounded-md overflow-hidden border border-border shrink-0">
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: txtColor }} />
+                  <input
+                    type="color"
+                    value={txtColor}
+                    onChange={(e) => setTxtColor(e.target.value)}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+                </div>
+                <input
+                  type="text"
+                  value={txtColor}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    if (/^#[0-9a-fA-F]{6}$/.test(v)) setTxtColor(v);
+                  }}
+                  onBlur={(e) => {
+                    const v = e.target.value;
+                    if (/^#[0-9a-fA-F]{6}$/.test(v)) setTxtColor(v);
+                  }}
+                  className="flex-1 px-2 py-1 rounded border border-border font-mono text-[11px]"
+                  style={{ background: "var(--wrap-surf2, var(--muted))" }}
+                />
+              </div>
+            </div>
+            <div className="mb-2 p-2.5 rounded-lg border border-border bg-background min-h-[52px] flex items-center justify-center overflow-hidden">
+              <span
+                className="text-center break-words leading-tight"
+                style={{
+                  fontFamily: txtFont,
+                  fontWeight: Number(txtWeight),
+                  color: txtColor,
+                  fontSize: Math.min(txtSize * 0.5, 24),
+                }}
+              >
+                {txtContent || "Your Text"}
+              </span>
+            </div>
+            <div
+              draggable
+              onDragStart={(e) => {
+                // Render text to canvas and use data URL so the drop handler
+                // receives an image URL instead of a raw string.
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d")!;
+                const text = txtContent || "Text";
+                const font = `${txtWeight} ${txtSize}px "${txtFont}"`;
+                ctx.font = font;
+                const metrics = ctx.measureText(text);
+                const textWidth = Math.ceil(metrics.width);
+                const textHeight = Math.ceil(txtSize * 1.3);
+                const pad = Math.ceil(txtSize * 0.2);
+                canvas.width = textWidth + pad * 2;
+                canvas.height = textHeight + pad * 2;
+                // Re-set font after resizing canvas (resize clears context state)
+                ctx.font = font;
+                ctx.textBaseline = "top";
+                ctx.fillStyle = txtColor;
+                ctx.fillText(text, pad, pad);
+                const dataUrl = canvas.toDataURL("image/png");
+                // Use the rendered text canvas as the drag ghost image
+                const dragImg = new Image();
+                dragImg.src = dataUrl;
+                e.dataTransfer.setDragImage(dragImg, canvas.width / 2, canvas.height / 2);
+                e.dataTransfer.setData("text/plain", dataUrl);
+                e.dataTransfer.effectAllowed = "copy";
+                setStickerMode(true);
+              }}
+              className="w-full p-2 rounded-lg text-xs font-bold border text-center cursor-grab select-none"
+              style={{
+                background: "var(--wrap-accent-dim)",
+                color: "var(--primary)",
+                borderColor: "var(--primary)",
+              }}
+            >
+              {"\u2605"} Drag to place on car
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─── PACKAGING SIDEBAR (original) ────────────────────────────────────────────
+
+function PackagingSidebar() {
   const router = useRouter();
   const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
   const setTemplate = useEditorStore((s) => s.setTemplate);
@@ -64,7 +600,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
   const predefinedGroups = activeTemplate?.zoneGroups ?? [];
   const allGroups = [...predefinedGroups, ...customGroups];
 
-  // Detect if current selectedZoneIds matches an existing group
   const activeGroupId = allGroups.find(
     (g) =>
       g.zoneIds.length === selectedZoneIds.length &&
@@ -72,14 +607,12 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
   )?.id ?? null;
 
   const isMultiSelect = selectedZoneIds.length > 1;
-  // Only show "Save as Group" if 2+ zones and it's not already a saved group
   const canSaveGroup = isMultiSelect && !activeGroupId;
 
   const handleZoneClick = (zoneId: string, e: React.MouseEvent) => {
     if (multiSelectMode || e.shiftKey) {
       toggleZoneInSelection(zoneId);
     } else if (activeSurface === zoneId && selectedZoneIds.length === 1) {
-      // Click same active zone → deselect back to primary surface
       const primarySurface = activeTemplate?.surfaces[0] ?? "body";
       setActiveSurface(primarySurface);
     } else {
@@ -114,24 +647,19 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
 
   return (
     <div className="w-64 border-r bg-white flex flex-col shrink-0 overflow-y-auto">
-      {/* Template selector */}
       <div className="p-4">
         <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
           Templates
         </h3>
         <div className="grid grid-cols-2 gap-2">
-          {templates.filter((t) => mode === "wrap" ? t.category === "vehicles" : t.category !== "vehicles").map((t) => {
+          {templates.filter((t) => t.category !== "vehicles").map((t) => {
             const Icon = categoryIcons[t.category] || Box;
             return (
               <button
                 key={t.id}
                 onClick={() => {
                   setTemplate(t.id);
-                  const targetPath =
-                    t.category === "vehicles"
-                      ? `/wrap/${t.id}`
-                      : `/editor/${t.id}`;
-                  router.replace(targetPath, { scroll: false });
+                  router.replace(`/editor/${t.id}`, { scroll: false });
                 }}
                 className={`flex flex-col items-center gap-1 p-3 rounded-lg border text-xs transition-all ${
                   activeTemplateId === t.id
@@ -147,7 +675,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
         </div>
       </div>
 
-      {/* Canvas zones */}
       {canvasZones.length > 0 && (
         <>
           <Separator />
@@ -159,7 +686,7 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
               <button
                 onClick={() => {
                   setMultiSelectMode(!multiSelectMode);
-                  if (multiSelectMode) setActiveSurface(activeSurface); // collapse selection
+                  if (multiSelectMode) setActiveSurface(activeSurface);
                 }}
                 className={`flex items-center gap-1 px-2 py-0.5 rounded text-xs border transition-all ${
                   multiSelectMode
@@ -200,7 +727,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
         </>
       )}
 
-      {/* Zone groups */}
       {(allGroups.length > 0 || canSaveGroup) && (
         <>
           <Separator />
@@ -212,7 +738,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
               </h3>
             </div>
 
-            {/* Save current selection as a new group */}
             {canSaveGroup && (
               <div className="flex gap-1 mb-2">
                 <input
@@ -242,7 +767,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
               </div>
             )}
 
-            {/* Group buttons */}
             <div className="flex flex-col gap-1">
               {allGroups.map((group) => {
                 const isActiveGroup = group.id === activeGroupId;
@@ -278,7 +802,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
         </>
       )}
 
-      {/* Sticker mode toggle */}
       <Separator />
       <div className="px-4 py-3">
         <button
@@ -299,7 +822,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
         )}
       </div>
 
-      {/* Upload panel */}
       <Separator />
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
@@ -327,7 +849,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
           </span>
         </p>
 
-        {/* Preset logos */}
         <div className="mb-3">
           <p className="text-xs text-muted-foreground mb-2">Presets</p>
           <div className="flex gap-2">
@@ -413,19 +934,17 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
           </div>
         )}
 
-        {/* Save single paste group */}
         {singlePaste && isMultiSelect && (
           <button
             onClick={() => saveSinglePasteGroup()}
             className="mt-3 w-full flex items-center justify-center gap-1 px-2 py-1.5 rounded border border-primary text-primary text-xs hover:bg-primary/10 transition-colors"
-            title="Save this paste layout — zones keep the combined image even when deselected"
+            title="Save this paste layout"
           >
             <Plus className="h-3 w-3" />
             Save paste layout
           </button>
         )}
 
-        {/* Saved single paste groups */}
         {singlePasteGroups.length > 0 && (
           <div className="mt-3">
             <p className="text-xs text-muted-foreground mb-1">Saved paste layouts</p>
@@ -434,7 +953,6 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
                 <div key={idx} className="flex items-center gap-1">
                   <button
                     onClick={() => {
-                      // Re-select the saved group for editing
                       const store = useEditorStore.getState();
                       store.setSelectedZones(group);
                       store.setSinglePaste(true);
@@ -459,4 +977,11 @@ export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap
       </div>
     </div>
   );
+}
+
+// ─── EXPORT ──────────────────────────────────────────────────────────────────
+
+export function LeftSidebar({ mode = "packaging" }: { mode?: "packaging" | "wrap" }) {
+  if (mode === "wrap") return <WrapSidebar />;
+  return <PackagingSidebar />;
 }

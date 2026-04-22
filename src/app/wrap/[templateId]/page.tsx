@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useParams, redirect } from "next/navigation";
-import { useEffect } from "react";
+import { useRef } from "react";
 import { useEditorStore } from "@/lib/store";
 import { getTemplate } from "@/lib/templates";
 
@@ -14,20 +14,24 @@ const EditorLayout = dynamic(
 export default function WrapEditorPage() {
   const params = useParams();
   const templateId = params.templateId as string;
-  const setTemplate = useEditorStore((s) => s.setTemplate);
-  const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
-
   const template = getTemplate(templateId);
-
-  useEffect(() => {
-    if (templateId && templateId !== activeTemplateId) {
-      setTemplate(templateId);
-    }
-  }, [templateId, activeTemplateId, setTemplate]);
 
   // If template exists but is not a vehicle, redirect to the packaging editor
   if (template && template.category !== "vehicles") {
     redirect(`/editor/${templateId}`);
+  }
+
+  // Sync the store to the URL-derived templateId synchronously during render
+  // so the correct template is active before the first paint. This avoids the
+  // two-render-cycle (null → EditorLayout) that caused the Canvas to mount
+  // with a stale/blank scene on initial page load.
+  const syncedRef = useRef<string | null>(null);
+  if (templateId && syncedRef.current !== templateId) {
+    const store = useEditorStore.getState();
+    if (store.activeTemplateId !== templateId) {
+      store.setTemplate(templateId);
+    }
+    syncedRef.current = templateId;
   }
 
   return <EditorLayout mode="wrap" />;

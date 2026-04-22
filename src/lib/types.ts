@@ -7,7 +7,7 @@ export type PackagingCategory =
   | "cups"
   | "vehicles";
 
-export type FinishType = "matte" | "glossy" | "metallic" | "kraft";
+export type FinishType = "matte" | "glossy" | "satin" | "metallic" | "pearl" | "chrome" | "kraft";
 
 export interface CanvasZone {
   id: string;    // matches mesh name in the GLB (e.g., "hood")
@@ -59,6 +59,8 @@ export interface Sticker {
   rotation: number;
   // Which mesh this is projected onto (mesh.name or mesh.uuid)
   meshName: string;
+  // Whether the sticker image is horizontally mirrored
+  mirror: boolean;
 }
 
 export interface EditorState {

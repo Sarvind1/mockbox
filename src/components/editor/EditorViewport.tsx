@@ -111,6 +111,7 @@ function DragDropHandler() {
           size: defaultSize,
           rotation: 0,
           meshName: hitMeshKey,
+          mirror: true,
         });
 
         // Find nearby carpaint meshes whose bounding box intersects the sticker
@@ -139,6 +140,7 @@ function DragDropHandler() {
               size: defaultSize,
               rotation: 0,
               meshName: key,
+              mirror: true,
             });
           }
         });
@@ -162,13 +164,86 @@ function DragDropHandler() {
       }
     };
 
+    // Click-to-place sticker when a pending sticker URL is queued (from upload)
+    const onClick = (e: MouseEvent) => {
+      const store = useEditorStore.getState();
+      if (!store.stickerMode || !store.pendingStickerUrl) return;
+
+      const rect = canvas.getBoundingClientRect();
+      pointer.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.current.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.current.setFromCamera(pointer.current, camera);
+      const hits = raycaster.current.intersectObjects(scene.children, true);
+      const directHit = hits.find((h) => (h.object as THREE.Mesh).userData?.surface);
+
+      if (!directHit || !directHit.face) return;
+
+      const hitMesh = directHit.object as THREE.Mesh;
+      const worldPoint = directHit.point.clone();
+      const worldNormal = directHit.face.normal.clone().transformDirection(hitMesh.matrixWorld);
+
+      const meshBox = new THREE.Box3().setFromObject(hitMesh);
+      const meshSize = new THREE.Vector3();
+      meshBox.getSize(meshSize);
+      const meshDiag = meshSize.length();
+      const defaultSize = Math.min(meshDiag * 0.2, 0.15);
+      const groupId = crypto.randomUUID();
+      const resolvedUrl = store.pendingStickerUrl;
+
+      store.pushUndo();
+
+      const hitMeshKey = hitMesh.name || hitMesh.uuid;
+      store.addSticker({
+        id: crypto.randomUUID(),
+        groupId,
+        imageUrl: resolvedUrl,
+        position: { x: worldPoint.x, y: worldPoint.y, z: worldPoint.z },
+        normal: { x: worldNormal.x, y: worldNormal.y, z: worldNormal.z },
+        size: defaultSize,
+        rotation: 0,
+        meshName: hitMeshKey,
+        mirror: true,
+      });
+
+      // Project onto neighboring meshes for cross-panel stickers
+      const stickerSphere = new THREE.Sphere(worldPoint, defaultSize * 0.8);
+      const neighborBox = new THREE.Box3();
+      scene.traverse((child) => {
+        const m = child as THREE.Mesh;
+        if (!m.isMesh) return;
+        const surf = m.userData?.surface;
+        if (!surf || surf === "trim") return;
+        const key = m.name || m.uuid;
+        if (key === hitMeshKey) return;
+        neighborBox.setFromObject(m);
+        if (stickerSphere.intersectsBox(neighborBox)) {
+          store.addSticker({
+            id: crypto.randomUUID(),
+            groupId,
+            imageUrl: resolvedUrl,
+            position: { x: worldPoint.x, y: worldPoint.y, z: worldPoint.z },
+            normal: { x: worldNormal.x, y: worldNormal.y, z: worldNormal.z },
+            size: defaultSize,
+            rotation: 0,
+            meshName: key,
+            mirror: true,
+          });
+        }
+      });
+
+      URL.revokeObjectURL(resolvedUrl);
+      store.setPendingStickerUrl(null);
+    };
+
     canvas.addEventListener("dragover", onDragOver);
     canvas.addEventListener("drop", onDrop);
     canvas.addEventListener("dragleave", onDragLeave);
+    canvas.addEventListener("click", onClick);
     return () => {
       canvas.removeEventListener("dragover", onDragOver);
       canvas.removeEventListener("drop", onDrop);
       canvas.removeEventListener("dragleave", onDragLeave);
+      canvas.removeEventListener("click", onClick);
     };
   }, [gl, camera, scene]);
 
@@ -335,8 +410,12 @@ function ViewportInner({ cameraPosition }: { cameraPosition: [number, number, nu
 
 export function EditorViewport() {
   const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
+  const stickerMode = useEditorStore((s) => s.stickerMode);
+  const pendingStickerUrl = useEditorStore((s) => s.pendingStickerUrl);
   const isVehicle = activeTemplateId.startsWith("car-") || activeTemplateId === "porsche-911" || activeTemplateId === "bmw-x5m";
   const cameraPosition: [number, number, number] = isVehicle ? [3, 0.8, 3] : [2, 1.5, 2.5];
+
+  const isPlacementMode = stickerMode && !!pendingStickerUrl;
 
   // Keyboard shortcuts
   const undo = useEditorStore((s) => s.undo);
@@ -361,9 +440,44 @@ export function EditorViewport() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
+  // Esc to cancel sticker placement
+  useEffect(() => {
+    if (!stickerMode || !pendingStickerUrl) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        URL.revokeObjectURL(pendingStickerUrl);
+        useEditorStore.getState().setPendingStickerUrl(null);
+        useEditorStore.getState().setStickerMode(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [stickerMode, pendingStickerUrl]);
+
   return (
-    <div className="flex-1 relative bg-gray-50">
+    <div
+      className="flex-1 min-w-0 relative bg-gray-50"
+      style={{ cursor: isPlacementMode ? 'crosshair' : undefined }}
+    >
       <ViewportInner cameraPosition={cameraPosition} />
+
+      {isPlacementMode && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 bg-black/80 text-white text-sm px-4 py-2 rounded-lg flex items-center gap-3 pointer-events-auto">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={pendingStickerUrl} alt="Pending sticker" className="w-8 h-8 object-contain rounded" />
+          <span>Click on the car to place your sticker</span>
+          <button
+            onClick={() => {
+              URL.revokeObjectURL(pendingStickerUrl);
+              useEditorStore.getState().setPendingStickerUrl(null);
+              useEditorStore.getState().setStickerMode(false);
+            }}
+            className="ml-2 text-xs text-gray-400 hover:text-white"
+          >
+            Esc to cancel
+          </button>
+        </div>
+      )}
     </div>
   );
 }

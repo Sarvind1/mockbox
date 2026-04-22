@@ -39,12 +39,14 @@ export function EditorToolbar({ mode = "packaging" }: EditorToolbarProps) {
 
         <div className="h-5 w-px bg-border" />
 
+        {mode === "wrap" && (
+          <span className="text-[9.5px] font-bold tracking-wider text-muted-foreground border border-border px-1.5 py-0.5 rounded">
+            WRAP
+          </span>
+        )}
         <span className="text-sm font-medium text-muted-foreground">
           {template?.name || (mode === "wrap" ? "Vehicle Wrap Editor" : "Packaging Editor")}
         </span>
-        {mode === "wrap" && (
-          <span className="text-xs text-muted-foreground/60 ml-1">— Vehicle Wrap</span>
-        )}
       </div>
 
       <div className="flex items-center gap-1">

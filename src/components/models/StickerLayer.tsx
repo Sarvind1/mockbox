@@ -86,7 +86,7 @@ export function StickerLayer({ parentScene }: { parentScene: THREE.Object3D }) {
       const state = useEditorStore.getState();
       const groupStickers = state.stickers.filter((s) => s.groupId === dragGroupIdRef.current);
       if (groupStickers.length === 0) return;
-      const { size, rotation, imageUrl } = groupStickers[0];
+      const { size, rotation, imageUrl, mirror } = groupStickers[0];
 
       const hitMeshKey = hitMesh.name || hitMesh.uuid;
       const newStickers: Omit<Sticker, "id">[] = [
@@ -98,6 +98,7 @@ export function StickerLayer({ parentScene }: { parentScene: THREE.Object3D }) {
           size,
           rotation,
           meshName: hitMeshKey,
+          mirror,
         },
       ];
 
@@ -121,6 +122,7 @@ export function StickerLayer({ parentScene }: { parentScene: THREE.Object3D }) {
             size,
             rotation,
             meshName: mesh.name || mesh.uuid,
+            mirror,
           });
         }
       });
@@ -150,7 +152,7 @@ export function StickerLayer({ parentScene }: { parentScene: THREE.Object3D }) {
         .map(
           (s) =>
             `${s.id}:${s.groupId}:${s.position.x},${s.position.y},${s.position.z}:` +
-            `${s.normal.x},${s.normal.y},${s.normal.z}:${s.size}:${s.rotation}:${s.imageUrl}`,
+            `${s.normal.x},${s.normal.y},${s.normal.z}:${s.size}:${s.rotation}:${s.imageUrl}:${s.mirror}`,
         )
         .join("|") + `|sel:${selectedStickerGroupId}|lookup:${meshLookup ? "ready" : "none"}`
     );
@@ -222,6 +224,16 @@ export function StickerLayer({ parentScene }: { parentScene: THREE.Object3D }) {
       if (!posAttr || posAttr.count === 0) {
         decalGeom.dispose();
         continue;
+      }
+
+      if (sticker.mirror) {
+        const uvAttr = decalGeom.getAttribute("uv");
+        if (uvAttr) {
+          for (let i = 0; i < uvAttr.count; i++) {
+            uvAttr.setX(i, 1 - uvAttr.getX(i));
+          }
+          uvAttr.needsUpdate = true;
+        }
       }
 
       const isSelected = sticker.groupId === selectedStickerGroupId;

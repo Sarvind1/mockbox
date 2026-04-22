@@ -1,0 +1,2742 @@
+{
+  "model_name": "bmw_x3_m40i",
+  "glb_path": "/Users/sarvind/mockbox/public/models/bmw_x3_m40i.glb",
+  "meshes": [
+    {
+      "name": "Object_10",
+      "vertex_count": 3252,
+      "face_count": 4971,
+      "material_names": [
+        "X3MI_Cabin_008"
+      ],
+      "bbox_min": [
+        0.23188044130802155,
+        -0.1836477369070053,
+        0.3835436701774597
+      ],
+      "bbox_max": [
+        0.36199724674224854,
+        -0.11116287112236023,
+        0.4708331823348999
+      ],
+      "parent": "X3:SK_Body_Bones_101_001_SK_Body_Bones_101_001_MI_Exhaust_022_X_9"
+    },
+    {
+      "name": "Object_100",
+      "vertex_count": 1224,
+      "face_count": 1098,
+      "material_names": [
+        "X3MI_Suspension_004"
+      ],
+      "bbox_min": [
+        -0.20183442533016205,
+        -0.8143301010131836,
+        0.09149087965488434
+      ],
+      "bbox_max": [
+        0.4767622947692871,
+        0.7771257162094116,
+        0.20131883025169373
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_016_X3:MI_Suspension__97"
+    },
+    {
+      "name": "Object_102",
+      "vertex_count": 29815,
+      "face_count": 40468,
+      "material_names": [
+        "X3MI_Cabin_008"
+      ],
+      "bbox_min": [
+        -0.1758548766374588,
+        -0.4007166922092438,
+        0.162351593375206
+      ],
+      "bbox_max": [
+        0.45078277587890625,
+        0.9215364456176758,
+        0.7079229354858398
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_017_X3:MI_Cabin_008_0_99"
+    },
+    {
+      "name": "Object_104",
+      "vertex_count": 303,
+      "face_count": 500,
+      "material_names": [
+        "X3MI_Cabin_Suede_A_002"
+      ],
+      "bbox_min": [
+        -0.159474715590477,
+        -0.39404967427253723,
+        0.17189984023571014
+      ],
+      "bbox_max": [
+        0.43358737230300903,
+        -0.14879223704338074,
+        0.25609874725341797
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_018_X3:MI_Cabin_Suede_101"
+    },
+    {
+      "name": "Object_106",
+      "vertex_count": 8854,
+      "face_count": 13158,
+      "material_names": [
+        "X3MI_Cabin_Plastic_A_007"
+      ],
+      "bbox_min": [
+        -0.18888269364833832,
+        -0.4220115542411804,
+        0.16980718076229095
+      ],
+      "bbox_max": [
+        0.4638105630874634,
+        0.9178822040557861,
+        0.5565492510795593
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_019_X3:MI_Cabin_Plast_103"
+    },
+    {
+      "name": "Object_108",
+      "vertex_count": 20782,
+      "face_count": 31372,
+      "material_names": [
+        "X3MI_Cabin_Leather_A_007"
+      ],
+      "bbox_min": [
+        -0.18044905364513397,
+        -0.38915061950683594,
+        0.21062438189983368
+      ],
+      "bbox_max": [
+        0.45537692308425903,
+        0.5850337743759155,
+        0.6460033059120178
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_020_X3:MI_Cabin_Leath_105"
+    },
+    {
+      "name": "Object_110",
+      "vertex_count": 2076,
+      "face_count": 2588,
+      "material_names": [
+        "Costuras"
+      ],
+      "bbox_min": [
+        -0.12733094394207,
+        0.04047933220863342,
+        0.2705630362033844
+      ],
+      "bbox_max": [
+        0.40225881338119507,
+        0.5748258829116821,
+        0.5926931500434875
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_020_Costuras_0_106"
+    },
+    {
+      "name": "Object_112",
+      "vertex_count": 3302,
+      "face_count": 5498,
+      "material_names": [
+        "X3MI_Cabin_Suede_A_002"
+      ],
+      "bbox_min": [
+        -0.17421211302280426,
+        -0.35625162720680237,
+        0.24304725229740143
+      ],
+      "bbox_max": [
+        0.4491400122642517,
+        0.7562638521194458,
+        0.6839472651481628
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_021_X3:MI_Cabin_Suede_108"
+    },
+    {
+      "name": "Object_114",
+      "vertex_count": 4150,
+      "face_count": 6349,
+      "material_names": [
+        "X3MI_Cabin_Suede_A_002"
+      ],
+      "bbox_min": [
+        -0.17421211302280426,
+        -0.4220115542411804,
+        0.167439267039299
+      ],
+      "bbox_max": [
+        0.4491400122642517,
+        0.9314106702804565,
+        0.6174824833869934
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_022_X3:MI_Cabin_Suede_110"
+    },
+    {
+      "name": "Object_116",
+      "vertex_count": 18,
+      "face_count": 16,
+      "material_names": [
+        "X3MI_Cabin_Grid_A_002"
+      ],
+      "bbox_min": [
+        0.3751062750816345,
+        0.7291353940963745,
+        0.315586656332016
+      ],
+      "bbox_max": [
+        0.37667039036750793,
+        0.8373950123786926,
+        0.37040969729423523
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_023_X3:MI_Cabin_Grid__112"
+    },
+    {
+      "name": "Object_118",
+      "vertex_count": 4658,
+      "face_count": 6878,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.259946346282959,
+        -0.382161408662796,
+        0.12249722331762314
+      ],
+      "bbox_max": [
+        0.5348742008209229,
+        0.9525487422943115,
+        0.6785982847213745
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_024_X3:MI_1347060001__114"
+    },
+    {
+      "name": "Object_12",
+      "vertex_count": 20,
+      "face_count": 12,
+      "material_names": [
+        "X3MI_Cabin_Leather_A_007"
+      ],
+      "bbox_min": [
+        0.2741581201553345,
+        -0.13966302573680878,
+        0.43239492177963257
+      ],
+      "bbox_max": [
+        0.3197196125984192,
+        -0.12796376645565033,
+        0.45938509702682495
+      ],
+      "parent": "X3:SK_Body_Bones_101_001_SK_Body_Bones_101_001_MI_Exhaust_023_X_11"
+    },
+    {
+      "name": "Object_120",
+      "vertex_count": 336,
+      "face_count": 568,
+      "material_names": [
+        "X3MI_Cabin_Carbon_A_014"
+      ],
+      "bbox_min": [
+        0.0026188790798187256,
+        -0.2264670729637146,
+        0.4170338213443756
+      ],
+      "bbox_max": [
+        0.22673314809799194,
+        -0.1857086718082428,
+        0.4591931402683258
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_025_X3:MI_Cabin_Carbo_116"
+    },
+    {
+      "name": "Object_122",
+      "vertex_count": 383,
+      "face_count": 428,
+      "material_names": [
+        "X3MI_Cabin_Suede_A_002"
+      ],
+      "bbox_min": [
+        -0.14750061929225922,
+        0.03858837112784386,
+        0.23179154098033905
+      ],
+      "bbox_max": [
+        0.4224284887313843,
+        0.5645325779914856,
+        0.5506852865219116
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_026_X3:MI_Cabin_Suede_118"
+    },
+    {
+      "name": "Object_124",
+      "vertex_count": 79,
+      "face_count": 115,
+      "material_names": [
+        "X3MI_Cabin_Grid_B_006"
+      ],
+      "bbox_min": [
+        0.09786541014909744,
+        -0.3713222146034241,
+        0.48450249433517456
+      ],
+      "bbox_max": [
+        0.17715001106262207,
+        -0.28711357712745667,
+        0.49312683939933777
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_027_X3:MI_Cabin_Grid__120"
+    },
+    {
+      "name": "Object_126",
+      "vertex_count": 74,
+      "face_count": 68,
+      "material_names": [
+        "X3MI_Dashboard_002"
+      ],
+      "bbox_min": [
+        0.07276959717273712,
+        -0.26061898469924927,
+        0.42210671305656433
+      ],
+      "bbox_max": [
+        0.3678498864173889,
+        -0.2067764848470688,
+        0.5011439919471741
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_028_X3:MI_Dashboard_0_122"
+    },
+    {
+      "name": "Object_128",
+      "vertex_count": 56,
+      "face_count": 60,
+      "material_names": [
+        "X3MI_Mirror_008"
+      ],
+      "bbox_min": [
+        0.09132273495197296,
+        -0.18762288987636566,
+        0.5872812271118164
+      ],
+      "bbox_max": [
+        0.18711262941360474,
+        -0.1547471582889557,
+        0.6140912175178528
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_029_X3:MI_Mirror_008__124"
+    },
+    {
+      "name": "Object_130",
+      "vertex_count": 2359,
+      "face_count": 3360,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.23189781606197357,
+        0.7566541433334351,
+        0.12014959752559662
+      ],
+      "bbox_max": [
+        0.5068256855010986,
+        0.9928466081619263,
+        0.3649892807006836
+      ],
+      "parent": "X3:SM_Bumper_B_101_SM_Bumper_B_101_001_MI_Exhaust_029_X3:MI_Exh_126"
+    },
+    {
+      "name": "Object_132",
+      "vertex_count": 127,
+      "face_count": 182,
+      "material_names": [
+        "X3MI_Light_007"
+      ],
+      "bbox_min": [
+        -0.17551405727863312,
+        0.9402769207954407,
+        0.23306304216384888
+      ],
+      "bbox_max": [
+        0.45044195652008057,
+        0.9742081165313721,
+        0.2445525825023651
+      ],
+      "parent": "X3:SM_Bumper_B_101_SM_Bumper_B_101_001_MI_Exhaust_030_X3:MI_Lig_128"
+    },
+    {
+      "name": "Object_134",
+      "vertex_count": 199,
+      "face_count": 290,
+      "material_names": [
+        "X3MI_Glass_Light_008"
+      ],
+      "bbox_min": [
+        -0.17551405727863312,
+        0.9402769207954407,
+        0.23306304216384888
+      ],
+      "bbox_max": [
+        0.45044195652008057,
+        0.9751379489898682,
+        0.2445525825023651
+      ],
+      "parent": "X3:SM_Bumper_B_101_SM_Bumper_B_101_001_MI_Exhaust_031_X3:MI_Gla_130"
+    },
+    {
+      "name": "Object_136",
+      "vertex_count": 2099,
+      "face_count": 3502,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.25578558444976807,
+        0.6748142242431641,
+        0.12156146764755249
+      ],
+      "bbox_max": [
+        0.5307134389877319,
+        0.9951012134552002,
+        0.3962167501449585
+      ],
+      "parent": "X3:SM_Bumper_B_101_SM_Bumper_B_101_001_MI_Exhaust_032_X3:MI_134_132"
+    },
+    {
+      "name": "Object_138",
+      "vertex_count": 9671,
+      "face_count": 13256,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.2422156184911728,
+        -0.998405396938324,
+        0.06590031832456589
+      ],
+      "bbox_max": [
+        0.517143964767456,
+        -0.797946572303772,
+        0.38562408089637756
+      ],
+      "parent": "X3:SM_Bumper_F_101_SM_Bumper_F_101_001_MI_Exhaust_030_X3:MI_Exh_134"
+    },
+    {
+      "name": "Object_14",
+      "vertex_count": 328,
+      "face_count": 286,
+      "material_names": [
+        "X3MI_Cabin_A_008"
+      ],
+      "bbox_min": [
+        0.40994399785995483,
+        0.1601874679327011,
+        0.36565274000167847
+      ],
+      "bbox_max": [
+        0.45564842224121094,
+        0.49271920323371887,
+        0.4873921871185303
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_010_X3:MI_Cab_13"
+    },
+    {
+      "name": "Object_140",
+      "vertex_count": 87,
+      "face_count": 99,
+      "material_names": [
+        "X3MI_Logo_007"
+      ],
+      "bbox_min": [
+        0.0017106086015701294,
+        -0.9941743016242981,
+        0.14928145706653595
+      ],
+      "bbox_max": [
+        0.28171011805534363,
+        -0.8787158131599426,
+        0.36296045780181885
+      ],
+      "parent": "X3:SM_Bumper_F_101_SM_Bumper_F_101_001_MI_Exhaust_031_X3:MI_Log_136"
+    },
+    {
+      "name": "Object_142",
+      "vertex_count": 2240,
+      "face_count": 3936,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.253179132938385,
+        -0.9991748929023743,
+        0.10290218144655228
+      ],
+      "bbox_max": [
+        0.5281070470809937,
+        -0.7459155917167664,
+        0.37206852436065674
+      ],
+      "parent": "X3:SM_Bumper_F_101_SM_Bumper_F_101_001_MI_Exhaust_032_X3:MI_134_138"
+    },
+    {
+      "name": "Object_144",
+      "vertex_count": 27850,
+      "face_count": 32670,
+      "material_names": [
+        "X3MI_Engine_003"
+      ],
+      "bbox_min": [
+        -0.2385195642709732,
+        -0.960564136505127,
+        0.1354793906211853
+      ],
+      "bbox_max": [
+        0.5134474635124207,
+        -0.38122355937957764,
+        0.485401451587677
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_003_X3:MI_Engine_0_140"
+    },
+    {
+      "name": "Object_146",
+      "vertex_count": 8824,
+      "face_count": 13753,
+      "material_names": [
+        "X3MI_Engine_Plastic_A_003"
+      ],
+      "bbox_min": [
+        -0.1972457319498062,
+        -0.9346907138824463,
+        0.2684652805328369
+      ],
+      "bbox_max": [
+        0.4693206548690796,
+        -0.4449986517429352,
+        0.4618397057056427
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_004_X3:MI_Engine_P_142"
+    },
+    {
+      "name": "Object_148",
+      "vertex_count": 80,
+      "face_count": 98,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.12814278900623322,
+        -0.650920569896698,
+        0.2556903064250946
+      ],
+      "bbox_max": [
+        0.05737341195344925,
+        -0.5021550059318542,
+        0.43959173560142517
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_005_X3:MI_Exhaust__144"
+    },
+    {
+      "name": "Object_150",
+      "vertex_count": 1493,
+      "face_count": 2284,
+      "material_names": [
+        "X3MI_Engine_A_003"
+      ],
+      "bbox_min": [
+        -0.16139020025730133,
+        -0.9828979969024658,
+        0.3653774559497833
+      ],
+      "bbox_max": [
+        0.3895760178565979,
+        -0.5764259099960327,
+        0.4209916591644287
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_006_X3:MI_Engine_A_146"
+    },
+    {
+      "name": "Object_152",
+      "vertex_count": 2093,
+      "face_count": 2655,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.1994529813528061,
+        -0.8490812182426453,
+        0.1472243219614029
+      ],
+      "bbox_max": [
+        0.47438085079193115,
+        -0.3829978108406067,
+        0.48431724309921265
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_007_X3:MI_13470600_148"
+    },
+    {
+      "name": "Object_154",
+      "vertex_count": 1549,
+      "face_count": 2657,
+      "material_names": [
+        "X3MI_Engine_Plastic_A_003"
+      ],
+      "bbox_min": [
+        -0.14418761432170868,
+        -0.9163739681243896,
+        0.37945520877838135
+      ],
+      "bbox_max": [
+        0.41911548376083374,
+        -0.7791460752487183,
+        0.4069325029850006
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_008_X3:MI_Engine_P_150"
+    },
+    {
+      "name": "Object_156",
+      "vertex_count": 39,
+      "face_count": 45,
+      "material_names": [
+        "X3MI_Engine_Grid_A_003"
+      ],
+      "bbox_min": [
+        -0.12680618464946747,
+        -0.5780369639396667,
+        0.4346427619457245
+      ],
+      "bbox_max": [
+        -0.04554733633995056,
+        -0.5047783255577087,
+        0.4409346878528595
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_009_X3:MI_Engine_G_152"
+    },
+    {
+      "name": "Object_158",
+      "vertex_count": 475,
+      "face_count": 721,
+      "material_names": [
+        "X3MI_Cabin_Carbon_A_014"
+      ],
+      "bbox_min": [
+        0.1423427164554596,
+        -0.6687561869621277,
+        0.40262284874916077
+      ],
+      "bbox_max": [
+        0.21103420853614807,
+        -0.5121607780456543,
+        0.40704792737960815
+      ],
+      "parent": "X3:SM_Engine_101_SM_Engine_101_001_MI_Engine_010_X3:MI_Cabin_Ca_154"
+    },
+    {
+      "name": "Object_16",
+      "vertex_count": 1151,
+      "face_count": 1683,
+      "material_names": [
+        "X3MI_Cabin_Plastic_A_007"
+      ],
+      "bbox_min": [
+        0.4244784712791443,
+        0.12833628058433533,
+        0.1891789734363556
+      ],
+      "bbox_max": [
+        0.4764578342437744,
+        0.5072481632232666,
+        0.47148266434669495
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_011_X3:MI_Cab_15"
+    },
+    {
+      "name": "Object_160",
+      "vertex_count": 3864,
+      "face_count": 5418,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.19652728736400604,
+        -0.5040975213050842,
+        0.4220013916492462
+      ],
+      "bbox_max": [
+        0.4714551568031311,
+        0.7303963303565979,
+        0.7105239033699036
+      ],
+      "parent": "X3:SM_Fender_B_101_SM_Fender_B_101_001_MI_Exhaust_032_X3:MI_Exh_156"
+    },
+    {
+      "name": "Object_162",
+      "vertex_count": 48,
+      "face_count": 40,
+      "material_names": [
+        "X3MI_Engine_Grid_A_003"
+      ],
+      "bbox_min": [
+        -0.12977708876132965,
+        -0.4962850511074066,
+        0.436394602060318
+      ],
+      "bbox_max": [
+        0.06876610219478607,
+        -0.4526284337043762,
+        0.4577939510345459
+      ],
+      "parent": "X3:SM_Fender_B_101_SM_Fender_B_101_001_MI_Exhaust_033_X3:MI_Eng_158"
+    },
+    {
+      "name": "Object_164",
+      "vertex_count": 2310,
+      "face_count": 3946,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.26159799098968506,
+        -0.3295274078845978,
+        0.3340032398700714
+      ],
+      "bbox_max": [
+        0.5365258455276489,
+        0.9066874384880066,
+        0.6966359615325928
+      ],
+      "parent": "X3:SM_Fender_B_101_SM_Fender_B_101_001_MI_Exhaust_034_X3:MI_134_160"
+    },
+    {
+      "name": "Object_166",
+      "vertex_count": 206,
+      "face_count": 310,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.1844838410615921,
+        0.4980478584766388,
+        0.508063793182373
+      ],
+      "bbox_max": [
+        0.45941174030303955,
+        0.6955116391181946,
+        0.6526618599891663
+      ],
+      "parent": "X3:SM_Fender_B_101_SM_Fender_B_101_001_MI_Exhaust_035_X3:MI_Gla_162"
+    },
+    {
+      "name": "Object_168",
+      "vertex_count": 116,
+      "face_count": 138,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.1844140738248825,
+        0.4980478584766388,
+        0.508063793182373
+      ],
+      "bbox_max": [
+        0.45934194326400757,
+        0.6955116391181946,
+        0.6526618599891663
+      ],
+      "parent": "X3:SM_Fender_B_101_SM_Fender_B_101_001_MI_Exhaust_036_X3:MI_Gla_164"
+    },
+    {
+      "name": "Object_170",
+      "vertex_count": 2180,
+      "face_count": 3774,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.26015734672546387,
+        -0.8558542728424072,
+        0.1566419154405594
+      ],
+      "bbox_max": [
+        0.5350852012634277,
+        -0.3161325454711914,
+        0.5021727085113525
+      ],
+      "parent": "X3:SM_Fender_F_101_SM_Fender_F_101_001_MI_1347060001_025_X3:MI__166"
+    },
+    {
+      "name": "Object_172",
+      "vertex_count": 372,
+      "face_count": 338,
+      "material_names": [
+        "X3MI_Logo_007"
+      ],
+      "bbox_min": [
+        -0.25806725025177,
+        -0.434794157743454,
+        0.32361307740211487
+      ],
+      "bbox_max": [
+        0.533046305179596,
+        -0.41340795159339905,
+        0.3308585286140442
+      ],
+      "parent": "X3:SM_Fender_F_101_SM_Fender_F_101_001_MI_1347060001_026_X3:MI__168"
+    },
+    {
+      "name": "Object_174",
+      "vertex_count": 1018,
+      "face_count": 1482,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.25851333141326904,
+        -0.45353925228118896,
+        0.2175835520029068
+      ],
+      "bbox_max": [
+        0.5334411859512329,
+        -0.38849902153015137,
+        0.3041812777519226
+      ],
+      "parent": "X3:SM_Fender_F_101_SM_Fender_F_101_001_MI_1347060001_027_X3:MI__170"
+    },
+    {
+      "name": "Object_176",
+      "vertex_count": 2017,
+      "face_count": 2782,
+      "material_names": [
+        "X3MI_Light_007"
+      ],
+      "bbox_min": [
+        -0.21969284117221832,
+        0.7896676659584045,
+        0.3880173861980438
+      ],
+      "bbox_max": [
+        0.49462074041366577,
+        0.9353440403938293,
+        0.48641711473464966
+      ],
+      "parent": "X3:SM_Light_B_101_SM_Light_B_101_001_MI_Light_008_X3:MI_Light_0_172"
+    },
+    {
+      "name": "Object_178",
+      "vertex_count": 1177,
+      "face_count": 2088,
+      "material_names": [
+        "X3MI_Glass_021"
+      ],
+      "bbox_min": [
+        -0.35740116238594055,
+        0.7896681427955627,
+        0.3880173861980438
+      ],
+      "bbox_max": [
+        0.35740116238594055,
+        0.9355465769767761,
+        0.48672327399253845
+      ],
+      "parent": "X3:SM_Light_B_101_SM_Light_B_101_001_MI_Light_009_X3:MI_Glass_0_174"
+    },
+    {
+      "name": "Object_18",
+      "vertex_count": 1851,
+      "face_count": 2980,
+      "material_names": [
+        "X3MI_Cabin_008"
+      ],
+      "bbox_min": [
+        0.38577550649642944,
+        0.15115974843502045,
+        0.2013915628194809
+      ],
+      "bbox_max": [
+        0.48575788736343384,
+        0.5156741142272949,
+        0.6660512089729309
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_012_X3:MI_Cab_17"
+    },
+    {
+      "name": "Object_180",
+      "vertex_count": 7579,
+      "face_count": 9118,
+      "material_names": [
+        "X3MI_Light_007"
+      ],
+      "bbox_min": [
+        -0.2385195642709732,
+        -0.9434731602668762,
+        0.3281607925891876
+      ],
+      "bbox_max": [
+        0.5134474635124207,
+        -0.6890281438827515,
+        0.3968096077442169
+      ],
+      "parent": "X3:SM_Light_F_101_SM_Light_F_101_001_MI_Light_009_X3:MI_Light_0_176"
+    },
+    {
+      "name": "Object_182",
+      "vertex_count": 491,
+      "face_count": 834,
+      "material_names": [
+        "X3MI_Glass_021"
+      ],
+      "bbox_min": [
+        -0.23858891427516937,
+        -0.9434731602668762,
+        0.3281607925891876
+      ],
+      "bbox_max": [
+        0.5135167837142944,
+        -0.7749454975128174,
+        0.3968096077442169
+      ],
+      "parent": "X3:SM_Light_F_101_SM_Light_F_101_001_MI_Light_010_X3:MI_Glass_0_178"
+    },
+    {
+      "name": "Object_184",
+      "vertex_count": 518,
+      "face_count": 840,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.17544640600681305,
+        -0.45188382267951965,
+        0.45299166440963745
+      ],
+      "bbox_max": [
+        0.4503743052482605,
+        0.5066257119178772,
+        0.7123671174049377
+      ],
+      "parent": "X3:SM_Roof_101_SM_Roof_101_001_MI_Glass_015_X3:MI_Glass_023_0_180"
+    },
+    {
+      "name": "Object_186",
+      "vertex_count": 891,
+      "face_count": 1484,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.11613909900188446,
+        -0.14242376387119293,
+        0.6440206170082092
+      ],
+      "bbox_max": [
+        0.3910669684410095,
+        0.7382979989051819,
+        0.7147252559661865
+      ],
+      "parent": "X3:SM_Roof_101_SM_Roof_101_001_MI_Glass_016_X3:MI_1347060001_01_182"
+    },
+    {
+      "name": "Object_188",
+      "vertex_count": 344,
+      "face_count": 508,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.05670027434825897,
+        -0.04428493231534958,
+        0.6843443512916565
+      ],
+      "bbox_max": [
+        0.33162814378738403,
+        0.5113734006881714,
+        0.7103205323219299
+      ],
+      "parent": "X3:SM_Roof_101_SM_Roof_101_001_MI_Glass_017_X3:MI_Exhaust_020_0_184"
+    },
+    {
+      "name": "Object_190",
+      "vertex_count": 123,
+      "face_count": 178,
+      "material_names": [
+        "X3MI_Mirror_008"
+      ],
+      "bbox_min": [
+        0.5190564393997192,
+        -0.2306080162525177,
+        0.4723334312438965
+      ],
+      "bbox_max": [
+        0.5894461274147034,
+        -0.2067134827375412,
+        0.5316293835639954
+      ],
+      "parent": "X3:SM_SideMirror_L_101_SM_SideMirror_L_101_001_MI_Mirror_004_X3_186"
+    },
+    {
+      "name": "Object_192",
+      "vertex_count": 1982,
+      "face_count": 3465,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        0.47379690408706665,
+        -0.28400272130966187,
+        0.4622570276260376
+      ],
+      "bbox_max": [
+        0.5951765179634094,
+        -0.19939024746418,
+        0.5387449860572815
+      ],
+      "parent": "X3:SM_SideMirror_L_101_SM_SideMirror_L_101_001_MI_Mirror_005_X3_188"
+    },
+    {
+      "name": "Object_194",
+      "vertex_count": 36,
+      "face_count": 48,
+      "material_names": [
+        "X3MI_Logo_007"
+      ],
+      "bbox_min": [
+        0.44873642921447754,
+        -0.22995640337467194,
+        0.47339051961898804
+      ],
+      "bbox_max": [
+        0.45197921991348267,
+        -0.2233228236436844,
+        0.47927820682525635
+      ],
+      "parent": "X3:SM_SideMirror_L_101_SM_SideMirror_L_101_001_MI_Mirror_006_X3_190"
+    },
+    {
+      "name": "Object_196",
+      "vertex_count": 78,
+      "face_count": 111,
+      "material_names": [
+        "X3MI_Glass_021"
+      ],
+      "bbox_min": [
+        0.521734356880188,
+        -0.2692306339740753,
+        0.4862995743751526
+      ],
+      "bbox_max": [
+        0.5946783423423767,
+        -0.2047903835773468,
+        0.4919314384460449
+      ],
+      "parent": "X3:SM_SideMirror_L_101_SM_SideMirror_L_101_001_MI_Mirror_007_X3_192"
+    },
+    {
+      "name": "Object_198",
+      "vertex_count": 35,
+      "face_count": 31,
+      "material_names": [
+        "X3MI_Light_007"
+      ],
+      "bbox_min": [
+        0.521814227104187,
+        -0.26717689633369446,
+        0.48674267530441284
+      ],
+      "bbox_max": [
+        0.5927654504776001,
+        -0.20662595331668854,
+        0.49134454131126404
+      ],
+      "parent": "X3:SM_SideMirror_L_101_SM_SideMirror_L_101_001_MI_Mirror_008_X3_194"
+    },
+    {
+      "name": "Object_20",
+      "vertex_count": 109,
+      "face_count": 157,
+      "material_names": [
+        "X3MI_Cabin_Grid_B_006"
+      ],
+      "bbox_min": [
+        0.4330372214317322,
+        0.1889645904302597,
+        0.36433809995651245
+      ],
+      "bbox_max": [
+        0.4513971209526062,
+        0.2618752419948578,
+        0.4617915153503418
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_013_X3:MI_Cab_19"
+    },
+    {
+      "name": "Object_200",
+      "vertex_count": 123,
+      "face_count": 178,
+      "material_names": [
+        "X3MI_Mirror_008"
+      ],
+      "bbox_min": [
+        -0.3145182132720947,
+        -0.2306080162525177,
+        0.4723334312438965
+      ],
+      "bbox_max": [
+        -0.24412856996059418,
+        -0.2067134827375412,
+        0.5316293835639954
+      ],
+      "parent": "X3:SM_SideMirror_R_101_SM_SideMirror_R_101_001_MI_Mirror_005_X3_196"
+    },
+    {
+      "name": "Object_202",
+      "vertex_count": 1982,
+      "face_count": 3467,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.3202486038208008,
+        -0.28400272130966187,
+        0.4622570276260376
+      ],
+      "bbox_max": [
+        -0.1988690048456192,
+        -0.19939024746418,
+        0.5387449860572815
+      ],
+      "parent": "X3:SM_SideMirror_R_101_SM_SideMirror_R_101_001_MI_Mirror_006_X3_198"
+    },
+    {
+      "name": "Object_204",
+      "vertex_count": 78,
+      "face_count": 111,
+      "material_names": [
+        "X3MI_Glass_021"
+      ],
+      "bbox_min": [
+        -0.31975048780441284,
+        -0.2692306339740753,
+        0.4862995743751526
+      ],
+      "bbox_max": [
+        -0.24680645763874054,
+        -0.2047903835773468,
+        0.4919314384460449
+      ],
+      "parent": "X3:SM_SideMirror_R_101_SM_SideMirror_R_101_001_MI_Mirror_007_X3_200"
+    },
+    {
+      "name": "Object_206",
+      "vertex_count": 36,
+      "face_count": 48,
+      "material_names": [
+        "X3MI_Logo_007"
+      ],
+      "bbox_min": [
+        -0.31451529264450073,
+        -0.22995640337467194,
+        0.47339051961898804
+      ],
+      "bbox_max": [
+        -0.3112725019454956,
+        -0.2233228236436844,
+        0.47927820682525635
+      ],
+      "parent": "X3:SM_SideMirror_R_101_SM_SideMirror_R_101_001_MI_Mirror_008_X3_202"
+    },
+    {
+      "name": "Object_208",
+      "vertex_count": 35,
+      "face_count": 31,
+      "material_names": [
+        "X3MI_Light_007"
+      ],
+      "bbox_min": [
+        -0.31783753633499146,
+        -0.26717689633369446,
+        0.48674267530441284
+      ],
+      "bbox_max": [
+        -0.24688635766506195,
+        -0.20662595331668854,
+        0.49134454131126404
+      ],
+      "parent": "X3:SM_SideMirror_R_101_SM_SideMirror_R_101_001_MI_Mirror_009_X3_204"
+    },
+    {
+      "name": "Object_210",
+      "vertex_count": 1309,
+      "face_count": 1636,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.2614356279373169,
+        -0.8150815367698669,
+        0.09765298664569855
+      ],
+      "bbox_max": [
+        0.5363634824752808,
+        0.7582828998565674,
+        0.3330725431442261
+      ],
+      "parent": "X3:SM_SideSkirts_101_SM_SideSkirts_101_001_MI_Exhaust_037_X3:MI_206"
+    },
+    {
+      "name": "Object_212",
+      "vertex_count": 58,
+      "face_count": 52,
+      "material_names": [
+        "X3MI_Suspension_004"
+      ],
+      "bbox_min": [
+        -0.2176014631986618,
+        -0.45260944962501526,
+        0.09765298664569855
+      ],
+      "bbox_max": [
+        0.49252933263778687,
+        0.3940970301628113,
+        0.10617203265428543
+      ],
+      "parent": "X3:SM_SideSkirts_101_SM_SideSkirts_101_001_MI_Exhaust_038_X3:MI_208"
+    },
+    {
+      "name": "Object_214",
+      "vertex_count": 2498,
+      "face_count": 4184,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.26334303617477417,
+        -0.8322126269340515,
+        0.09792361408472061
+      ],
+      "bbox_max": [
+        0.5382709503173828,
+        0.7763438820838928,
+        0.35262319445610046
+      ],
+      "parent": "X3:SM_SideSkirts_101_SM_SideSkirts_101_001_MI_Exhaust_039_X3:MI_210"
+    },
+    {
+      "name": "Object_216",
+      "vertex_count": 2343,
+      "face_count": 2428,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.17152367532253265,
+        -0.4800829291343689,
+        0.4285791516304016
+      ],
+      "bbox_max": [
+        0.41004425287246704,
+        -0.3596745431423187,
+        0.4882315695285797
+      ],
+      "parent": "X3:SK_Body_Bones_101_001_SK_Body_Bones_101_001_MI_Exhaust_024_X_212"
+    },
+    {
+      "name": "Object_218",
+      "vertex_count": 1555,
+      "face_count": 1623,
+      "material_names": [
+        "X3MI_Change_Brake_002"
+      ],
+      "bbox_min": [
+        0.441608190536499,
+        0.49499425292015076,
+        0.0811941921710968
+      ],
+      "bbox_max": [
+        0.49983638525009155,
+        0.6514937281608582,
+        0.22707556188106537
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0_215"
+    },
+    {
+      "name": "Object_219",
+      "vertex_count": 6221,
+      "face_count": 9120,
+      "material_names": [
+        "X3MI_ChangeA_Rim_002"
+      ],
+      "bbox_min": [
+        0.4164709150791168,
+        0.4635410010814667,
+        0.03838455677032471
+      ],
+      "bbox_max": [
+        0.5289124250411987,
+        0.6939697265625,
+        0.2688543200492859
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0_215"
+    },
+    {
+      "name": "Object_22",
+      "vertex_count": 1341,
+      "face_count": 2158,
+      "material_names": [
+        "X3MI_Cabin_Leather_A_007"
+      ],
+      "bbox_min": [
+        0.4100281596183777,
+        0.15301814675331116,
+        0.3252575397491455
+      ],
+      "bbox_max": [
+        0.4780815839767456,
+        0.4926498234272003,
+        0.5002970099449158
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_014_X3:MI_Cab_21"
+    },
+    {
+      "name": "Object_220",
+      "vertex_count": 1088,
+      "face_count": 1720,
+      "material_names": [
+        "X3MI_ChangeA_Tyre_002"
+      ],
+      "bbox_min": [
+        0.41359853744506836,
+        0.4250600337982178,
+        0.0005911439657211304
+      ],
+      "bbox_max": [
+        0.529880702495575,
+        0.7320451736450195,
+        0.3075762987136841
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0_215"
+    },
+    {
+      "name": "Object_221",
+      "vertex_count": 1100,
+      "face_count": 1480,
+      "material_names": [
+        "Black_Rim"
+      ],
+      "bbox_min": [
+        0.528171181678772,
+        0.4656429886817932,
+        0.04048525542020798
+      ],
+      "bbox_max": [
+        0.5290620923042297,
+        0.6918677687644958,
+        0.26749187707901
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0_215"
+    },
+    {
+      "name": "Object_223",
+      "vertex_count": 183,
+      "face_count": 260,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        0.40388596057891846,
+        0.18093010783195496,
+        0.4783576726913452
+      ],
+      "bbox_max": [
+        0.4786186218261719,
+        0.507706880569458,
+        0.6660512089729309
+      ],
+      "parent": "X3:Ani_Carwindow_BL_39_X3:MI_Glass_023_0_222"
+    },
+    {
+      "name": "Object_225",
+      "vertex_count": 1458,
+      "face_count": 1542,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        0.3902013897895813,
+        0.10978271812200546,
+        0.17152351140975952
+      ],
+      "bbox_max": [
+        0.5230011940002441,
+        0.5285510420799255,
+        0.6785987019538879
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_018_X3:MI_Exh_224"
+    },
+    {
+      "name": "Object_227",
+      "vertex_count": 183,
+      "face_count": 260,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.20369072258472443,
+        0.18093010783195496,
+        0.4783576726913452
+      ],
+      "bbox_max": [
+        -0.128958061337471,
+        0.5077065229415894,
+        0.6660507917404175
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_018_X3:MI__226"
+    },
+    {
+      "name": "Object_229",
+      "vertex_count": 1458,
+      "face_count": 1542,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.24807287752628326,
+        0.10978271812200546,
+        0.1715230792760849
+      ],
+      "bbox_max": [
+        -0.11527310311794281,
+        0.5285510420799255,
+        0.6785982847213745
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_019_X3:MI__228"
+    },
+    {
+      "name": "Object_231",
+      "vertex_count": 1775,
+      "face_count": 1970,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        0.38983482122421265,
+        -0.3547945022583008,
+        0.14763152599334717
+      ],
+      "bbox_max": [
+        0.5223110914230347,
+        0.1791110336780548,
+        0.6785429120063782
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_020_X3:MI_E_233"
+    },
+    {
+      "name": "Object_233",
+      "vertex_count": 175,
+      "face_count": 248,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        0.4070289134979248,
+        -0.2401570975780487,
+        0.4574514329433441
+      ],
+      "bbox_max": [
+        0.48254895210266113,
+        0.14848947525024414,
+        0.6653937101364136
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_021_X3:MI_G_235"
+    },
+    {
+      "name": "Object_235",
+      "vertex_count": 1775,
+      "face_count": 1970,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.2473832219839096,
+        -0.3547945022583008,
+        0.14763152599334717
+      ],
+      "bbox_max": [
+        -0.1149069219827652,
+        0.1791110336780548,
+        0.6785429120063782
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_022_X3:MI_Exh_237"
+    },
+    {
+      "name": "Object_237",
+      "vertex_count": 175,
+      "face_count": 248,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.20762021839618683,
+        -0.2401570975780487,
+        0.45745185017585754
+      ],
+      "bbox_max": [
+        -0.13210104405879974,
+        0.14848820865154266,
+        0.665394127368927
+      ],
+      "parent": "X3:Ani_Carwindow_FR_81_X3:MI_Glass_023_0_239"
+    },
+    {
+      "name": "Object_239",
+      "vertex_count": 3179,
+      "face_count": 4372,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.14169959723949432,
+        0.762265682220459,
+        0.11101530492305756
+      ],
+      "bbox_max": [
+        0.41662704944610596,
+        0.9706181287765503,
+        0.18412427604198456
+      ],
+      "parent": "X3:SK_Exhaust_101_001_SK_Exhaust_101_001_MI_Exhaust_025_X3:MI_E_243"
+    },
+    {
+      "name": "Object_24",
+      "vertex_count": 104,
+      "face_count": 156,
+      "material_names": [
+        "X3MI_Cabin_Carbon_A_014"
+      ],
+      "bbox_min": [
+        0.42693138122558594,
+        0.18572263419628143,
+        0.4436464309692383
+      ],
+      "bbox_max": [
+        0.44653528928756714,
+        0.462989866733551,
+        0.4741309583187103
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_015_X3:MI_Cab_23"
+    },
+    {
+      "name": "Object_241",
+      "vertex_count": 5361,
+      "face_count": 3912,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.19956712424755096,
+        -0.7619320750236511,
+        0.07758224755525589
+      ],
+      "bbox_max": [
+        0.474494993686676,
+        0.6728070378303528,
+        0.389417439699173
+      ],
+      "parent": "X3:SK_Suspension_101_001_SK_Suspension_101_001_MI_Exhaust_028_X_245"
+    },
+    {
+      "name": "Object_243",
+      "vertex_count": 340,
+      "face_count": 304,
+      "material_names": [
+        "X3MI_Suspension_004"
+      ],
+      "bbox_min": [
+        -0.14578722417354584,
+        -0.7063157558441162,
+        0.12218812853097916
+      ],
+      "bbox_max": [
+        0.4207150936126709,
+        0.6375848650932312,
+        0.38932693004608154
+      ],
+      "parent": "X3:SK_Suspension_101_001_SK_Suspension_101_001_MI_Exhaust_0_246"
+    },
+    {
+      "name": "Object_245",
+      "vertex_count": 2737,
+      "face_count": 3572,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.13917015492916107,
+        0.6749123930931091,
+        0.2833092510700226
+      ],
+      "bbox_max": [
+        0.41409802436828613,
+        0.9608360528945923,
+        0.6448916792869568
+      ],
+      "parent": "X3:Ani_Trunk7_X3:MI_Exhaust_020_0_248"
+    },
+    {
+      "name": "Object_247",
+      "vertex_count": 262,
+      "face_count": 240,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.1682952493429184,
+        -0.5831115245819092,
+        0.3954636752605438
+      ],
+      "bbox_max": [
+        0.44322311878204346,
+        -0.4813675284385681,
+        0.44159772992134094
+      ],
+      "parent": "X3:Ani_Hood_Lifting_FL_130_X3:MI_Exhaust_020_0_250"
+    },
+    {
+      "name": "Object_249",
+      "vertex_count": 31,
+      "face_count": 16,
+      "material_names": [
+        "X3MI_Engine_003"
+      ],
+      "bbox_min": [
+        -0.16488118469715118,
+        -0.5394747853279114,
+        0.4159276485443115
+      ],
+      "bbox_max": [
+        0.43980950117111206,
+        -0.5103015303611755,
+        0.4310194253921509
+      ],
+      "parent": "X3:Ani_Hood_Lifting_FL_130_X3:MI_Engine_003_0_251"
+    },
+    {
+      "name": "Object_251",
+      "vertex_count": 1628,
+      "face_count": 1062,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.17512460052967072,
+        -0.4980669319629669,
+        0.4269888699054718
+      ],
+      "bbox_max": [
+        0.45005249977111816,
+        -0.41282862424850464,
+        0.45823919773101807
+      ],
+      "parent": "X3:Ani_Hood_Lifting_FL_130_X3:MI_1347060001_015_0_252"
+    },
+    {
+      "name": "Object_253",
+      "vertex_count": 258,
+      "face_count": 402,
+      "material_names": [
+        "X3MI_Engine_Plastic_A_003"
+      ],
+      "bbox_min": [
+        -0.16399280726909637,
+        -0.5236951112747192,
+        0.43156611919403076
+      ],
+      "bbox_max": [
+        0.2837262451648712,
+        -0.39861515164375305,
+        0.4683193862438202
+      ],
+      "parent": "X3:Ani_Hood22_X3:MI_Engine_Plastic_A_003_0_254"
+    },
+    {
+      "name": "Object_255",
+      "vertex_count": 390,
+      "face_count": 550,
+      "material_names": [
+        "X3MI_Engine_003"
+      ],
+      "bbox_min": [
+        -0.11225144565105438,
+        -0.5771608352661133,
+        0.443811297416687
+      ],
+      "bbox_max": [
+        0.38717931509017944,
+        -0.4561816453933716,
+        0.4799962043762207
+      ],
+      "parent": "X3:Ani_Hood22_X3:MI_Engine_003_0_255"
+    },
+    {
+      "name": "Object_257",
+      "vertex_count": 1801,
+      "face_count": 2100,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.15037257969379425,
+        -0.9552968144416809,
+        0.3598901927471161
+      ],
+      "bbox_max": [
+        0.4253004789352417,
+        -0.43509435653686523,
+        0.4648491144180298
+      ],
+      "parent": "X3:Ani_Hood22_X3:MI_Exhaust_020_0_256"
+    },
+    {
+      "name": "Object_259",
+      "vertex_count": 281,
+      "face_count": 380,
+      "material_names": [
+        "X3MI_Logo_007"
+      ],
+      "bbox_min": [
+        0.11939960718154907,
+        -0.9687458276748657,
+        0.38701483607292175
+      ],
+      "bbox_max": [
+        0.15552827715873718,
+        -0.9374793767929077,
+        0.40495526790618896
+      ],
+      "parent": "X3:Ani_Hood22_X3:MI_Logo_007_0_257"
+    },
+    {
+      "name": "Object_26",
+      "vertex_count": 3011,
+      "face_count": 4812,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        0.39339685440063477,
+        0.09717179089784622,
+        0.1292525827884674
+      ],
+      "bbox_max": [
+        0.5371571779251099,
+        0.5365077257156372,
+        0.6785987019538879
+      ],
+      "parent": "X3:SK_Door_BL_101_001_SK_Door_BL_101_001_MI_Glass_016_X3:MI_134_25"
+    },
+    {
+      "name": "Object_261",
+      "vertex_count": 39,
+      "face_count": 42,
+      "material_names": [
+        "X3MI_Engine_Plastic_A_003"
+      ],
+      "bbox_min": [
+        -0.1662939339876175,
+        -0.41187596321105957,
+        0.4297555088996887
+      ],
+      "bbox_max": [
+        -0.15766410529613495,
+        -0.36608487367630005,
+        0.44733232259750366
+      ],
+      "parent": "X3:Ani_Car55_X3:MI_Engine_Plastic_A_003_0_259"
+    },
+    {
+      "name": "Object_263",
+      "vertex_count": 1555,
+      "face_count": 1623,
+      "material_names": [
+        "X3MI_Change_Brake_002"
+      ],
+      "bbox_min": [
+        -0.2249910831451416,
+        0.49499425292015076,
+        0.0811941921710968
+      ],
+      "bbox_max": [
+        -0.16676287353038788,
+        0.6514937281608582,
+        0.22707556188106537
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.001_260"
+    },
+    {
+      "name": "Object_264",
+      "vertex_count": 6221,
+      "face_count": 9120,
+      "material_names": [
+        "X3MI_ChangeA_Rim_002"
+      ],
+      "bbox_min": [
+        -0.2540670931339264,
+        0.4635410010814667,
+        0.03838455677032471
+      ],
+      "bbox_max": [
+        -0.14162558317184448,
+        0.6939697265625,
+        0.2688543200492859
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.001_260"
+    },
+    {
+      "name": "Object_265",
+      "vertex_count": 1088,
+      "face_count": 1720,
+      "material_names": [
+        "X3MI_ChangeA_Tyre_002"
+      ],
+      "bbox_min": [
+        -0.255035400390625,
+        0.4250600337982178,
+        0.0005911439657211304
+      ],
+      "bbox_max": [
+        -0.13875322043895721,
+        0.7320451736450195,
+        0.3075762987136841
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.001_260"
+    },
+    {
+      "name": "Object_266",
+      "vertex_count": 1100,
+      "face_count": 1480,
+      "material_names": [
+        "Black_Rim"
+      ],
+      "bbox_min": [
+        -0.2542167901992798,
+        0.4656429588794708,
+        0.04048525542020798
+      ],
+      "bbox_max": [
+        -0.25332584977149963,
+        0.6918677687644958,
+        0.2674919068813324
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.001_260"
+    },
+    {
+      "name": "Object_268",
+      "vertex_count": 1555,
+      "face_count": 1623,
+      "material_names": [
+        "X3MI_Change_Brake_002"
+      ],
+      "bbox_min": [
+        -0.25193125009536743,
+        -0.7224401831626892,
+        0.08119417726993561
+      ],
+      "bbox_max": [
+        -0.14368869364261627,
+        -0.5554634928703308,
+        0.22707557678222656
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.002_261"
+    },
+    {
+      "name": "Object_269",
+      "vertex_count": 6221,
+      "face_count": 9120,
+      "material_names": [
+        "X3MI_ChangeA_Rim_002"
+      ],
+      "bbox_min": [
+        -0.2900114059448242,
+        -0.7605940103530884,
+        0.038384534418582916
+      ],
+      "bbox_max": [
+        -0.1055397242307663,
+        -0.5056045651435852,
+        0.2688543200492859
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.002_261"
+    },
+    {
+      "name": "Object_270",
+      "vertex_count": 1088,
+      "face_count": 1720,
+      "material_names": [
+        "X3MI_ChangeA_Tyre_002"
+      ],
+      "bbox_min": [
+        -0.30408260226249695,
+        -0.7977367043495178,
+        0.0005911141633987427
+      ],
+      "bbox_max": [
+        -0.08981800824403763,
+        -0.46949413418769836,
+        0.30757632851600647
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.002_261"
+    },
+    {
+      "name": "Object_271",
+      "vertex_count": 1100,
+      "face_count": 1480,
+      "material_names": [
+        "Black_Rim"
+      ],
+      "bbox_min": [
+        -0.28943315148353577,
+        -0.7204150557518005,
+        0.040485233068466187
+      ],
+      "bbox_max": [
+        -0.2112225443124771,
+        -0.50752854347229,
+        0.2674919068813324
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.002_261"
+    },
+    {
+      "name": "Object_273",
+      "vertex_count": 1555,
+      "face_count": 1623,
+      "material_names": [
+        "X3MI_Change_Brake_002"
+      ],
+      "bbox_min": [
+        0.4084532856941223,
+        -0.7211024165153503,
+        0.0811941921710968
+      ],
+      "bbox_max": [
+        0.5166958570480347,
+        -0.5541257858276367,
+        0.22707556188106537
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.003_262"
+    },
+    {
+      "name": "Object_274",
+      "vertex_count": 6221,
+      "face_count": 9120,
+      "material_names": [
+        "X3MI_ChangeA_Rim_002"
+      ],
+      "bbox_min": [
+        0.3740743398666382,
+        -0.7606033682823181,
+        0.03838455677032471
+      ],
+      "bbox_max": [
+        0.5585460066795349,
+        -0.5056139230728149,
+        0.2688543200492859
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.003_262"
+    },
+    {
+      "name": "Object_275",
+      "vertex_count": 1088,
+      "face_count": 1720,
+      "material_names": [
+        "X3MI_ChangeA_Tyre_002"
+      ],
+      "bbox_min": [
+        0.3582139313220978,
+        -0.7970948219299316,
+        0.0005911439657211304
+      ],
+      "bbox_max": [
+        0.5724785327911377,
+        -0.46885228157043457,
+        0.3075762987136841
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.003_262"
+    },
+    {
+      "name": "Object_276",
+      "vertex_count": 1100,
+      "face_count": 1480,
+      "material_names": [
+        "Black_Rim"
+      ],
+      "bbox_min": [
+        0.479757159948349,
+        -0.7586793899536133,
+        0.04048525542020798
+      ],
+      "bbox_max": [
+        0.5579677820205688,
+        -0.5457928776741028,
+        0.26749187707901
+      ],
+      "parent": "X3:Ani_Wheel_Caliper_BL12_X3:MI_Change_Brake_002_0.003_262"
+    },
+    {
+      "name": "Object_28",
+      "vertex_count": 3005,
+      "face_count": 4812,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.26222968101501465,
+        0.09717179089784622,
+        0.1292525827884674
+      ],
+      "bbox_max": [
+        -0.11846853792667389,
+        0.5365077257156372,
+        0.6785982847213745
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_011_X3:MI__27"
+    },
+    {
+      "name": "Object_30",
+      "vertex_count": 1139,
+      "face_count": 1683,
+      "material_names": [
+        "X3MI_Cabin_Plastic_A_007"
+      ],
+      "bbox_min": [
+        -0.20152996480464935,
+        0.12833628058433533,
+        0.18917854130268097
+      ],
+      "bbox_max": [
+        -0.14955057203769684,
+        0.5072476863861084,
+        0.4714822769165039
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_012_X3:MI__29"
+    },
+    {
+      "name": "Object_32",
+      "vertex_count": 1847,
+      "face_count": 2980,
+      "material_names": [
+        "X3MI_Cabin_008"
+      ],
+      "bbox_min": [
+        -0.21083001792430878,
+        0.15115931630134583,
+        0.2013915628194809
+      ],
+      "bbox_max": [
+        -0.110847607254982,
+        0.5156741142272949,
+        0.6660507917404175
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_013_X3:MI__31"
+    },
+    {
+      "name": "Object_34",
+      "vertex_count": 109,
+      "face_count": 157,
+      "material_names": [
+        "X3MI_Cabin_Grid_B_006"
+      ],
+      "bbox_min": [
+        -0.17646925151348114,
+        0.1889645904302597,
+        0.36433809995651245
+      ],
+      "bbox_max": [
+        -0.15810935199260712,
+        0.2618752419948578,
+        0.461791068315506
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_014_X3:MI__33"
+    },
+    {
+      "name": "Object_36",
+      "vertex_count": 1340,
+      "face_count": 2158,
+      "material_names": [
+        "X3MI_Cabin_Leather_A_007"
+      ],
+      "bbox_min": [
+        -0.20315326750278473,
+        0.15301814675331116,
+        0.3252571225166321
+      ],
+      "bbox_max": [
+        -0.13510026037693024,
+        0.4926498234272003,
+        0.5002965927124023
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_015_X3:MI__35"
+    },
+    {
+      "name": "Object_38",
+      "vertex_count": 104,
+      "face_count": 156,
+      "material_names": [
+        "X3MI_Cabin_Carbon_A_014"
+      ],
+      "bbox_min": [
+        -0.17160697281360626,
+        0.18572263419628143,
+        0.4436464309692383
+      ],
+      "bbox_max": [
+        -0.15200306475162506,
+        0.462989866733551,
+        0.4741305112838745
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_016_X3:MI__37"
+    },
+    {
+      "name": "Object_4",
+      "vertex_count": 141,
+      "face_count": 71,
+      "material_names": [
+        "X3MI_Cabin_A_008"
+      ],
+      "bbox_min": [
+        0.24082276225090027,
+        -0.181486576795578,
+        0.391171395778656
+      ],
+      "bbox_max": [
+        0.35290318727493286,
+        -0.1123785525560379,
+        0.4548187851905823
+      ],
+      "parent": "X3:SK_Body_Bones_101_001_SK_Body_Bones_101_001_MI_Exhaust_020_X_4"
+    },
+    {
+      "name": "Object_40",
+      "vertex_count": 340,
+      "face_count": 298,
+      "material_names": [
+        "X3MI_Cabin_A_008"
+      ],
+      "bbox_min": [
+        -0.1807205229997635,
+        0.1601874679327011,
+        0.36565274000167847
+      ],
+      "bbox_max": [
+        -0.13501571118831635,
+        0.49271920323371887,
+        0.48739176988601685
+      ],
+      "parent": "X3:SK_Door_BR_101_001_SK_Door_BR_101_001_MI_Glass_In_017_X3:MI__39"
+    },
+    {
+      "name": "Object_42",
+      "vertex_count": 455,
+      "face_count": 392,
+      "material_names": [
+        "X3MI_Cabin_A_008"
+      ],
+      "bbox_min": [
+        0.41617971658706665,
+        -0.300893634557724,
+        0.3398883640766144
+      ],
+      "bbox_max": [
+        0.4607970118522644,
+        0.07554752379655838,
+        0.49388158321380615
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_010_X3:MI_C_41"
+    },
+    {
+      "name": "Object_44",
+      "vertex_count": 2898,
+      "face_count": 4509,
+      "material_names": [
+        "X3MI_Cabin_Plastic_A_007"
+      ],
+      "bbox_min": [
+        0.4230961799621582,
+        -0.31477269530296326,
+        0.18774299323558807
+      ],
+      "bbox_max": [
+        0.4789251685142517,
+        0.08593384921550751,
+        0.5501089096069336
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_011_X3:MI_C_43"
+    },
+    {
+      "name": "Object_46",
+      "vertex_count": 2952,
+      "face_count": 4361,
+      "material_names": [
+        "X3MI_Cabin_008"
+      ],
+      "bbox_min": [
+        0.3878977298736572,
+        -0.2977810800075531,
+        0.3559247553348541
+      ],
+      "bbox_max": [
+        0.47894716262817383,
+        0.14793089032173157,
+        0.6637932658195496
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_012_X3:MI_C_45"
+    },
+    {
+      "name": "Object_48",
+      "vertex_count": 143,
+      "face_count": 221,
+      "material_names": [
+        "X3MI_Cabin_Carbon_A_014"
+      ],
+      "bbox_min": [
+        0.4373548626899719,
+        -0.23980529606342316,
+        0.4395418167114258
+      ],
+      "bbox_max": [
+        0.44826215505599976,
+        0.03384701535105705,
+        0.4691274166107178
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_013_X3:MI_C_47"
+    },
+    {
+      "name": "Object_50",
+      "vertex_count": 155,
+      "face_count": 234,
+      "material_names": [
+        "X3MI_Cabin_Grid_B_006"
+      ],
+      "bbox_min": [
+        0.4330093264579773,
+        -0.24223367869853973,
+        0.35756877064704895
+      ],
+      "bbox_max": [
+        0.4526766538619995,
+        -0.18160074949264526,
+        0.5351241827011108
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_014_X3:MI_C_49"
+    },
+    {
+      "name": "Object_52",
+      "vertex_count": 746,
+      "face_count": 1206,
+      "material_names": [
+        "X3MI_Cabin_Leather_A_007"
+      ],
+      "bbox_min": [
+        0.4162803292274475,
+        -0.19510555267333984,
+        0.34310242533683777
+      ],
+      "bbox_max": [
+        0.46295982599258423,
+        0.05397314950823784,
+        0.4130645990371704
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_015_X3:MI_C_51"
+    },
+    {
+      "name": "Object_54",
+      "vertex_count": 3397,
+      "face_count": 5135,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        0.3928082585334778,
+        -0.37156280875205994,
+        0.12287694215774536
+      ],
+      "bbox_max": [
+        0.5354522466659546,
+        0.17911061644554138,
+        0.6785429120063782
+      ],
+      "parent": "X3:SK_Door_FL_101_001_SK_Door_FL_101_001_MI_Cabin_A_016_X3:MI_1_53"
+    },
+    {
+      "name": "Object_56",
+      "vertex_count": 344,
+      "face_count": 318,
+      "material_names": [
+        "X3MI_Cabin_A_008"
+      ],
+      "bbox_min": [
+        -0.18586911261081696,
+        -0.30089321732521057,
+        0.3398883640766144
+      ],
+      "bbox_max": [
+        -0.1412518173456192,
+        0.07554752379655838,
+        0.49388158321380615
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_012_X3:MI_Cab_55"
+    },
+    {
+      "name": "Object_58",
+      "vertex_count": 1659,
+      "face_count": 2641,
+      "material_names": [
+        "X3MI_Cabin_008"
+      ],
+      "bbox_min": [
+        -0.20401926338672638,
+        -0.2977806627750397,
+        0.3559196889400482
+      ],
+      "bbox_max": [
+        -0.11296986043453217,
+        0.1479313224554062,
+        0.6637932658195496
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_013_X3:MI_Cab_57"
+    },
+    {
+      "name": "Object_6",
+      "vertex_count": 2759,
+      "face_count": 4776,
+      "material_names": [
+        "X3MI_Cabin_Leather_A_007"
+      ],
+      "bbox_min": [
+        0.21856211125850677,
+        -0.18064342439174652,
+        0.37670883536338806
+      ],
+      "bbox_max": [
+        0.3753156065940857,
+        -0.10868119448423386,
+        0.5222489833831787
+      ],
+      "parent": "X3:SK_Body_Bones_101_001_SK_Body_Bones_101_001_MI_Exhaust_021_X_6"
+    },
+    {
+      "name": "Object_60",
+      "vertex_count": 2900,
+      "face_count": 4509,
+      "material_names": [
+        "X3MI_Cabin_Plastic_A_007"
+      ],
+      "bbox_min": [
+        -0.20399726927280426,
+        -0.31477224826812744,
+        0.18774299323558807
+      ],
+      "bbox_max": [
+        -0.14816828072071075,
+        0.08593384921550751,
+        0.5501089096069336
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_014_X3:MI_Cab_59"
+    },
+    {
+      "name": "Object_62",
+      "vertex_count": 143,
+      "face_count": 221,
+      "material_names": [
+        "X3MI_Cabin_Carbon_A_014"
+      ],
+      "bbox_min": [
+        -0.1733342856168747,
+        -0.23980487883090973,
+        0.43954142928123474
+      ],
+      "bbox_max": [
+        -0.16242699325084686,
+        0.03384701535105705,
+        0.4691274166107178
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_015_X3:MI_Cab_61"
+    },
+    {
+      "name": "Object_64",
+      "vertex_count": 155,
+      "face_count": 234,
+      "material_names": [
+        "X3MI_Cabin_Grid_B_006"
+      ],
+      "bbox_min": [
+        -0.17774878442287445,
+        -0.2422332763671875,
+        0.35756877064704895
+      ],
+      "bbox_max": [
+        -0.15808145701885223,
+        -0.18160074949264526,
+        0.5351237058639526
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_016_X3:MI_Cab_63"
+    },
+    {
+      "name": "Object_66",
+      "vertex_count": 739,
+      "face_count": 1206,
+      "material_names": [
+        "X3MI_Cabin_Leather_A_007"
+      ],
+      "bbox_min": [
+        -0.18803192675113678,
+        -0.19510513544082642,
+        0.34310242533683777
+      ],
+      "bbox_max": [
+        -0.14135245978832245,
+        0.05397314950823784,
+        0.4130645990371704
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_017_X3:MI_Cab_65"
+    },
+    {
+      "name": "Object_68",
+      "vertex_count": 3285,
+      "face_count": 4998,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.26052480936050415,
+        -0.3715623915195465,
+        0.12287651002407074
+      ],
+      "bbox_max": [
+        -0.11788035929203033,
+        0.1791110336780548,
+        0.6785429120063782
+      ],
+      "parent": "X3:SK_Door_FR_101_001_SK_Door_FR_101_001_MI_Glass_018_X3:MI_134_67"
+    },
+    {
+      "name": "Object_70",
+      "vertex_count": 1727,
+      "face_count": 2890,
+      "material_names": [
+        "X3MI_Engine_Suede_A_002"
+      ],
+      "bbox_min": [
+        -0.13734601438045502,
+        -0.8944025635719299,
+        0.40368759632110596
+      ],
+      "bbox_max": [
+        0.4122738838195801,
+        -0.4708462953567505,
+        0.46196654438972473
+      ],
+      "parent": "X3:SK_Hood_101_001_SK_Hood_101_001_MI_Exhaust_030_X3:MI_Engine__69"
+    },
+    {
+      "name": "Object_71",
+      "vertex_count": 8306,
+      "face_count": 12087,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.1985527127981186,
+        -0.9858320951461792,
+        0.36643368005752563
+      ],
+      "bbox_max": [
+        0.47348058223724365,
+        -0.3812231719493866,
+        0.4869270920753479
+      ],
+      "parent": "X3:SK_Hood_101_001_SK_Hood_101_001_MI_Exhaust_030_X3:MI_Engine__69"
+    },
+    {
+      "name": "Object_73",
+      "vertex_count": 8,
+      "face_count": 4,
+      "material_names": [
+        "X3MI_Engine_A_003"
+      ],
+      "bbox_min": [
+        0.08003956079483032,
+        -0.9222590923309326,
+        0.3878372609615326
+      ],
+      "bbox_max": [
+        0.1095498725771904,
+        -0.9163747429847717,
+        0.38857004046440125
+      ],
+      "parent": "X3:SK_Hood_101_001_SK_Hood_101_001_MI_Exhaust_031_X3:MI_Engine__71"
+    },
+    {
+      "name": "Object_75",
+      "vertex_count": 281,
+      "face_count": 404,
+      "material_names": [
+        "X3MI_Cabin_008"
+      ],
+      "bbox_min": [
+        0.05315215140581131,
+        0.8991700410842896,
+        0.285249263048172
+      ],
+      "bbox_max": [
+        0.15184319019317627,
+        0.9280308485031128,
+        0.359293133020401
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_012_X3:MI_Cabin_0_73"
+    },
+    {
+      "name": "Object_77",
+      "vertex_count": 1888,
+      "face_count": 2916,
+      "material_names": [
+        "X3MI_Cabin_Plastic_A_007"
+      ],
+      "bbox_min": [
+        -0.11254619061946869,
+        0.737328827381134,
+        0.29819971323013306
+      ],
+      "bbox_max": [
+        0.38747406005859375,
+        0.940273106098175,
+        0.6537836790084839
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_013_X3:MI_Cabin_P_75"
+    },
+    {
+      "name": "Object_79",
+      "vertex_count": 10,
+      "face_count": 4,
+      "material_names": [
+        "X3MI_Cabin_A_008"
+      ],
+      "bbox_min": [
+        0.06275664269924164,
+        0.9071994423866272,
+        0.30360788106918335
+      ],
+      "bbox_max": [
+        0.07762892544269562,
+        0.9113150238990784,
+        0.30382564663887024
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_014_X3:MI_Cabin_A_77"
+    },
+    {
+      "name": "Object_8",
+      "vertex_count": 533,
+      "face_count": 540,
+      "material_names": [
+        "Costuras"
+      ],
+      "bbox_min": [
+        0.23223140835762024,
+        -0.16984567046165466,
+        0.39089444279670715
+      ],
+      "bbox_max": [
+        0.36164629459381104,
+        -0.11553847789764404,
+        0.5118901133537292
+      ],
+      "parent": "X3:SK_Body_Bones_101_001_SK_Body_Bones_101_001_MI_Exhaust_021_C_7"
+    },
+    {
+      "name": "Object_81",
+      "vertex_count": 3078,
+      "face_count": 5343,
+      "material_names": [
+        "X3MI_1347060001_015"
+      ],
+      "bbox_min": [
+        -0.14963935315608978,
+        0.7258287072181702,
+        0.2782752811908722
+      ],
+      "bbox_max": [
+        0.42456722259521484,
+        0.9708942770957947,
+        0.67207932472229
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_015_X3:MI_1347060_79"
+    },
+    {
+      "name": "Object_83",
+      "vertex_count": 1159,
+      "face_count": 1468,
+      "material_names": [
+        "X3MI_Light_007"
+      ],
+      "bbox_min": [
+        -0.13348881900310516,
+        0.8449597358703613,
+        0.3880482614040375
+      ],
+      "bbox_max": [
+        0.4084166884422302,
+        0.9597603678703308,
+        0.6418357491493225
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_017_X3:MI_Light_0_81"
+    },
+    {
+      "name": "Object_85",
+      "vertex_count": 707,
+      "face_count": 1148,
+      "material_names": [
+        "X3MI_Glass_021"
+      ],
+      "bbox_min": [
+        -0.1334892362356186,
+        0.8474054932594299,
+        0.3880482614040375
+      ],
+      "bbox_max": [
+        0.40841710567474365,
+        0.9599675536155701,
+        0.6425131559371948
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_018_X3:MI_Glass_0_83"
+    },
+    {
+      "name": "Object_87",
+      "vertex_count": 319,
+      "face_count": 392,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.1391706019639969,
+        0.8017623424530029,
+        0.5074772834777832
+      ],
+      "bbox_max": [
+        0.41409850120544434,
+        0.9481692910194397,
+        0.6361950039863586
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_019_X3:MI_Glass_0_85"
+    },
+    {
+      "name": "Object_89",
+      "vertex_count": 156,
+      "face_count": 216,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.1391706019639969,
+        0.8017623424530029,
+        0.5074772834777832
+      ],
+      "bbox_max": [
+        0.41409850120544434,
+        0.9476580619812012,
+        0.6361950039863586
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_020_X3:MI_Glass_0_87"
+    },
+    {
+      "name": "Object_91",
+      "vertex_count": 842,
+      "face_count": 781,
+      "material_names": [
+        "X3MI_Logo_007"
+      ],
+      "bbox_min": [
+        -0.10088285803794861,
+        0.9426774382591248,
+        0.3310187757015228
+      ],
+      "bbox_max": [
+        0.3744043707847595,
+        0.9708595871925354,
+        0.48952460289001465
+      ],
+      "parent": "X3:SK_Trunk_101_001_SK_Trunk_101_001_MI_Cabin_021_X3:MI_Logo_00_89"
+    },
+    {
+      "name": "Object_93",
+      "vertex_count": 4515,
+      "face_count": 3838,
+      "material_names": [
+        "X3MI_Cabin_A_008"
+      ],
+      "bbox_min": [
+        -0.20615927875041962,
+        -0.3867475688457489,
+        0.17823870480060577
+      ],
+      "bbox_max": [
+        0.4810571074485779,
+        0.7816078662872314,
+        0.6513814926147461
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_013_X3:MI_Cabin_A_008_91"
+    },
+    {
+      "name": "Object_94",
+      "vertex_count": 50,
+      "face_count": 42,
+      "material_names": [
+        "Light"
+      ],
+      "bbox_min": [
+        -0.07051205635070801,
+        -0.1191161647439003,
+        0.6277229189872742
+      ],
+      "bbox_max": [
+        0.34543994069099426,
+        0.44739532470703125,
+        0.652984082698822
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_013_X3:MI_Cabin_A_008_91"
+    },
+    {
+      "name": "Object_96",
+      "vertex_count": 8579,
+      "face_count": 11376,
+      "material_names": [
+        "X3MI_Exhaust_020"
+      ],
+      "bbox_min": [
+        -0.23612667620182037,
+        -0.8138916492462158,
+        0.09765298664569855
+      ],
+      "bbox_max": [
+        0.5110545754432678,
+        0.9505820274353027,
+        0.7079229354858398
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_014_X3:MI_Exhaust_020_93"
+    },
+    {
+      "name": "Object_98",
+      "vertex_count": 217,
+      "face_count": 264,
+      "material_names": [
+        "X3MI_Glass_023"
+      ],
+      "bbox_min": [
+        -0.17544640600681305,
+        -0.45188382267951965,
+        0.45299166440963745
+      ],
+      "bbox_max": [
+        0.4503743052482605,
+        0.49260884523391724,
+        0.7032835483551025
+      ],
+      "parent": "X3:SM_Body_101_SM_Body_101_001_MI_Cabin_A_015_X3:MI_Glass_023_0_95"
+    }
+  ]
+}
