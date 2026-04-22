@@ -542,13 +542,9 @@ print(f"{'='*60}")
 asymmetric_pairs = [p for p in pairs if not p["symmetric"]]
 needs_fix = len(asymmetric_pairs) > 0 or len(remaining_unpaired) > 0
 
-if not needs_fix and not renames:
-    print("  No asymmetric pairs, unpaired zones, or renames. Nothing to fix!")
+if not needs_fix:
+    print("  No asymmetric pairs or unpaired zones found. All zones are symmetric!")
     bm.free()
-elif not needs_fix:
-    print("  No symmetry fixes needed, but renames were applied.")
-    bm.free()
-    needs_save = True
 else:
     # Build KD-tree for all face centroids on each side
     from mathutils import kdtree
@@ -667,177 +663,178 @@ else:
 
     bm.free()
 
-# ── Everything below runs unconditionally (renames, symmetry fixes, or both) ──
+    # ── Rebuild zone_faces from updated face_to_zone ──
+    zone_faces_new = defaultdict(set)
+    for fidx, zone in face_to_zone.items():
+        zone_faces_new[zone].add(fidx)
 
-# Rebuild zone_faces from updated face_to_zone
-zone_faces_new = defaultdict(set)
-for fidx, zone in face_to_zone.items():
-    zone_faces_new[zone].add(fidx)
+    # Remove empty zones
+    empty_zones = [z for z, faces in zone_faces_new.items() if len(faces) == 0]
+    for z in empty_zones:
+        print(f"    Removed empty zone: {z}")
 
-# Remove empty zones
-empty_zones = [z for z, faces in zone_faces_new.items() if len(faces) == 0]
-for z in empty_zones:
-    print(f"  Removed empty zone: {z}")
+    # ── Print final zone summary ──
+    print(f"\n{'='*60}")
+    print(f"  FINAL ZONE SUMMARY (after symmetry fixes)")
+    print(f"{'='*60}")
 
-# ── Print final zone summary ──
-print(f"\n{'='*60}")
-print(f"  FINAL ZONE SUMMARY")
-print(f"{'='*60}")
+    final_zones = {z: faces for z, faces in zone_faces_new.items() if len(faces) > 0}
+    for zone in sorted(final_zones.keys()):
+        count = len(final_zones[zone])
+        mirror = mirror_zone_name(zone)
+        if mirror and mirror in final_zones:
+            mirror_count = len(final_zones[mirror])
+            ratio = abs(count - mirror_count) / max(count, mirror_count)
+            sym_status = "OK" if ratio <= SYMMETRY_TOLERANCE else "ASYM"
+            print(f"  {zone:25s}: {count:5d} faces  (mirror: {mirror} = {mirror_count}, ratio={ratio:.2f} [{sym_status}])")
+        else:
+            print(f"  {zone:25s}: {count:5d} faces")
 
-final_zones = {z: faces for z, faces in zone_faces_new.items() if len(faces) > 0}
-for zone in sorted(final_zones.keys()):
-    count = len(final_zones[zone])
-    mirror = mirror_zone_name(zone)
-    if mirror and mirror in final_zones:
-        mirror_count = len(final_zones[mirror])
-        ratio = abs(count - mirror_count) / max(count, mirror_count)
-        sym_status = "OK" if ratio <= SYMMETRY_TOLERANCE else "ASYM"
-        print(f"  {zone:25s}: {count:5d} faces  (mirror: {mirror} = {mirror_count}, ratio={ratio:.2f} [{sym_status}])")
-    else:
-        print(f"  {zone:25s}: {count:5d} faces")
+    print(f"\n  Total zones: {len(final_zones)}")
+    print(f"  Fixes applied: {fixes_applied}")
+    print(f"  Faces reassigned: {faces_reassigned}")
+    print(f"  Sub-zones merged: {merge_count}")
 
-print(f"\n  Total zones: {len(final_zones)}")
-
-# ── Back up old face_to_zone.json ──
-import shutil
-backup_path = os.path.join(OUTPUT_DIR, "face_to_zone_pre_symmetry.json")
-if not os.path.exists(backup_path):
+    # ── Back up old face_to_zone.json ──
+    import shutil
+    backup_path = os.path.join(OUTPUT_DIR, "face_to_zone_pre_symmetry.json")
     shutil.copy2(ftz_path, backup_path)
     print(f"\n  Backed up original: {backup_path}")
 
-# ── Write updated face_to_zone.json ──
-face_to_zone_str = {str(k): v for k, v in face_to_zone.items()}
-with open(ftz_path, "w") as f:
-    json.dump(face_to_zone_str, f)
-print(f"  Updated: {ftz_path}")
+    # ── Write updated face_to_zone.json ──
+    # Convert keys to strings for JSON
+    face_to_zone_str = {str(k): v for k, v in face_to_zone.items()}
+    with open(ftz_path, "w") as f:
+        json.dump(face_to_zone_str, f)
+    print(f"  Updated: {ftz_path}")
 
-# ── Rebuild vertex groups from face_to_zone ──
-combined.vertex_groups.clear()
-zone_names = sorted(final_zones.keys())
-vgroups = {}
-for name in zone_names:
-    vg = combined.vertex_groups.new(name=name)
-    vgroups[name] = vg
+    # ── Rebuild vertex groups from face_to_zone ──
+    combined.vertex_groups.clear()
+    zone_names = sorted(final_zones.keys())
+    vgroups = {}
+    for name in zone_names:
+        vg = combined.vertex_groups.new(name=name)
+        vgroups[name] = vg
 
-mesh_data = combined.data
-for face in mesh_data.polygons:
-    zone = face_to_zone.get(face.index)
-    if zone and zone in vgroups:
-        vgroups[zone].add(list(face.vertices), 1.0, 'REPLACE')
+    mesh_data = combined.data
+    for face in mesh_data.polygons:
+        zone = face_to_zone.get(face.index)
+        if zone and zone in vgroups:
+            vgroups[zone].add(list(face.vertices), 1.0, 'REPLACE')
 
-print(f"  Rebuilt {len(vgroups)} vertex groups")
+    print(f"  Rebuilt {len(vgroups)} vertex groups")
 
-# ── Rebuild color-coded faces ──
-def generate_colors(names):
-    colors = {}
-    KNOWN_COLORS = {
-        "hood":          (0.2, 0.6, 1.0, 1.0),
-        "roof":          (0.0, 0.8, 0.2, 1.0),
-        "trunk":         (1.0, 0.8, 0.0, 1.0),
-        "bumper_front":  (1.0, 0.2, 0.2, 1.0),
-        "bumper_rear":   (0.8, 0.0, 0.4, 1.0),
+    # ── Rebuild color-coded faces ──
+    def generate_colors(names):
+        colors = {}
+        KNOWN_COLORS = {
+            "hood":          (0.2, 0.6, 1.0, 1.0),
+            "roof":          (0.0, 0.8, 0.2, 1.0),
+            "trunk":         (1.0, 0.8, 0.0, 1.0),
+            "bumper_front":  (1.0, 0.2, 0.2, 1.0),
+            "bumper_rear":   (0.8, 0.0, 0.4, 1.0),
+        }
+        for i, name in enumerate(names):
+            hue = i / max(len(names), 1)
+            r, g, b = colorsys.hsv_to_rgb(hue, 0.8, 0.9)
+            colors[name] = (r, g, b, 1.0)
+            for known, color in KNOWN_COLORS.items():
+                if name == known or name.startswith(known):
+                    colors[name] = color
+                    break
+        return colors
+
+    ZONE_COLORS = generate_colors(zone_names)
+
+    bm2 = bmesh.new()
+    bm2.from_mesh(combined.data)
+    bm2.faces.ensure_lookup_table()
+
+    for attr in list(combined.data.attributes):
+        if attr.domain == 'CORNER' and attr.data_type == 'FLOAT_COLOR':
+            combined.data.attributes.remove(attr)
+
+    color_layer = bm2.loops.layers.color.new("zone_colors")
+    for face in bm2.faces:
+        zone = face_to_zone.get(face.index, "body_misc")
+        color = ZONE_COLORS.get(zone, (1.0, 1.0, 1.0, 1.0))
+        for loop in face.loops:
+            loop[color_layer] = color
+
+    bm2.to_mesh(combined.data)
+    bm2.free()
+
+    # ── Re-setup emission material ──
+    vc_mat = None
+    for mat in bpy.data.materials:
+        if mat.name == "ZoneColorMat":
+            vc_mat = mat
+            break
+    if not vc_mat:
+        vc_mat = bpy.data.materials.new("ZoneColorMat")
+    vc_mat.use_nodes = True
+    nodes = vc_mat.node_tree.nodes
+    links = vc_mat.node_tree.links
+    nodes.clear()
+
+    output_node = nodes.new("ShaderNodeOutputMaterial")
+    emission = nodes.new("ShaderNodeEmission")
+    emission.inputs["Strength"].default_value = 1.0
+    vc_node = nodes.new("ShaderNodeVertexColor")
+    vc_node.layer_name = "zone_colors"
+    links.new(vc_node.outputs["Color"], emission.inputs["Color"])
+    links.new(emission.outputs["Emission"], output_node.inputs["Surface"])
+
+    combined.data.materials.clear()
+    combined.data.materials.append(vc_mat)
+
+    # ── Save blend file ──
+    bpy.ops.wm.save_as_mainfile(filepath=blend_path)
+    print(f"  Saved: {blend_path}")
+
+    # ── Hide non-carpaint meshes ──
+    for obj in bpy.data.objects:
+        if obj.type == "MESH" and obj != combined:
+            obj.hide_render = True
+            obj.hide_viewport = True
+
+    # ── Re-render validation views ──
+    bpy.context.scene.render.engine = "BLENDER_EEVEE"
+    bpy.context.scene.render.resolution_x = 1920
+    bpy.context.scene.render.resolution_y = 1080
+    bpy.context.scene.render.film_transparent = True
+
+    cam_data = bpy.data.cameras.new("SymCam")
+    cam_obj = bpy.data.objects.new("SymCam", cam_data)
+    bpy.context.collection.objects.link(cam_obj)
+    bpy.context.scene.camera = cam_obj
+
+    center = mathutils.Vector([(bb_min[i] + bb_max[i]) / 2 for i in range(3)])
+    extent = max(bb_size)
+    cam_dist = extent * 1.8
+
+    views = {
+        "sym_front_left":  (-0.7, -0.7, 0.4),
+        "sym_front_right": (0.7, -0.7, 0.4),
+        "sym_left":        (-1, 0, 0.3),
+        "sym_right":       (1, 0, 0.3),
+        "sym_top":         (0, -0.01, 1),
+        "sym_rear_left":   (-0.7, 0.7, 0.4),
+        "sym_rear_right":  (0.7, 0.7, 0.4),
     }
-    for i, name in enumerate(names):
-        hue = i / max(len(names), 1)
-        r, g, b = colorsys.hsv_to_rgb(hue, 0.8, 0.9)
-        colors[name] = (r, g, b, 1.0)
-        for known, color in KNOWN_COLORS.items():
-            if name == known or name.startswith(known):
-                colors[name] = color
-                break
-    return colors
 
-ZONE_COLORS = generate_colors(zone_names)
+    val_dir = os.path.join(OUTPUT_DIR, "validation")
+    os.makedirs(val_dir, exist_ok=True)
 
-bm2 = bmesh.new()
-bm2.from_mesh(combined.data)
-bm2.faces.ensure_lookup_table()
-
-for attr in list(combined.data.attributes):
-    if attr.domain == 'CORNER' and attr.data_type == 'FLOAT_COLOR':
-        combined.data.attributes.remove(attr)
-
-color_layer = bm2.loops.layers.color.new("zone_colors")
-for face in bm2.faces:
-    zone = face_to_zone.get(face.index, "body_misc")
-    color = ZONE_COLORS.get(zone, (1.0, 1.0, 1.0, 1.0))
-    for loop in face.loops:
-        loop[color_layer] = color
-
-bm2.to_mesh(combined.data)
-bm2.free()
-
-# ── Re-setup emission material ──
-vc_mat = None
-for mat in bpy.data.materials:
-    if mat.name == "ZoneColorMat":
-        vc_mat = mat
-        break
-if not vc_mat:
-    vc_mat = bpy.data.materials.new("ZoneColorMat")
-vc_mat.use_nodes = True
-nodes = vc_mat.node_tree.nodes
-links = vc_mat.node_tree.links
-nodes.clear()
-
-output_node = nodes.new("ShaderNodeOutputMaterial")
-emission = nodes.new("ShaderNodeEmission")
-emission.inputs["Strength"].default_value = 1.0
-vc_node = nodes.new("ShaderNodeVertexColor")
-vc_node.layer_name = "zone_colors"
-links.new(vc_node.outputs["Color"], emission.inputs["Color"])
-links.new(emission.outputs["Emission"], output_node.inputs["Surface"])
-
-combined.data.materials.clear()
-combined.data.materials.append(vc_mat)
-
-# ── Save blend file ──
-bpy.ops.wm.save_as_mainfile(filepath=blend_path)
-print(f"  Saved: {blend_path}")
-
-# ── Hide non-carpaint meshes ──
-for obj in bpy.data.objects:
-    if obj.type == "MESH" and obj != combined:
-        obj.hide_render = True
-        obj.hide_viewport = True
-
-# ── Re-render validation views ──
-bpy.context.scene.render.engine = "BLENDER_EEVEE"
-bpy.context.scene.render.resolution_x = 1920
-bpy.context.scene.render.resolution_y = 1080
-bpy.context.scene.render.film_transparent = True
-
-cam_data = bpy.data.cameras.new("SymCam")
-cam_obj = bpy.data.objects.new("SymCam", cam_data)
-bpy.context.collection.objects.link(cam_obj)
-bpy.context.scene.camera = cam_obj
-
-center = mathutils.Vector([(bb_min[i] + bb_max[i]) / 2 for i in range(3)])
-extent = max(bb_size)
-cam_dist = extent * 1.8
-
-views = {
-    "sym_front_left":  (-0.7, -0.7, 0.4),
-    "sym_front_right": (0.7, -0.7, 0.4),
-    "sym_left":        (-1, 0, 0.3),
-    "sym_right":       (1, 0, 0.3),
-    "sym_top":         (0, -0.01, 1),
-    "sym_rear_left":   (-0.7, 0.7, 0.4),
-    "sym_rear_right":  (0.7, 0.7, 0.4),
-}
-
-val_dir = os.path.join(OUTPUT_DIR, "validation")
-os.makedirs(val_dir, exist_ok=True)
-
-for view_name, (dx, dy, dz) in views.items():
-    direction = mathutils.Vector((dx, dy, dz)).normalized()
-    cam_obj.location = center + direction * cam_dist
-    look_dir = center - cam_obj.location
-    cam_obj.rotation_euler = look_dir.to_track_quat("-Z", "Y").to_euler()
-    render_path = os.path.join(val_dir, f"{view_name}.png")
-    bpy.context.scene.render.filepath = render_path
-    bpy.ops.render.render(write_still=True)
-    print(f"  Rendered {view_name} -> {render_path}")
+    for view_name, (dx, dy, dz) in views.items():
+        direction = mathutils.Vector((dx, dy, dz)).normalized()
+        cam_obj.location = center + direction * cam_dist
+        look_dir = center - cam_obj.location
+        cam_obj.rotation_euler = look_dir.to_track_quat("-Z", "Y").to_euler()
+        render_path = os.path.join(val_dir, f"{view_name}.png")
+        bpy.context.scene.render.filepath = render_path
+        bpy.ops.render.render(write_still=True)
+        print(f"  Rendered {view_name} -> {render_path}")
 
 print(f"\n{'='*60}")
 print(f"  Step 4c-symmetry complete.")
