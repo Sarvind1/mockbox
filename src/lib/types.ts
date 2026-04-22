@@ -96,12 +96,23 @@ export interface EditorState {
   selectedStickerGroupId: string | null;
   stickerMode: boolean; // when true, drops create stickers; when false, drops fill zones
 
+  // Paint brush
+  paintBrushMode: false | "zone" | "brush";
+  paintBrushColor: string;
+  paintBrushSize: number;
+
   // Drag-and-drop
   dropHoverZone: string | null; // zone currently glowing during drag
 
   // History
   undoStack: EditorSnapshot[];
   redoStack: EditorSnapshot[];
+
+  // Zone paint history (separate from global undo to avoid clobbering stickers)
+  zonePaintHistory: Array<{ zoneId: string; previousColor: string | null }>;
+
+  // Canvas UV brush action signal (consumed by PackagingModelSwitch)
+  brushAction: null | "undo" | "clear";
 }
 
 export interface EditorSnapshot {

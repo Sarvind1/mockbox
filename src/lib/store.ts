@@ -76,6 +76,12 @@ interface EditorActions {
   redo: () => void;
   pushUndo: () => void;
   setStickerMode: (on: boolean) => void;
+  setPaintBrushMode: (mode: false | "zone" | "brush") => void;
+  setPaintBrushColor: (color: string) => void;
+  setPaintBrushSize: (size: number) => void;
+  pushZonePaint: (zoneId: string, previousColor: string | null) => void;
+  undoZonePaint: () => void;
+  clearZonePaintHistory: () => void;
   pendingStickerUrl: string | null;
   setPendingStickerUrl: (url: string | null) => void;
   addSticker: (sticker: Sticker) => void;
@@ -85,6 +91,7 @@ interface EditorActions {
   updateStickerGroup: (groupId: string, updates: Partial<Pick<Sticker, "size" | "rotation" | "mirror">>) => void;
   moveStickerGroup: (groupId: string, newStickers: Array<Omit<Sticker, "id">>) => void;
   selectSticker: (groupId: string | null) => void;
+  triggerBrushAction: (action: "undo" | "clear") => void;
 }
 
 export const useEditorStore = create<EditorState & EditorActions>(
@@ -92,10 +99,10 @@ export const useEditorStore = create<EditorState & EditorActions>(
     // State
     activeTemplateId: defaultTemplate.id,
     templates,
-    activeSurface: defaultTemplate.canvasZones?.[0]?.id ?? defaultTemplate.surfaces[0],
-    selectedZoneIds: [defaultTemplate.canvasZones?.[0]?.id ?? defaultTemplate.surfaces[0]],
+    activeSurface: "body",
+    selectedZoneIds: [],
     customGroups: [],
-    multiSelectMode: true,
+    multiSelectMode: false,
     singlePaste: true,
     singlePasteGroups: [],
     surfaceTextures: initSurfaceTextures(allSurfaces(defaultTemplate)),
@@ -112,6 +119,11 @@ export const useEditorStore = create<EditorState & EditorActions>(
     stickerMode: false,
     pendingStickerUrl: null,
     dropHoverZone: null,
+    paintBrushMode: false,
+    paintBrushColor: "#1b2540",
+    paintBrushSize: 1,
+    zonePaintHistory: [],
+    brushAction: null,
 
     // Actions
     pushUndo: () => {
@@ -133,10 +145,10 @@ export const useEditorStore = create<EditorState & EditorActions>(
         undoStack: [...state.undoStack.slice(-19), createSnapshot(state)],
         redoStack: [],
         activeTemplateId: templateId,
-        activeSurface: firstZone,
-        selectedZoneIds: [firstZone],
+        activeSurface: "body",
+        selectedZoneIds: [],
         customGroups: [],
-        multiSelectMode: true,
+        multiSelectMode: false,
         singlePaste: true,
         singlePasteGroups: [],
         surfaceTextures: initSurfaceTextures(allSurfaces(template)),
@@ -164,11 +176,10 @@ export const useEditorStore = create<EditorState & EditorActions>(
       const next = already
         ? state.selectedZoneIds.filter((z) => z !== id)
         : [...state.selectedZoneIds, id];
-      // If deselecting the last zone, fall back to the first canvas zone or primary surface
-      const activeTemplate = templates.find((t) => t.id === state.activeTemplateId);
-      const fallback = activeTemplate?.canvasZones?.[0]?.id ?? activeTemplate?.surfaces[0] ?? "body";
-      const ids = next.length === 0 ? [fallback] : next;
-      set({ selectedZoneIds: ids, activeSurface: ids[ids.length - 1] });
+      set({
+        selectedZoneIds: next,
+        activeSurface: next.length > 0 ? next[next.length - 1] : "body",
+      });
     },
 
     setMultiSelectMode: (on) => set({ multiSelectMode: on }),
@@ -335,6 +346,28 @@ export const useEditorStore = create<EditorState & EditorActions>(
     },
     // Sticker actions
     setStickerMode: (on) => set({ stickerMode: on }),
+    setPaintBrushMode: (mode) => set({ paintBrushMode: mode }),
+    setPaintBrushColor: (color) => set({ paintBrushColor: color }),
+    setPaintBrushSize: (size) => set({ paintBrushSize: size }),
+
+    pushZonePaint: (zoneId, previousColor) => {
+      set({ zonePaintHistory: [...get().zonePaintHistory, { zoneId, previousColor }] });
+    },
+
+    undoZonePaint: () => {
+      const state = get();
+      if (state.zonePaintHistory.length === 0) return;
+      const last = state.zonePaintHistory[state.zonePaintHistory.length - 1];
+      const newTextures = { ...state.surfaceTextures };
+      newTextures[last.zoneId] = { ...newTextures[last.zoneId], color: last.previousColor };
+      set({
+        surfaceTextures: newTextures,
+        zonePaintHistory: state.zonePaintHistory.slice(0, -1),
+      });
+    },
+
+    clearZonePaintHistory: () => set({ zonePaintHistory: [] }),
+
     setPendingStickerUrl: (url) => set({ pendingStickerUrl: url }),
 
     addSticker: (sticker) => {
@@ -386,5 +419,7 @@ export const useEditorStore = create<EditorState & EditorActions>(
     },
 
     selectSticker: (groupId) => set({ selectedStickerGroupId: groupId }),
+
+    triggerBrushAction: (action) => set({ brushAction: action }),
   })
 );

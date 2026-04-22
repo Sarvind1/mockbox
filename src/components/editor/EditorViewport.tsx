@@ -311,9 +311,6 @@ function Scene({ onReady }: { onReady: () => void }) {
       <DeferredEnvironment ready={modelReady} />
       <OrbitControls
         makeDefault
-        enablePan
-        enableZoom
-        enableRotate
         minDistance={1}
         maxDistance={8}
         target={[0, 0, 0]}

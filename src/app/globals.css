@@ -84,45 +84,47 @@
 }
 
 .dark {
-  --background: oklch(0.12 0.008 258);
+  /* Four-tier neutral stack: canvas → sidebar → card → elevated
+     ~2° cool hue shift on lower tiers for perceived depth */
+  --background: oklch(0.07 0.005 262);          /* #0A0A0B — canvas */
   --foreground: oklch(0.93 0.004 258);
-  --card: oklch(0.16 0.007 258);
+  --card: oklch(0.10 0.006 261);                /* #0E0E10 — sidebar */
   --card-foreground: oklch(0.93 0.004 258);
-  --popover: oklch(0.16 0.007 258);
+  --popover: oklch(0.10 0.006 261);
   --popover-foreground: oklch(0.93 0.004 258);
   --primary: oklch(0.63 0.20 254);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.20 0.007 258);
+  --secondary: oklch(0.13 0.006 260);           /* #141417 — card */
   --secondary-foreground: oklch(0.93 0.004 258);
-  --muted: oklch(0.20 0.007 258);
+  --muted: oklch(0.13 0.006 260);               /* #141417 — card */
   --muted-foreground: oklch(0.55 0.010 258);
-  --accent: oklch(0.20 0.007 258);
+  --accent: oklch(0.13 0.006 260);
   --accent-foreground: oklch(0.93 0.004 258);
   --destructive: oklch(0.62 0.22 25);
-  --border: oklch(0.24 0.006 258);
-  --input: oklch(0.20 0.007 258);
+  --border: oklch(0.19 0.005 259);              /* #242428 — hairlines */
+  --input: oklch(0.13 0.006 260);
   --ring: oklch(0.63 0.20 254);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.16 0.007 258);
+  --sidebar: oklch(0.10 0.006 261);             /* #0E0E10 — sidebar */
   --sidebar-foreground: oklch(0.93 0.004 258);
   --sidebar-primary: oklch(0.63 0.20 254);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.20 0.007 258);
+  --sidebar-accent: oklch(0.13 0.006 260);
   --sidebar-accent-foreground: oklch(0.93 0.004 258);
-  --sidebar-border: oklch(0.24 0.006 258);
+  --sidebar-border: oklch(0.19 0.005 259);      /* #242428 — hairlines */
   --sidebar-ring: oklch(0.63 0.20 254);
 }
 
 /* Wrap editor specific overrides */
 .wrap-editor {
-  --wrap-surf: oklch(0.16 0.007 258);
-  --wrap-surf2: oklch(0.20 0.007 258);
-  --wrap-bdr2: oklch(0.30 0.007 258);
-  --wrap-faint: oklch(0.33 0.008 258);
+  --wrap-surf: oklch(0.13 0.006 260);           /* #141417 — card tier */
+  --wrap-surf2: oklch(0.16 0.005 259);          /* #1B1B1F — elevated tier */
+  --wrap-bdr2: oklch(0.19 0.005 259);           /* #242428 — hairlines */
+  --wrap-faint: oklch(0.25 0.005 259);
   --wrap-accent-dim: oklch(0.63 0.20 254 / 0.15);
   --wrap-accent-glow: oklch(0.63 0.20 254 / 0.35);
 }
@@ -134,7 +136,7 @@
   background: transparent;
 }
 .wrap-editor ::-webkit-scrollbar-thumb {
-  background: oklch(0.30 0.007 258);
+  background: oklch(0.19 0.005 259);            /* #242428 — hairlines */
   border-radius: 9px;
 }
 

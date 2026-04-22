@@ -20,9 +20,7 @@ import {
   Plus,
   MousePointer2,
   ImagePlus,
-  ChevronRight,
 } from "lucide-react";
-import { CarDiagram } from "./CarDiagram";
 import { PatternPreview } from "./PatternPreview";
 import { FinishType } from "@/lib/types";
 
@@ -49,8 +47,8 @@ const AUTOMOTIVE_COLORS = [
 ];
 
 const WRAP_FINISHES: { id: FinishType; l: string }[] = [
-  { id: "glossy", l: "Gloss" }, { id: "satin", l: "Satin" }, { id: "matte", l: "Matte" },
-  { id: "metallic", l: "Metallic" }, { id: "pearl", l: "Pearl" }, { id: "chrome", l: "Chrome" },
+  { id: "glossy", l: "Gloss" }, { id: "matte", l: "Matte" },
+  { id: "metallic", l: "Metallic" }, { id: "chrome", l: "Chrome" },
 ];
 
 const PATTERNS = [
@@ -69,98 +67,16 @@ const STICKERS = [
 
 const FONTS = ["Space Grotesk", "Inter", "Impact", "Georgia", "Courier New", "Arial Black"];
 
-type WrapTool = "paint" | "decal" | "text";
-
-// ─── GROUP ACCORDION ─────────────────────────────────────────────────────────
-
-function GroupAccordion({
-  group,
-  selectedZoneIds,
-  onGroupToggle,
-  onPanelToggle,
-  panelColors,
-}: {
-  group: { id: string; label: string; zoneIds: string[] };
-  selectedZoneIds: string[];
-  onGroupToggle: (ids: string[], removeAll: boolean) => void;
-  onPanelToggle: (id: string) => void;
-  panelColors: Record<string, string | null>;
-}) {
-  const [open, setOpen] = useState(false);
-  const allSel = group.zoneIds.every((id) => selectedZoneIds.includes(id));
-  const someSel = group.zoneIds.some((id) => selectedZoneIds.includes(id));
-
-  return (
-    <div
-      className="rounded-lg border overflow-hidden mb-1 transition-colors"
-      style={{ borderColor: allSel ? "var(--primary)" : someSel ? "var(--wrap-bdr2, var(--border))" : "var(--border)" }}
-    >
-      <div className="flex items-center" style={{ background: allSel ? "var(--wrap-accent-dim, var(--primary)/0.1)" : "var(--wrap-surf2, var(--muted))" }}>
-        <button
-          onClick={() => onGroupToggle(group.zoneIds, allSel)}
-          className="p-2 flex items-center shrink-0"
-        >
-          <div
-            className="w-[15px] h-[15px] rounded border-2 flex items-center justify-center transition-all"
-            style={{
-              borderColor: (allSel || someSel) ? "var(--primary)" : "var(--wrap-bdr2, var(--border))",
-              background: allSel ? "var(--primary)" : "transparent",
-            }}
-          >
-            {allSel && <span className="text-white text-[9px] leading-none">{"\u2713"}</span>}
-            {!allSel && someSel && <span className="text-primary text-[10px] leading-none font-bold">{"\u2013"}</span>}
-          </div>
-        </button>
-        <button
-          onClick={() => setOpen((o) => !o)}
-          className="flex-1 flex items-center justify-between py-2 pr-2.5 text-left"
-        >
-          <span className="text-xs font-semibold" style={{ color: allSel ? "var(--primary)" : "var(--foreground)" }}>
-            {group.label}
-          </span>
-          <div className="flex items-center gap-1">
-            {someSel && (
-              <span className="text-[9px] text-primary font-bold">
-                {group.zoneIds.filter((id) => selectedZoneIds.includes(id)).length}/{group.zoneIds.length}
-              </span>
-            )}
-            <ChevronRight className={`h-3 w-3 text-muted-foreground transition-transform ${open ? "rotate-90" : ""}`} />
-          </div>
-        </button>
-      </div>
-      {open && (
-        <div className="p-1.5 border-t border-border flex flex-wrap gap-1" style={{ background: "var(--background)" }}>
-          {group.zoneIds.map((id) => {
-            const sel = selectedZoneIds.includes(id);
-            const col = panelColors[id];
-            return (
-              <button
-                key={id}
-                onClick={() => onPanelToggle(id)}
-                className="px-1.5 py-0.5 rounded text-[10px] font-medium flex items-center gap-1 border transition-all"
-                style={{
-                  background: sel ? "var(--wrap-accent-dim, var(--primary)/0.1)" : "var(--wrap-surf2, var(--muted))",
-                  color: sel ? "var(--primary)" : "var(--muted-foreground)",
-                  borderColor: sel ? "var(--primary)" : "var(--border)",
-                }}
-              >
-                {col && <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: col }} />}
-                {id.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()).replace(/ [FRLM]$| Front| Rear/g, "")}
-              </button>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
+type WrapTool = "coat" | "graphics";
 
 // ─── WRAP SIDEBAR ────────────────────────────────────────────────────────────
 
+const vehicleTemplates = templates.filter((t) => t.category === "vehicles");
+
 function WrapSidebar() {
+  const router = useRouter();
   const selectedZoneIds = useEditorStore((s) => s.selectedZoneIds);
   const setSelectedZones = useEditorStore((s) => s.setSelectedZones);
-  const toggleZoneInSelection = useEditorStore((s) => s.toggleZoneInSelection);
   const activeTemplateId = useEditorStore((s) => s.activeTemplateId);
   const surfaceTextures = useEditorStore((s) => s.surfaceTextures);
   const setZoneColor = useEditorStore((s) => s.setZoneColor);
@@ -169,25 +85,32 @@ function WrapSidebar() {
   const setFinish = useEditorStore((s) => s.setFinish);
   const setStickerMode = useEditorStore((s) => s.setStickerMode);
 
+  const paintBrushMode = useEditorStore((s) => s.paintBrushMode);
+  const paintBrushSize = useEditorStore((s) => s.paintBrushSize);
+  const setPaintBrushMode = useEditorStore((s) => s.setPaintBrushMode);
+  const setPaintBrushColor = useEditorStore((s) => s.setPaintBrushColor);
+  const triggerBrushAction = useEditorStore((s) => s.triggerBrushAction);
+
   const uploadTexture = useEditorStore((s) => s.uploadTexture);
+  const removeTexture = useEditorStore((s) => s.removeTexture);
+  const updateTextureTransform = useEditorStore((s) => s.updateTextureTransform);
   const activeSurface = useEditorStore((s) => s.activeSurface);
 
-  const activeTemplate = getTemplate(activeTemplateId);
-  const predefinedGroups = activeTemplate?.zoneGroups ?? [];
-
-
-
-  const [tool, setTool] = useState<WrapTool>("paint");
+  const [tool, setTool] = useState<WrapTool>("coat");
   const toolRef = useRef(tool);
   useEffect(() => { toolRef.current = tool; }, [tool]);
+  const [coatSub, setCoatSub] = useState<"color" | "patterns">("color");
+  const [gfxSub, setGfxSub] = useState<"stickers" | "text">("stickers");
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [cat, setCat] = useState("all");
   const [txtContent, setTxtContent] = useState("YOUR TEXT");
   const [txtFont, setTxtFont] = useState("Space Grotesk");
   const [txtColor, setTxtColor] = useState("#ffffff");
   const [txtSize, setTxtSize] = useState(48);
   const [txtWeight, setTxtWeight] = useState("700");
   const [activeHex, setActiveHex] = useState("#1b2540");
+  const [activePattern, setActivePattern] = useState<string | null>(null);
+  const [patternScale, setPatternScale] = useState(1);
+  const [patternRotation, setPatternRotation] = useState(0);
 
   const panelColors: Record<string, string | null> = {};
   for (const [id, tex] of Object.entries(surfaceTextures)) {
@@ -198,18 +121,12 @@ function WrapSidebar() {
 
   const applyColor = (hex: string) => {
     setActiveHex(hex);
+    setPaintBrushColor(hex);
+    if (paintBrushMode) return; // Don't apply to zones in paint mode
     if (numSel > 0) {
       selectedZoneIds.forEach((id) => setZoneColor(id, hex));
     } else {
       setBaseColor(hex);
-    }
-  };
-
-  const handleGroupToggle = (ids: string[], removeAll: boolean) => {
-    if (removeAll) {
-      setSelectedZones(selectedZoneIds.filter((id) => !ids.includes(id)));
-    } else {
-      setSelectedZones([...new Set([...selectedZoneIds, ...ids])]);
     }
   };
 
@@ -221,7 +138,7 @@ function WrapSidebar() {
     if (!file) return;
     const url = URL.createObjectURL(file);
     const currentTool = toolRef.current;
-    if (currentTool === "decal") {
+    if (currentTool === "graphics") {
       const name = file.name.replace(/\.[^.]+$/, "");
       setCustomDecals((prev) => [...prev, { id: `custom-${Date.now()}`, label: name, url }]);
     } else {
@@ -229,17 +146,9 @@ function WrapSidebar() {
     }
   }, [uploadTexture, activeSurface]);
 
-  const allItems: { id: string; l: string; type: "sticker" | "pattern" | "custom"; url?: string }[] = [
-    ...STICKERS.map((s) => ({ ...s, type: "sticker" as const })),
-    ...PATTERNS.map((p) => ({ ...p, type: "pattern" as const })),
-    ...customDecals.map((d) => ({ id: d.id, l: d.label, type: "custom" as const, url: d.url })),
-  ];
-  const filtered = cat === "all" ? allItems : cat === "sticker" ? allItems.filter((i) => i.type === "sticker") : cat === "pattern" ? allItems.filter((i) => i.type === "pattern") : allItems;
-
   const TOOL_BTNS: { id: WrapTool; icon: string; label: string }[] = [
-    { id: "paint", icon: "\u2B24", label: "Paint" },
-    { id: "decal", icon: "\u2726", label: "Decal" },
-    { id: "text", icon: "T", label: "Text" },
+    { id: "coat", icon: "\u2B24", label: "Coat" },
+    { id: "graphics", icon: "\u2726", label: "Graphics" },
   ];
 
   return (
@@ -251,38 +160,76 @@ function WrapSidebar() {
         className="hidden"
         onChange={handleFileChange}
       />
-      {/* Car diagram */}
-      <div className="p-2.5 pb-1.5 shrink-0">
-        <div className="bg-background rounded-xl border border-border p-2">
-          <CarDiagram
-            selectedZoneIds={selectedZoneIds}
-            onToggleZone={toggleZoneInSelection}
-            panelColors={panelColors}
-          />
+      {/* Vehicle model picker */}
+      <div className="p-2.5 pb-2 shrink-0">
+        <div className="text-[10px] font-bold tracking-wider uppercase text-muted-foreground mb-1.5 px-0.5">Vehicle</div>
+        <div className="flex flex-col gap-1">
+          {vehicleTemplates.map((t) => {
+            const isActive = activeTemplateId === t.id;
+            return (
+              <button
+                key={t.id}
+                onClick={() => {
+                  useEditorStore.getState().setTemplate(t.id);
+                  router.replace(`/wrap/${t.id}`, { scroll: false });
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border transition-all w-full text-left"
+                style={{
+                  borderColor: isActive ? "var(--primary)" : "var(--border)",
+                  background: isActive ? "var(--wrap-accent-dim, color-mix(in srgb, var(--primary) 12%, transparent))" : "var(--wrap-surf2, var(--muted))",
+                  color: isActive ? "var(--primary)" : "var(--muted-foreground)",
+                }}
+              >
+                <Car className="h-3.5 w-3.5 shrink-0" />
+                <span className="text-[11px] font-semibold">{t.name}</span>
+              </button>
+            );
+          })}
         </div>
         {numSel > 0 ? (
-          <div className="mt-1.5 text-[11px] font-semibold text-primary flex justify-between px-0.5">
+          <div className="mt-2 text-[11px] font-semibold text-primary flex justify-between px-0.5">
             <span>{numSel} panel{numSel > 1 ? "s" : ""} selected</span>
             <button onClick={() => setSelectedZones([])} className="text-[10px] text-muted-foreground">
               Clear {"\u00D7"}
             </button>
           </div>
         ) : (
-          <div className="mt-1 text-[10px] text-muted-foreground px-0.5">
-            Click panels or use groups below
+          <div className="mt-1.5 text-[10px] text-muted-foreground px-0.5">
+            Click panels in 3D view or use groups on the right
           </div>
         )}
       </div>
 
+      {/* Finish */}
+      <div className="px-2.5 pb-2 shrink-0">
+        <div className="text-[10px] font-bold tracking-wider uppercase text-muted-foreground mb-1.5 px-0.5">Finish</div>
+        <div className="grid grid-cols-4 gap-1">
+          {WRAP_FINISHES.map((f) => (
+            <button
+              key={f.id}
+              onClick={() => setFinish(f.id)}
+              className="py-1 px-1 rounded-md text-[10px] font-semibold border transition-all"
+              style={{
+                background: finish === f.id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                color: finish === f.id ? "var(--primary)" : "var(--muted-foreground)",
+                borderColor: finish === f.id ? "var(--primary)" : "var(--border)",
+              }}
+            >
+              {f.l}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Tool strip */}
-      <div className="flex px-2.5 pb-2 gap-1 shrink-0">
+      <div className="flex px-2.5 pt-1 pb-2.5 gap-1 shrink-0">
         {TOOL_BTNS.map((t) => (
           <button
             key={t.id}
             onClick={() => {
               setTool(t.id);
-              if (t.id === "decal") setStickerMode(true);
-              else setStickerMode(false);
+              setStickerMode(t.id === "graphics");
+              if (t.id === "graphics") setPaintBrushMode(false);
             }}
             className="flex-1 py-1.5 px-1 rounded-lg text-[11px] font-bold flex flex-col items-center gap-0.5 border transition-all"
             style={{
@@ -298,111 +245,414 @@ function WrapSidebar() {
       </div>
 
       {/* Tool content */}
-      <div className="flex-1 overflow-y-auto px-2.5 pb-2.5">
-        {/* PAINT */}
-        {tool === "paint" && (
+      <div className="flex-1 overflow-y-auto px-2.5 pt-1 pb-3">
+        {/* COAT */}
+        {tool === "coat" && (
           <>
-            <div className="grid grid-cols-6 gap-1 mb-2.5">
-              {AUTOMOTIVE_COLORS.map((c) => (
-                <button
-                  key={c.h}
-                  onClick={() => applyColor(c.h)}
-                  title={c.l}
-                  className="aspect-square rounded-md border transition-all"
-                  style={{
-                    background: c.h,
-                    borderColor: activeHex === c.h ? "var(--primary)" : "rgba(255,255,255,0.07)",
-                    transform: activeHex === c.h ? "scale(1.15)" : "scale(1)",
-                    boxShadow: activeHex === c.h ? "0 0 0 2px var(--background), 0 0 0 3.5px var(--primary)" : "none",
-                  }}
-                />
-              ))}
-            </div>
-
-            <div className="flex gap-2 items-center mb-3 p-1.5 rounded-lg border border-border" style={{ background: "var(--wrap-surf2, var(--muted))" }}>
-              <div className="relative w-7 h-7 rounded-md overflow-hidden border border-border shrink-0">
-                <div className="absolute inset-0 pointer-events-none" style={{ background: activeHex }} />
-                <input
-                  type="color"
-                  value={activeHex}
-                  onChange={(e) => applyColor(e.target.value)}
-                  className="absolute inset-0 opacity-0 cursor-pointer"
-                />
-              </div>
-              <div>
-                <div className="text-[9px] text-muted-foreground mb-0.5">Custom</div>
-                <div className="text-[11px] font-mono font-semibold">{activeHex}</div>
-              </div>
-              {numSel === 0 && (
-                <div className="ml-auto text-[9.5px] text-muted-foreground leading-tight text-right">
-                  Select<br />panels first
-                </div>
-              )}
-            </div>
-
-            <div className="text-[10px] font-bold tracking-wider uppercase text-muted-foreground mb-1.5">Finish</div>
-            <div className="grid grid-cols-3 gap-1 mb-3">
-              {WRAP_FINISHES.map((f) => (
-                <button
-                  key={f.id}
-                  onClick={() => setFinish(f.id)}
-                  className="py-1.5 px-1 rounded-md text-[11px] font-semibold border transition-all"
-                  style={{
-                    background: finish === f.id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
-                    color: finish === f.id ? "var(--primary)" : "var(--muted-foreground)",
-                    borderColor: finish === f.id ? "var(--primary)" : "var(--border)",
-                  }}
-                >
-                  {f.l}
-                </button>
-              ))}
-            </div>
-
-            <div className="text-[10px] font-bold tracking-wider uppercase text-muted-foreground mb-1.5">Groups</div>
-            {predefinedGroups.map((g) => (
-              <GroupAccordion
-                key={g.id}
-                group={g}
-                selectedZoneIds={selectedZoneIds}
-                onGroupToggle={handleGroupToggle}
-                onPanelToggle={toggleZoneInSelection}
-                panelColors={panelColors}
-              />
-            ))}
-          </>
-        )}
-
-        {/* DECAL */}
-        {tool === "decal" && (
-          <>
-            <div className="flex gap-1 mb-2">
-              {[["all", "All"], ["sticker", "Stickers"], ["pattern", "Patterns"]].map(([id, lbl]) => (
+            <div className="flex gap-1 mb-2.5">
+              {([["color", "Color"], ["patterns", "Patterns"]] as const).map(([id, lbl]) => (
                 <button
                   key={id}
-                  onClick={() => setCat(id)}
+                  onClick={() => { setCoatSub(id); setPaintBrushMode(false); }}
                   className="flex-1 py-1 rounded-md text-[10.5px] font-bold border transition-all"
                   style={{
-                    background: cat === id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
-                    color: cat === id ? "var(--primary)" : "var(--muted-foreground)",
-                    borderColor: cat === id ? "var(--primary)" : "var(--border)",
+                    background: coatSub === id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                    color: coatSub === id ? "var(--primary)" : "var(--muted-foreground)",
+                    borderColor: coatSub === id ? "var(--primary)" : "var(--border)",
                   }}
                 >
                   {lbl}
                 </button>
               ))}
             </div>
+
+            {coatSub === "color" && (
+              <>
+                <div className="flex flex-col gap-1 mb-2">
+                  <div className="flex gap-1">
+                    <button
+                      onClick={() => {
+                        if (paintBrushMode === "zone") {
+                          setPaintBrushMode(false);
+                          useEditorStore.getState().clearZonePaintHistory();
+                        } else {
+                          setPaintBrushMode("zone");
+                          setPaintBrushColor(activeHex);
+                        }
+                      }}
+                      className="flex-1 py-1.5 rounded-md text-[10.5px] font-bold border transition-all flex items-center justify-center gap-1"
+                      style={{
+                        background: paintBrushMode === "zone" ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                        color: paintBrushMode === "zone" ? "var(--primary)" : "var(--muted-foreground)",
+                        borderColor: paintBrushMode === "zone" ? "var(--primary)" : "var(--border)",
+                      }}
+                    >
+                      {"\uD83C\uDFA8"} Paint Zone
+                    </button>
+                    <button
+                      onClick={() => {
+                        const next = paintBrushMode === "brush" ? false : "brush" as const;
+                        setPaintBrushMode(next);
+                        if (next) setPaintBrushColor(activeHex);
+                      }}
+                      className="flex-1 py-1.5 rounded-md text-[10.5px] font-bold border transition-all flex items-center justify-center gap-1"
+                      style={{
+                        background: paintBrushMode === "brush" ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                        color: paintBrushMode === "brush" ? "var(--primary)" : "var(--muted-foreground)",
+                        borderColor: paintBrushMode === "brush" ? "var(--primary)" : "var(--border)",
+                      }}
+                    >
+                      {"\uD83D\uDD8C\uFE0F"} Paint Brush
+                    </button>
+                  </div>
+                  {paintBrushMode === "zone" && (
+                    <div className="flex gap-1.5 mt-1">
+                      <button
+                        onClick={() => useEditorStore.getState().undoZonePaint()}
+                        className="flex-1 py-1 rounded-md text-[10px] font-semibold border transition-all"
+                        style={{
+                          background: "var(--wrap-surf2, var(--muted))",
+                          color: "var(--muted-foreground)",
+                          borderColor: "var(--border)",
+                        }}
+                      >
+                        Undo
+                      </button>
+                    </div>
+                  )}
+                  {paintBrushMode === "brush" && (
+                    <>
+                    <div className="mt-1 mb-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[10px] text-muted-foreground">Brush Size</span>
+                        <span className="text-[10px] font-mono text-muted-foreground">{paintBrushSize.toFixed(1)}</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="1"
+                        max="100"
+                        step="1"
+                        value={Math.round(Math.log(paintBrushSize / 0.05) / Math.log(2 / 0.05) * 100)}
+                        onChange={(e) => {
+                          const t = parseInt(e.target.value) / 100;
+                          const size = Math.round(0.05 * Math.pow(2 / 0.05, t) * 100) / 100;
+                          useEditorStore.getState().setPaintBrushSize(size);
+                        }}
+                        className="w-full h-1 accent-primary"
+                      />
+                    </div>
+                    <div className="flex gap-1">
+                      <button
+                        onClick={() => triggerBrushAction("undo")}
+                        className="flex-1 px-2 py-1.5 rounded-md text-[10px] font-bold border transition-all"
+                        style={{
+                          background: "var(--wrap-surf2, var(--muted))",
+                          color: "var(--muted-foreground)",
+                          borderColor: "var(--border)",
+                        }}
+                        title="Undo last brush stroke"
+                      >
+                        Undo
+                      </button>
+                      <button
+                        onClick={() => triggerBrushAction("clear")}
+                        className="flex-1 px-2 py-1.5 rounded-md text-[10px] font-bold border transition-all"
+                        style={{
+                          background: "var(--wrap-surf2, var(--muted))",
+                          color: "var(--muted-foreground)",
+                          borderColor: "var(--border)",
+                        }}
+                        title="Clear all brush strokes"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                    </>
+                  )}
+                </div>
+                <div className="grid grid-cols-6 gap-1 mb-2.5">
+                  {AUTOMOTIVE_COLORS.map((c) => (
+                    <button
+                      key={c.h}
+                      onClick={() => applyColor(c.h)}
+                      title={c.l}
+                      className="aspect-square rounded-md border transition-all"
+                      style={{
+                        background: c.h,
+                        borderColor: activeHex === c.h ? "var(--primary)" : "rgba(255,255,255,0.07)",
+                        transform: activeHex === c.h ? "scale(1.15)" : "scale(1)",
+                        boxShadow: activeHex === c.h ? "0 0 0 2px var(--background), 0 0 0 3.5px var(--primary)" : "none",
+                      }}
+                    />
+                  ))}
+                </div>
+                <div className="flex gap-2 items-center p-1.5 rounded-lg border border-border" style={{ background: "var(--wrap-surf2, var(--muted))" }}>
+                  <div className="relative w-7 h-7 rounded-md overflow-hidden border border-border shrink-0">
+                    <div className="absolute inset-0 pointer-events-none" style={{ background: activeHex }} />
+                    <input
+                      type="color"
+                      value={activeHex}
+                      onChange={(e) => applyColor(e.target.value)}
+                      className="absolute inset-0 opacity-0 cursor-pointer"
+                    />
+                  </div>
+                  <div>
+                    <div className="text-[9px] text-muted-foreground mb-0.5">Custom</div>
+                    <div className="text-[11px] font-mono font-semibold">{activeHex}</div>
+                  </div>
+                  {numSel === 0 && (
+                    <div className="ml-auto text-[9.5px] text-muted-foreground leading-tight text-right">
+                      Select<br />panels first
+                    </div>
+                  )}
+                </div>
+                {numSel > 0 && (
+                  <div className="flex gap-1.5 mt-2">
+                    <button
+                      onClick={() => {
+                        selectedZoneIds.forEach((id) => setZoneColor(id, activeHex));
+                        setSelectedZones([]);
+                      }}
+                      className="flex-1 py-1.5 rounded-md text-[10px] font-semibold border transition-all"
+                      style={{
+                        background: "var(--wrap-accent-dim)",
+                        color: "var(--primary)",
+                        borderColor: "var(--primary)",
+                      }}
+                    >
+                      Apply
+                    </button>
+                    <button
+                      onClick={() => selectedZoneIds.forEach((id) => { setZoneColor(id, null); removeTexture(id); })}
+                      className="flex-1 py-1.5 rounded-md text-[10px] font-semibold border transition-all"
+                      style={{
+                        background: "var(--wrap-surf2, var(--muted))",
+                        color: "var(--muted-foreground)",
+                        borderColor: "var(--border)",
+                      }}
+                    >
+                      Reset
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+
+
+            {coatSub === "patterns" && (
+              <>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {PATTERNS.map((p) => {
+                    const isActive = activePattern === p.id;
+                    return (
+                      <button
+                        key={p.id}
+                        onClick={() => {
+                          setActivePattern(p.id);
+                          if (numSel > 0) {
+                            const patUrl = `/presets/${p.id}.png`;
+                            const store = useEditorStore.getState();
+                            const newTextures = { ...store.surfaceTextures };
+                            for (const id of selectedZoneIds) {
+                              newTextures[id] = {
+                                ...newTextures[id],
+                                imageUrl: patUrl,
+                                scale: patternScale,
+                                rotation: patternRotation * Math.PI / 180,
+                              };
+                            }
+                            useEditorStore.setState({ surfaceTextures: newTextures });
+                          }
+                        }}
+                        className="rounded-lg border overflow-hidden transition-all"
+                        style={{
+                          borderColor: isActive ? "var(--primary)" : "var(--border)",
+                          background: isActive ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                        }}
+                      >
+                        <div className="h-11 flex items-center justify-center">
+                          <PatternPreview id={p.id} size={60} />
+                        </div>
+                        <div
+                          className="px-1.5 py-1 text-[10px] font-semibold truncate text-center"
+                          style={{ color: isActive ? "var(--primary)" : "var(--muted-foreground)", background: "var(--background)" }}
+                        >
+                          {p.l}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+                {activePattern && (
+                  <>
+                    <div className="mt-2 mb-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[10px] text-muted-foreground">Scale</span>
+                        <span className="text-[10px] font-mono text-muted-foreground">{patternScale.toFixed(1)}x</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        step="1"
+                        value={Math.round(Math.log(patternScale / 0.1) / Math.log(5 / 0.1) * 100)}
+                        onChange={(e) => {
+                          const t = parseInt(e.target.value) / 100;
+                          const newScale = Math.round(0.1 * Math.pow(5 / 0.1, t) * 100) / 100;
+                          setPatternScale(newScale);
+                          // Auto-apply scale change to zones that already have this pattern
+                          if (activePattern && numSel > 0) {
+                            const store = useEditorStore.getState();
+                            const patUrl = `/presets/${activePattern}.png`;
+                            const newTextures = { ...store.surfaceTextures };
+                            let changed = false;
+                            for (const id of selectedZoneIds) {
+                              if (newTextures[id]?.imageUrl === patUrl) {
+                                newTextures[id] = { ...newTextures[id], scale: newScale, rotation: patternRotation * Math.PI / 180 };
+                                changed = true;
+                              }
+                            }
+                            if (changed) useEditorStore.setState({ surfaceTextures: newTextures });
+                          }
+                        }}
+                        className="w-full h-1 accent-primary"
+                      />
+                    </div>
+                    <div className="mb-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[10px] text-muted-foreground">Rotation</span>
+                        <span className="text-[10px] font-mono text-muted-foreground">{patternRotation}°</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="360"
+                        step="5"
+                        value={patternRotation}
+                        onChange={(e) => {
+                          const newRot = parseInt(e.target.value);
+                          setPatternRotation(newRot);
+                          // Auto-apply rotation change to zones that already have this pattern
+                          if (activePattern && numSel > 0) {
+                            const store = useEditorStore.getState();
+                            const patUrl = `/presets/${activePattern}.png`;
+                            const newTextures = { ...store.surfaceTextures };
+                            let changed = false;
+                            for (const id of selectedZoneIds) {
+                              if (newTextures[id]?.imageUrl === patUrl) {
+                                newTextures[id] = { ...newTextures[id], scale: patternScale, rotation: newRot * Math.PI / 180 };
+                                changed = true;
+                              }
+                            }
+                            if (changed) useEditorStore.setState({ surfaceTextures: newTextures });
+                          }
+                        }}
+                        className="w-full h-1 accent-primary"
+                      />
+                    </div>
+                  </>
+                )}
+                {numSel > 0 && activePattern && (
+                  <div className="flex gap-1.5 mt-2">
+                    <button
+                      onClick={() => {
+                        const patUrl = `/presets/${activePattern}.png`;
+                        const store = useEditorStore.getState();
+                        const newTextures = { ...store.surfaceTextures };
+                        for (const id of selectedZoneIds) {
+                          newTextures[id] = {
+                            ...newTextures[id],
+                            imageUrl: patUrl,
+                            scale: patternScale,
+                            rotation: patternRotation * Math.PI / 180,
+                          };
+                        }
+                        store.pushUndo();
+                        useEditorStore.setState({ surfaceTextures: newTextures });
+                      }}
+                      className="flex-1 py-1.5 rounded-md text-[10px] font-semibold border transition-all"
+                      style={{
+                        background: "var(--wrap-accent-dim)",
+                        color: "var(--primary)",
+                        borderColor: "var(--primary)",
+                      }}
+                    >
+                      Apply
+                    </button>
+                    <button
+                      onClick={() => {
+                        selectedZoneIds.forEach((id) => removeTexture(id));
+                        setActivePattern(null);
+                        setPatternScale(1);
+                        setPatternRotation(0);
+                      }}
+                      className="flex-1 py-1.5 rounded-md text-[10px] font-semibold border transition-all"
+                      style={{
+                        background: "var(--wrap-surf2, var(--muted))",
+                        color: "var(--muted-foreground)",
+                        borderColor: "var(--border)",
+                      }}
+                    >
+                      Reset
+                    </button>
+                  </div>
+                )}
+                {numSel === 0 && activePattern && (
+                  <div className="mt-2 text-[10px] text-muted-foreground text-center px-1">
+                    Select panels first, then click Apply
+                  </div>
+                )}
+                {numSel > 0 && !activePattern && selectedZoneIds.some((id) => surfaceTextures[id]?.imageUrl) && (
+                  <button
+                    onClick={() => {
+                      selectedZoneIds.forEach((id) => removeTexture(id));
+                    }}
+                    className="mt-2 w-full py-1.5 rounded-md text-[10px] font-semibold border transition-all"
+                    style={{
+                      background: "var(--wrap-surf2, var(--muted))",
+                      color: "var(--muted-foreground)",
+                      borderColor: "var(--border)",
+                    }}
+                  >
+                    Remove Pattern
+                  </button>
+                )}
+              </>
+            )}
+          </>
+        )}
+
+        {tool === "graphics" && (
+          <>
+            <div className="flex gap-1 mb-2.5">
+              {([["stickers", "Stickers"], ["text", "Text"]] as const).map(([id, lbl]) => (
+                <button
+                  key={id}
+                  onClick={() => setGfxSub(id)}
+                  className="flex-1 py-1 rounded-md text-[10.5px] font-bold border transition-all"
+                  style={{
+                    background: gfxSub === id ? "var(--wrap-accent-dim)" : "var(--wrap-surf2, var(--muted))",
+                    color: gfxSub === id ? "var(--primary)" : "var(--muted-foreground)",
+                    borderColor: gfxSub === id ? "var(--primary)" : "var(--border)",
+                  }}
+                >
+                  {lbl}
+                </button>
+              ))}
+            </div>
+
+            {gfxSub === "stickers" && (<>
             <div className="text-[10px] text-muted-foreground mb-2 px-2 py-1 rounded-md border border-border" style={{ background: "var(--wrap-surf2, var(--muted))" }}>
               {"\u2193"} Drag onto car to place
             </div>
             <div className="grid grid-cols-2 gap-1.5">
-              {filtered.map((item) => (
+              {[...STICKERS.map((s) => ({ id: s.id, l: s.l, type: "sticker" as const, url: undefined as string | undefined })), ...customDecals.map((d) => ({ id: d.id, l: d.label, type: "custom" as const, url: d.url }))].map((item) => (
                 <div
                   key={item.id}
                   draggable
                   onDragStart={(e) => {
                     e.dataTransfer.setData("text/plain", item.type === "custom" ? item.url! : `/presets/${item.id}.png`);
                     e.dataTransfer.effectAllowed = "copy";
-                    setStickerMode(true);
                   }}
                   className="rounded-lg border border-border overflow-hidden cursor-grab select-none hover:border-primary transition-colors"
                   style={{ background: "var(--wrap-surf2, var(--muted))" }}
@@ -411,8 +661,6 @@ function WrapSidebar() {
                     {item.type === "custom" ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={item.url} alt={item.l} className="h-full w-full object-contain" />
-                    ) : item.type === "pattern" ? (
-                      <PatternPreview id={item.id} size={80} />
                     ) : (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={`/presets/${item.id}.png`} alt={item.l} className="h-full w-full object-contain p-1" />
@@ -430,14 +678,11 @@ function WrapSidebar() {
             >
               {"\u2191"} Upload image
             </button>
-          </>
-        )}
+            </>)}
 
-        {/* TEXT */}
-        {tool === "text" && (
-          <>
+            {gfxSub === "text" && (<>
             <div className="mb-2">
-              <div className="text-[10px] text-muted-foreground mb-1">Text</div>
+              <div className="text-[10px] text-muted-foreground mb-1">Content</div>
               <textarea
                 rows={2}
                 value={txtContent}
@@ -523,8 +768,6 @@ function WrapSidebar() {
             <div
               draggable
               onDragStart={(e) => {
-                // Render text to canvas and use data URL so the drop handler
-                // receives an image URL instead of a raw string.
                 const canvas = document.createElement("canvas");
                 const ctx = canvas.getContext("2d")!;
                 const text = txtContent || "Text";
@@ -536,19 +779,16 @@ function WrapSidebar() {
                 const pad = Math.ceil(txtSize * 0.2);
                 canvas.width = textWidth + pad * 2;
                 canvas.height = textHeight + pad * 2;
-                // Re-set font after resizing canvas (resize clears context state)
                 ctx.font = font;
                 ctx.textBaseline = "top";
                 ctx.fillStyle = txtColor;
                 ctx.fillText(text, pad, pad);
                 const dataUrl = canvas.toDataURL("image/png");
-                // Use the rendered text canvas as the drag ghost image
                 const dragImg = new Image();
                 dragImg.src = dataUrl;
                 e.dataTransfer.setDragImage(dragImg, canvas.width / 2, canvas.height / 2);
                 e.dataTransfer.setData("text/plain", dataUrl);
                 e.dataTransfer.effectAllowed = "copy";
-                setStickerMode(true);
               }}
               className="w-full p-2 rounded-lg text-xs font-bold border text-center cursor-grab select-none"
               style={{
@@ -559,6 +799,7 @@ function WrapSidebar() {
             >
               {"\u2605"} Drag to place on car
             </div>
+            </>)}
           </>
         )}
       </div>

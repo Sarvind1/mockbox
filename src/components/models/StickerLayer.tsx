@@ -237,6 +237,7 @@ export function StickerLayer({ parentScene }: { parentScene: THREE.Object3D }) {
       }
 
       const isSelected = sticker.groupId === selectedStickerGroupId;
+
       const material = new THREE.MeshBasicMaterial({
         color: "#ffffff",
         transparent: true,
