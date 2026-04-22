@@ -31,28 +31,18 @@ MOCKBOX_ROOT = os.environ.get("MOCKBOX_ROOT", "")
 # Symmetry tolerance: paired zones with face count ratio below this are "asymmetric"
 SYMMETRY_TOLERANCE = float(os.environ.get("SYMMETRY_TOLERANCE", "0.25"))
 
-# ── Car anatomy definition ──
-# Each zone: expected normalized position (length 0=front 1=rear, height 0=bottom 1=top),
-# min/max face fraction, whether it straddles the center line.
-# Side zones use base name without _l/_r — the validator appends the suffix.
-CAR_ANATOMY = {
-    "hood":         {"center": True,  "length": (0.0, 0.38), "height": (0.45, 1.0), "frac": (0.02, 0.25), "up_normal": True},
-    "roof":         {"center": True,  "length": (0.20, 0.70), "height": (0.70, 1.0), "frac": (0.01, 0.20), "up_normal": True},
-    "trunk":        {"center": True,  "length": (0.60, 1.0),  "height": (0.35, 1.0), "frac": (0.01, 0.20), "up_normal": True},
-    "bumper_front": {"center": True,  "length": (0.0, 0.18),  "height": (0.0, 0.55), "frac": (0.02, 0.25)},
-    "bumper_rear":  {"center": True,  "length": (0.82, 1.0),  "height": (0.0, 0.55), "frac": (0.02, 0.25)},
-    "fender_f":     {"center": False, "length": (0.03, 0.38), "height": (0.15, 0.85), "frac": (0.01, 0.15)},
-    "door_f":       {"center": False, "length": (0.22, 0.58), "height": (0.10, 0.80), "frac": (0.01, 0.18)},
-    "door_r":       {"center": False, "length": (0.42, 0.72), "height": (0.10, 0.80), "frac": (0.01, 0.18), "optional": True},
-    "quarter_r":    {"center": False, "length": (0.58, 0.92), "height": (0.10, 0.80), "frac": (0.01, 0.15), "optional": True},
-    "rocker":       {"center": False, "length": (0.08, 0.88), "height": (0.0, 0.22), "frac": (0.005, 0.10), "optional": True},
+# Expected zones for a standard car (with min face fraction of total carpaint)
+STANDARD_ZONES = {
+    "hood":          {"min_frac": 0.02, "center": True},
+    "roof":          {"min_frac": 0.01, "center": True},
+    "trunk":         {"min_frac": 0.01, "center": True},
+    "bumper_front":  {"min_frac": 0.02, "center": True},
+    "bumper_rear":   {"min_frac": 0.02, "center": True},
+    "fender_f_l":    {"min_frac": 0.01, "center": False, "mirror": "fender_f_r"},
+    "fender_f_r":    {"min_frac": 0.01, "center": False, "mirror": "fender_f_l"},
+    "door_f_l":      {"min_frac": 0.01, "center": False, "mirror": "door_f_r"},
+    "door_f_r":      {"min_frac": 0.01, "center": False, "mirror": "door_f_l"},
 }
-
-# Proportional rules: (zone_a, zone_b, min_ratio, max_ratio, description)
-PROPORTION_RULES = [
-    ("hood", "trunk", 0.3, 3.5, "Hood and trunk should be comparable"),
-    ("bumper_front", "bumper_rear", 0.3, 3.0, "Front and rear bumpers should be similar"),
-]
 
 if not OUTPUT_DIR or not MODEL_NAME:
     print("ERROR: OUTPUT_DIR and MODEL_NAME must be set")
@@ -205,181 +195,6 @@ for zone, faces in zone_faces.items():
                 "center",
     }
 
-# ── Normalize helper ──
-def normalize_pos(world_pos):
-    """Convert world position to 0-1 normalized bounding-box space."""
-    return tuple((world_pos[i] - bb_min[i]) / bb_size[i] if bb_size[i] > 0 else 0.5 for i in range(3))
-
-def zone_norm_pos(zone):
-    """Get normalized (length, height, width) for a zone."""
-    c = zone_stats[zone]["centroid"]
-    n = normalize_pos(c)
-    return {"l": n[LENGTH_AXIS], "h": n[HEIGHT_AXIS], "w": n[WIDTH_AXIS]}
-
-# Also compute average up-normal component per zone for hood/roof/trunk detection
-for zone in zone_stats:
-    avg_nh = 0.0
-    for f in zone_faces[zone]:
-        avg_nh += face_normals[f][HEIGHT_AXIS]
-    zone_stats[zone]["avg_nh"] = avg_nh / max(zone_stats[zone]["count"], 1)
-
-# ── Car Anatomy Validator: Cluster Rescue + Completeness + Proportions ──
-print(f"\n{'='*60}")
-print(f"  CAR ANATOMY VALIDATOR")
-print(f"{'='*60}")
-
-total_faces = len(face_to_zone)
-existing_zone_names = set(zone_faces.keys())
-
-# Helper to check if a zone name is a generic cluster
-def is_cluster_name(name):
-    return name.startswith("cluster_") or name.startswith("body_misc")
-
-# Step 1: Cluster Rescue — rename cluster_X zones based on spatial position
-def classify_zone_by_position(zone):
-    """Return the best car anatomy match for a zone, or None."""
-    pos = zone_norm_pos(zone)
-    stats = zone_stats[zone]
-    frac = stats["count"] / total_faces
-
-    best_match = None
-    best_score = float("inf")
-
-    for panel_name, spec in CAR_ANATOMY.items():
-        l_min, l_max = spec["length"]
-        h_min, h_max = spec["height"]
-
-        # Check position is within expected range
-        if not (l_min <= pos["l"] <= l_max and h_min <= pos["h"] <= h_max):
-            continue
-
-        # Check fraction is within expected range
-        frac_min, frac_max = spec["frac"]
-        if frac < frac_min * 0.5 or frac > frac_max * 2.0:
-            continue  # way outside expected size
-
-        # Check up-normal for top panels
-        if spec.get("up_normal") and stats["avg_nh"] < 0.2:
-            continue  # not upward-facing enough
-
-        # Check center vs side
-        if spec["center"] and stats["side"] != "center":
-            continue
-        if not spec["center"] and stats["side"] == "center":
-            continue
-
-        # Score by distance from center of expected range
-        l_center = (l_min + l_max) / 2
-        h_center = (h_min + h_max) / 2
-        score = (pos["l"] - l_center) ** 2 + (pos["h"] - h_center) ** 2
-        if score < best_score:
-            best_score = score
-            best_match = panel_name
-
-    if best_match is None:
-        return None
-
-    # Append side suffix for non-center panels
-    if not CAR_ANATOMY[best_match]["center"]:
-        side = stats["side"]
-        if side == "left":
-            best_match += "_l"
-        elif side == "right":
-            best_match += "_r"
-        else:
-            return None  # center face on a side panel — skip
-
-    return best_match
-
-renames = {}  # old_name -> new_name
-print(f"\n  Cluster rescue (renaming generic zones by position):")
-
-# First pass: rename cluster_X zones
-for zone in sorted(existing_zone_names):
-    if not is_cluster_name(zone):
-        continue
-    new_name = classify_zone_by_position(zone)
-    if new_name and new_name not in existing_zone_names and new_name not in renames.values():
-        renames[zone] = new_name
-        pos = zone_norm_pos(zone)
-        print(f"    {zone:25s} -> {new_name:20s} (l={pos['l']:.2f} h={pos['h']:.2f} side={zone_stats[zone]['side']})")
-    else:
-        pos = zone_norm_pos(zone)
-        print(f"    {zone:25s} -> [no match]          (l={pos['l']:.2f} h={pos['h']:.2f} side={zone_stats[zone]['side']})")
-
-# Second pass: also try to rename zones with wrong names (e.g., fender_f_l_1 that's actually a roof rail)
-for zone in sorted(existing_zone_names):
-    if is_cluster_name(zone) or zone in renames:
-        continue
-    # Only re-check suffixed zones (e.g., door_r_r_1, fender_f_l_1) — base zones keep their names
-    base = zone.rsplit("_", 1)
-    if len(base) != 2 or not base[1].isdigit():
-        continue
-    new_name = classify_zone_by_position(zone)
-    if new_name and new_name != zone and new_name not in existing_zone_names and new_name not in renames.values():
-        # Only rename if the new name is a different panel type (not just a re-suffix)
-        old_base = base[0].split("_")[0]  # e.g., "door" from "door_r_r_1"
-        new_base = new_name.split("_")[0]  # e.g., "rocker" from "rocker_r"
-        if old_base != new_base:
-            renames[zone] = new_name
-            pos = zone_norm_pos(zone)
-            print(f"    {zone:25s} -> {new_name:20s} (l={pos['l']:.2f} h={pos['h']:.2f} — was mislabeled)")
-
-# Apply renames to face_to_zone
-if renames:
-    print(f"\n  Applying {len(renames)} renames...")
-    for fidx in face_to_zone:
-        old = face_to_zone[fidx]
-        if old in renames:
-            face_to_zone[fidx] = renames[old]
-
-    # Rebuild zone_faces and zone_stats
-    zone_faces = defaultdict(set)
-    for fidx, zone in face_to_zone.items():
-        zone_faces[zone].add(fidx)
-
-    for zone in list(zone_stats.keys()):
-        if zone in renames:
-            zone_stats[renames[zone]] = zone_stats.pop(zone)
-
-    existing_zone_names = set(zone_faces.keys())
-else:
-    print(f"\n  No renames needed.")
-
-# Step 2: Completeness Check
-print(f"\n  Completeness check:")
-for panel_name, spec in CAR_ANATOMY.items():
-    if spec["center"]:
-        if panel_name in existing_zone_names:
-            frac = len(zone_faces[panel_name]) / total_faces
-            print(f"    [OK  ] {panel_name:20s}: {len(zone_faces[panel_name]):5d} faces ({frac*100:.1f}%)")
-        else:
-            marker = "OPTIONAL" if spec.get("optional") else "MISSING"
-            print(f"    [{marker:4s}] {panel_name:20s}: not found!")
-    else:
-        # Check both _l and _r
-        for suffix in ["_l", "_r"]:
-            full_name = panel_name + suffix
-            if full_name in existing_zone_names:
-                frac = len(zone_faces[full_name]) / total_faces
-                print(f"    [OK  ] {full_name:20s}: {len(zone_faces[full_name]):5d} faces ({frac*100:.1f}%)")
-            else:
-                marker = "OPT " if spec.get("optional") else "MISS"
-                print(f"    [{marker}] {full_name:20s}: not found!")
-
-# Step 3: Proportional Check
-print(f"\n  Proportional check:")
-for zone_a, zone_b, min_r, max_r, desc in PROPORTION_RULES:
-    if zone_a in existing_zone_names and zone_b in existing_zone_names:
-        count_a = len(zone_faces[zone_a])
-        count_b = len(zone_faces[zone_b])
-        ratio = count_a / max(count_b, 1)
-        status = "OK" if min_r <= ratio <= max_r else "WARN"
-        print(f"    [{status:4s}] {zone_a}/{zone_b} = {ratio:.2f} (expected {min_r}-{max_r}) — {desc}")
-    else:
-        missing = zone_a if zone_a not in existing_zone_names else zone_b
-        print(f"    [SKIP] {zone_a}/{zone_b} — {missing} not found")
-
 # ── Pair zones by name ──
 # Pattern: _l <-> _r, _fl <-> _fr, _rl <-> _rr
 def mirror_zone_name(name):
@@ -515,15 +330,41 @@ if remaining_unpaired:
     for z in remaining_unpaired:
         print(f"    {z:25s} ({zone_stats[z]['count']:5d} faces, side={zone_stats[z]['side']})")
 
-# (Standard zone check now handled by CAR ANATOMY VALIDATOR above)
+# ── Check against standard zones ──
+print(f"\n{'='*60}")
+print(f"  STANDARD ZONE CHECK")
+print(f"{'='*60}")
 
-# Helper used by sub-zone merging
+total_faces = len(face_to_zone)
+existing_zones = set(zone_faces.keys())
+
+# Aggregate zones with suffixes (e.g., bumper_rear + bumper_rear_1 + ...)
 def aggregate_base_name(zone_name):
     """Strip trailing _N suffix to get base name."""
     parts = zone_name.rsplit("_", 1)
     if len(parts) == 2 and parts[1].isdigit():
         return parts[0]
     return zone_name
+
+base_zone_counts = defaultdict(int)
+base_zone_members = defaultdict(list)
+for zone, stats in zone_stats.items():
+    base = aggregate_base_name(zone)
+    base_zone_counts[base] += stats["count"]
+    base_zone_members[base].append(zone)
+
+for expected, spec in STANDARD_ZONES.items():
+    base = aggregate_base_name(expected)
+    if base in base_zone_counts:
+        frac = base_zone_counts[base] / total_faces
+        min_frac = spec["min_frac"]
+        status = "OK" if frac >= min_frac else "SMALL"
+        members = base_zone_members[base]
+        member_str = ", ".join(members) if len(members) > 1 else ""
+        extra = f" [{member_str}]" if member_str else ""
+        print(f"  [{status:5s}] {expected:20s}: {base_zone_counts[base]:5d} faces ({frac*100:.1f}%){extra}")
+    else:
+        print(f"  [MISS ] {expected:20s}: not found!")
 
 # ── Build face correspondence map for mirror fixes ──
 print(f"\n{'='*60}")
