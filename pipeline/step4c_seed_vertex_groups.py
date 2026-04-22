@@ -142,63 +142,6 @@ for edge in bm.edges:
         key = (min(c1, c2), max(c1, c2))
         cluster_neighbors[key] = cluster_neighbors.get(key, 0) + 1
 
-# ── Pre-merge: absorb tiny noise clusters into their nearest neighbor ──
-# On high-poly models (400K+ faces), dihedral detection creates 20K+ raw clusters,
-# most with <10 faces. Merging these first prevents chaotic zone boundaries.
-NOISE_THRESHOLD = max(10, num_faces // 1000)  # e.g., 426 for 426K faces
-noise_clusters = [i for i in range(len(clusters)) if 0 < len(clusters[i]) < NOISE_THRESHOLD]
-print(f"\nPre-merge: {len(noise_clusters)} noise clusters (< {NOISE_THRESHOLD} faces)")
-
-# Sort noise clusters smallest-first so the tiniest merge first
-noise_clusters.sort(key=lambda i: len(clusters[i]))
-
-pre_merged = 0
-for cid in noise_clusters:
-    if len(clusters[cid]) == 0:
-        continue  # already merged
-    # Find the neighbor sharing the most edges
-    neighbors = {}
-    for (a, b), count in cluster_neighbors.items():
-        if a == cid and len(clusters[b]) > 0:
-            neighbors[b] = neighbors.get(b, 0) + count
-        elif b == cid and len(clusters[a]) > 0:
-            neighbors[a] = neighbors.get(a, 0) + count
-
-    if not neighbors:
-        continue  # isolated — will be handled by main merge
-
-    best = max(neighbors, key=neighbors.get)
-
-    # Transfer faces
-    for fidx in clusters[cid]:
-        cluster_id[fidx] = best
-    clusters[best] |= clusters[cid]
-
-    # Update neighbor graph
-    keys_to_remove = []
-    keys_to_add = {}
-    for (a, b), count in cluster_neighbors.items():
-        if a == cid or b == cid:
-            keys_to_remove.append((a, b))
-            other = b if a == cid else a
-            if other != best and len(clusters[other]) > 0:
-                new_key = (min(other, best), max(other, best))
-                keys_to_add[new_key] = keys_to_add.get(new_key, 0) + count
-    for key in keys_to_remove:
-        del cluster_neighbors[key]
-    for key, count in keys_to_add.items():
-        cluster_neighbors[key] = cluster_neighbors.get(key, 0) + count
-
-    clusters[cid] = set()
-    pre_merged += 1
-
-remaining_clusters = sum(1 for c in clusters if len(c) > 0)
-print(f"Pre-merged {pre_merged} noise clusters -> {remaining_clusters} clusters remaining")
-
-# Show new size distribution
-active_sizes = sorted([len(c) for c in clusters if len(c) > 0], reverse=True)
-print(f"Top 10 after pre-merge: {active_sizes[:10]}")
-
 # ── Iterative merging: keep merging smallest cluster into its best neighbor ──
 # until we reach TARGET_ZONES
 active_clusters = {i for i in range(len(clusters)) if len(clusters[i]) > 0}
