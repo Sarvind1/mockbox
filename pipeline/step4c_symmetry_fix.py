@@ -36,19 +36,16 @@ SYMMETRY_TOLERANCE = float(os.environ.get("SYMMETRY_TOLERANCE", "0.25"))
 # min/max face fraction, whether it straddles the center line.
 # Side zones use base name without _l/_r — the validator appends the suffix.
 CAR_ANATOMY = {
-    # Ranges intentionally overlap — scoring picks the best fit.
-    # up_normal: require avg face normal to point upward (HEIGHT_AXIS > 0.2)
-    "hood":         {"center": True,  "length": (0.0, 0.45), "height": (0.40, 1.0), "frac": (0.01, 0.25), "up_normal": True, "nh_min": -0.1},
-    "roof":         {"center": True,  "length": (0.15, 0.75), "height": (0.35, 1.0), "frac": (0.01, 0.20), "up_normal": True, "nh_min": 0.1},
-    "trunk":        {"center": True,  "length": (0.55, 1.0),  "height": (0.25, 1.0), "frac": (0.01, 0.20), "up_normal": True, "nh_min": -0.1},
-    "bumper_front": {"center": True,  "length": (0.0, 0.20),  "height": (0.0, 0.55), "frac": (0.02, 0.25)},
-    "bumper_rear":  {"center": True,  "length": (0.80, 1.0),  "height": (0.0, 0.55), "frac": (0.02, 0.25)},
-    "fender_f":     {"center": False, "length": (0.03, 0.42), "height": (0.12, 0.85), "frac": (0.01, 0.15)},
-    "door_f":       {"center": False, "length": (0.18, 0.58), "height": (0.08, 0.80), "frac": (0.01, 0.18)},
-    "door_r":       {"center": False, "length": (0.38, 0.75), "height": (0.08, 0.80), "frac": (0.01, 0.18), "optional": True},
-    "quarter_r":    {"center": False, "length": (0.55, 0.95), "height": (0.08, 0.80), "frac": (0.01, 0.15), "optional": True},
-    "rocker":       {"center": False, "length": (0.05, 0.90), "height": (0.0, 0.25), "frac": (0.005, 0.10), "optional": True},
-    "underbody":    {"center": True,  "length": (0.10, 0.90), "height": (0.0, 0.35), "frac": (0.01, 0.15), "optional": True, "down_normal": True},
+    "hood":         {"center": True,  "length": (0.0, 0.38), "height": (0.45, 1.0), "frac": (0.02, 0.25), "up_normal": True},
+    "roof":         {"center": True,  "length": (0.20, 0.70), "height": (0.70, 1.0), "frac": (0.01, 0.20), "up_normal": True},
+    "trunk":        {"center": True,  "length": (0.60, 1.0),  "height": (0.35, 1.0), "frac": (0.01, 0.20), "up_normal": True},
+    "bumper_front": {"center": True,  "length": (0.0, 0.18),  "height": (0.0, 0.55), "frac": (0.02, 0.25)},
+    "bumper_rear":  {"center": True,  "length": (0.82, 1.0),  "height": (0.0, 0.55), "frac": (0.02, 0.25)},
+    "fender_f":     {"center": False, "length": (0.03, 0.38), "height": (0.15, 0.85), "frac": (0.01, 0.15)},
+    "door_f":       {"center": False, "length": (0.22, 0.58), "height": (0.10, 0.80), "frac": (0.01, 0.18)},
+    "door_r":       {"center": False, "length": (0.42, 0.72), "height": (0.10, 0.80), "frac": (0.01, 0.18), "optional": True},
+    "quarter_r":    {"center": False, "length": (0.58, 0.92), "height": (0.10, 0.80), "frac": (0.01, 0.15), "optional": True},
+    "rocker":       {"center": False, "length": (0.08, 0.88), "height": (0.0, 0.22), "frac": (0.005, 0.10), "optional": True},
 }
 
 # Proportional rules: (zone_a, zone_b, min_ratio, max_ratio, description)
@@ -261,13 +258,9 @@ def classify_zone_by_position(zone):
         if frac < frac_min * 0.5 or frac > frac_max * 2.0:
             continue  # way outside expected size
 
-        # Check normal direction for top panels and underbody
-        if spec.get("up_normal"):
-            nh_min = spec.get("nh_min", 0.15)
-            if stats["avg_nh"] < nh_min:
-                continue
-        if spec.get("down_normal") and stats["avg_nh"] > -0.15:
-            continue
+        # Check up-normal for top panels
+        if spec.get("up_normal") and stats["avg_nh"] < 0.2:
+            continue  # not upward-facing enough
 
         # Check center vs side
         if spec["center"] and stats["side"] != "center":
@@ -306,15 +299,13 @@ for zone in sorted(existing_zone_names):
     if not is_cluster_name(zone):
         continue
     new_name = classify_zone_by_position(zone)
-    pos = zone_norm_pos(zone)
-    stats = zone_stats[zone]
-    frac = stats["count"] / total_faces
-    nh = stats["avg_nh"]
     if new_name and new_name not in existing_zone_names and new_name not in renames.values():
         renames[zone] = new_name
-        print(f"    {zone:25s} -> {new_name:20s} (l={pos['l']:.2f} h={pos['h']:.2f} nh={nh:.2f} frac={frac:.3f} side={stats['side']})")
+        pos = zone_norm_pos(zone)
+        print(f"    {zone:25s} -> {new_name:20s} (l={pos['l']:.2f} h={pos['h']:.2f} side={zone_stats[zone]['side']})")
     else:
-        print(f"    {zone:25s} -> [no match]          (l={pos['l']:.2f} h={pos['h']:.2f} nh={nh:.2f} frac={frac:.3f} side={stats['side']})")
+        pos = zone_norm_pos(zone)
+        print(f"    {zone:25s} -> [no match]          (l={pos['l']:.2f} h={pos['h']:.2f} side={zone_stats[zone]['side']})")
 
 # Second pass: also try to rename zones with wrong names (e.g., fender_f_l_1 that's actually a roof rail)
 for zone in sorted(existing_zone_names):
