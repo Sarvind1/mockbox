@@ -1,0 +1,10 @@
+pipeline_output/
+pipeline/
+*.blend
+*.blend1
+*.glb
+!public/models/*.glb
+toyota_fortuner_2021_raw.glb
+.claude/
+.playwright-mcp/
+archives/
