@@ -4,10 +4,13 @@ import { Suspense, useRef, useCallback, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useThree } from "@react-three/fiber";
 import { OrbitControls, Environment, ContactShadows } from "@react-three/drei";
+import type { RootState } from "@react-three/fiber";
 import * as THREE from "three";
 import { useEditorStore } from "@/lib/store";
 import { PackagingModelSwitch } from "@/components/models/PackagingModel";
 import { Loader2, Box } from "lucide-react";
+
+const LOCAL_HDRI = "/hdri/studio_small_03_1k.hdr";
 
 function DragDropHandler() {
   const { gl, camera, scene } = useThree();
@@ -188,8 +191,27 @@ function SceneContent({ onReady }: { onReady: () => void }) {
   );
 }
 
+function DeferredEnvironment({ ready }: { ready: boolean }) {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (ready) {
+      // Defer HDRI processing until after model shaders have compiled
+      const t = setTimeout(() => setShow(true), 100);
+      return () => clearTimeout(t);
+    }
+  }, [ready]);
+  if (!show) return null;
+  return <Environment files={LOCAL_HDRI} />;
+}
+
 function Scene({ onReady }: { onReady: () => void }) {
   const backgroundColor = useEditorStore((s) => s.backgroundColor);
+  const [modelReady, setModelReady] = useState(false);
+
+  const handleReady = useCallback(() => {
+    setModelReady(true);
+    onReady();
+  }, [onReady]);
 
   return (
     <>
@@ -199,7 +221,7 @@ function Scene({ onReady }: { onReady: () => void }) {
       <directionalLight position={[-3, 4, -3]} intensity={0.3} />
       <directionalLight position={[0, -2, 5]} intensity={0.2} />
 
-      <SceneContent onReady={onReady} />
+      <SceneContent onReady={handleReady} />
       <DragDropHandler />
 
       <ContactShadows
@@ -208,9 +230,10 @@ function Scene({ onReady }: { onReady: () => void }) {
         scale={4}
         blur={2.5}
         far={1.5}
+        frames={1}
       />
 
-      <Environment preset="studio" />
+      <DeferredEnvironment ready={modelReady} />
       <OrbitControls
         makeDefault
         enablePan
@@ -246,26 +269,60 @@ function ViewportLoader() {
 }
 
 function ViewportInner({ cameraPosition }: { cameraPosition: [number, number, number] }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Defer Canvas mount by one frame so React Strict Mode's
+  // mount → unmount → remount cycle completes before we ever
+  // create a WebGL context. Without this, 3 contexts are created
+  // and the browser kills the orphaned ones.
+  const [mounted, setMounted] = useState(false);
   const [ready, setReady] = useState(false);
+  const [canvasKey, setCanvasKey] = useState(0);
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const handleReady = useCallback(() => {
     setReady(true);
   }, []);
 
+  const handleCreated = useCallback(({ gl }: RootState) => {
+    const canvas = gl.domElement;
+
+    canvas.addEventListener("webglcontextlost", (e) => {
+      e.preventDefault();
+      // Only remount if context is genuinely dead AND stays dead.
+      // Spurious events from devtools/HMR self-recover within a frame.
+      setTimeout(() => {
+        const ctx = gl.getContext() as WebGL2RenderingContext | null;
+        if (ctx?.isContextLost?.() ?? canvas.getContext("webgl2")?.isContextLost()) {
+          console.warn("WebGL context lost — remounting Canvas");
+          setCanvasKey((k) => k + 1);
+        }
+      }, 500);
+    });
+  }, []);
+
   return (
     <>
-      {!ready && <ViewportLoader />}
+      {(!mounted || !ready) && <ViewportLoader />}
 
-      <Canvas
-        ref={canvasRef}
-        camera={{ position: cameraPosition, fov: 45 }}
-        gl={{ preserveDrawingBuffer: true, antialias: true }}
-        dpr={[1, 2]}
-        shadows
-      >
-        <Scene onReady={handleReady} />
-      </Canvas>
+      {mounted && (
+        <Canvas
+          key={canvasKey}
+          camera={{ position: cameraPosition, fov: 45 }}
+          gl={{
+            preserveDrawingBuffer: true,
+            antialias: true,
+            powerPreference: "high-performance",
+          }}
+          dpr={[1, 2]}
+          shadows
+          onCreated={handleCreated}
+        >
+          <Scene onReady={handleReady} />
+        </Canvas>
+      )}
 
       {ready && (
         <div className="absolute bottom-4 left-4 text-xs text-muted-foreground bg-white/80 backdrop-blur-sm rounded-md px-3 py-2 pointer-events-none animate-in fade-in duration-500">
@@ -306,8 +363,7 @@ export function EditorViewport() {
 
   return (
     <div className="flex-1 relative bg-gray-50">
-      {/* Key on templateId so ViewportInner remounts, resetting ready=false */}
-      <ViewportInner key={activeTemplateId} cameraPosition={cameraPosition} />
+      <ViewportInner cameraPosition={cameraPosition} />
     </div>
   );
 }
